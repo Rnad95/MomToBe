@@ -1,0 +1,1798 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateUser {
+  onCreateUser {
+    id
+    name
+    image
+    numOfChildren
+    phoneNumber
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    products {
+      items {
+        id
+        title
+        price
+        description
+        quantity
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userProductsId
+      }
+      nextToken
+      startedAt
+    }
+    questions {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userQuestionsId
+      }
+      nextToken
+      startedAt
+    }
+    experiences {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userExperiencesId
+      }
+      nextToken
+      startedAt
+    }
+    blogs {
+      items {
+        id
+        userID
+        blogID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    addressUsersId
+  }
+}
+subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    name
+    image
+    numOfChildren
+    phoneNumber
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    products {
+      items {
+        id
+        title
+        price
+        description
+        quantity
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userProductsId
+      }
+      nextToken
+      startedAt
+    }
+    questions {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userQuestionsId
+      }
+      nextToken
+      startedAt
+    }
+    experiences {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userExperiencesId
+      }
+      nextToken
+      startedAt
+    }
+    blogs {
+      items {
+        id
+        userID
+        blogID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    addressUsersId
+  }
+}
+subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    name
+    image
+    numOfChildren
+    phoneNumber
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    products {
+      items {
+        id
+        title
+        price
+        description
+        quantity
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userProductsId
+      }
+      nextToken
+      startedAt
+    }
+    questions {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userQuestionsId
+      }
+      nextToken
+      startedAt
+    }
+    experiences {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userExperiencesId
+      }
+      nextToken
+      startedAt
+    }
+    blogs {
+      items {
+        id
+        userID
+        blogID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    addressUsersId
+  }
+}
+subscription OnCreateComment {
+  onCreateComment {
+    id
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userCommentsId
+    questionCommentsId
+    experienceCommentsId
+    productCommentsId
+  }
+}
+subscription OnUpdateComment {
+  onUpdateComment {
+    id
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userCommentsId
+    questionCommentsId
+    experienceCommentsId
+    productCommentsId
+  }
+}
+subscription OnDeleteComment {
+  onDeleteComment {
+    id
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userCommentsId
+    questionCommentsId
+    experienceCommentsId
+    productCommentsId
+  }
+}
+subscription OnCreateAddress {
+  onCreateAddress {
+    id
+    country
+    city
+    street
+    postalCode
+    users {
+      items {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        addressUsersId
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAddress {
+  onUpdateAddress {
+    id
+    country
+    city
+    street
+    postalCode
+    users {
+      items {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        addressUsersId
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAddress {
+  onDeleteAddress {
+    id
+    country
+    city
+    street
+    postalCode
+    users {
+      items {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        addressUsersId
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateBlog {
+  onCreateBlog {
+    id
+    title
+    description
+    image
+    autherName
+    featured
+    categories {
+      items {
+        id
+        blogID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    users {
+      items {
+        id
+        userID
+        blogID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateBlog {
+  onUpdateBlog {
+    id
+    title
+    description
+    image
+    autherName
+    featured
+    categories {
+      items {
+        id
+        blogID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    users {
+      items {
+        id
+        userID
+        blogID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteBlog {
+  onDeleteBlog {
+    id
+    title
+    description
+    image
+    autherName
+    featured
+    categories {
+      items {
+        id
+        blogID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    users {
+      items {
+        id
+        userID
+        blogID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateQuestion {
+  onCreateQuestion {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    categories {
+      items {
+        id
+        questionID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userQuestionsId
+  }
+}
+subscription OnUpdateQuestion {
+  onUpdateQuestion {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    categories {
+      items {
+        id
+        questionID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userQuestionsId
+  }
+}
+subscription OnDeleteQuestion {
+  onDeleteQuestion {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    categories {
+      items {
+        id
+        questionID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userQuestionsId
+  }
+}
+subscription OnCreateExperience {
+  onCreateExperience {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    categories {
+      items {
+        id
+        experienceID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userExperiencesId
+  }
+}
+subscription OnUpdateExperience {
+  onUpdateExperience {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    categories {
+      items {
+        id
+        experienceID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userExperiencesId
+  }
+}
+subscription OnDeleteExperience {
+  onDeleteExperience {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    categories {
+      items {
+        id
+        experienceID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userExperiencesId
+  }
+}
+subscription OnCreateProduct {
+  onCreateProduct {
+    id
+    title
+    price
+    description
+    quantity
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userProductsId
+  }
+}
+subscription OnUpdateProduct {
+  onUpdateProduct {
+    id
+    title
+    price
+    description
+    quantity
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userProductsId
+  }
+}
+subscription OnDeleteProduct {
+  onDeleteProduct {
+    id
+    title
+    price
+    description
+    quantity
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userProductsId
+  }
+}
+subscription OnCreateCategory {
+  onCreateCategory {
+    id
+    title
+    description
+    experiences {
+      items {
+        id
+        experienceID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    blogs {
+      items {
+        id
+        blogID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    questions {
+      items {
+        id
+        questionID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateCategory {
+  onUpdateCategory {
+    id
+    title
+    description
+    experiences {
+      items {
+        id
+        experienceID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    blogs {
+      items {
+        id
+        blogID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    questions {
+      items {
+        id
+        questionID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteCategory {
+  onDeleteCategory {
+    id
+    title
+    description
+    experiences {
+      items {
+        id
+        experienceID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    blogs {
+      items {
+        id
+        blogID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    questions {
+      items {
+        id
+        questionID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateUserBlogs {
+  onCreateUserBlogs {
+    id
+    userID
+    blogID
+    user {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      comments {
+        nextToken
+        startedAt
+      }
+      products {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      addressUsersId
+    }
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateUserBlogs {
+  onUpdateUserBlogs {
+    id
+    userID
+    blogID
+    user {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      comments {
+        nextToken
+        startedAt
+      }
+      products {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      addressUsersId
+    }
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteUserBlogs {
+  onDeleteUserBlogs {
+    id
+    userID
+    blogID
+    user {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      comments {
+        nextToken
+        startedAt
+      }
+      products {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      addressUsersId
+    }
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateBlogCategories {
+  onCreateBlogCategories {
+    id
+    blogID
+    categoryID
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateBlogCategories {
+  onUpdateBlogCategories {
+    id
+    blogID
+    categoryID
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteBlogCategories {
+  onDeleteBlogCategories {
+    id
+    blogID
+    categoryID
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateQuestionCategories {
+  onCreateQuestionCategories {
+    id
+    questionID
+    categoryID
+    question {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userQuestionsId
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateQuestionCategories {
+  onUpdateQuestionCategories {
+    id
+    questionID
+    categoryID
+    question {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userQuestionsId
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteQuestionCategories {
+  onDeleteQuestionCategories {
+    id
+    questionID
+    categoryID
+    question {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userQuestionsId
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateExperienceCategories {
+  onCreateExperienceCategories {
+    id
+    experienceID
+    categoryID
+    experience {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userExperiencesId
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateExperienceCategories {
+  onUpdateExperienceCategories {
+    id
+    experienceID
+    categoryID
+    experience {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userExperiencesId
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteExperienceCategories {
+  onDeleteExperienceCategories {
+    id
+    experienceID
+    categoryID
+    experience {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userExperiencesId
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
