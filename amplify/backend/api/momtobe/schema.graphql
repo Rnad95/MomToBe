@@ -40,6 +40,7 @@ type Blog @model {
 
     categories : [Category] @manyToMany(relationName: "blogCategories")
     mothers : [Mother] @manyToMany(relationName: "userBlogs")
+
 }
 
 type Question @model {
