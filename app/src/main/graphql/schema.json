@@ -16,7 +16,7 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "getUser",
+                        "name": "getMother",
                         "description": null,
                         "args": [
                             {
@@ -36,14 +36,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "User",
+                            "name": "Mother",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "listUsers",
+                        "name": "listMothers",
                         "description": null,
                         "args": [
                             {
@@ -51,7 +51,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelUserFilterInput",
+                                    "name": "ModelMotherFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -79,14 +79,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelUserConnection",
+                            "name": "ModelMotherConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "syncUsers",
+                        "name": "syncMothers",
                         "description": null,
                         "args": [
                             {
@@ -94,7 +94,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelUserFilterInput",
+                                    "name": "ModelMotherFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -132,7 +132,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelUserConnection",
+                            "name": "ModelMotherConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -1509,7 +1509,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "User",
+                "name": "Mother",
                 "description": null,
                 "fields": [
                     {
@@ -1926,7 +1926,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "addressUsersId",
+                        "name": "addressMothersId",
                         "description": null,
                         "args": [],
                         "type": {
@@ -2028,7 +2028,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userCommentsId",
+                        "name": "motherCommentsId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2720,7 +2720,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "userCommentsId",
+                        "name": "motherCommentsId",
                         "description": null,
                         "args": [],
                         "type": {
@@ -2908,7 +2908,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userProductsId",
+                        "name": "motherProductsId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3487,7 +3487,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "userProductsId",
+                        "name": "motherProductsId",
                         "description": null,
                         "args": [],
                         "type": {
@@ -3599,7 +3599,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userQuestionsId",
+                        "name": "motherQuestionsId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3932,7 +3932,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "userQuestionsId",
+                        "name": "motherQuestionsId",
                         "description": null,
                         "args": [],
                         "type": {
@@ -5109,7 +5109,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "userExperiencesId",
+                        "name": "motherExperiencesId",
                         "description": null,
                         "args": [],
                         "type": {
@@ -5578,7 +5578,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "users",
+                        "name": "mothers",
                         "description": null,
                         "args": [
                             {
@@ -5729,7 +5729,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userID",
+                        "name": "motherID",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -5868,7 +5868,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "userID",
+                        "name": "motherID",
                         "description": null,
                         "args": [],
                         "type": {
@@ -5900,7 +5900,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "user",
+                        "name": "mother",
                         "description": null,
                         "args": [],
                         "type": {
@@ -5908,7 +5908,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "User",
+                                "name": "Mother",
                                 "ofType": null
                             }
                         },
@@ -6108,7 +6108,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userExperiencesId",
+                        "name": "motherExperiencesId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -6179,7 +6179,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelUserFilterInput",
+                "name": "ModelMotherFilterInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -6241,7 +6241,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelUserFilterInput",
+                                "name": "ModelMotherFilterInput",
                                 "ofType": null
                             }
                         },
@@ -6255,7 +6255,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelUserFilterInput",
+                                "name": "ModelMotherFilterInput",
                                 "ofType": null
                             }
                         },
@@ -6266,13 +6266,13 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelUserFilterInput",
+                            "name": "ModelMotherFilterInput",
                             "ofType": null
                         },
                         "defaultValue": null
                     },
                     {
-                        "name": "addressUsersId",
+                        "name": "addressMothersId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -6288,7 +6288,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "ModelUserConnection",
+                "name": "ModelMotherConnection",
                 "description": null,
                 "fields": [
                     {
@@ -6303,7 +6303,7 @@
                                 "name": null,
                                 "ofType": {
                                     "kind": "OBJECT",
-                                    "name": "User",
+                                    "name": "Mother",
                                     "ofType": null
                                 }
                             }
@@ -6423,7 +6423,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "users",
+                        "name": "mothers",
                         "description": null,
                         "args": [
                             {
@@ -6431,7 +6431,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelUserFilterInput",
+                                    "name": "ModelMotherFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -6469,7 +6469,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelUserConnection",
+                            "name": "ModelMotherConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -7015,7 +7015,7 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "createUser",
+                        "name": "createMother",
                         "description": null,
                         "args": [
                             {
@@ -7026,7 +7026,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "CreateUserInput",
+                                        "name": "CreateMotherInput",
                                         "ofType": null
                                     }
                                 },
@@ -7037,7 +7037,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelUserConditionInput",
+                                    "name": "ModelMotherConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -7045,14 +7045,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "User",
+                            "name": "Mother",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "updateUser",
+                        "name": "updateMother",
                         "description": null,
                         "args": [
                             {
@@ -7063,7 +7063,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "UpdateUserInput",
+                                        "name": "UpdateMotherInput",
                                         "ofType": null
                                     }
                                 },
@@ -7074,7 +7074,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelUserConditionInput",
+                                    "name": "ModelMotherConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -7082,14 +7082,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "User",
+                            "name": "Mother",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "deleteUser",
+                        "name": "deleteMother",
                         "description": null,
                         "args": [
                             {
@@ -7100,7 +7100,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "DeleteUserInput",
+                                        "name": "DeleteMotherInput",
                                         "ofType": null
                                     }
                                 },
@@ -7111,7 +7111,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelUserConditionInput",
+                                    "name": "ModelMotherConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -7119,7 +7119,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "User",
+                            "name": "Mother",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -8354,7 +8354,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateUserInput",
+                "name": "CreateMotherInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -8427,7 +8427,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "addressUsersId",
+                        "name": "addressMothersId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -8443,7 +8443,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelUserConditionInput",
+                "name": "ModelMotherConditionInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -8495,7 +8495,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelUserConditionInput",
+                                "name": "ModelMotherConditionInput",
                                 "ofType": null
                             }
                         },
@@ -8509,7 +8509,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelUserConditionInput",
+                                "name": "ModelMotherConditionInput",
                                 "ofType": null
                             }
                         },
@@ -8520,13 +8520,13 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelUserConditionInput",
+                            "name": "ModelMotherConditionInput",
                             "ofType": null
                         },
                         "defaultValue": null
                     },
                     {
-                        "name": "addressUsersId",
+                        "name": "addressMothersId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -8542,7 +8542,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateUserInput",
+                "name": "UpdateMotherInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -8611,7 +8611,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "addressUsersId",
+                        "name": "addressMothersId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -8627,7 +8627,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteUserInput",
+                "name": "DeleteMotherInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -8701,7 +8701,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userCommentsId",
+                        "name": "motherCommentsId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -8800,7 +8800,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userCommentsId",
+                        "name": "motherCommentsId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -8885,7 +8885,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userCommentsId",
+                        "name": "motherCommentsId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -9641,7 +9641,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userQuestionsId",
+                        "name": "motherQuestionsId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -9740,7 +9740,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userQuestionsId",
+                        "name": "motherQuestionsId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -9825,7 +9825,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userQuestionsId",
+                        "name": "motherQuestionsId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -9953,7 +9953,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userExperiencesId",
+                        "name": "motherExperiencesId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -10052,7 +10052,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userExperiencesId",
+                        "name": "motherExperiencesId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10137,7 +10137,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userExperiencesId",
+                        "name": "motherExperiencesId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -10289,7 +10289,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userProductsId",
+                        "name": "motherProductsId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -10408,7 +10408,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userProductsId",
+                        "name": "motherProductsId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10513,7 +10513,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userProductsId",
+                        "name": "motherProductsId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -10797,7 +10797,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userID",
+                        "name": "motherID",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -10846,7 +10846,7 @@
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "userID",
+                        "name": "motherID",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10929,7 +10929,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "userID",
+                        "name": "motherID",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -11658,36 +11658,36 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "onCreateUser",
+                        "name": "onCreateMother",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "User",
+                            "name": "Mother",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onUpdateUser",
+                        "name": "onUpdateMother",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "User",
+                            "name": "Mother",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onDeleteUser",
+                        "name": "onDeleteMother",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "User",
+                            "name": "Mother",
                             "ofType": null
                         },
                         "isDeprecated": false,

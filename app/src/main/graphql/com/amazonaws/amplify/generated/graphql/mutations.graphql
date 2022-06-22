@@ -1,9 +1,9 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateUser(
-  $input: CreateUserInput!
-  $condition: ModelUserConditionInput
+mutation CreateMother(
+  $input: CreateMotherInput!
+  $condition: ModelMotherConditionInput
 ) {
-  createUser(input: $input, condition: $condition) {
+  createMother(input: $input, condition: $condition) {
     id
     name
     image
@@ -18,7 +18,7 @@ mutation CreateUser(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -40,7 +40,7 @@ mutation CreateUser(
         _version
         _deleted
         _lastChangedAt
-        userProductsId
+        motherProductsId
       }
       nextToken
       startedAt
@@ -57,7 +57,7 @@ mutation CreateUser(
         _version
         _deleted
         _lastChangedAt
-        userQuestionsId
+        motherQuestionsId
       }
       nextToken
       startedAt
@@ -74,7 +74,7 @@ mutation CreateUser(
         _version
         _deleted
         _lastChangedAt
-        userExperiencesId
+        motherExperiencesId
       }
       nextToken
       startedAt
@@ -82,7 +82,7 @@ mutation CreateUser(
     blogs {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -98,14 +98,14 @@ mutation CreateUser(
     _version
     _deleted
     _lastChangedAt
-    addressUsersId
+    addressMothersId
   }
 }
-mutation UpdateUser(
-  $input: UpdateUserInput!
-  $condition: ModelUserConditionInput
+mutation UpdateMother(
+  $input: UpdateMotherInput!
+  $condition: ModelMotherConditionInput
 ) {
-  updateUser(input: $input, condition: $condition) {
+  updateMother(input: $input, condition: $condition) {
     id
     name
     image
@@ -120,7 +120,7 @@ mutation UpdateUser(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -142,7 +142,7 @@ mutation UpdateUser(
         _version
         _deleted
         _lastChangedAt
-        userProductsId
+        motherProductsId
       }
       nextToken
       startedAt
@@ -159,7 +159,7 @@ mutation UpdateUser(
         _version
         _deleted
         _lastChangedAt
-        userQuestionsId
+        motherQuestionsId
       }
       nextToken
       startedAt
@@ -176,7 +176,7 @@ mutation UpdateUser(
         _version
         _deleted
         _lastChangedAt
-        userExperiencesId
+        motherExperiencesId
       }
       nextToken
       startedAt
@@ -184,7 +184,7 @@ mutation UpdateUser(
     blogs {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -200,14 +200,14 @@ mutation UpdateUser(
     _version
     _deleted
     _lastChangedAt
-    addressUsersId
+    addressMothersId
   }
 }
-mutation DeleteUser(
-  $input: DeleteUserInput!
-  $condition: ModelUserConditionInput
+mutation DeleteMother(
+  $input: DeleteMotherInput!
+  $condition: ModelMotherConditionInput
 ) {
-  deleteUser(input: $input, condition: $condition) {
+  deleteMother(input: $input, condition: $condition) {
     id
     name
     image
@@ -222,7 +222,7 @@ mutation DeleteUser(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -244,7 +244,7 @@ mutation DeleteUser(
         _version
         _deleted
         _lastChangedAt
-        userProductsId
+        motherProductsId
       }
       nextToken
       startedAt
@@ -261,7 +261,7 @@ mutation DeleteUser(
         _version
         _deleted
         _lastChangedAt
-        userQuestionsId
+        motherQuestionsId
       }
       nextToken
       startedAt
@@ -278,7 +278,7 @@ mutation DeleteUser(
         _version
         _deleted
         _lastChangedAt
-        userExperiencesId
+        motherExperiencesId
       }
       nextToken
       startedAt
@@ -286,7 +286,7 @@ mutation DeleteUser(
     blogs {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -302,7 +302,7 @@ mutation DeleteUser(
     _version
     _deleted
     _lastChangedAt
-    addressUsersId
+    addressMothersId
   }
 }
 mutation CreateComment(
@@ -317,7 +317,7 @@ mutation CreateComment(
     _version
     _deleted
     _lastChangedAt
-    userCommentsId
+    motherCommentsId
     questionCommentsId
     experienceCommentsId
     productCommentsId
@@ -335,7 +335,7 @@ mutation UpdateComment(
     _version
     _deleted
     _lastChangedAt
-    userCommentsId
+    motherCommentsId
     questionCommentsId
     experienceCommentsId
     productCommentsId
@@ -353,7 +353,7 @@ mutation DeleteComment(
     _version
     _deleted
     _lastChangedAt
-    userCommentsId
+    motherCommentsId
     questionCommentsId
     experienceCommentsId
     productCommentsId
@@ -369,7 +369,7 @@ mutation CreateAddress(
     city
     street
     postalCode
-    users {
+    mothers {
       items {
         id
         name
@@ -381,7 +381,7 @@ mutation CreateAddress(
         _version
         _deleted
         _lastChangedAt
-        addressUsersId
+        addressMothersId
       }
       nextToken
       startedAt
@@ -403,7 +403,7 @@ mutation UpdateAddress(
     city
     street
     postalCode
-    users {
+    mothers {
       items {
         id
         name
@@ -415,7 +415,7 @@ mutation UpdateAddress(
         _version
         _deleted
         _lastChangedAt
-        addressUsersId
+        addressMothersId
       }
       nextToken
       startedAt
@@ -437,7 +437,7 @@ mutation DeleteAddress(
     city
     street
     postalCode
-    users {
+    mothers {
       items {
         id
         name
@@ -449,7 +449,7 @@ mutation DeleteAddress(
         _version
         _deleted
         _lastChangedAt
-        addressUsersId
+        addressMothersId
       }
       nextToken
       startedAt
@@ -486,10 +486,10 @@ mutation CreateBlog(
       nextToken
       startedAt
     }
-    users {
+    mothers {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -532,10 +532,10 @@ mutation UpdateBlog(
       nextToken
       startedAt
     }
-    users {
+    mothers {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -578,10 +578,10 @@ mutation DeleteBlog(
       nextToken
       startedAt
     }
-    users {
+    mothers {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -618,7 +618,7 @@ mutation CreateQuestion(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -645,7 +645,7 @@ mutation CreateQuestion(
     _version
     _deleted
     _lastChangedAt
-    userQuestionsId
+    motherQuestionsId
   }
 }
 mutation UpdateQuestion(
@@ -667,7 +667,7 @@ mutation UpdateQuestion(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -694,7 +694,7 @@ mutation UpdateQuestion(
     _version
     _deleted
     _lastChangedAt
-    userQuestionsId
+    motherQuestionsId
   }
 }
 mutation DeleteQuestion(
@@ -716,7 +716,7 @@ mutation DeleteQuestion(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -743,7 +743,7 @@ mutation DeleteQuestion(
     _version
     _deleted
     _lastChangedAt
-    userQuestionsId
+    motherQuestionsId
   }
 }
 mutation CreateExperience(
@@ -765,7 +765,7 @@ mutation CreateExperience(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -792,7 +792,7 @@ mutation CreateExperience(
     _version
     _deleted
     _lastChangedAt
-    userExperiencesId
+    motherExperiencesId
   }
 }
 mutation UpdateExperience(
@@ -814,7 +814,7 @@ mutation UpdateExperience(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -841,7 +841,7 @@ mutation UpdateExperience(
     _version
     _deleted
     _lastChangedAt
-    userExperiencesId
+    motherExperiencesId
   }
 }
 mutation DeleteExperience(
@@ -863,7 +863,7 @@ mutation DeleteExperience(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -890,7 +890,7 @@ mutation DeleteExperience(
     _version
     _deleted
     _lastChangedAt
-    userExperiencesId
+    motherExperiencesId
   }
 }
 mutation CreateProduct(
@@ -914,7 +914,7 @@ mutation CreateProduct(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -927,7 +927,7 @@ mutation CreateProduct(
     _version
     _deleted
     _lastChangedAt
-    userProductsId
+    motherProductsId
   }
 }
 mutation UpdateProduct(
@@ -951,7 +951,7 @@ mutation UpdateProduct(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -964,7 +964,7 @@ mutation UpdateProduct(
     _version
     _deleted
     _lastChangedAt
-    userProductsId
+    motherProductsId
   }
 }
 mutation DeleteProduct(
@@ -988,7 +988,7 @@ mutation DeleteProduct(
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -1001,7 +1001,7 @@ mutation DeleteProduct(
     _version
     _deleted
     _lastChangedAt
-    userProductsId
+    motherProductsId
   }
 }
 mutation CreateCategory(
@@ -1181,9 +1181,9 @@ mutation CreateUserBlogs(
 ) {
   createUserBlogs(input: $input, condition: $condition) {
     id
-    userID
+    motherID
     blogID
-    user {
+    mother {
       id
       name
       image
@@ -1214,7 +1214,7 @@ mutation CreateUserBlogs(
       _version
       _deleted
       _lastChangedAt
-      addressUsersId
+      addressMothersId
     }
     blog {
       id
@@ -1227,7 +1227,7 @@ mutation CreateUserBlogs(
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1250,9 +1250,9 @@ mutation UpdateUserBlogs(
 ) {
   updateUserBlogs(input: $input, condition: $condition) {
     id
-    userID
+    motherID
     blogID
-    user {
+    mother {
       id
       name
       image
@@ -1283,7 +1283,7 @@ mutation UpdateUserBlogs(
       _version
       _deleted
       _lastChangedAt
-      addressUsersId
+      addressMothersId
     }
     blog {
       id
@@ -1296,7 +1296,7 @@ mutation UpdateUserBlogs(
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1319,9 +1319,9 @@ mutation DeleteUserBlogs(
 ) {
   deleteUserBlogs(input: $input, condition: $condition) {
     id
-    userID
+    motherID
     blogID
-    user {
+    mother {
       id
       name
       image
@@ -1352,7 +1352,7 @@ mutation DeleteUserBlogs(
       _version
       _deleted
       _lastChangedAt
-      addressUsersId
+      addressMothersId
     }
     blog {
       id
@@ -1365,7 +1365,7 @@ mutation DeleteUserBlogs(
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1401,7 +1401,7 @@ mutation CreateBlogCategories(
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1459,7 +1459,7 @@ mutation UpdateBlogCategories(
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1517,7 +1517,7 @@ mutation DeleteBlogCategories(
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1583,7 +1583,7 @@ mutation CreateQuestionCategories(
       _version
       _deleted
       _lastChangedAt
-      userQuestionsId
+      motherQuestionsId
     }
     category {
       id
@@ -1641,7 +1641,7 @@ mutation UpdateQuestionCategories(
       _version
       _deleted
       _lastChangedAt
-      userQuestionsId
+      motherQuestionsId
     }
     category {
       id
@@ -1699,7 +1699,7 @@ mutation DeleteQuestionCategories(
       _version
       _deleted
       _lastChangedAt
-      userQuestionsId
+      motherQuestionsId
     }
     category {
       id
@@ -1757,7 +1757,7 @@ mutation CreateExperienceCategories(
       _version
       _deleted
       _lastChangedAt
-      userExperiencesId
+      motherExperiencesId
     }
     category {
       id
@@ -1815,7 +1815,7 @@ mutation UpdateExperienceCategories(
       _version
       _deleted
       _lastChangedAt
-      userExperiencesId
+      motherExperiencesId
     }
     category {
       id
@@ -1873,7 +1873,7 @@ mutation DeleteExperienceCategories(
       _version
       _deleted
       _lastChangedAt
-      userExperiencesId
+      motherExperiencesId
     }
     category {
       id

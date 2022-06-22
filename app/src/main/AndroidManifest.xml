@@ -19,7 +19,13 @@
             android:exported="false" />
         <activity
             android:name=".Question_avtivity"
+ android:exported="false" />
+                 <activity
+            android:name=".Saved"
+            android:exported="false">
 
+        </activity>         
+                  
         <activity
 
             android:name=".ProductActivity"
