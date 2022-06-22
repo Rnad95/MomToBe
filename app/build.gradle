@@ -41,4 +41,9 @@ dependencies {
     implementation 'com.amplifyframework:aws-datastore:1.35.4'
 
 
+    // Product
+
+
+
+
 }
