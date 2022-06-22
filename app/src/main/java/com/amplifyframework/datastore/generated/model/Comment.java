@@ -21,13 +21,13 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 public final class Comment implements Model {
   public static final QueryField ID = field("Comment", "id");
   public static final QueryField CONTENT = field("Comment", "content");
-  public static final QueryField USER_COMMENTS_ID = field("Comment", "userCommentsId");
+  public static final QueryField MOTHER_COMMENTS_ID = field("Comment", "motherCommentsId");
   public static final QueryField PRODUCT_COMMENTS_ID = field("Comment", "productCommentsId");
   public static final QueryField QUESTION_COMMENTS_ID = field("Comment", "questionCommentsId");
   public static final QueryField EXPERIENCE_COMMENTS_ID = field("Comment", "experienceCommentsId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String content;
-  private final @ModelField(targetType="ID") String userCommentsId;
+  private final @ModelField(targetType="ID") String motherCommentsId;
   private final @ModelField(targetType="ID") String productCommentsId;
   private final @ModelField(targetType="ID") String questionCommentsId;
   private final @ModelField(targetType="ID") String experienceCommentsId;
@@ -39,8 +39,8 @@ public final class Comment implements Model {
       return content;
   }
   
-  public String getUserCommentsId() {
-      return userCommentsId;
+  public String getMotherCommentsId() {
+      return motherCommentsId;
   }
   
   public String getProductCommentsId() {
@@ -55,10 +55,10 @@ public final class Comment implements Model {
       return experienceCommentsId;
   }
   
-  private Comment(String id, String content, String userCommentsId, String productCommentsId, String questionCommentsId, String experienceCommentsId) {
+  private Comment(String id, String content, String motherCommentsId, String productCommentsId, String questionCommentsId, String experienceCommentsId) {
     this.id = id;
     this.content = content;
-    this.userCommentsId = userCommentsId;
+    this.motherCommentsId = motherCommentsId;
     this.productCommentsId = productCommentsId;
     this.questionCommentsId = questionCommentsId;
     this.experienceCommentsId = experienceCommentsId;
@@ -74,7 +74,7 @@ public final class Comment implements Model {
       Comment comment = (Comment) obj;
       return ObjectsCompat.equals(getId(), comment.getId()) &&
               ObjectsCompat.equals(getContent(), comment.getContent()) &&
-              ObjectsCompat.equals(getUserCommentsId(), comment.getUserCommentsId()) &&
+              ObjectsCompat.equals(getMotherCommentsId(), comment.getMotherCommentsId()) &&
               ObjectsCompat.equals(getProductCommentsId(), comment.getProductCommentsId()) &&
               ObjectsCompat.equals(getQuestionCommentsId(), comment.getQuestionCommentsId()) &&
               ObjectsCompat.equals(getExperienceCommentsId(), comment.getExperienceCommentsId());
@@ -86,7 +86,7 @@ public final class Comment implements Model {
     return new StringBuilder()
       .append(getId())
       .append(getContent())
-      .append(getUserCommentsId())
+      .append(getMotherCommentsId())
       .append(getProductCommentsId())
       .append(getQuestionCommentsId())
       .append(getExperienceCommentsId())
@@ -100,7 +100,7 @@ public final class Comment implements Model {
       .append("Comment {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("content=" + String.valueOf(getContent()) + ", ")
-      .append("userCommentsId=" + String.valueOf(getUserCommentsId()) + ", ")
+      .append("motherCommentsId=" + String.valueOf(getMotherCommentsId()) + ", ")
       .append("productCommentsId=" + String.valueOf(getProductCommentsId()) + ", ")
       .append("questionCommentsId=" + String.valueOf(getQuestionCommentsId()) + ", ")
       .append("experienceCommentsId=" + String.valueOf(getExperienceCommentsId()))
@@ -134,7 +134,7 @@ public final class Comment implements Model {
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
       content,
-      userCommentsId,
+      motherCommentsId,
       productCommentsId,
       questionCommentsId,
       experienceCommentsId);
@@ -147,7 +147,7 @@ public final class Comment implements Model {
   public interface BuildStep {
     Comment build();
     BuildStep id(String id);
-    BuildStep userCommentsId(String userCommentsId);
+    BuildStep motherCommentsId(String motherCommentsId);
     BuildStep productCommentsId(String productCommentsId);
     BuildStep questionCommentsId(String questionCommentsId);
     BuildStep experienceCommentsId(String experienceCommentsId);
@@ -157,7 +157,7 @@ public final class Comment implements Model {
   public static class Builder implements ContentStep, BuildStep {
     private String id;
     private String content;
-    private String userCommentsId;
+    private String motherCommentsId;
     private String productCommentsId;
     private String questionCommentsId;
     private String experienceCommentsId;
@@ -168,7 +168,7 @@ public final class Comment implements Model {
         return new Comment(
           id,
           content,
-          userCommentsId,
+          motherCommentsId,
           productCommentsId,
           questionCommentsId,
           experienceCommentsId);
@@ -182,8 +182,8 @@ public final class Comment implements Model {
     }
     
     @Override
-     public BuildStep userCommentsId(String userCommentsId) {
-        this.userCommentsId = userCommentsId;
+     public BuildStep motherCommentsId(String motherCommentsId) {
+        this.motherCommentsId = motherCommentsId;
         return this;
     }
     
@@ -217,10 +217,10 @@ public final class Comment implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String content, String userCommentsId, String productCommentsId, String questionCommentsId, String experienceCommentsId) {
+    private CopyOfBuilder(String id, String content, String motherCommentsId, String productCommentsId, String questionCommentsId, String experienceCommentsId) {
       super.id(id);
       super.content(content)
-        .userCommentsId(userCommentsId)
+        .motherCommentsId(motherCommentsId)
         .productCommentsId(productCommentsId)
         .questionCommentsId(questionCommentsId)
         .experienceCommentsId(experienceCommentsId);
@@ -232,8 +232,8 @@ public final class Comment implements Model {
     }
     
     @Override
-     public CopyOfBuilder userCommentsId(String userCommentsId) {
-      return (CopyOfBuilder) super.userCommentsId(userCommentsId);
+     public CopyOfBuilder motherCommentsId(String motherCommentsId) {
+      return (CopyOfBuilder) super.motherCommentsId(motherCommentsId);
     }
     
     @Override

@@ -1,6 +1,6 @@
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } }
 
-type User @model {
+type Mother @model {
     id: ID!
     name : String!
     image : String  #edit the name image_key of image_path
@@ -27,7 +27,7 @@ type Address @model {
     street: String!
     postalCode: Int
 
-    users: [User] @hasMany
+    mothers: [Mother] @hasMany
 }
 
 type Blog @model {
@@ -39,9 +39,7 @@ type Blog @model {
     featured: Boolean!
 
     categories : [Category] @manyToMany(relationName: "blogCategories")
-    users : [User] @manyToMany(relationName: "userBlogs")
-
-
+    mothers : [Mother] @manyToMany(relationName: "userBlogs")
 }
 
 type Question @model {
@@ -90,4 +88,5 @@ type Category @model {
     questions : [Question]@manyToMany(relationName: "questionCategories")
 
 }
+
 
