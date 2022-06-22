@@ -3,16 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/home.xml" value="0.172" />
-        <entry key="app/src/main/res/drawable/selector.xml" value="0.172" />
-        <entry key="app/src/main/res/layout/activity_blog.xml" value="0.17083333333333334" />
-        <entry key="app/src/main/res/layout/activity_experience.xml" value="0.21" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_saved.xml" value="0.21" />
-        <entry key="app/src/main/res/layout/home_details.xml" value="0.16979166666666667" />
-        <entry key="app/src/main/res/layout/main_blog.xml" value="0.16979166666666667" />
-        <entry key="app/src/main/res/layout/menu_blogs.xml" value="0.16979166666666667" />
-        <entry key="app/src/main/res/menu/menu.xml" value="0.16979166666666667" />
+
+
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/activity_product.xml" value="0.33" />
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/product_recycler_view_layout.xml" value="0.67" />
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/slider_layout.xml" value="0.1712962962962963" />
+
+        <entry key="..\:/Users/Lenovo/Desktop/MumToBe/MomToBe/app/src/main/res/layout/activity_blog.xml" value="0.12890625" />
+        <entry key="..\:/Users/Lenovo/Desktop/MumToBe/MomToBe/app/src/main/res/layout/activity_blog_contentes.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/Desktop/MumToBe/MomToBe/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/Desktop/MumToBe/MomToBe/app/src/main/res/layout/reciclerview_content.xml" value="0.23854166666666668" />
+
       </map>
     </option>
   </component>

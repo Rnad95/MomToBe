@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Blog">
+    tools:context=".ProductActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/blog_archive_recycler"
-        android:layout_width="334dp"
-        android:layout_height="532dp" />
+        android:id="@+id/product_archive_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </RelativeLayout>
