@@ -25,7 +25,7 @@ public final class Experience implements Model {
   public static final QueryField DESCRIPTION = field("Experience", "description");
   public static final QueryField IMAGE = field("Experience", "image");
   public static final QueryField FEATURED = field("Experience", "featured");
-  public static final QueryField USER_EXPERIENCES_ID = field("Experience", "userExperiencesId");
+  public static final QueryField MOTHER_EXPERIENCES_ID = field("Experience", "motherExperiencesId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String description;
@@ -33,7 +33,7 @@ public final class Experience implements Model {
   private final @ModelField(targetType="Boolean", isRequired = true) Boolean featured;
   private final @ModelField(targetType="Comment") @HasMany(associatedWith = "experienceCommentsId", type = Comment.class) List<Comment> comments = null;
   private final @ModelField(targetType="ExperienceCategories") @HasMany(associatedWith = "experience", type = ExperienceCategories.class) List<ExperienceCategories> categories = null;
-  private final @ModelField(targetType="ID") String userExperiencesId;
+  private final @ModelField(targetType="ID") String motherExperiencesId;
   public String getId() {
       return id;
   }
@@ -62,17 +62,17 @@ public final class Experience implements Model {
       return categories;
   }
   
-  public String getUserExperiencesId() {
-      return userExperiencesId;
+  public String getMotherExperiencesId() {
+      return motherExperiencesId;
   }
   
-  private Experience(String id, String title, String description, String image, Boolean featured, String userExperiencesId) {
+  private Experience(String id, String title, String description, String image, Boolean featured, String motherExperiencesId) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.image = image;
     this.featured = featured;
-    this.userExperiencesId = userExperiencesId;
+    this.motherExperiencesId = motherExperiencesId;
   }
   
   @Override
@@ -88,7 +88,7 @@ public final class Experience implements Model {
               ObjectsCompat.equals(getDescription(), experience.getDescription()) &&
               ObjectsCompat.equals(getImage(), experience.getImage()) &&
               ObjectsCompat.equals(getFeatured(), experience.getFeatured()) &&
-              ObjectsCompat.equals(getUserExperiencesId(), experience.getUserExperiencesId());
+              ObjectsCompat.equals(getMotherExperiencesId(), experience.getMotherExperiencesId());
       }
   }
   
@@ -100,7 +100,7 @@ public final class Experience implements Model {
       .append(getDescription())
       .append(getImage())
       .append(getFeatured())
-      .append(getUserExperiencesId())
+      .append(getMotherExperiencesId())
       .toString()
       .hashCode();
   }
@@ -114,7 +114,7 @@ public final class Experience implements Model {
       .append("description=" + String.valueOf(getDescription()) + ", ")
       .append("image=" + String.valueOf(getImage()) + ", ")
       .append("featured=" + String.valueOf(getFeatured()) + ", ")
-      .append("userExperiencesId=" + String.valueOf(getUserExperiencesId()))
+      .append("motherExperiencesId=" + String.valueOf(getMotherExperiencesId()))
       .append("}")
       .toString();
   }
@@ -148,7 +148,7 @@ public final class Experience implements Model {
       description,
       image,
       featured,
-      userExperiencesId);
+      motherExperiencesId);
   }
   public interface TitleStep {
     DescriptionStep title(String title);
@@ -169,7 +169,7 @@ public final class Experience implements Model {
     Experience build();
     BuildStep id(String id);
     BuildStep image(String image);
-    BuildStep userExperiencesId(String userExperiencesId);
+    BuildStep motherExperiencesId(String motherExperiencesId);
   }
   
 
@@ -179,7 +179,7 @@ public final class Experience implements Model {
     private String description;
     private Boolean featured;
     private String image;
-    private String userExperiencesId;
+    private String motherExperiencesId;
     @Override
      public Experience build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -190,7 +190,7 @@ public final class Experience implements Model {
           description,
           image,
           featured,
-          userExperiencesId);
+          motherExperiencesId);
     }
     
     @Override
@@ -221,8 +221,8 @@ public final class Experience implements Model {
     }
     
     @Override
-     public BuildStep userExperiencesId(String userExperiencesId) {
-        this.userExperiencesId = userExperiencesId;
+     public BuildStep motherExperiencesId(String motherExperiencesId) {
+        this.motherExperiencesId = motherExperiencesId;
         return this;
     }
     
@@ -238,13 +238,13 @@ public final class Experience implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, String description, String image, Boolean featured, String userExperiencesId) {
+    private CopyOfBuilder(String id, String title, String description, String image, Boolean featured, String motherExperiencesId) {
       super.id(id);
       super.title(title)
         .description(description)
         .featured(featured)
         .image(image)
-        .userExperiencesId(userExperiencesId);
+        .motherExperiencesId(motherExperiencesId);
     }
     
     @Override
@@ -268,8 +268,8 @@ public final class Experience implements Model {
     }
     
     @Override
-     public CopyOfBuilder userExperiencesId(String userExperiencesId) {
-      return (CopyOfBuilder) super.userExperiencesId(userExperiencesId);
+     public CopyOfBuilder motherExperiencesId(String motherExperiencesId) {
+      return (CopyOfBuilder) super.motherExperiencesId(motherExperiencesId);
     }
   }
   
