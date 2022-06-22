@@ -1,18 +1,18 @@
 {
   "api": {
-    "amplifyDatasource": {
+    "momtobe": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
+      "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "description": "",
               "apiKeyExpirationDays": 7
             }
-          }
+          },
+          "additionalAuthenticationProviders": []
         }
       }
     }

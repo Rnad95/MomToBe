@@ -25,7 +25,7 @@ public final class Question implements Model {
   public static final QueryField DESCRIPTION = field("Question", "description");
   public static final QueryField IMAGE = field("Question", "image");
   public static final QueryField FEATURED = field("Question", "featured");
-  public static final QueryField USER_QUESTIONS_ID = field("Question", "userQuestionsId");
+  public static final QueryField MOTHER_QUESTIONS_ID = field("Question", "motherQuestionsId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String description;
@@ -33,7 +33,7 @@ public final class Question implements Model {
   private final @ModelField(targetType="Boolean", isRequired = true) Boolean featured;
   private final @ModelField(targetType="Comment") @HasMany(associatedWith = "questionCommentsId", type = Comment.class) List<Comment> comments = null;
   private final @ModelField(targetType="QuestionCategories") @HasMany(associatedWith = "question", type = QuestionCategories.class) List<QuestionCategories> categories = null;
-  private final @ModelField(targetType="ID") String userQuestionsId;
+  private final @ModelField(targetType="ID") String motherQuestionsId;
   public String getId() {
       return id;
   }
@@ -62,17 +62,17 @@ public final class Question implements Model {
       return categories;
   }
   
-  public String getUserQuestionsId() {
-      return userQuestionsId;
+  public String getMotherQuestionsId() {
+      return motherQuestionsId;
   }
   
-  private Question(String id, String title, String description, String image, Boolean featured, String userQuestionsId) {
+  private Question(String id, String title, String description, String image, Boolean featured, String motherQuestionsId) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.image = image;
     this.featured = featured;
-    this.userQuestionsId = userQuestionsId;
+    this.motherQuestionsId = motherQuestionsId;
   }
   
   @Override
@@ -88,7 +88,7 @@ public final class Question implements Model {
               ObjectsCompat.equals(getDescription(), question.getDescription()) &&
               ObjectsCompat.equals(getImage(), question.getImage()) &&
               ObjectsCompat.equals(getFeatured(), question.getFeatured()) &&
-              ObjectsCompat.equals(getUserQuestionsId(), question.getUserQuestionsId());
+              ObjectsCompat.equals(getMotherQuestionsId(), question.getMotherQuestionsId());
       }
   }
   
@@ -100,7 +100,7 @@ public final class Question implements Model {
       .append(getDescription())
       .append(getImage())
       .append(getFeatured())
-      .append(getUserQuestionsId())
+      .append(getMotherQuestionsId())
       .toString()
       .hashCode();
   }
@@ -114,7 +114,7 @@ public final class Question implements Model {
       .append("description=" + String.valueOf(getDescription()) + ", ")
       .append("image=" + String.valueOf(getImage()) + ", ")
       .append("featured=" + String.valueOf(getFeatured()) + ", ")
-      .append("userQuestionsId=" + String.valueOf(getUserQuestionsId()))
+      .append("motherQuestionsId=" + String.valueOf(getMotherQuestionsId()))
       .append("}")
       .toString();
   }
@@ -148,7 +148,7 @@ public final class Question implements Model {
       description,
       image,
       featured,
-      userQuestionsId);
+      motherQuestionsId);
   }
   public interface TitleStep {
     DescriptionStep title(String title);
@@ -169,7 +169,7 @@ public final class Question implements Model {
     Question build();
     BuildStep id(String id);
     BuildStep image(String image);
-    BuildStep userQuestionsId(String userQuestionsId);
+    BuildStep motherQuestionsId(String motherQuestionsId);
   }
   
 
@@ -179,7 +179,7 @@ public final class Question implements Model {
     private String description;
     private Boolean featured;
     private String image;
-    private String userQuestionsId;
+    private String motherQuestionsId;
     @Override
      public Question build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -190,7 +190,7 @@ public final class Question implements Model {
           description,
           image,
           featured,
-          userQuestionsId);
+          motherQuestionsId);
     }
     
     @Override
@@ -221,8 +221,8 @@ public final class Question implements Model {
     }
     
     @Override
-     public BuildStep userQuestionsId(String userQuestionsId) {
-        this.userQuestionsId = userQuestionsId;
+     public BuildStep motherQuestionsId(String motherQuestionsId) {
+        this.motherQuestionsId = motherQuestionsId;
         return this;
     }
     
@@ -238,13 +238,13 @@ public final class Question implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, String description, String image, Boolean featured, String userQuestionsId) {
+    private CopyOfBuilder(String id, String title, String description, String image, Boolean featured, String motherQuestionsId) {
       super.id(id);
       super.title(title)
         .description(description)
         .featured(featured)
         .image(image)
-        .userQuestionsId(userQuestionsId);
+        .motherQuestionsId(motherQuestionsId);
     }
     
     @Override
@@ -268,8 +268,8 @@ public final class Question implements Model {
     }
     
     @Override
-     public CopyOfBuilder userQuestionsId(String userQuestionsId) {
-      return (CopyOfBuilder) super.userQuestionsId(userQuestionsId);
+     public CopyOfBuilder motherQuestionsId(String motherQuestionsId) {
+      return (CopyOfBuilder) super.motherQuestionsId(motherQuestionsId);
     }
   }
   

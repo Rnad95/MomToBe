@@ -27,7 +27,7 @@ public final class Product implements Model {
   public static final QueryField QUANTITY = field("Product", "quantity");
   public static final QueryField IMAGE = field("Product", "image");
   public static final QueryField FEATURED = field("Product", "featured");
-  public static final QueryField USER_PRODUCTS_ID = field("Product", "userProductsId");
+  public static final QueryField MOTHER_PRODUCTS_ID = field("Product", "motherProductsId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="Float", isRequired = true) Double price;
@@ -36,7 +36,7 @@ public final class Product implements Model {
   private final @ModelField(targetType="String") String image;
   private final @ModelField(targetType="Boolean", isRequired = true) Boolean featured;
   private final @ModelField(targetType="Comment") @HasMany(associatedWith = "productCommentsId", type = Comment.class) List<Comment> comments = null;
-  private final @ModelField(targetType="ID") String userProductsId;
+  private final @ModelField(targetType="ID") String motherProductsId;
   public String getId() {
       return id;
   }
@@ -69,11 +69,11 @@ public final class Product implements Model {
       return comments;
   }
   
-  public String getUserProductsId() {
-      return userProductsId;
+  public String getMotherProductsId() {
+      return motherProductsId;
   }
   
-  private Product(String id, String title, Double price, String description, Integer quantity, String image, Boolean featured, String userProductsId) {
+  private Product(String id, String title, Double price, String description, Integer quantity, String image, Boolean featured, String motherProductsId) {
     this.id = id;
     this.title = title;
     this.price = price;
@@ -81,7 +81,7 @@ public final class Product implements Model {
     this.quantity = quantity;
     this.image = image;
     this.featured = featured;
-    this.userProductsId = userProductsId;
+    this.motherProductsId = motherProductsId;
   }
   
   @Override
@@ -99,7 +99,7 @@ public final class Product implements Model {
               ObjectsCompat.equals(getQuantity(), product.getQuantity()) &&
               ObjectsCompat.equals(getImage(), product.getImage()) &&
               ObjectsCompat.equals(getFeatured(), product.getFeatured()) &&
-              ObjectsCompat.equals(getUserProductsId(), product.getUserProductsId());
+              ObjectsCompat.equals(getMotherProductsId(), product.getMotherProductsId());
       }
   }
   
@@ -113,7 +113,7 @@ public final class Product implements Model {
       .append(getQuantity())
       .append(getImage())
       .append(getFeatured())
-      .append(getUserProductsId())
+      .append(getMotherProductsId())
       .toString()
       .hashCode();
   }
@@ -129,7 +129,7 @@ public final class Product implements Model {
       .append("quantity=" + String.valueOf(getQuantity()) + ", ")
       .append("image=" + String.valueOf(getImage()) + ", ")
       .append("featured=" + String.valueOf(getFeatured()) + ", ")
-      .append("userProductsId=" + String.valueOf(getUserProductsId()))
+      .append("motherProductsId=" + String.valueOf(getMotherProductsId()))
       .append("}")
       .toString();
   }
@@ -167,7 +167,7 @@ public final class Product implements Model {
       quantity,
       image,
       featured,
-      userProductsId);
+      motherProductsId);
   }
   public interface TitleStep {
     PriceStep title(String title);
@@ -194,7 +194,7 @@ public final class Product implements Model {
     BuildStep id(String id);
     BuildStep quantity(Integer quantity);
     BuildStep image(String image);
-    BuildStep userProductsId(String userProductsId);
+    BuildStep motherProductsId(String motherProductsId);
   }
   
 
@@ -206,7 +206,7 @@ public final class Product implements Model {
     private Boolean featured;
     private Integer quantity;
     private String image;
-    private String userProductsId;
+    private String motherProductsId;
     @Override
      public Product build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -219,7 +219,7 @@ public final class Product implements Model {
           quantity,
           image,
           featured,
-          userProductsId);
+          motherProductsId);
     }
     
     @Override
@@ -263,8 +263,8 @@ public final class Product implements Model {
     }
     
     @Override
-     public BuildStep userProductsId(String userProductsId) {
-        this.userProductsId = userProductsId;
+     public BuildStep motherProductsId(String motherProductsId) {
+        this.motherProductsId = motherProductsId;
         return this;
     }
     
@@ -280,7 +280,7 @@ public final class Product implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, Double price, String description, Integer quantity, String image, Boolean featured, String userProductsId) {
+    private CopyOfBuilder(String id, String title, Double price, String description, Integer quantity, String image, Boolean featured, String motherProductsId) {
       super.id(id);
       super.title(title)
         .price(price)
@@ -288,7 +288,7 @@ public final class Product implements Model {
         .featured(featured)
         .quantity(quantity)
         .image(image)
-        .userProductsId(userProductsId);
+        .motherProductsId(motherProductsId);
     }
     
     @Override
@@ -322,8 +322,8 @@ public final class Product implements Model {
     }
     
     @Override
-     public CopyOfBuilder userProductsId(String userProductsId) {
-      return (CopyOfBuilder) super.userProductsId(userProductsId);
+     public CopyOfBuilder motherProductsId(String motherProductsId) {
+      return (CopyOfBuilder) super.motherProductsId(motherProductsId);
     }
   }
   
