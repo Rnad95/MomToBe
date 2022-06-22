@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">MomToBe</string>
+
+    <string name="product_name">Product Name</string>
+    <string name="quantity_1">Quantity : 1</string>
+    <string name="status_new">Status : New</string>
+    <string name="price_10_jd">Price : 10 JD</string>
+    <string name="short_description">Short description for the product</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hadeel">Author: Hadeel</string>
