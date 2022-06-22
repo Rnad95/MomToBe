@@ -19,30 +19,30 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the UserBlogs type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "UserBlogs")
-@Index(name = "byUser", fields = {"userID"})
+@Index(name = "byMother", fields = {"motherID"})
 @Index(name = "byBlog", fields = {"blogID"})
 public final class UserBlogs implements Model {
   public static final QueryField ID = field("UserBlogs", "id");
-  public static final QueryField USER = field("UserBlogs", "userID");
+  public static final QueryField MOTHER = field("UserBlogs", "motherID");
   public static final QueryField BLOG = field("UserBlogs", "blogID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="User", isRequired = true) @BelongsTo(targetName = "userID", type = User.class) User user;
+  private final @ModelField(targetType="Mother", isRequired = true) @BelongsTo(targetName = "motherID", type = Mother.class) Mother mother;
   private final @ModelField(targetType="Blog", isRequired = true) @BelongsTo(targetName = "blogID", type = Blog.class) Blog blog;
   public String getId() {
       return id;
   }
   
-  public User getUser() {
-      return user;
+  public Mother getMother() {
+      return mother;
   }
   
   public Blog getBlog() {
       return blog;
   }
   
-  private UserBlogs(String id, User user, Blog blog) {
+  private UserBlogs(String id, Mother mother, Blog blog) {
     this.id = id;
-    this.user = user;
+    this.mother = mother;
     this.blog = blog;
   }
   
@@ -55,7 +55,7 @@ public final class UserBlogs implements Model {
       } else {
       UserBlogs userBlogs = (UserBlogs) obj;
       return ObjectsCompat.equals(getId(), userBlogs.getId()) &&
-              ObjectsCompat.equals(getUser(), userBlogs.getUser()) &&
+              ObjectsCompat.equals(getMother(), userBlogs.getMother()) &&
               ObjectsCompat.equals(getBlog(), userBlogs.getBlog());
       }
   }
@@ -64,7 +64,7 @@ public final class UserBlogs implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getUser())
+      .append(getMother())
       .append(getBlog())
       .toString()
       .hashCode();
@@ -75,13 +75,13 @@ public final class UserBlogs implements Model {
     return new StringBuilder()
       .append("UserBlogs {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("user=" + String.valueOf(getUser()) + ", ")
+      .append("mother=" + String.valueOf(getMother()) + ", ")
       .append("blog=" + String.valueOf(getBlog()))
       .append("}")
       .toString();
   }
   
-  public static UserStep builder() {
+  public static MotherStep builder() {
       return new Builder();
   }
   
@@ -103,11 +103,11 @@ public final class UserBlogs implements Model {
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      user,
+      mother,
       blog);
   }
-  public interface UserStep {
-    BlogStep user(User user);
+  public interface MotherStep {
+    BlogStep mother(Mother mother);
   }
   
 
@@ -122,9 +122,9 @@ public final class UserBlogs implements Model {
   }
   
 
-  public static class Builder implements UserStep, BlogStep, BuildStep {
+  public static class Builder implements MotherStep, BlogStep, BuildStep {
     private String id;
-    private User user;
+    private Mother mother;
     private Blog blog;
     @Override
      public UserBlogs build() {
@@ -132,14 +132,14 @@ public final class UserBlogs implements Model {
         
         return new UserBlogs(
           id,
-          user,
+          mother,
           blog);
     }
     
     @Override
-     public BlogStep user(User user) {
-        Objects.requireNonNull(user);
-        this.user = user;
+     public BlogStep mother(Mother mother) {
+        Objects.requireNonNull(mother);
+        this.mother = mother;
         return this;
     }
     
@@ -162,15 +162,15 @@ public final class UserBlogs implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, User user, Blog blog) {
+    private CopyOfBuilder(String id, Mother mother, Blog blog) {
       super.id(id);
-      super.user(user)
+      super.mother(mother)
         .blog(blog);
     }
     
     @Override
-     public CopyOfBuilder user(User user) {
-      return (CopyOfBuilder) super.user(user);
+     public CopyOfBuilder mother(Mother mother) {
+      return (CopyOfBuilder) super.mother(mother);
     }
     
     @Override

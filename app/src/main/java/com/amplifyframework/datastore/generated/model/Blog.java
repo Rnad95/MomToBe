@@ -33,7 +33,7 @@ public final class Blog implements Model {
   private final @ModelField(targetType="String", isRequired = true) String autherName;
   private final @ModelField(targetType="Boolean", isRequired = true) Boolean featured;
   private final @ModelField(targetType="BlogCategories") @HasMany(associatedWith = "blog", type = BlogCategories.class) List<BlogCategories> categories = null;
-  private final @ModelField(targetType="UserBlogs") @HasMany(associatedWith = "blog", type = UserBlogs.class) List<UserBlogs> users = null;
+  private final @ModelField(targetType="UserBlogs") @HasMany(associatedWith = "blog", type = UserBlogs.class) List<UserBlogs> mothers = null;
   public String getId() {
       return id;
   }
@@ -62,8 +62,8 @@ public final class Blog implements Model {
       return categories;
   }
   
-  public List<UserBlogs> getUsers() {
-      return users;
+  public List<UserBlogs> getMothers() {
+      return mothers;
   }
   
   private Blog(String id, String title, String description, String image, String autherName, Boolean featured) {

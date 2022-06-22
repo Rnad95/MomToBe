@@ -30,7 +30,7 @@ public final class Address implements Model {
   private final @ModelField(targetType="String", isRequired = true) String city;
   private final @ModelField(targetType="String", isRequired = true) String street;
   private final @ModelField(targetType="Int") Integer postalCode;
-  private final @ModelField(targetType="User") @HasMany(associatedWith = "addressUsersId", type = User.class) List<User> users = null;
+  private final @ModelField(targetType="Mother") @HasMany(associatedWith = "addressMothersId", type = Mother.class) List<Mother> mothers = null;
   public String getId() {
       return id;
   }
@@ -51,8 +51,8 @@ public final class Address implements Model {
       return postalCode;
   }
   
-  public List<User> getUsers() {
-      return users;
+  public List<Mother> getMothers() {
+      return mothers;
   }
   
   private Address(String id, String country, String city, String street, Integer postalCode) {
