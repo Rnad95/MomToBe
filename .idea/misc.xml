@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/activity_product.xml" value="0.33" />
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/product_recycler_view_layout.xml" value="0.67" />
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/slider_layout.xml" value="0.1712962962962963" />
+
+        <entry key="..\:/Users/Lenovo/Desktop/MumToBe/MomToBe/app/src/main/res/layout/activity_blog.xml" value="0.12890625" />
+        <entry key="..\:/Users/Lenovo/Desktop/MumToBe/MomToBe/app/src/main/res/layout/activity_blog_contentes.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/Desktop/MumToBe/MomToBe/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/Desktop/MumToBe/MomToBe/app/src/main/res/layout/reciclerview_content.xml" value="0.23854166666666668" />
+
       </map>
     </option>
   </component>
