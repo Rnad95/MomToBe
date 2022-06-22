@@ -14,10 +14,31 @@
         android:theme="@style/Theme.MomToBe"
         tools:targetApi="31">
         <activity
+
             android:name=".Experiance_activity"
             android:exported="false" />
         <activity
             android:name=".Question_avtivity"
+
+        <activity
+
+            android:name=".ProductActivity"
+            android:exported="false" />
+
+           <activity
+
+            android:name=".BlogContentes"
+            android:exported="false">
+        </activity>
+
+          <activity
+
+            android:name=".Settings"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".Blog"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

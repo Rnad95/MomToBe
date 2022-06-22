@@ -1,0 +1,1522 @@
+# this is an auto generated file. This will be overwritten
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    name
+    image
+    numOfChildren
+    phoneNumber
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    products {
+      items {
+        id
+        title
+        price
+        description
+        quantity
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userProductsId
+      }
+      nextToken
+      startedAt
+    }
+    questions {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userQuestionsId
+      }
+      nextToken
+      startedAt
+    }
+    experiences {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userExperiencesId
+      }
+      nextToken
+      startedAt
+    }
+    blogs {
+      items {
+        id
+        userID
+        blogID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    addressUsersId
+  }
+}
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      comments {
+        nextToken
+        startedAt
+      }
+      products {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      addressUsersId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUsers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      comments {
+        nextToken
+        startedAt
+      }
+      products {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      addressUsersId
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetComment($id: ID!) {
+  getComment(id: $id) {
+    id
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userCommentsId
+    questionCommentsId
+    experienceCommentsId
+    productCommentsId
+  }
+}
+query ListComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userCommentsId
+      questionCommentsId
+      experienceCommentsId
+      productCommentsId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncComments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userCommentsId
+      questionCommentsId
+      experienceCommentsId
+      productCommentsId
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAddress($id: ID!) {
+  getAddress(id: $id) {
+    id
+    country
+    city
+    street
+    postalCode
+    users {
+      items {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        addressUsersId
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAddresses(
+  $filter: ModelAddressFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAddresses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      country
+      city
+      street
+      postalCode
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAddresses(
+  $filter: ModelAddressFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAddresses(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      country
+      city
+      street
+      postalCode
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetBlog($id: ID!) {
+  getBlog(id: $id) {
+    id
+    title
+    description
+    image
+    autherName
+    featured
+    categories {
+      items {
+        id
+        blogID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    users {
+      items {
+        id
+        userID
+        blogID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListBlogs(
+  $filter: ModelBlogFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncBlogs(
+  $filter: ModelBlogFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncBlogs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetQuestion($id: ID!) {
+  getQuestion(id: $id) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    categories {
+      items {
+        id
+        questionID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userQuestionsId
+  }
+}
+query ListQuestions(
+  $filter: ModelQuestionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuestions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userQuestionsId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncQuestions(
+  $filter: ModelQuestionFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuestions(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userQuestionsId
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetExperience($id: ID!) {
+  getExperience(id: $id) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    categories {
+      items {
+        id
+        experienceID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userExperiencesId
+  }
+}
+query ListExperiences(
+  $filter: ModelExperienceFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listExperiences(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userExperiencesId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncExperiences(
+  $filter: ModelExperienceFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncExperiences(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userExperiencesId
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetProduct($id: ID!) {
+  getProduct(id: $id) {
+    id
+    title
+    price
+    description
+    quantity
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    userProductsId
+  }
+}
+query ListProducts(
+  $filter: ModelProductFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      price
+      description
+      quantity
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userProductsId
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncProducts(
+  $filter: ModelProductFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncProducts(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      price
+      description
+      quantity
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userProductsId
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetCategory($id: ID!) {
+  getCategory(id: $id) {
+    id
+    title
+    description
+    experiences {
+      items {
+        id
+        experienceID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    blogs {
+      items {
+        id
+        blogID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    questions {
+      items {
+        id
+        questionID
+        categoryID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListCategories(
+  $filter: ModelCategoryFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncCategories(
+  $filter: ModelCategoryFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetUserBlogs($id: ID!) {
+  getUserBlogs(id: $id) {
+    id
+    userID
+    blogID
+    user {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      comments {
+        nextToken
+        startedAt
+      }
+      products {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      addressUsersId
+    }
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListUserBlogs(
+  $filter: ModelUserBlogsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUserBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      userID
+      blogID
+      user {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        addressUsersId
+      }
+      blog {
+        id
+        title
+        description
+        image
+        autherName
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUserBlogs(
+  $filter: ModelUserBlogsFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUserBlogs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      userID
+      blogID
+      user {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        addressUsersId
+      }
+      blog {
+        id
+        title
+        description
+        image
+        autherName
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetBlogCategories($id: ID!) {
+  getBlogCategories(id: $id) {
+    id
+    blogID
+    categoryID
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+        startedAt
+      }
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListBlogCategories(
+  $filter: ModelBlogCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBlogCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      blogID
+      categoryID
+      blog {
+        id
+        title
+        description
+        image
+        autherName
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      category {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncBlogCategories(
+  $filter: ModelBlogCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncBlogCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      blogID
+      categoryID
+      blog {
+        id
+        title
+        description
+        image
+        autherName
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      category {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetQuestionCategories($id: ID!) {
+  getQuestionCategories(id: $id) {
+    id
+    questionID
+    categoryID
+    question {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userQuestionsId
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListQuestionCategories(
+  $filter: ModelQuestionCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuestionCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      questionID
+      categoryID
+      question {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userQuestionsId
+      }
+      category {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncQuestionCategories(
+  $filter: ModelQuestionCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncQuestionCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      questionID
+      categoryID
+      question {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userQuestionsId
+      }
+      category {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetExperienceCategories($id: ID!) {
+  getExperienceCategories(id: $id) {
+    id
+    experienceID
+    categoryID
+    experience {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+        startedAt
+      }
+      categories {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userExperiencesId
+    }
+    category {
+      id
+      title
+      description
+      experiences {
+        nextToken
+        startedAt
+      }
+      blogs {
+        nextToken
+        startedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListExperienceCategories(
+  $filter: ModelExperienceCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listExperienceCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      experienceID
+      categoryID
+      experience {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userExperiencesId
+      }
+      category {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncExperienceCategories(
+  $filter: ModelExperienceCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncExperienceCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      experienceID
+      categoryID
+      experience {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userExperiencesId
+      }
+      category {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}

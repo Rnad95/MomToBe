@@ -8,6 +8,7 @@
 - Hamzeh Freijat
 - Hadeel Daragmeh
 - Renad Al-Khawatreh
+- Wesam Kandah
 
 ## Short description 
 
