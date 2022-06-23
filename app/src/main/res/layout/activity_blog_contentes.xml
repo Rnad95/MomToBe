@@ -28,4 +28,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:layout_width="42dp"
+        android:layout_height="8dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="245dp"></LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
