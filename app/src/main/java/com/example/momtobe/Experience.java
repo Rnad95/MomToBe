@@ -9,17 +9,19 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class BlogContentes extends AppCompatActivity {
+public class Experience extends AppCompatActivity {
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blog_contentes);
+        setContentView(R.layout.activity_experience);
 
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.exp_page);
 
-        System.out.println("test ");
-    }
-    @Override
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId())
                 {
@@ -35,3 +37,4 @@ public class BlogContentes extends AppCompatActivity {
         });
 
     }
+}

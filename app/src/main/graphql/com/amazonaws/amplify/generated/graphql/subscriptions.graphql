@@ -1,6 +1,6 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateUser {
-  onCreateUser {
+subscription OnCreateMother {
+  onCreateMother {
     id
     name
     image
@@ -15,7 +15,7 @@ subscription OnCreateUser {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -37,7 +37,7 @@ subscription OnCreateUser {
         _version
         _deleted
         _lastChangedAt
-        userProductsId
+        motherProductsId
       }
       nextToken
       startedAt
@@ -54,7 +54,7 @@ subscription OnCreateUser {
         _version
         _deleted
         _lastChangedAt
-        userQuestionsId
+        motherQuestionsId
       }
       nextToken
       startedAt
@@ -71,7 +71,7 @@ subscription OnCreateUser {
         _version
         _deleted
         _lastChangedAt
-        userExperiencesId
+        motherExperiencesId
       }
       nextToken
       startedAt
@@ -79,7 +79,7 @@ subscription OnCreateUser {
     blogs {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -95,11 +95,11 @@ subscription OnCreateUser {
     _version
     _deleted
     _lastChangedAt
-    addressUsersId
+    addressMothersId
   }
 }
-subscription OnUpdateUser {
-  onUpdateUser {
+subscription OnUpdateMother {
+  onUpdateMother {
     id
     name
     image
@@ -114,7 +114,7 @@ subscription OnUpdateUser {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -136,7 +136,7 @@ subscription OnUpdateUser {
         _version
         _deleted
         _lastChangedAt
-        userProductsId
+        motherProductsId
       }
       nextToken
       startedAt
@@ -153,7 +153,7 @@ subscription OnUpdateUser {
         _version
         _deleted
         _lastChangedAt
-        userQuestionsId
+        motherQuestionsId
       }
       nextToken
       startedAt
@@ -170,7 +170,7 @@ subscription OnUpdateUser {
         _version
         _deleted
         _lastChangedAt
-        userExperiencesId
+        motherExperiencesId
       }
       nextToken
       startedAt
@@ -178,7 +178,7 @@ subscription OnUpdateUser {
     blogs {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -194,11 +194,11 @@ subscription OnUpdateUser {
     _version
     _deleted
     _lastChangedAt
-    addressUsersId
+    addressMothersId
   }
 }
-subscription OnDeleteUser {
-  onDeleteUser {
+subscription OnDeleteMother {
+  onDeleteMother {
     id
     name
     image
@@ -213,7 +213,7 @@ subscription OnDeleteUser {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -235,7 +235,7 @@ subscription OnDeleteUser {
         _version
         _deleted
         _lastChangedAt
-        userProductsId
+        motherProductsId
       }
       nextToken
       startedAt
@@ -252,7 +252,7 @@ subscription OnDeleteUser {
         _version
         _deleted
         _lastChangedAt
-        userQuestionsId
+        motherQuestionsId
       }
       nextToken
       startedAt
@@ -269,7 +269,7 @@ subscription OnDeleteUser {
         _version
         _deleted
         _lastChangedAt
-        userExperiencesId
+        motherExperiencesId
       }
       nextToken
       startedAt
@@ -277,7 +277,7 @@ subscription OnDeleteUser {
     blogs {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -293,7 +293,7 @@ subscription OnDeleteUser {
     _version
     _deleted
     _lastChangedAt
-    addressUsersId
+    addressMothersId
   }
 }
 subscription OnCreateComment {
@@ -305,7 +305,7 @@ subscription OnCreateComment {
     _version
     _deleted
     _lastChangedAt
-    userCommentsId
+    motherCommentsId
     questionCommentsId
     experienceCommentsId
     productCommentsId
@@ -320,7 +320,7 @@ subscription OnUpdateComment {
     _version
     _deleted
     _lastChangedAt
-    userCommentsId
+    motherCommentsId
     questionCommentsId
     experienceCommentsId
     productCommentsId
@@ -335,7 +335,7 @@ subscription OnDeleteComment {
     _version
     _deleted
     _lastChangedAt
-    userCommentsId
+    motherCommentsId
     questionCommentsId
     experienceCommentsId
     productCommentsId
@@ -348,7 +348,7 @@ subscription OnCreateAddress {
     city
     street
     postalCode
-    users {
+    mothers {
       items {
         id
         name
@@ -360,7 +360,7 @@ subscription OnCreateAddress {
         _version
         _deleted
         _lastChangedAt
-        addressUsersId
+        addressMothersId
       }
       nextToken
       startedAt
@@ -379,7 +379,7 @@ subscription OnUpdateAddress {
     city
     street
     postalCode
-    users {
+    mothers {
       items {
         id
         name
@@ -391,7 +391,7 @@ subscription OnUpdateAddress {
         _version
         _deleted
         _lastChangedAt
-        addressUsersId
+        addressMothersId
       }
       nextToken
       startedAt
@@ -410,7 +410,7 @@ subscription OnDeleteAddress {
     city
     street
     postalCode
-    users {
+    mothers {
       items {
         id
         name
@@ -422,7 +422,7 @@ subscription OnDeleteAddress {
         _version
         _deleted
         _lastChangedAt
-        addressUsersId
+        addressMothersId
       }
       nextToken
       startedAt
@@ -456,10 +456,10 @@ subscription OnCreateBlog {
       nextToken
       startedAt
     }
-    users {
+    mothers {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -499,10 +499,10 @@ subscription OnUpdateBlog {
       nextToken
       startedAt
     }
-    users {
+    mothers {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -542,10 +542,10 @@ subscription OnDeleteBlog {
       nextToken
       startedAt
     }
-    users {
+    mothers {
       items {
         id
-        userID
+        motherID
         blogID
         createdAt
         updatedAt
@@ -579,7 +579,7 @@ subscription OnCreateQuestion {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -606,7 +606,7 @@ subscription OnCreateQuestion {
     _version
     _deleted
     _lastChangedAt
-    userQuestionsId
+    motherQuestionsId
   }
 }
 subscription OnUpdateQuestion {
@@ -625,7 +625,7 @@ subscription OnUpdateQuestion {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -652,7 +652,7 @@ subscription OnUpdateQuestion {
     _version
     _deleted
     _lastChangedAt
-    userQuestionsId
+    motherQuestionsId
   }
 }
 subscription OnDeleteQuestion {
@@ -671,7 +671,7 @@ subscription OnDeleteQuestion {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -698,7 +698,7 @@ subscription OnDeleteQuestion {
     _version
     _deleted
     _lastChangedAt
-    userQuestionsId
+    motherQuestionsId
   }
 }
 subscription OnCreateExperience {
@@ -717,7 +717,7 @@ subscription OnCreateExperience {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -744,7 +744,7 @@ subscription OnCreateExperience {
     _version
     _deleted
     _lastChangedAt
-    userExperiencesId
+    motherExperiencesId
   }
 }
 subscription OnUpdateExperience {
@@ -763,7 +763,7 @@ subscription OnUpdateExperience {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -790,7 +790,7 @@ subscription OnUpdateExperience {
     _version
     _deleted
     _lastChangedAt
-    userExperiencesId
+    motherExperiencesId
   }
 }
 subscription OnDeleteExperience {
@@ -809,7 +809,7 @@ subscription OnDeleteExperience {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -836,7 +836,7 @@ subscription OnDeleteExperience {
     _version
     _deleted
     _lastChangedAt
-    userExperiencesId
+    motherExperiencesId
   }
 }
 subscription OnCreateProduct {
@@ -857,7 +857,7 @@ subscription OnCreateProduct {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -870,7 +870,7 @@ subscription OnCreateProduct {
     _version
     _deleted
     _lastChangedAt
-    userProductsId
+    motherProductsId
   }
 }
 subscription OnUpdateProduct {
@@ -891,7 +891,7 @@ subscription OnUpdateProduct {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -904,7 +904,7 @@ subscription OnUpdateProduct {
     _version
     _deleted
     _lastChangedAt
-    userProductsId
+    motherProductsId
   }
 }
 subscription OnDeleteProduct {
@@ -925,7 +925,7 @@ subscription OnDeleteProduct {
         _version
         _deleted
         _lastChangedAt
-        userCommentsId
+        motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
@@ -938,7 +938,7 @@ subscription OnDeleteProduct {
     _version
     _deleted
     _lastChangedAt
-    userProductsId
+    motherProductsId
   }
 }
 subscription OnCreateCategory {
@@ -1106,9 +1106,9 @@ subscription OnDeleteCategory {
 subscription OnCreateUserBlogs {
   onCreateUserBlogs {
     id
-    userID
+    motherID
     blogID
-    user {
+    mother {
       id
       name
       image
@@ -1139,7 +1139,7 @@ subscription OnCreateUserBlogs {
       _version
       _deleted
       _lastChangedAt
-      addressUsersId
+      addressMothersId
     }
     blog {
       id
@@ -1152,7 +1152,7 @@ subscription OnCreateUserBlogs {
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1172,9 +1172,9 @@ subscription OnCreateUserBlogs {
 subscription OnUpdateUserBlogs {
   onUpdateUserBlogs {
     id
-    userID
+    motherID
     blogID
-    user {
+    mother {
       id
       name
       image
@@ -1205,7 +1205,7 @@ subscription OnUpdateUserBlogs {
       _version
       _deleted
       _lastChangedAt
-      addressUsersId
+      addressMothersId
     }
     blog {
       id
@@ -1218,7 +1218,7 @@ subscription OnUpdateUserBlogs {
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1238,9 +1238,9 @@ subscription OnUpdateUserBlogs {
 subscription OnDeleteUserBlogs {
   onDeleteUserBlogs {
     id
-    userID
+    motherID
     blogID
-    user {
+    mother {
       id
       name
       image
@@ -1271,7 +1271,7 @@ subscription OnDeleteUserBlogs {
       _version
       _deleted
       _lastChangedAt
-      addressUsersId
+      addressMothersId
     }
     blog {
       id
@@ -1284,7 +1284,7 @@ subscription OnDeleteUserBlogs {
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1317,7 +1317,7 @@ subscription OnCreateBlogCategories {
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1372,7 +1372,7 @@ subscription OnUpdateBlogCategories {
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1427,7 +1427,7 @@ subscription OnDeleteBlogCategories {
         nextToken
         startedAt
       }
-      users {
+      mothers {
         nextToken
         startedAt
       }
@@ -1490,7 +1490,7 @@ subscription OnCreateQuestionCategories {
       _version
       _deleted
       _lastChangedAt
-      userQuestionsId
+      motherQuestionsId
     }
     category {
       id
@@ -1545,7 +1545,7 @@ subscription OnUpdateQuestionCategories {
       _version
       _deleted
       _lastChangedAt
-      userQuestionsId
+      motherQuestionsId
     }
     category {
       id
@@ -1600,7 +1600,7 @@ subscription OnDeleteQuestionCategories {
       _version
       _deleted
       _lastChangedAt
-      userQuestionsId
+      motherQuestionsId
     }
     category {
       id
@@ -1655,7 +1655,7 @@ subscription OnCreateExperienceCategories {
       _version
       _deleted
       _lastChangedAt
-      userExperiencesId
+      motherExperiencesId
     }
     category {
       id
@@ -1710,7 +1710,7 @@ subscription OnUpdateExperienceCategories {
       _version
       _deleted
       _lastChangedAt
-      userExperiencesId
+      motherExperiencesId
     }
     category {
       id
@@ -1765,7 +1765,7 @@ subscription OnDeleteExperienceCategories {
       _version
       _deleted
       _lastChangedAt
-      userExperiencesId
+      motherExperiencesId
     }
     category {
       id
