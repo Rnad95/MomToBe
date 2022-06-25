@@ -47,9 +47,15 @@
         <activity
             android:name=".Saved"
             android:exported="false" />
+
         <activity
-            android:name=".ProductActivity"
+            android:name=".ui.ProductActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.AddProductActivity"
             android:exported="false" />
+
         <activity
             android:name=".BlogContentes"
             android:exported="false" />
