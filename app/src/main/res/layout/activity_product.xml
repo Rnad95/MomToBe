@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.ProductActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_archive_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/product_add_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Add Product"
+        android:elevation="6dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="right|bottom"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
 </RelativeLayout>
+

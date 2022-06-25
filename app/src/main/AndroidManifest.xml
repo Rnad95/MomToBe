@@ -4,6 +4,7 @@
     package="com.example.momtobe">
 
     <application
+        android:name=".AmplifyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,40 +15,19 @@
         android:theme="@style/Theme.MomToBe"
         tools:targetApi="31">
         <activity
-
+            android:name=".ui.AddProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".Experiance_activity"
             android:exported="false" />
         <activity
             android:name=".Question_avtivity"
- android:exported="false" />
-                 <activity
+            android:exported="false" />
+        <activity
             android:name=".Saved"
-            android:exported="false">
-
-        </activity>         
-                  
+            android:exported="false"></activity>
         <activity
-
-            android:name=".ProductActivity"
-            android:exported="false" />
-
-           <activity
-
-            android:name=".BlogContentes"
-            android:exported="false">
-        </activity>
-
-          <activity
-
-            android:name=".Settings"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".Blog"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.ProductActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,6 +35,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".BlogContentes"
+            android:exported="false"></activity>
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".Blog"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
