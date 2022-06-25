@@ -44,10 +44,12 @@ dependencies {
     //  AWS Config
     implementation 'com.amplifyframework:aws-api:1.35.4'
     implementation 'com.amplifyframework:aws-datastore:1.35.4'
+    implementation 'com.amplifyframework:aws-auth-cognito:1.36.0'
 
+    // Country Code Picker
+    implementation 'com.hbb20:ccp:2.5.4'
 
     // Product
-
 
 
 
