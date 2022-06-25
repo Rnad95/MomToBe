@@ -6,57 +6,195 @@
     android:layout_height="match_parent"
     tools:context=".Question_avtivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Recycle_task"
-        android:layout_width="403dp"
-        android:layout_height="533dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawerlayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/layoutToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+
+                android:background="@color/purple_700"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp">
+
+                <ImageView
+                    android:id="@+id/imageMenu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_baseline_menu_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/titleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:text="Question Activity"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+
+                    android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/imageprfile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_baseline_face_24"
+                    android:layout_marginStart="100dp"
+                    app:tint="@color/white" />
 
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="242dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/what_is_your_question"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Recycle_task"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="78dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="4dp"
-        android:text="add"
-        app:layout_constraintBottom_toTopOf="@+id/Recycle_task"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="242dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="104dp"
+                android:text="@string/what_is_your_question"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="310dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="question"
-        app:layout_constraintBottom_toTopOf="@+id/Recycle_task"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.0" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Recycle_task"
+                android:layout_width="403dp"
+                android:layout_height="533dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="310dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="question"
+                app:layout_constraintBottom_toTopOf="@+id/Recycle_task"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="78dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:text="add"
+                app:layout_constraintBottom_toTopOf="@+id/Recycle_task"
+                app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/NavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_gravity="start"
+            >
+
+
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+               >
+
+                <LinearLayout
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="age of the baby"
+                        android:layout_marginTop="20dp"
+
+                        />
+                    <Switch
+                        android:checked="true"
+                    android:id="@+id/switch1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1-2 month"
+                        android:layout_marginTop="20dp"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                <Switch
+                    android:id="@+id/switch2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:checked="true"
+                    android:text="2-3 month"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Switch
+                        android:id="@+id/switch3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:checked="true"
+                        android:text="3-4 month"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+
+                    <Switch
+                        android:id="@+id/switch4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="4-5 month"
+                        android:checked="true"
+                        android:layout_marginTop="20dp"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Switch
+                        android:id="@+id/switch5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5-6 month"
+                        android:checked="true"
+                        android:layout_marginTop="20dp"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Switch
+                        android:id="@+id/switch6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="6-7 month"
+                        android:checked="true"
+                        android:layout_marginTop="20dp"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Button
+                        android:id="@+id/filter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="filter" />
+                </LinearLayout>
+            </com.google.android.material.chip.ChipGroup>
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
