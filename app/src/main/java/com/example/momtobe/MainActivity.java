@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
                         overridePendingTransition(0,0);
                         return true;
+
+
                 }
                 return false;
             }

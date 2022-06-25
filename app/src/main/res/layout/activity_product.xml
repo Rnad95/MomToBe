@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Blog">
+    tools:context=".ui.ProductActivity">
 
     <TextView
         android:id="@+id/blog"
@@ -13,6 +13,7 @@
         android:text="Product"
         android:textSize="40dp"
         />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/blog_archive_recycler"
@@ -32,4 +33,19 @@
         app:menu="@menu/menu" />
 
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/product_add_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Add Product"
+        android:elevation="6dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="right|bottom"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
 </RelativeLayout>
+
