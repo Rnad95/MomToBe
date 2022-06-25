@@ -28,22 +28,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pro_mother_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
-        android:text="Mother Email "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/pro_mother_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="85dp"
         android:text="Mother Phone Number "
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,62 +44,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="17dp"
         android:text="Mother Number of Children "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pro_mother_phone" />
 
-    <Button
-        android:id="@+id/pro_mother_experience"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Experience"
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.amplifyframework.devmenu.DevMenuDeviceFragment"
+        android:layout_width="0dp"
+        android:layout_height="252dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pro_mother_number_of_children" />
+        app:layout_constraintTop_toBottomOf="@+id/pro_top_navigator" />
 
-    <Button
-        android:id="@+id/pro_fav_blogs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fav Blogs"
-        app:layout_constraintBaseline_toBaselineOf="@+id/pro_mother_experience"
-        app:layout_constraintEnd_toStartOf="@+id/pro_mother_experience" />
-
-    <Button
-        android:id="@+id/pro_mother_questions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:text="Questions"
-        app:layout_constraintBaseline_toBaselineOf="@+id/pro_mother_products"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/pro_mother_products"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="108dp"
-        android:text="Products"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pro_mother_experience" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pro_list"
-        android:layout_width="416dp"
-        android:layout_height="0dp"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/pro_top_navigator"
+        android:layout_width="417dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="48dp"
-        android:layout_marginBottom="61dp"
+        android:layout_marginBottom="503dp"
+        app:itemBackground="@color/purple_200"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pro_mother_questions"
-        app:layout_constraintVertical_bias="1.0" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/pro_mother_phone"
+        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
