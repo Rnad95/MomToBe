@@ -24,7 +24,7 @@
             android:layout_margin="0dp"
             android:layout_marginStart="0dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/blog"
+            android:src="@drawable/product"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

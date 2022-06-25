@@ -19,6 +19,7 @@ package com.example.momtobe.adapter;
             this.blogList = blogList;
             this.listener = listener;
         }
+
         @NonNull
         @Override
         public CustomHoleder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
