@@ -30,8 +30,15 @@ import com.amplifyframework.api.graphql.PaginatedResult;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
+
+import com.example.momtobe.ui.AddProductActivity;
+import com.example.momtobe.ui.AddQuestionActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +48,12 @@ public class Question_avtivity extends AppCompatActivity {
     public static final String TASK_Array = "taskId";
     private static final String TAG = Question_avtivity.class.getName();
     private Handler handler;
+    FloatingActionButton addProduct ;
     Switch switchAB;
     Switch simpleSwitch1, simpleSwitch2,simpleSwitch3,simpleSwitch4,simpleSwitch5,simpleSwitch6;
+
+
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +64,15 @@ public class Question_avtivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_avtivity);
+//         navToActivities();
         RecyclerView RecycleTask = findViewById(R.id.Recycle_task);
-        Button add=findViewById(R.id.button2);
+
         DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
         findViewById(R.id.imageMenu).setOnClickListener(view -> {
             drawerLayout.openDrawer(GravityCompat.START);
 
         });
-        EditText editTextDetail=findViewById(R.id.editTextTextPersonName);
+
 NavigationView navigationView=findViewById(R.id.NavigationView);
         navigationView.setItemIconTintList(null);
 
@@ -85,27 +97,10 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
 
         }
         );
-add.setOnClickListener(view -> {
+        addProduct = findViewById(R.id.product_add_img);
 
-    Question newQuestion= Question.builder().
-            title("Question").
-            description(editTextDetail.getText().toString()).
-            featured(true).
-            build();
-
-    Amplify.API.mutate(
-            ModelMutation.create(newQuestion),
-            response -> {
-                Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getTitle());
-                handler.sendEmptyMessage(1);
-
-
-            },
-            error -> Log.e("MyAmplifyApp", "Create failed", error)
-    );
-
-
-
+        addProduct.setOnClickListener(v -> {
+            navigateToAddTask();
         });
 
 
@@ -182,6 +177,10 @@ add.setOnClickListener(view -> {
         });
 
 }
+    public void navigateToAddTask(){
+        startActivity(new Intent(this , AddQuestionActivity.class));
+    }
+
 //    public ScanResult getAllMemos() {
 //
 //        Map<String, AttributeValue> expressionAttributeValues =
@@ -231,4 +230,42 @@ add.setOnClickListener(view -> {
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
+
+    private void navToActivities(){
+
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.question_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home_page:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(), Experiance_activity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        startActivity(new Intent(getApplicationContext(), Blog.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.question_page:
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
 }
