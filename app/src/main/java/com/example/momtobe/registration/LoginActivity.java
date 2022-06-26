@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
     public static final String USERNAME = "username";
     private ProgressBar loadingProgressBar;
-
+    private String emailAddress;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,15 +81,18 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
-    private void login(String username, String password) {
+
+    private void login(String email, String password) {
         Amplify.Auth.signIn(
-                username,
+                email,
                 password,
                 result -> {
                     Log.i(TAG, result.isSignInComplete() ? "Sign in succeeded" : "Sign in not complete");
                     loadingProgressBar.setVisibility(View.INVISIBLE);
-
-                    startActivity( new Intent(LoginActivity.this, MainActivity.class));
+                    emailAddress = email;
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("EMAIL",emailAddress);
+                    startActivity( intent);
                 },
                 error -> Log.e(TAG, error.toString())
         );
