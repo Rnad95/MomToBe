@@ -50,13 +50,12 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
+
 //                    usernameEditText.getText().toString();
 //                    passwordEditText.getText().toString();
 
-                    loginButton.setEnabled(true);
 
-                }
+
                 return false;
             }
         });
