@@ -62,7 +62,6 @@ public class AddExperianceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_experiance);
-
          arrayListspinner3 = new ArrayList<>();
         button = findViewById(R.id.btn_register);
         image_experiance = findViewById(R.id.Image_experiance);

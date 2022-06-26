@@ -23,6 +23,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
+
 import com.example.momtobe.ui.ProductActivity;
 
 import com.example.momtobe.ui.AddExperianceActivity;
@@ -43,7 +44,8 @@ public class Experiance_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<Experience> taskArrayList=new ArrayList<>();
         Intent intent = getIntent();
-        ActionBar actionBar = getSupportActionBar();
+
+//        ActionBar actionBar = getSupportActionBar();
 
 //        actionBar.setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
@@ -175,8 +177,7 @@ public class Experiance_activity extends AppCompatActivity {
     }
 
     public void navigateToAddTask(){
-       Intent intent = new Intent(Experiance_activity.this,AddExperianceActivity.class);
-       startActivity(intent);
+        startActivity(new Intent(this , AddExperianceActivity.class));
     }
 
 }

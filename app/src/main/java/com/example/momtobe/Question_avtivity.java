@@ -32,6 +32,7 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
+
 import com.example.momtobe.ui.ProductActivity;
 
 
@@ -64,13 +65,9 @@ public class Question_avtivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_avtivity);
-
-         navToActivities();
+//         navToActivities();
         RecyclerView RecycleTask = findViewById(R.id.Recycle_task);
 
         DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
