@@ -12,7 +12,7 @@
         android:icon="@drawable/ic_blog"/>
     <item
         android:id="@+id/market_page"
-        android:title="MArket"
+        android:title="Market"
         android:icon="@drawable/ic_shopping"/>
     <item
         android:id="@+id/question_page"

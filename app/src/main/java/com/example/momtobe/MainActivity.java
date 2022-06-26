@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
+import com.amplifyframework.datastore.generated.model.Product;
+import com.amplifyframework.datastore.generated.model.Question;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        navToActivity();
+    }
 
+    private void navToActivity(){
 
         /**
          * bottom Navigation Bar
@@ -33,17 +38,32 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home_page:
                         return true;
                     case R.id.exp_page:
-                        startActivity(new Intent(getApplicationContext(),Experience.class));
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
                         overridePendingTransition(0,0);
                         return true;
+
+                    case R.id.blogs_page:
+                        startActivity(new Intent(getApplicationContext(),Blog.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+
                 }
                 return false;
             }
         });
 
-
     }
-
 
 
 }

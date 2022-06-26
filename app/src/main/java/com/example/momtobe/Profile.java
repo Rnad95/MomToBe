@@ -25,6 +25,7 @@ public class Profile extends AppCompatActivity {
 
         int motherId = 0 ; // only to avoid errors
 //        motherId = getIntent().getStringExtra(ID);
+
         Amplify.API.query(
                 ModelQuery.list(Mother.class),
                 success->{
@@ -44,8 +45,6 @@ public class Profile extends AppCompatActivity {
                     Log.i(TAG, "onCreate: failed to find mother in database");
                 }
         );
-
-
     }
 
     void setMotherImage(Mother mother){  //TODO waiting for s3 -> hamze
@@ -66,7 +65,7 @@ public class Profile extends AppCompatActivity {
     }
 
     void setRecyclerFragment(Mother mother){
-
+        
     }
 
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 
@@ -16,12 +17,17 @@ public class MomToBeApplication extends Application {
     public void onCreate() {
         super.onCreate();
         configureAmplify();
+        Amplify.Auth.fetchAuthSession(
+                result -> Log.i("AmplifyQuickstart", result.toString()),
+                error -> Log.e("AmplifyQuickstart", error.toString())
+        );
 
     }
 
     private void configureAmplify(){
 
         try {
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.configure(getApplicationContext());
 

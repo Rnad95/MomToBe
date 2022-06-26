@@ -10,6 +10,11 @@
       "StackName": "amplify-momtobe-momtobe-150506",
       "StackId": "arn:aws:cloudformation:us-east-1:366419673945:stack/amplify-momtobe-momtobe-150506/674ddef0-f15a-11ec-a70b-121241547b33",
       "AmplifyAppId": "d1pw4bat5m1om6"
+    },
+    "categories": {
+      "auth": {
+        "momtobe40d2e53d": {}
+      }
     }
   },
   "dev": {

@@ -49,7 +49,8 @@ public class Settings extends AppCompatActivity {
 
     }
 
-    void uploadImage (Mother mother){  //TODO waiting for s3 -> hamze
+    void uploadImage (Mother mother){  //TODO waiting for s3 -> hamze and photo picker
+
 
     }
 
