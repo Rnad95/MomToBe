@@ -45,10 +45,13 @@
             android:name=".Experiance_activity"
             android:exported="false" />
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".Question_avtivity"
             android:exported="false" />
         <activity
-            android:name=".Saved"
+            android:name=".SavedActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ProductActivity"
