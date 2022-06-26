@@ -15,36 +15,44 @@ import com.amplifyframework.datastore.generated.model.Mother;
 public class Settings extends AppCompatActivity {
 
     private static final String TAG = "Settings";
+    private String showEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        GetEmail();
 
-        int motherId = 0 ; // only to avoid errors
-//        motherId = getIntent().getStringExtra(ID);
-
-        Amplify.API.query(
-                ModelQuery.list(Mother.class),
-                success->{
-                    if(success.hasData())
-                    {
-                        for (Mother mother : success.getData())
-                        {
-                            if(mother.getId().equals(motherId)){
-                                showImage();
-                                uploadImage(mother);
-                                setSaveButton(mother);
-                            }
-                        }
-                    }
-                },
-                fail->{
-                    Log.i(TAG, "onCreate: failed to find mother in database");
-                }
-        );
+//        int motherId = 0 ; // only to avoid errors
+////        motherId = getIntent().getStringExtra(ID);
+//
+//        Amplify.API.query(
+//                ModelQuery.list(Mother.class),
+//                success->{
+//                    if(success.hasData())
+//                    {
+//                        for (Mother mother : success.getData())
+//                        {
+//                            if(mother.getId().equals(motherId)){
+//                                showImage();
+//                                uploadImage(mother);
+//                                setSaveButton(mother);
+//                            }
+//                        }
+//                    }
+//                },
+//                fail->{
+//                    Log.i(TAG, "onCreate: failed to find mother in database");
+//                }
+//        );
 
     }
+
+    private void GetEmail(){
+        Bundle bundle = getIntent().getExtras();
+        showEmail = bundle.getString("EMAIL");
+    }
+
     void showImage(){  //TODO waiting for s3 -> hamze
 
     }

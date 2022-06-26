@@ -18,33 +18,42 @@ import com.amplifyframework.datastore.generated.model.Mother;
 public class Profile extends AppCompatActivity {
     private static final String TAG = "profile";
     Mother mother ;
+    private String motherEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        int motherId = 0 ; // only to avoid errors
-//        motherId = getIntent().getStringExtra(ID);
+        GetEmail();
 
-        Amplify.API.query(
-                ModelQuery.list(Mother.class),
-                success->{
-                    if(success.hasData())
-                    {
-                        for (Mother mother : success.getData())
-                        {
-                            if(mother.getId().equals(motherId)){
-                                setMotherInfo(mother);
-                                setMotherImage(mother);
-                                setRecyclerFragment(mother);
-                            }
-                        }
-                    }
-                },
-                fail->{
-                    Log.i(TAG, "onCreate: failed to find mother in database");
-                }
-        );
+//        String motherEmail = getIntent().getStringExtra("EMAIL_ADDRESS");
+//
+//        Amplify.API.query(
+//                ModelQuery.list(Mother.class),
+//                success->{
+//                    if(success.hasData())
+//                    {
+//                        for (Mother mother : success.getData())
+//                        {
+////                            if(mother.getEmail().equals(motherEmail))
+//                            {
+//                                setMotherInfo(mother);
+//                                setMotherImage(mother);
+//                                setRecyclerFragment(mother);
+//                            }
+//                        }
+//                    }
+//                },
+//                fail->{
+//                    Log.i(TAG, "onCreate: failed to find mother in database");
+//                }
+//        );
+    }
+
+    private void GetEmail(){
+        Bundle bundle = getIntent().getExtras();
+        motherEmail = bundle.getString("EMAIL");
     }
 
     void setMotherImage(Mother mother){  //TODO waiting for s3 -> hamze

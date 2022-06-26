@@ -23,8 +23,12 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
+
+import com.example.momtobe.ui.ProductActivity;
+
 import com.example.momtobe.ui.AddExperianceActivity;
 import com.example.momtobe.ui.AddProductActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -40,7 +44,9 @@ public class Experiance_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<Experience> taskArrayList=new ArrayList<>();
         Intent intent = getIntent();
+
 //        ActionBar actionBar = getSupportActionBar();
+
 //        actionBar.setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiance);
