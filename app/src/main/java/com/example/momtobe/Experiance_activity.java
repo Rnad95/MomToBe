@@ -24,7 +24,12 @@ import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.example.momtobe.ui.ProductActivity;
+
+import com.example.momtobe.ui.AddExperianceActivity;
+import com.example.momtobe.ui.AddProductActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -33,16 +38,22 @@ public class Experiance_activity extends AppCompatActivity {
     private static final String TAG = Experiance_activity.class.getName();
     private Handler handler;
     BottomNavigationView bottomNavigationView;
-
+    FloatingActionButton addProduct ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<Experience> taskArrayList=new ArrayList<>();
         Intent intent = getIntent();
         ActionBar actionBar = getSupportActionBar();
+
 //        actionBar.setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiance);
 
+        addProduct = findViewById(R.id.product_add_img);
+
+        addProduct.setOnClickListener(v -> {
+            navigateToAddTask();
+        });
 
         /**
          * bottom Navigation Bar
@@ -163,7 +174,9 @@ public class Experiance_activity extends AppCompatActivity {
 
     }
 
-    private void navToActivities(){
-
+    public void navigateToAddTask(){
+       Intent intent = new Intent(Experiance_activity.this,AddExperianceActivity.class);
+       startActivity(intent);
     }
+
 }

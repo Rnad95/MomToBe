@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MomToBe"
         tools:targetApi="31">
         <activity
+            android:name=".AddQuestionActivity"
+            android:exported="false" />
+        <activity
             android:name=".registration.VerificationActivity"
             android:exported="false" />
         <activity
@@ -50,15 +53,12 @@
         <activity
             android:name=".SavedActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.ProductActivity"
             android:exported="true" />
-
         <activity
             android:name=".ui.AddProductActivity"
             android:exported="false" />
-
         <activity
             android:name=".BlogContentes"
             android:exported="false" />
@@ -70,9 +70,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>
