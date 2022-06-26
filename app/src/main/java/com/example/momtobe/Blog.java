@@ -20,6 +20,7 @@ public class Blog extends AppCompatActivity {
         setContentView(R.layout.activity_blog);
 
 
+
         /**
          * bottom Navigation Bar
          */

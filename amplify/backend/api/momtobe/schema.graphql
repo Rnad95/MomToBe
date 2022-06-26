@@ -56,7 +56,6 @@ type Question @model {
     categories : [Category] @manyToMany(relationName: "questionCategories")
 }
 
-
 type Experience @model {
     id: ID!
     title: String!

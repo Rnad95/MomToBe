@@ -10,20 +10,30 @@
         android:id="@+id/pro_profile_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/pro_mother_name"
+        app:layout_constraintStart_toStartOf="@+id/pro_mother_name"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/pro_mother_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="25dp"
         android:text="Mother Name "
         android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/pro_mother_phone"
+        app:layout_constraintEnd_toEndOf="@+id/pro_mother_phone" />
+
+    <TextView
+        android:id="@+id/pro_mother_number_of_children"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="296dp"
+        android:text="Mother Number of Children "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,49 +41,23 @@
         android:id="@+id/pro_mother_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginBottom="85dp"
+        android:layout_marginBottom="17dp"
         android:text="Mother Phone Number "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/pro_mother_number_of_children"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/pro_mother_number_of_children"
+    <Button
+        android:id="@+id/set_my_fav_blogs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        android:text="Mother Number of Children "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pro_mother_phone" />
-
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.amplifyframework.devmenu.DevMenuDeviceFragment"
-        android:layout_width="0dp"
-        android:layout_height="252dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="71dp"
+        android:text="My Favourite blogs"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pro_top_navigator" />
+        app:layout_constraintTop_toBottomOf="@+id/pro_mother_number_of_children" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/pro_top_navigator"
-        android:layout_width="417dp"
-        android:layout_height="65dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="503dp"
-        app:itemBackground="@color/purple_200"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pro_mother_phone"
-        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
