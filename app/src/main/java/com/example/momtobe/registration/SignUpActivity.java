@@ -86,9 +86,9 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
                 loadingProgressBar.setVisibility(View.VISIBLE);
-//                signUp(mFullName.getEditText().getText().toString(),
-//                        mEmailAddress.getEditText().getText().toString(),
-//                        mPassword.getEditText().getText().toString());
+                signUp(mFullName.getEditText().getText().toString(),
+                        mEmailAddress.getEditText().getText().toString(),
+                        mPassword.getEditText().getText().toString());
             }
         });
 

@@ -145,7 +145,6 @@ image_experiance.setOnClickListener(view ->pictureUpload() );
                     for (Category note : teamsName.getData()) {
                         arrayListspinner3.add(note);
                     }
-
                     handler1.sendEmptyMessage(1);
                 },
                 error -> Log.e(TAG, error.toString())

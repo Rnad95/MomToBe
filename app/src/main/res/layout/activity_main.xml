@@ -8,6 +8,18 @@
 
 
     <TextView
+        android:id="@+id/main_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="94dp"
+        android:layout_marginLeft="94dp"
+        android:layout_marginTop="96dp"
+        android:text="Email" />
+
+    <TextView
         android:id="@+id/main_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,13 +58,23 @@
         android:text="Setting" />
 
     <Button
+        android:id="@+id/main_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="67dp"
+        android:layout_marginRight="138dp"
+        android:text="Saved" />
+
+    <Button
         android:id="@+id/log_out"
-        android:layout_width="match_parent"
+        android:layout_width="124dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="170dp"
+        android:layout_marginStart="288dp"
         android:layout_marginTop="66dp"
         android:layout_marginRight="17dp"
         android:text="Logout" />
