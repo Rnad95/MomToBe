@@ -13,7 +13,7 @@ import com.example.momtobe.data.BlogDetails;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Saved extends AppCompatActivity {
+public class SavedActivity extends AppCompatActivity {
 
     List<BlogDetails> blogs = new ArrayList<>();
     @Override

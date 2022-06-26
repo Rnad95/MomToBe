@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
+import com.example.momtobe.ui.ProductActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Blog extends AppCompatActivity {
