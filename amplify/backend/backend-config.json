@@ -9,7 +9,9 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDays": 100,
+              "apiKeyExpirationDate": "2022-10-05T09:28:43.195Z",
+              "description": "jgjgj"
             }
           },
           "additionalAuthenticationProviders": []
@@ -43,6 +45,20 @@
           "EMAIL"
         ]
       }
+    }
+  },
+  "storage": {
+    "s35f382a74": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  },
+  "predictions": {
+    "speechGenerator5bbede17": {
+      "providerPlugin": "awscloudformation",
+      "service": "Polly",
+      "convertType": "speechGenerator"
     }
   }
 }

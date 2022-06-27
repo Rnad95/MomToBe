@@ -45,6 +45,8 @@ dependencies {
 
     // GSON Library
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+
 
     //  AWS Config
     implementation 'com.amplifyframework:aws-api:1.35.4'
@@ -59,5 +61,7 @@ dependencies {
     // Product
 
 
+    // Volley to get data from URL
+    implementation 'com.android.volley:volley:1.2.1'
 
 }

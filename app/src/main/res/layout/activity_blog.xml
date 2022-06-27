@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Blog">
+    tools:context=".BlogActivity">
 
     <TextView
         android:id="@+id/blog"
@@ -18,8 +18,7 @@
         android:id="@+id/blog_archive_recycler"
         android:layout_width="334dp"
         android:layout_height="532dp"
-        android:layout_centerInParent="true"
-        />
+        android:layout_centerInParent="true" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigator"

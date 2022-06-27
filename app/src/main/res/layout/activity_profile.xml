@@ -10,30 +10,30 @@
         android:id="@+id/pro_profile_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/pro_mother_name"
+        app:layout_constraintStart_toStartOf="@+id/pro_mother_name"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/pro_mother_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="25dp"
         android:text="Mother Name "
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/pro_mother_phone"
+        app:layout_constraintEnd_toEndOf="@+id/pro_mother_phone" />
 
     <TextView
-        android:id="@+id/pro_mother_email"
+        android:id="@+id/pro_mother_number_of_children"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
-        android:text="Mother Email "
+        android:layout_marginTop="296dp"
+        android:text="Mother Number of Children "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,73 +41,23 @@
         android:id="@+id/pro_mother_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginBottom="17dp"
         android:text="Mother Phone Number "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/pro_mother_number_of_children"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="132dp"
-        android:text="Mother Number of Children "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/pro_mother_number_of_children"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/pro_mother_experience"
+        android:id="@+id/set_my_fav_blogs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Experience"
+        android:layout_marginTop="71dp"
+        android:text="My Favourite blogActivities"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pro_mother_number_of_children" />
-
-    <Button
-        android:id="@+id/pro_fav_blogs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fav Blogs"
-        app:layout_constraintBaseline_toBaselineOf="@+id/pro_mother_experience"
-        app:layout_constraintEnd_toStartOf="@+id/pro_mother_experience" />
-
-    <Button
-        android:id="@+id/pro_mother_questions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:text="Questions"
-        app:layout_constraintBaseline_toBaselineOf="@+id/pro_mother_products"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/pro_mother_products"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="108dp"
-        android:text="Products"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pro_mother_experience" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pro_list"
-        android:layout_width="416dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="61dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pro_mother_questions"
-        app:layout_constraintVertical_bias="1.0" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

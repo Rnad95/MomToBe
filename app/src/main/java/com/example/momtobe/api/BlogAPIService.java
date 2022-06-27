@@ -12,10 +12,10 @@ import retrofit2.http.Query;
 
 public interface BlogAPIService {
 
-    @GET("blogs")
-    Call<List<Blog>> getAllBlogs();
+//    @GET("blogs")
+//    Call<List<Blog>> getAllBlogs();
 
-    @GET("blogs")
+    @GET()
     Call<Embedded> getBlogList();
 
     @GET("blogs/{id}")

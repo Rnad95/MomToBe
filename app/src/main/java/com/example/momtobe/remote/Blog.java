@@ -73,7 +73,7 @@ public class Blog {
         Category = category;
     }
 }
-//        package com.example.momtobe.remote;
+////        package com.example.momtobe.remote;
 //
 //import java.util.List;
 //
@@ -86,7 +86,7 @@ public class Blog {
 //@Data
 //@ToString
 //@AllArgsConstructor
-//@NoArgsConstructor
+////@NoArgsConstructor
 //public class Blog {
 //
 //    private Long id;

@@ -1,32 +1,18 @@
 package com.example.momtobe;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.amplifyframework.api.graphql.model.ModelMutation;
-import com.amplifyframework.api.graphql.model.ModelQuery;
-import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Experience;
-import com.amplifyframework.datastore.generated.model.Product;
-import com.amplifyframework.datastore.generated.model.Question;
+
 import com.example.momtobe.ui.ProductActivity;
 
 import com.example.momtobe.ui.AddExperianceActivity;
-import com.example.momtobe.ui.AddProductActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -43,7 +29,8 @@ public class Experiance_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         ArrayList<Experience> taskArrayList=new ArrayList<>();
         Intent intent = getIntent();
-        ActionBar actionBar = getSupportActionBar();
+
+//        ActionBar actionBar = getSupportActionBar();
 
 //        actionBar.setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
@@ -72,7 +59,7 @@ public class Experiance_activity extends AppCompatActivity {
                         return true;
 
                     case R.id.blogs_page:
-                        startActivity(new Intent(getApplicationContext(), Blog.class));
+                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -175,8 +162,7 @@ public class Experiance_activity extends AppCompatActivity {
     }
 
     public void navigateToAddTask(){
-       Intent intent = new Intent(Experiance_activity.this,AddExperianceActivity.class);
-       startActivity(intent);
+        startActivity(new Intent(Experiance_activity.this , AddExperianceActivity.class));
     }
 
 }

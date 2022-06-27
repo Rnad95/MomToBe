@@ -1,9 +1,7 @@
 package com.example.momtobe;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,29 +11,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 
 import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.amplifyframework.api.graphql.GraphQLResponse;
-import com.amplifyframework.api.graphql.PaginatedResult;
-import com.amplifyframework.api.graphql.model.ModelMutation;
-import com.amplifyframework.api.graphql.model.ModelQuery;
-import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
+
 import com.example.momtobe.ui.ProductActivity;
 
 
-import com.example.momtobe.ui.AddProductActivity;
 import com.example.momtobe.ui.AddQuestionActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -43,7 +30,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Question_avtivity extends AppCompatActivity {
 
@@ -64,12 +50,8 @@ public class Question_avtivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_avtivity);
-
          navToActivities();
         RecyclerView RecycleTask = findViewById(R.id.Recycle_task);
 
@@ -258,7 +240,7 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
                         return true;
 
                     case R.id.blogs_page:
-                        startActivity(new Intent(getApplicationContext(), Blog.class));
+                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
 

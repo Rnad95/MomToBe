@@ -19,30 +19,30 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the ExperienceCategories type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "ExperienceCategories")
-@Index(name = "byCategory", fields = {"categoryID"})
+@Index(name = "byCat", fields = {"catID"})
 @Index(name = "byExperience", fields = {"experienceID"})
 public final class ExperienceCategories implements Model {
   public static final QueryField ID = field("ExperienceCategories", "id");
-  public static final QueryField CATEGORY = field("ExperienceCategories", "categoryID");
+  public static final QueryField CAT = field("ExperienceCategories", "catID");
   public static final QueryField EXPERIENCE = field("ExperienceCategories", "experienceID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="Category", isRequired = true) @BelongsTo(targetName = "categoryID", type = Category.class) Category category;
+  private final @ModelField(targetType="Cat", isRequired = true) @BelongsTo(targetName = "catID", type = Cat.class) Cat cat;
   private final @ModelField(targetType="Experience", isRequired = true) @BelongsTo(targetName = "experienceID", type = Experience.class) Experience experience;
   public String getId() {
       return id;
   }
   
-  public Category getCategory() {
-      return category;
+  public Cat getCat() {
+      return cat;
   }
   
   public Experience getExperience() {
       return experience;
   }
   
-  private ExperienceCategories(String id, Category category, Experience experience) {
+  private ExperienceCategories(String id, Cat cat, Experience experience) {
     this.id = id;
-    this.category = category;
+    this.cat = cat;
     this.experience = experience;
   }
   
@@ -55,7 +55,7 @@ public final class ExperienceCategories implements Model {
       } else {
       ExperienceCategories experienceCategories = (ExperienceCategories) obj;
       return ObjectsCompat.equals(getId(), experienceCategories.getId()) &&
-              ObjectsCompat.equals(getCategory(), experienceCategories.getCategory()) &&
+              ObjectsCompat.equals(getCat(), experienceCategories.getCat()) &&
               ObjectsCompat.equals(getExperience(), experienceCategories.getExperience());
       }
   }
@@ -64,7 +64,7 @@ public final class ExperienceCategories implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getCategory())
+      .append(getCat())
       .append(getExperience())
       .toString()
       .hashCode();
@@ -75,13 +75,13 @@ public final class ExperienceCategories implements Model {
     return new StringBuilder()
       .append("ExperienceCategories {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("category=" + String.valueOf(getCategory()) + ", ")
+      .append("cat=" + String.valueOf(getCat()) + ", ")
       .append("experience=" + String.valueOf(getExperience()))
       .append("}")
       .toString();
   }
   
-  public static CategoryStep builder() {
+  public static CatStep builder() {
       return new Builder();
   }
   
@@ -103,11 +103,11 @@ public final class ExperienceCategories implements Model {
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      category,
+      cat,
       experience);
   }
-  public interface CategoryStep {
-    ExperienceStep category(Category category);
+  public interface CatStep {
+    ExperienceStep cat(Cat cat);
   }
   
 
@@ -122,9 +122,9 @@ public final class ExperienceCategories implements Model {
   }
   
 
-  public static class Builder implements CategoryStep, ExperienceStep, BuildStep {
+  public static class Builder implements CatStep, ExperienceStep, BuildStep {
     private String id;
-    private Category category;
+    private Cat cat;
     private Experience experience;
     @Override
      public ExperienceCategories build() {
@@ -132,14 +132,14 @@ public final class ExperienceCategories implements Model {
         
         return new ExperienceCategories(
           id,
-          category,
+          cat,
           experience);
     }
     
     @Override
-     public ExperienceStep category(Category category) {
-        Objects.requireNonNull(category);
-        this.category = category;
+     public ExperienceStep cat(Cat cat) {
+        Objects.requireNonNull(cat);
+        this.cat = cat;
         return this;
     }
     
@@ -162,15 +162,15 @@ public final class ExperienceCategories implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, Category category, Experience experience) {
+    private CopyOfBuilder(String id, Cat cat, Experience experience) {
       super.id(id);
-      super.category(category)
+      super.cat(cat)
         .experience(experience);
     }
     
     @Override
-     public CopyOfBuilder category(Category category) {
-      return (CopyOfBuilder) super.category(category);
+     public CopyOfBuilder cat(Cat cat) {
+      return (CopyOfBuilder) super.cat(cat);
     }
     
     @Override

@@ -19,30 +19,30 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the BlogCategories type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "BlogCategories")
-@Index(name = "byCategory", fields = {"categoryID"})
+@Index(name = "byCat", fields = {"catID"})
 @Index(name = "byBlog", fields = {"blogID"})
 public final class BlogCategories implements Model {
   public static final QueryField ID = field("BlogCategories", "id");
-  public static final QueryField CATEGORY = field("BlogCategories", "categoryID");
+  public static final QueryField CAT = field("BlogCategories", "catID");
   public static final QueryField BLOG = field("BlogCategories", "blogID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="Category", isRequired = true) @BelongsTo(targetName = "categoryID", type = Category.class) Category category;
+  private final @ModelField(targetType="Cat", isRequired = true) @BelongsTo(targetName = "catID", type = Cat.class) Cat cat;
   private final @ModelField(targetType="Blog", isRequired = true) @BelongsTo(targetName = "blogID", type = Blog.class) Blog blog;
   public String getId() {
       return id;
   }
   
-  public Category getCategory() {
-      return category;
+  public Cat getCat() {
+      return cat;
   }
   
   public Blog getBlog() {
       return blog;
   }
   
-  private BlogCategories(String id, Category category, Blog blog) {
+  private BlogCategories(String id, Cat cat, Blog blog) {
     this.id = id;
-    this.category = category;
+    this.cat = cat;
     this.blog = blog;
   }
   
@@ -55,7 +55,7 @@ public final class BlogCategories implements Model {
       } else {
       BlogCategories blogCategories = (BlogCategories) obj;
       return ObjectsCompat.equals(getId(), blogCategories.getId()) &&
-              ObjectsCompat.equals(getCategory(), blogCategories.getCategory()) &&
+              ObjectsCompat.equals(getCat(), blogCategories.getCat()) &&
               ObjectsCompat.equals(getBlog(), blogCategories.getBlog());
       }
   }
@@ -64,7 +64,7 @@ public final class BlogCategories implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getCategory())
+      .append(getCat())
       .append(getBlog())
       .toString()
       .hashCode();
@@ -75,13 +75,13 @@ public final class BlogCategories implements Model {
     return new StringBuilder()
       .append("BlogCategories {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("category=" + String.valueOf(getCategory()) + ", ")
+      .append("cat=" + String.valueOf(getCat()) + ", ")
       .append("blog=" + String.valueOf(getBlog()))
       .append("}")
       .toString();
   }
   
-  public static CategoryStep builder() {
+  public static CatStep builder() {
       return new Builder();
   }
   
@@ -103,11 +103,11 @@ public final class BlogCategories implements Model {
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      category,
+      cat,
       blog);
   }
-  public interface CategoryStep {
-    BlogStep category(Category category);
+  public interface CatStep {
+    BlogStep cat(Cat cat);
   }
   
 
@@ -122,9 +122,9 @@ public final class BlogCategories implements Model {
   }
   
 
-  public static class Builder implements CategoryStep, BlogStep, BuildStep {
+  public static class Builder implements CatStep, BlogStep, BuildStep {
     private String id;
-    private Category category;
+    private Cat cat;
     private Blog blog;
     @Override
      public BlogCategories build() {
@@ -132,14 +132,14 @@ public final class BlogCategories implements Model {
         
         return new BlogCategories(
           id,
-          category,
+          cat,
           blog);
     }
     
     @Override
-     public BlogStep category(Category category) {
-        Objects.requireNonNull(category);
-        this.category = category;
+     public BlogStep cat(Cat cat) {
+        Objects.requireNonNull(cat);
+        this.cat = cat;
         return this;
     }
     
@@ -162,15 +162,15 @@ public final class BlogCategories implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, Category category, Blog blog) {
+    private CopyOfBuilder(String id, Cat cat, Blog blog) {
       super.id(id);
-      super.category(category)
+      super.cat(cat)
         .blog(blog);
     }
     
     @Override
-     public CopyOfBuilder category(Category category) {
-      return (CopyOfBuilder) super.category(category);
+     public CopyOfBuilder cat(Cat cat) {
+      return (CopyOfBuilder) super.cat(cat);
     }
     
     @Override

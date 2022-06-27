@@ -51,6 +51,7 @@ package com.example.momtobe.adapter;
                 blogTitle = itemView.findViewById(R.id.blog_archive_title);
                 blogDescription = itemView.findViewById(R.id.blog_archive_desc);
                 blogAuthorName = itemView.findViewById(R.id.blog_archive_autherName);
+
                 itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
             }
         }

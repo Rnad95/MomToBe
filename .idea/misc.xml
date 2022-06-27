@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
         <entry key="..\:/MomToBe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2115" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/activity_experiance.xml" value="0.19010416666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
@@ -21,9 +18,8 @@
         <entry key="..\:/MomToBe/app/src/main/res/layout/task_item_layout_question.xml" value="0.203125" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/use_switch.xml" value="0.203125" />
         <entry key="..\:/MomToBe/app/src/main/res/menu/navigation_menu_bar.xml" value="0.22" />
-=======
-<<<<<<< HEAD
->>>>>>> deb6d59fe9ee95293c4be82f40ed849cf7f3266c
+        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_blog.xml" value="0.1921875" />
+        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/background_bar.xml" value="0.1785" />
         <entry key="app/src/main/res/drawable/botton_nav_bar.xml" value="0.1785" />
         <entry key="app/src/main/res/drawable/home.xml" value="0.172" />
@@ -48,25 +44,6 @@
         <entry key="app/src/main/res/layout/menu_blogs.xml" value="0.16979166666666667" />
         <entry key="app/src/main/res/layout/reciclerview_content.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.16979166666666667" />
-<<<<<<< HEAD
-=======
-=======
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/drawable/avatar_placeholder_click.xml" value="0.1" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/drawable/btn_dark.xml" value="0.1" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/drawable/edit_text_round.xml" value="0.1" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/drawable/ic_photo.xml" value="0.1" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/activity_add_product.xml" value="0.33" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/activity_experience.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/activity_product.xml" value="0.33" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/menu_blogs.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/product_recycler_view_layout.xml" value="0.5" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/reciclerview_content.xml" value="0.1" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/slider_layout.xml" value="0.1712962962962963" />
-        <entry key="..\:/Users/hamzh/Desktop/Final project/MomToBe/app/src/main/res/layout/task_item_layout_question.xml" value="0.36666666666666664" />
->>>>>>> 9b02fc2 (Add product pages from xml and java)
->>>>>>> adc95b87fb3136bca6ea3b85d1f1ee60579061e9
->>>>>>> deb6d59fe9ee95293c4be82f40ed849cf7f3266c
       </map>
     </option>
   </component>

@@ -15,16 +15,12 @@ mutation CreateMother(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     products {
       items {
@@ -37,13 +33,9 @@ mutation CreateMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherProductsId
       }
       nextToken
-      startedAt
     }
     questions {
       items {
@@ -54,13 +46,9 @@ mutation CreateMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherQuestionsId
       }
       nextToken
-      startedAt
     }
     experiences {
       items {
@@ -71,13 +59,9 @@ mutation CreateMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherExperiencesId
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
@@ -86,18 +70,11 @@ mutation CreateMother(
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     addressMothersId
   }
 }
@@ -117,16 +94,12 @@ mutation UpdateMother(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     products {
       items {
@@ -139,13 +112,9 @@ mutation UpdateMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherProductsId
       }
       nextToken
-      startedAt
     }
     questions {
       items {
@@ -156,13 +125,9 @@ mutation UpdateMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherQuestionsId
       }
       nextToken
-      startedAt
     }
     experiences {
       items {
@@ -173,13 +138,9 @@ mutation UpdateMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherExperiencesId
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
@@ -188,18 +149,11 @@ mutation UpdateMother(
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     addressMothersId
   }
 }
@@ -219,16 +173,12 @@ mutation DeleteMother(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     products {
       items {
@@ -241,13 +191,9 @@ mutation DeleteMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherProductsId
       }
       nextToken
-      startedAt
     }
     questions {
       items {
@@ -258,13 +204,9 @@ mutation DeleteMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherQuestionsId
       }
       nextToken
-      startedAt
     }
     experiences {
       items {
@@ -275,13 +217,9 @@ mutation DeleteMother(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherExperiencesId
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
@@ -290,18 +228,11 @@ mutation DeleteMother(
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     addressMothersId
   }
 }
@@ -314,9 +245,6 @@ mutation CreateComment(
     content
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherCommentsId
     questionCommentsId
     experienceCommentsId
@@ -332,9 +260,6 @@ mutation UpdateComment(
     content
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherCommentsId
     questionCommentsId
     experienceCommentsId
@@ -350,9 +275,6 @@ mutation DeleteComment(
     content
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherCommentsId
     questionCommentsId
     experienceCommentsId
@@ -378,19 +300,12 @@ mutation CreateAddress(
         phoneNumber
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         addressMothersId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation UpdateAddress(
@@ -412,19 +327,12 @@ mutation UpdateAddress(
         phoneNumber
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         addressMothersId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation DeleteAddress(
@@ -446,19 +354,12 @@ mutation DeleteAddress(
         phoneNumber
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         addressMothersId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation CreateBlog(
@@ -476,15 +377,11 @@ mutation CreateBlog(
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     mothers {
       items {
@@ -493,18 +390,11 @@ mutation CreateBlog(
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation UpdateBlog(
@@ -522,15 +412,11 @@ mutation UpdateBlog(
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     mothers {
       items {
@@ -539,18 +425,11 @@ mutation UpdateBlog(
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation DeleteBlog(
@@ -568,15 +447,11 @@ mutation DeleteBlog(
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     mothers {
       items {
@@ -585,18 +460,11 @@ mutation DeleteBlog(
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation CreateQuestion(
@@ -615,36 +483,25 @@ mutation CreateQuestion(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherQuestionsId
   }
 }
@@ -664,36 +521,25 @@ mutation UpdateQuestion(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherQuestionsId
   }
 }
@@ -713,36 +559,25 @@ mutation DeleteQuestion(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherQuestionsId
   }
 }
@@ -762,36 +597,25 @@ mutation CreateExperience(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherExperiencesId
   }
 }
@@ -811,36 +635,25 @@ mutation UpdateExperience(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherExperiencesId
   }
 }
@@ -860,36 +673,25 @@ mutation DeleteExperience(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherExperiencesId
   }
 }
@@ -911,22 +713,15 @@ mutation CreateProduct(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherProductsId
   }
 }
@@ -948,22 +743,15 @@ mutation UpdateProduct(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherProductsId
   }
 }
@@ -985,30 +773,23 @@ mutation DeleteProduct(
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherProductsId
   }
 }
-mutation CreateCategory(
-  $input: CreateCategoryInput!
-  $condition: ModelCategoryConditionInput
+mutation CreateCat(
+  $input: CreateCatInput!
+  $condition: ModelCatConditionInput
 ) {
-  createCategory(input: $input, condition: $condition) {
+  createCat(input: $input, condition: $condition) {
     id
     title
     description
@@ -1016,56 +797,41 @@ mutation CreateCategory(
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     questions {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
-mutation UpdateCategory(
-  $input: UpdateCategoryInput!
-  $condition: ModelCategoryConditionInput
+mutation UpdateCat(
+  $input: UpdateCatInput!
+  $condition: ModelCatConditionInput
 ) {
-  updateCategory(input: $input, condition: $condition) {
+  updateCat(input: $input, condition: $condition) {
     id
     title
     description
@@ -1073,56 +839,41 @@ mutation UpdateCategory(
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     questions {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
-mutation DeleteCategory(
-  $input: DeleteCategoryInput!
-  $condition: ModelCategoryConditionInput
+mutation DeleteCat(
+  $input: DeleteCatInput!
+  $condition: ModelCatConditionInput
 ) {
-  deleteCategory(input: $input, condition: $condition) {
+  deleteCat(input: $input, condition: $condition) {
     id
     title
     description
@@ -1130,49 +881,34 @@ mutation DeleteCategory(
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     questions {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation CreateUserBlogs(
@@ -1191,29 +927,21 @@ mutation CreateUserBlogs(
       phoneNumber
       comments {
         nextToken
-        startedAt
       }
       products {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       addressMothersId
     }
     blog {
@@ -1225,23 +953,15 @@ mutation CreateUserBlogs(
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation UpdateUserBlogs(
@@ -1260,29 +980,21 @@ mutation UpdateUserBlogs(
       phoneNumber
       comments {
         nextToken
-        startedAt
       }
       products {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       addressMothersId
     }
     blog {
@@ -1294,23 +1006,15 @@ mutation UpdateUserBlogs(
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation DeleteUserBlogs(
@@ -1329,29 +1033,21 @@ mutation DeleteUserBlogs(
       phoneNumber
       comments {
         nextToken
-        startedAt
       }
       products {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       addressMothersId
     }
     blog {
@@ -1363,23 +1059,15 @@ mutation DeleteUserBlogs(
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation CreateBlogCategories(
@@ -1389,7 +1077,7 @@ mutation CreateBlogCategories(
   createBlogCategories(input: $input, condition: $condition) {
     id
     blogID
-    categoryID
+    catID
     blog {
       id
       title
@@ -1399,45 +1087,31 @@ mutation CreateBlogCategories(
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation UpdateBlogCategories(
@@ -1447,7 +1121,7 @@ mutation UpdateBlogCategories(
   updateBlogCategories(input: $input, condition: $condition) {
     id
     blogID
-    categoryID
+    catID
     blog {
       id
       title
@@ -1457,45 +1131,31 @@ mutation UpdateBlogCategories(
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation DeleteBlogCategories(
@@ -1505,7 +1165,7 @@ mutation DeleteBlogCategories(
   deleteBlogCategories(input: $input, condition: $condition) {
     id
     blogID
-    categoryID
+    catID
     blog {
       id
       title
@@ -1515,45 +1175,31 @@ mutation DeleteBlogCategories(
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation CreateQuestionCategories(
@@ -1563,7 +1209,7 @@ mutation CreateQuestionCategories(
   createQuestionCategories(input: $input, condition: $condition) {
     id
     questionID
-    categoryID
+    catID
     question {
       id
       title
@@ -1572,46 +1218,32 @@ mutation CreateQuestionCategories(
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherQuestionsId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation UpdateQuestionCategories(
@@ -1621,7 +1253,7 @@ mutation UpdateQuestionCategories(
   updateQuestionCategories(input: $input, condition: $condition) {
     id
     questionID
-    categoryID
+    catID
     question {
       id
       title
@@ -1630,46 +1262,32 @@ mutation UpdateQuestionCategories(
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherQuestionsId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation DeleteQuestionCategories(
@@ -1679,7 +1297,7 @@ mutation DeleteQuestionCategories(
   deleteQuestionCategories(input: $input, condition: $condition) {
     id
     questionID
-    categoryID
+    catID
     question {
       id
       title
@@ -1688,46 +1306,32 @@ mutation DeleteQuestionCategories(
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherQuestionsId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation CreateExperienceCategories(
@@ -1737,7 +1341,7 @@ mutation CreateExperienceCategories(
   createExperienceCategories(input: $input, condition: $condition) {
     id
     experienceID
-    categoryID
+    catID
     experience {
       id
       title
@@ -1746,46 +1350,32 @@ mutation CreateExperienceCategories(
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherExperiencesId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation UpdateExperienceCategories(
@@ -1795,7 +1385,7 @@ mutation UpdateExperienceCategories(
   updateExperienceCategories(input: $input, condition: $condition) {
     id
     experienceID
-    categoryID
+    catID
     experience {
       id
       title
@@ -1804,46 +1394,32 @@ mutation UpdateExperienceCategories(
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherExperiencesId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 mutation DeleteExperienceCategories(
@@ -1853,7 +1429,7 @@ mutation DeleteExperienceCategories(
   deleteExperienceCategories(input: $input, condition: $condition) {
     id
     experienceID
-    categoryID
+    catID
     experience {
       id
       title
@@ -1862,45 +1438,31 @@ mutation DeleteExperienceCategories(
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherExperiencesId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }

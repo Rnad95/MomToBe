@@ -10,23 +10,37 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Blog;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.momtobe.adapter.BlogCustomAdapter;
 import com.example.momtobe.api.BlogAPIService;
-import com.example.momtobe.data.BlogDetails;
 import com.example.momtobe.remote.Embedded;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -36,19 +50,42 @@ public class SavedActivity extends AppCompatActivity {
     Handler handler;
     BlogCustomAdapter adapter;
     RecyclerView recyclerView;
-    ArrayList<Blog> blogs;
+    List<Blog> blogs;
+    List<com.example.momtobe.remote.Blog> blogsListTest;
+    private RequestQueue queue;
+    private RequestQueue mQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved);
-        CallAPI();
-        SetHandler();
+        try {
+            CallAPI();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        addBlogs();
+//        SetHandler();
 
+    }
+    private void addBlogs(){
+
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
+//        blogsListTest.add(new com.example.momtobe.remote.Blog("Babies","Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque","Author","https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/bdc3172e-40b6-482f-8f3f-654ec0d50e96/fx1.jpg","Infant development"));
     }
     @Override
     protected void onResume() {
         super.onResume();
-        getBlogs();
+//        getBlogs();
     }
     private void getBlogs(){
             Amplify.API.query(
@@ -97,44 +134,42 @@ public class SavedActivity extends AppCompatActivity {
         });
 
     }
-    private void CallAPI(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+    private void CallAPI() throws IOException {
 
-        BlogAPIService service = retrofit.create(BlogAPIService.class);
 
-        Call<Embedded> allBlogs = service.getBlogList();
-        allBlogs.enqueue(new Callback<Embedded>() {
-            @Override
-            public void onResponse(Call<Embedded> call, Response<Embedded> response) {
-                Embedded blog = response.body();
-                Log.i(TAG, "onResponse: "+blog.getBlogs());
-            }
+        String url = "https://39146b37273509.lhrtunnel.link/blogs";
 
-            @Override
-            public void onFailure(Call<Embedded> call, Throwable t) {
-                Log.i(TAG, "onFailed: "+t.getMessage());
-
-            }
-        });
-
+        mQueue = Volley.newRequestQueue(this);
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
 //
-//        Call<Blog> data =service.getOneBlog("1");
-//        data.enqueue(new Callback<Blog>() {
-//            @Override
-//            public void onResponse(Call<Blog> call, Response<Blog> response) {
-//                Blog blog = response.body();
-//                Log.i(TAG, "onResponse: One Item "+blog.getTitle());
-//            }
+//                            Log.i(TAG, "onResponse: SUCCESS"+response);
 //
+//                    }
+//                }, new Response.ErrorListener() {
 //            @Override
-//            public void onFailure(Call<Blog> call, Throwable t) {
-//                Log.i(TAG, "onFailed: One Item "+t.getMessage());
+//            public void onErrorResponse(VolleyError error) {
+//                error.printStackTrace();
 //            }
 //        });
+//        mQueue.add(request);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                response -> {
+                    GsonBuilder gsonBuilder = new GsonBuilder();
+                    Gson gson = gsonBuilder.create();
+                    String[] embedded =  gson.fromJson(response,String[].class);
+                    Log.i(TAG, "CallAPI: "+response.toString() );
+                }
+                , error -> {
+            Log.i(TAG, "CallAPI: " + error.getMessage());
+        });
+
+        queue.add(stringRequest);
 
     }
+
 
 }

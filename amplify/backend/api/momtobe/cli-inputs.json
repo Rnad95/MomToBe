@@ -3,10 +3,12 @@
   "serviceConfiguration": {
     "apiName": "momtobe",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/home/renad/Desktop/MomToBe/amplify/backend/api/momtobe/schema.graphql",
+    "gqlSchemaPath": "D:\\MomToBe\\amplify\\backend\\api\\momtobe\\schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7
+      "expirationTime": 100,
+      "apiKeyExpirationDate": "2022-10-05T09:28:43.195Z",
+      "keyDescription": "jgjgj"
     }
   }
 }
