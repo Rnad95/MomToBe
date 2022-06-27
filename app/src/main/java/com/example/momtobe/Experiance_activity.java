@@ -10,6 +10,10 @@ import android.view.MenuItem;
 
 import com.amplifyframework.datastore.generated.model.Experience;
 
+import com.amplifyframework.datastore.generated.model.Product;
+import com.amplifyframework.datastore.generated.model.Question;
+
+
 import com.example.momtobe.ui.ProductActivity;
 
 import com.example.momtobe.ui.AddExperianceActivity;
@@ -162,7 +166,9 @@ public class Experiance_activity extends AppCompatActivity {
     }
 
     public void navigateToAddTask(){
+
         startActivity(new Intent(Experiance_activity.this , AddExperianceActivity.class));
+
     }
 
 }

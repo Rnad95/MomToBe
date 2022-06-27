@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.momtobe.Blog;
 import com.example.momtobe.BlogActivity;
 import com.example.momtobe.Experiance_activity;
 import com.example.momtobe.MainActivity;
+
 import com.example.momtobe.Question_avtivity;
 import com.example.momtobe.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,13 +20,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ProductActivity extends AppCompatActivity {
     FloatingActionButton addProduct ;
+
     BottomNavigationView bottomNavigationView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-        navToActivity();
+
+        navigationBar();
 //        ArrayList<Product> arrayList = new ArrayList<>();
 //
 //        Product product ;
@@ -39,9 +45,6 @@ public class ProductActivity extends AppCompatActivity {
 //
 
 
-//        arrayList.add(product);
-
-        // Navigate to add product activity
 
         addProduct = findViewById(R.id.product_add_img);
 
@@ -52,39 +55,37 @@ public class ProductActivity extends AppCompatActivity {
 
     }
 
-    private void navToActivity(){
 
-        /**
-         * bottom Navigation Bar
-         */
+
+    public void navigationBar() {
+
+    /**
+     * bottom Navigation Bar
+     */
         bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.market_page);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.home_page:
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        overridePendingTransition(0,0);
-
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.exp_page:
-                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Experiance_activity.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.blogs_page:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Blog.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.market_page:
                        return true;
 
                     case R.id.question_page:
-                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                 }
@@ -98,5 +99,7 @@ public class ProductActivity extends AppCompatActivity {
     public void navigateToAddTask(){
         startActivity(new Intent(this , AddProductActivity.class));
     }
+
+
 
 }

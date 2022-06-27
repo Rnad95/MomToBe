@@ -3,17 +3,31 @@ package com.example.momtobe;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
+
+
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+
+import com.amplifyframework.datastore.generated.model.Category;
+import com.amplifyframework.datastore.generated.model.Product;
+import com.amplifyframework.datastore.generated.model.Question;
 import com.example.momtobe.registration.LoginActivity;
+
 import com.example.momtobe.ui.ProductActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -31,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         navToActivity();
         ButtonSelector();
         ButtonOnListener();
-//        GetEmail();
+
+        GetEmail();
         TextView mEmail = findViewById(R.id.main_email);
         mEmail.setText(showEmail);
 
@@ -42,15 +57,18 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EMAIL_ADDRESS",showEmail);
         startActivity( intent);
     }
+
+    private void GetEmail(){
+        Bundle bundle = getIntent().getExtras();
+        showEmail = bundle.getString("EMAIL");
+    }
+
     private void SentEmailToSettingsActivity(){
         Intent intent = new Intent(MainActivity.this, Settings.class);
         intent.putExtra("EMAIL_ADDRESS",showEmail);
         startActivity( intent);
     }
-    private void GetEmail(){
-        Bundle bundle = getIntent().getExtras();
-        showEmail = bundle.getString("EMAIL");
-    }
+
     private void ButtonSelector() {
         mProfileBtn = findViewById(R.id.profile);
         mSettingBtn = findViewById(R.id.setting);
@@ -67,12 +85,31 @@ public class MainActivity extends AppCompatActivity {
             SentEmailToSettingsActivity();
 //            navigateToSetting();
         });
+//<<<<<<< HEAD
         mLogoutBtn.setOnClickListener(viww-> {
             logout();
         });
         mFavoriteBtn.setOnClickListener(view-> {
             startActivity(new Intent(MainActivity.this,SavedActivity.class));
         });
+//=======
+//
+//        mLogoutBtn.setOnClickListener(view-> {
+//            logout();
+//        });
+////        mFavoriteBtn.setOnClickListener(view-> {
+////            startActivity(new Intent(MainActivity.this,SavedActivity.class));
+////        });
+//    }
+//    private void navigateToProfile(){
+//        Intent intent = new Intent(MainActivity.this,Profile.class);
+//        startActivity(intent);
+//
+//    }
+//    private void navigateToSetting(){
+//        Intent intent = new Intent(MainActivity.this,Settings.class);
+//        startActivity(intent);
+//>>>>>>> 4b996958eb6d5885bf8871ae47206405e75a4811
 
     }
     private void navToActivity(){

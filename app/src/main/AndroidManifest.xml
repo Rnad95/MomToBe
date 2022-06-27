@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".MomToBeApplication"
         android:allowBackup="true"
@@ -16,7 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MomToBe"
-        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".ui.AddQuestionActivity"
@@ -64,16 +62,13 @@
             android:name=".ui.AddProductActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.AddExperianceActivity"
-            android:exported="false" />
-        <activity
             android:name=".BlogContentes"
             android:exported="false" />
         <activity
             android:name=".Settings"
             android:exported="false" />
         <activity
-            android:name=".BlogActivity"
+            android:name=".Blog"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

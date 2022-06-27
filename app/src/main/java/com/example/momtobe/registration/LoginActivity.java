@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
+
     private void login(String email, String password) {
         Amplify.Auth.signIn(
                 email,

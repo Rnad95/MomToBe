@@ -19,6 +19,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "storage": {
+<<<<<<< HEAD
         "s35f382a74": {
             "BucketName": "string",
             "Region": "string"
@@ -30,5 +31,11 @@ export type AmplifyDependentResourcesAttributes = {
             "language": "string",
             "voice": "string"
         }
+=======
+        "s3185b1c84": {
+            "BucketName": "string",
+            "Region": "string"
+        }
+>>>>>>> 4b996958eb6d5885bf8871ae47206405e75a4811
     }
 }
