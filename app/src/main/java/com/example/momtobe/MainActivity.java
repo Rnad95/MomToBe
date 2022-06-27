@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 
-import com.amplifyframework.datastore.generated.model.Product;
-import com.amplifyframework.datastore.generated.model.Question;
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Cat;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +23,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navToActivity();
+//        Cat Cat= com.amplifyframework.datastore.generated.model.Cat.builder()
+//                .title("ayyoub-1")
+//                .description("sdsadddddddddddgfance")
+//                .build();
+//        Cat Cat1=com.amplifyframework.datastore.generated.model.Cat.builder()
+//                .title("ayyoub-2")
+//                .description("sdsadddddddddddgfance")
+//                .build();
+//
+//        Amplify.API.mutate(
+//                ModelMutation.create(Cat),
+//                    response -> {
+//                        Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId());
+//                        },
+//                    error -> Log.e("MyAmplifyApp", "Create failed", error)
+//        );
+//        Amplify.API.mutate(
+//                ModelMutation.create(Cat1),
+//                    response -> {
+//                        Amplify.API.query(
+//                                ModelQuery.list(Cat.class,com.amplifyframework.datastore.generated.model.Cat.TITLE.contains("ayyoub")),
+//                                res -> {
+//                                    Log.i("TAG", "onCreate: " +res);
+//                                },
+//                                error->{
+//                                    Log.e("TAG", "onCreate: ",error );
+//                                }
+//                        );
+//                        Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId());
+//                        },
+//                    error -> Log.e("MyAmplifyApp", "Create failed", error)
+//        );
+
+
     }
 
     private void navToActivity(){

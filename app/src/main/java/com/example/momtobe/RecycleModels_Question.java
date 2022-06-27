@@ -1,8 +1,10 @@
 package com.example.momtobe;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,12 +31,18 @@ public class RecycleModels_Question extends RecyclerView.Adapter<RecycleModels_Q
         View listTaskView = layoutInflater.inflate(R.layout.task_item_layout_question, parent, false);
         return new taskviewsholoder(listTaskView, listener);
     }
-
+//public void getActivity(){
+//
+//
+//}
     @Override
     public void onBindViewHolder(@NonNull taskviewsholoder holder, int position) {
         holder.title.setText(models.get(position).getTitle());
         holder.description.setText(models.get(position).getDescription());
-
+//        holder.Question_image.setImageURI(models.get(position).getImage());
+        holder.More_comment.setOnClickListener(view -> {
+//            Intent intent=new Intent(Question_avtivity.class,CommentActivity.class)
+        });
 
     }
 
@@ -48,12 +56,13 @@ public class RecycleModels_Question extends RecyclerView.Adapter<RecycleModels_Q
         TextView description;
         TextView title;
         TextView More_comment;
-
+ImageView Question_image;
         public taskviewsholoder(@NonNull View itemView, CustomClickListener listener) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             description=itemView.findViewById(R.id.description);
             More_comment=itemView.findViewById(R.id.More_comment);
+            Question_image=itemView.findViewById(R.id.imageView2);
             itemView.setOnClickListener(view -> listener.taskItemClicked(getAdapterPosition()));
 
         }

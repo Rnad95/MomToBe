@@ -12,16 +12,12 @@ subscription OnCreateMother {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     products {
       items {
@@ -34,13 +30,9 @@ subscription OnCreateMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherProductsId
       }
       nextToken
-      startedAt
     }
     questions {
       items {
@@ -51,13 +43,9 @@ subscription OnCreateMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherQuestionsId
       }
       nextToken
-      startedAt
     }
     experiences {
       items {
@@ -68,13 +56,9 @@ subscription OnCreateMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherExperiencesId
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
@@ -83,18 +67,11 @@ subscription OnCreateMother {
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     addressMothersId
   }
 }
@@ -111,16 +88,12 @@ subscription OnUpdateMother {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     products {
       items {
@@ -133,13 +106,9 @@ subscription OnUpdateMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherProductsId
       }
       nextToken
-      startedAt
     }
     questions {
       items {
@@ -150,13 +119,9 @@ subscription OnUpdateMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherQuestionsId
       }
       nextToken
-      startedAt
     }
     experiences {
       items {
@@ -167,13 +132,9 @@ subscription OnUpdateMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherExperiencesId
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
@@ -182,18 +143,11 @@ subscription OnUpdateMother {
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     addressMothersId
   }
 }
@@ -210,16 +164,12 @@ subscription OnDeleteMother {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     products {
       items {
@@ -232,13 +182,9 @@ subscription OnDeleteMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherProductsId
       }
       nextToken
-      startedAt
     }
     questions {
       items {
@@ -249,13 +195,9 @@ subscription OnDeleteMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherQuestionsId
       }
       nextToken
-      startedAt
     }
     experiences {
       items {
@@ -266,13 +208,9 @@ subscription OnDeleteMother {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherExperiencesId
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
@@ -281,18 +219,11 @@ subscription OnDeleteMother {
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     addressMothersId
   }
 }
@@ -302,9 +233,6 @@ subscription OnCreateComment {
     content
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherCommentsId
     questionCommentsId
     experienceCommentsId
@@ -317,9 +245,6 @@ subscription OnUpdateComment {
     content
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherCommentsId
     questionCommentsId
     experienceCommentsId
@@ -332,9 +257,6 @@ subscription OnDeleteComment {
     content
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherCommentsId
     questionCommentsId
     experienceCommentsId
@@ -357,19 +279,12 @@ subscription OnCreateAddress {
         phoneNumber
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         addressMothersId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateAddress {
@@ -388,19 +303,12 @@ subscription OnUpdateAddress {
         phoneNumber
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         addressMothersId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteAddress {
@@ -419,19 +327,12 @@ subscription OnDeleteAddress {
         phoneNumber
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         addressMothersId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnCreateBlog {
@@ -446,15 +347,11 @@ subscription OnCreateBlog {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     mothers {
       items {
@@ -463,18 +360,11 @@ subscription OnCreateBlog {
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateBlog {
@@ -489,15 +379,11 @@ subscription OnUpdateBlog {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     mothers {
       items {
@@ -506,18 +392,11 @@ subscription OnUpdateBlog {
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteBlog {
@@ -532,15 +411,11 @@ subscription OnDeleteBlog {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     mothers {
       items {
@@ -549,18 +424,11 @@ subscription OnDeleteBlog {
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnCreateQuestion {
@@ -576,36 +444,25 @@ subscription OnCreateQuestion {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherQuestionsId
   }
 }
@@ -622,36 +479,25 @@ subscription OnUpdateQuestion {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherQuestionsId
   }
 }
@@ -668,36 +514,25 @@ subscription OnDeleteQuestion {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherQuestionsId
   }
 }
@@ -714,36 +549,25 @@ subscription OnCreateExperience {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherExperiencesId
   }
 }
@@ -760,36 +584,25 @@ subscription OnUpdateExperience {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherExperiencesId
   }
 }
@@ -806,36 +619,25 @@ subscription OnDeleteExperience {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherExperiencesId
   }
 }
@@ -854,22 +656,15 @@ subscription OnCreateProduct {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherProductsId
   }
 }
@@ -888,22 +683,15 @@ subscription OnUpdateProduct {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherProductsId
   }
 }
@@ -922,27 +710,20 @@ subscription OnDeleteProduct {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherProductsId
   }
 }
-subscription OnCreateCategory {
-  onCreateCategory {
+subscription OnCreateCat {
+  onCreateCat {
     id
     title
     description
@@ -950,53 +731,38 @@ subscription OnCreateCategory {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     questions {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
-subscription OnUpdateCategory {
-  onUpdateCategory {
+subscription OnUpdateCat {
+  onUpdateCat {
     id
     title
     description
@@ -1004,53 +770,38 @@ subscription OnUpdateCategory {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     questions {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
-subscription OnDeleteCategory {
-  onDeleteCategory {
+subscription OnDeleteCat {
+  onDeleteCat {
     id
     title
     description
@@ -1058,49 +809,34 @@ subscription OnDeleteCategory {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     questions {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnCreateUserBlogs {
@@ -1116,29 +852,21 @@ subscription OnCreateUserBlogs {
       phoneNumber
       comments {
         nextToken
-        startedAt
       }
       products {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       addressMothersId
     }
     blog {
@@ -1150,23 +878,15 @@ subscription OnCreateUserBlogs {
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateUserBlogs {
@@ -1182,29 +902,21 @@ subscription OnUpdateUserBlogs {
       phoneNumber
       comments {
         nextToken
-        startedAt
       }
       products {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       addressMothersId
     }
     blog {
@@ -1216,23 +928,15 @@ subscription OnUpdateUserBlogs {
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteUserBlogs {
@@ -1248,29 +952,21 @@ subscription OnDeleteUserBlogs {
       phoneNumber
       comments {
         nextToken
-        startedAt
       }
       products {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       addressMothersId
     }
     blog {
@@ -1282,30 +978,22 @@ subscription OnDeleteUserBlogs {
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnCreateBlogCategories {
   onCreateBlogCategories {
     id
     blogID
-    categoryID
+    catID
     blog {
       id
       title
@@ -1315,52 +1003,38 @@ subscription OnCreateBlogCategories {
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateBlogCategories {
   onUpdateBlogCategories {
     id
     blogID
-    categoryID
+    catID
     blog {
       id
       title
@@ -1370,52 +1044,38 @@ subscription OnUpdateBlogCategories {
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteBlogCategories {
   onDeleteBlogCategories {
     id
     blogID
-    categoryID
+    catID
     blog {
       id
       title
@@ -1425,52 +1085,38 @@ subscription OnDeleteBlogCategories {
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnCreateQuestionCategories {
   onCreateQuestionCategories {
     id
     questionID
-    categoryID
+    catID
     question {
       id
       title
@@ -1479,53 +1125,39 @@ subscription OnCreateQuestionCategories {
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherQuestionsId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateQuestionCategories {
   onUpdateQuestionCategories {
     id
     questionID
-    categoryID
+    catID
     question {
       id
       title
@@ -1534,53 +1166,39 @@ subscription OnUpdateQuestionCategories {
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherQuestionsId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteQuestionCategories {
   onDeleteQuestionCategories {
     id
     questionID
-    categoryID
+    catID
     question {
       id
       title
@@ -1589,53 +1207,39 @@ subscription OnDeleteQuestionCategories {
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherQuestionsId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnCreateExperienceCategories {
   onCreateExperienceCategories {
     id
     experienceID
-    categoryID
+    catID
     experience {
       id
       title
@@ -1644,53 +1248,39 @@ subscription OnCreateExperienceCategories {
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherExperiencesId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnUpdateExperienceCategories {
   onUpdateExperienceCategories {
     id
     experienceID
-    categoryID
+    catID
     experience {
       id
       title
@@ -1699,53 +1289,39 @@ subscription OnUpdateExperienceCategories {
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherExperiencesId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 subscription OnDeleteExperienceCategories {
   onDeleteExperienceCategories {
     id
     experienceID
-    categoryID
+    catID
     experience {
       id
       title
@@ -1754,45 +1330,31 @@ subscription OnDeleteExperienceCategories {
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherExperiencesId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }

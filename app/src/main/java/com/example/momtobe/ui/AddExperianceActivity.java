@@ -24,7 +24,7 @@ import android.widget.Spinner;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.generated.model.Category;
+import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.example.momtobe.R;
 
@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
 public class AddExperianceActivity extends AppCompatActivity {
     private static final String TAG = AddExperianceActivity.class.getName();
     private static final int REQUEST_CODE = 1234;
-    private ArrayList<Category> arrayListspinner3;
+    private ArrayList<Cat> arrayListspinner3;
     private Handler handler1;
     private Spinner spinner3;
 
@@ -57,70 +57,51 @@ public class AddExperianceActivity extends AppCompatActivity {
     private Experience newExperience;
 
 
+
     @RequiresApi(api = Build.VERSION_CODES.N)
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_experiance);
          arrayListspinner3 = new ArrayList<>();
         button = findViewById(R.id.btn_register);
         image_experiance = findViewById(R.id.Image_experiance);
-        title = findViewById(R.id.edit_Experiance_name);
-        description = findViewById(R.id.edit_Experiance_desc);
+        title = findViewById(R.id.edit_Question_name);
+        description = findViewById(R.id.edit_Question_desc);
+        spinner3=findViewById(R.id.spinner);
 
 
-spinner3=findViewById(R.id.spinner);
 
 
-        handler1 = new Handler(
-                Looper.getMainLooper(), msg -> {
-            ArrayList<String> spinnerlist = (ArrayList<String>) arrayListspinner3.stream().map(index -> {
-                return index.getTitle();
-            }).collect(Collectors.toList());
-
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerlist);
-            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner3.setAdapter(arrayAdapter);
-
-            return true;
-
-        }
-        );
-
-
+        setHandler1();
 
         add_Spinner_API_Query();
-image_experiance.setOnClickListener(view ->pictureUpload() );
+//image_experiance.setOnClickListener(view ->pictureUpload() );
 
         button.setOnClickListener(view -> {
             String title1 = title.getText().toString();
             String description1 = description.getText().toString();
 
-            String state = spinner3.getSelectedItem().toString();
 
 
-            for (int i = 0; i < arrayListspinner3.size(); i++) {
 
-                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
+//            for (int i = 0; i < arrayListspinner3.size(); i++) {
+//
+//                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
 
-                    newExperience = Experience.builder()
-                            .title(title1)
-                            .description(description1)
-                            .featured(false)
-                            .image(currentUri.toString())
-                             .build();
+//                }
 
-                }
-
-            }
+//            }
+            newExperience = Experience.builder()
+                    .title(title1)
+                    .description(description1)
+                    .featured(false)
+//                            .image(currentUri.toString())
+                    .motherExperiencesId("ssssssssssssssssssss")
+                    .build();
             Amplify.API.mutate(
                     ModelMutation.create(newExperience),
                     response -> {
-                        Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getTitle());
-
-
-
-                    },
+                        Log.i("MyAmplifyApp", "Added Todo with title: " + response.getData().getTitle());},
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
 
@@ -139,9 +120,9 @@ image_experiance.setOnClickListener(view ->pictureUpload() );
 
     public void add_Spinner_API_Query() {
         Amplify.API.query(
-                ModelQuery.list(Category.class),
+                ModelQuery.list(Cat.class),
                 teamsName -> {
-                    for (Category note : teamsName.getData()) {
+                    for (Cat note : teamsName.getData()) {
                         arrayListspinner3.add(note);
                     }
 
@@ -212,6 +193,25 @@ image_experiance.setOnClickListener(view ->pictureUpload() );
         parcelFileDescriptor.close();
 
         return image;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void setHandler1(){
+
+        handler1 = new Handler(
+                Looper.getMainLooper(), msg -> {
+            ArrayList<String> spinnerlist = (ArrayList<String>) arrayListspinner3.stream().map(index -> {
+                return index.getTitle();
+            }).collect(Collectors.toList());
+
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerlist);
+            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner3.setAdapter(arrayAdapter);
+
+            return true;
+
+        }
+        );
     }
 
 }
