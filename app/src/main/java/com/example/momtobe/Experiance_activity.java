@@ -166,7 +166,6 @@ public class Experiance_activity extends AppCompatActivity {
     }
 
     public void navigateToAddTask(){
-
         startActivity(new Intent(Experiance_activity.this , AddExperianceActivity.class));
 
     }

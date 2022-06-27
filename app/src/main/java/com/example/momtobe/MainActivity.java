@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         navToActivity();
         ButtonSelector();
         ButtonOnListener();
+        GetEmail();
+
+//        TextView mEmail = findViewById(R.id.main_email);
+//        mEmail.setText(showEmail);
 
         GetEmail();
         TextView mEmail = findViewById(R.id.main_email);
@@ -68,6 +72,21 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EMAIL_ADDRESS",showEmail);
         startActivity( intent);
     }
+    private void SentEmailToUserActivity(){
+        Intent intent = new Intent(MainActivity.this, Profile.class);
+        intent.putExtra("EMAIL_ADDRESS",showEmail);
+        startActivity( intent);
+    }
+    private void SentEmailToSettingsActivity(){
+        Intent intent = new Intent(MainActivity.this, Settings.class);
+        intent.putExtra("EMAIL_ADDRESS",showEmail);
+        startActivity( intent);
+    }
+
+    private void GetEmail(){
+        Bundle bundle = getIntent().getExtras();
+        showEmail = bundle.getString("EMAIL");
+    }
 
     private void ButtonSelector() {
         mProfileBtn = findViewById(R.id.profile);
@@ -85,31 +104,14 @@ public class MainActivity extends AppCompatActivity {
             SentEmailToSettingsActivity();
 //            navigateToSetting();
         });
-//<<<<<<< HEAD
+
         mLogoutBtn.setOnClickListener(viww-> {
             logout();
         });
         mFavoriteBtn.setOnClickListener(view-> {
             startActivity(new Intent(MainActivity.this,SavedActivity.class));
         });
-//=======
-//
-//        mLogoutBtn.setOnClickListener(view-> {
-//            logout();
-//        });
-////        mFavoriteBtn.setOnClickListener(view-> {
-////            startActivity(new Intent(MainActivity.this,SavedActivity.class));
-////        });
-//    }
-//    private void navigateToProfile(){
-//        Intent intent = new Intent(MainActivity.this,Profile.class);
-//        startActivity(intent);
-//
-//    }
-//    private void navigateToSetting(){
-//        Intent intent = new Intent(MainActivity.this,Settings.class);
-//        startActivity(intent);
-//>>>>>>> 4b996958eb6d5885bf8871ae47206405e75a4811
+
 
     }
     private void navToActivity(){
