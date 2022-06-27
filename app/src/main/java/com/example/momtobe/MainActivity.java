@@ -2,15 +2,13 @@ package com.example.momtobe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 
-import com.amplifyframework.datastore.generated.model.Product;
-import com.amplifyframework.datastore.generated.model.Question;
+import com.example.momtobe.ui.ProductActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
                         overridePendingTransition(0,0);
                         return true;
-
 
                 }
                 return false;

@@ -19,13 +19,9 @@
             android:exported="false" />
         <activity
             android:name=".registration.SignUpActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
         <activity
             android:name=".registration.LoginActivity"
             android:exported="false">
@@ -50,7 +46,13 @@
 
         <activity
             android:name=".ui.ProductActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".ui.AddProductActivity"
