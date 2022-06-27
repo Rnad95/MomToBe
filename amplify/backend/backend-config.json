@@ -48,10 +48,19 @@
     }
   },
   "storage": {
+
     "s3185b1c84": {
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
     }
+  },
+  "predictions": {
+    "speechGenerator5bbede17": {
+      "providerPlugin": "awscloudformation",
+      "service": "Polly",
+      "convertType": "speechGenerator"
+    }
+
   }
 }

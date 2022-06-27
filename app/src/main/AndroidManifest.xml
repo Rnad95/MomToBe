@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.momtobe">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".MomToBeApplication"
         android:allowBackup="true"
@@ -15,7 +17,7 @@
         android:theme="@style/Theme.MomToBe"
         tools:targetApi="31">
         <activity
-            android:name=".AddQuestionActivity"
+            android:name=".ui.AddQuestionActivity"
             android:exported="false" />
         <activity
             android:name=".registration.VerificationActivity"

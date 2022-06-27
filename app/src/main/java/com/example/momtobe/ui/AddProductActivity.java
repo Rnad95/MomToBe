@@ -166,8 +166,9 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void declareConst(){
-        addTitle = findViewById(R.id.edit_product_name);
-        addDesc = findViewById(R.id.edit_product_desc);
+
+        addTitle = findViewById(R.id.edit_Experiance_name);
+        addDesc = findViewById(R.id.edit_Experiance_desc);
         addPrice = findViewById(R.id.edit_product_price);
         addQuantity = findViewById(R.id.edit_product_quantity);
         productImage = findViewById(R.id.avatar);

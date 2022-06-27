@@ -75,6 +75,7 @@ type Product @ model {
   price: Float!
   description: String!
   quantity: Int
+
   image : String  #edit the name image_key of image_path
   featured: Boolean!
   comments: [Comment] @hasMany

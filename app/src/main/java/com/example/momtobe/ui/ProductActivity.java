@@ -4,24 +4,19 @@ package com.example.momtobe.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
 
-import com.amplifyframework.datastore.generated.model.Product;
 import com.example.momtobe.Blog;
+import com.example.momtobe.BlogActivity;
 import com.example.momtobe.Experiance_activity;
 import com.example.momtobe.MainActivity;
 
 import com.example.momtobe.Question_avtivity;
 import com.example.momtobe.R;
-import com.example.momtobe.adapter.ProductCustomAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
 
 public class ProductActivity extends AppCompatActivity {
     FloatingActionButton addProduct ;
@@ -35,7 +30,7 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        navToActivity();
+        navigationBar();
 //        ArrayList<Product> arrayList = new ArrayList<>();
 //
 //        Product product ;
@@ -61,7 +56,14 @@ public class ProductActivity extends AppCompatActivity {
     }
 
 
+
     public void navigationBar() {
+
+    /**
+     * bottom Navigation Bar
+     */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.market_page);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -80,11 +82,8 @@ public class ProductActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
 
-
                     case R.id.market_page:
-                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                       return true;
 
                     case R.id.question_page:
                         return true;

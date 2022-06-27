@@ -12,16 +12,12 @@ query GetMother($id: ID!) {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     products {
       items {
@@ -34,13 +30,9 @@ query GetMother($id: ID!) {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherProductsId
       }
       nextToken
-      startedAt
     }
     questions {
       items {
@@ -51,13 +43,9 @@ query GetMother($id: ID!) {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherQuestionsId
       }
       nextToken
-      startedAt
     }
     experiences {
       items {
@@ -68,13 +56,9 @@ query GetMother($id: ID!) {
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherExperiencesId
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
@@ -83,18 +67,11 @@ query GetMother($id: ID!) {
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     addressMothersId
   }
 }
@@ -112,82 +89,24 @@ query ListMothers(
       phoneNumber
       comments {
         nextToken
-        startedAt
       }
       products {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       addressMothersId
     }
     nextToken
-    startedAt
-  }
-}
-query SyncMothers(
-  $filter: ModelMotherFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncMothers(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      name
-      image
-      numOfChildren
-      phoneNumber
-      comments {
-        nextToken
-        startedAt
-      }
-      products {
-        nextToken
-        startedAt
-      }
-      questions {
-        nextToken
-        startedAt
-      }
-      experiences {
-        nextToken
-        startedAt
-      }
-      blogs {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      addressMothersId
-    }
-    nextToken
-    startedAt
   }
 }
 query GetComment($id: ID!) {
@@ -196,9 +115,6 @@ query GetComment($id: ID!) {
     content
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherCommentsId
     questionCommentsId
     experienceCommentsId
@@ -216,45 +132,12 @@ query ListComments(
       content
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherCommentsId
       questionCommentsId
       experienceCommentsId
       productCommentsId
     }
     nextToken
-    startedAt
-  }
-}
-query SyncComments(
-  $filter: ModelCommentFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncComments(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      content
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      motherCommentsId
-      questionCommentsId
-      experienceCommentsId
-      productCommentsId
-    }
-    nextToken
-    startedAt
   }
 }
 query GetAddress($id: ID!) {
@@ -273,19 +156,12 @@ query GetAddress($id: ID!) {
         phoneNumber
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         addressMothersId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 query ListAddresses(
@@ -302,48 +178,11 @@ query ListAddresses(
       postalCode
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncAddresses(
-  $filter: ModelAddressFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncAddresses(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      country
-      city
-      street
-      postalCode
-      mothers {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }
 query GetBlog($id: ID!) {
@@ -358,15 +197,11 @@ query GetBlog($id: ID!) {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     mothers {
       items {
@@ -375,18 +210,11 @@ query GetBlog($id: ID!) {
         blogID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 query ListBlogs(
@@ -404,57 +232,14 @@ query ListBlogs(
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncBlogs(
-  $filter: ModelBlogFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncBlogs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      description
-      image
-      autherName
-      featured
-      categories {
-        nextToken
-        startedAt
-      }
-      mothers {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }
 query GetQuestion($id: ID!) {
@@ -470,36 +255,25 @@ query GetQuestion($id: ID!) {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherQuestionsId
   }
 }
@@ -517,58 +291,15 @@ query ListQuestions(
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherQuestionsId
     }
     nextToken
-    startedAt
-  }
-}
-query SyncQuestions(
-  $filter: ModelQuestionFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncQuestions(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      description
-      image
-      featured
-      comments {
-        nextToken
-        startedAt
-      }
-      categories {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      motherQuestionsId
-    }
-    nextToken
-    startedAt
   }
 }
 query GetExperience($id: ID!) {
@@ -584,36 +315,25 @@ query GetExperience($id: ID!) {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     categories {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherExperiencesId
   }
 }
@@ -631,58 +351,15 @@ query ListExperiences(
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherExperiencesId
     }
     nextToken
-    startedAt
-  }
-}
-query SyncExperiences(
-  $filter: ModelExperienceFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncExperiences(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      description
-      image
-      featured
-      comments {
-        nextToken
-        startedAt
-      }
-      categories {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      motherExperiencesId
-    }
-    nextToken
-    startedAt
   }
 }
 query GetProduct($id: ID!) {
@@ -700,22 +377,15 @@ query GetProduct($id: ID!) {
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherCommentsId
         questionCommentsId
         experienceCommentsId
         productCommentsId
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
     motherProductsId
   }
 }
@@ -735,56 +405,16 @@ query ListProducts(
       featured
       comments {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherProductsId
     }
     nextToken
-    startedAt
   }
 }
-query SyncProducts(
-  $filter: ModelProductFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncProducts(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      price
-      description
-      quantity
-      image
-      featured
-      comments {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      motherProductsId
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetCategory($id: ID!) {
-  getCategory(id: $id) {
+query GetCat($id: ID!) {
+  getCat(id: $id) {
     id
     title
     description
@@ -792,119 +422,55 @@ query GetCategory($id: ID!) {
       items {
         id
         experienceID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     blogs {
       items {
         id
         blogID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     questions {
       items {
         id
         questionID
-        categoryID
+        catID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
-query ListCategories(
-  $filter: ModelCategoryFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+query ListCats($filter: ModelCatFilterInput, $limit: Int, $nextToken: String) {
+  listCats(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncCategories(
-  $filter: ModelCategoryFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncCategories(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      title
-      description
-      experiences {
-        nextToken
-        startedAt
-      }
-      blogs {
-        nextToken
-        startedAt
-      }
-      questions {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }
 query GetUserBlogs($id: ID!) {
@@ -920,29 +486,21 @@ query GetUserBlogs($id: ID!) {
       phoneNumber
       comments {
         nextToken
-        startedAt
       }
       products {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       addressMothersId
     }
     blog {
@@ -954,23 +512,15 @@ query GetUserBlogs($id: ID!) {
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 query ListUserBlogs(
@@ -991,9 +541,6 @@ query ListUserBlogs(
         phoneNumber
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         addressMothersId
       }
       blog {
@@ -1005,77 +552,18 @@ query ListUserBlogs(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncUserBlogs(
-  $filter: ModelUserBlogsFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncUserBlogs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      motherID
-      blogID
-      mother {
-        id
-        name
-        image
-        numOfChildren
-        phoneNumber
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        addressMothersId
-      }
-      blog {
-        id
-        title
-        description
-        image
-        autherName
-        featured
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }
 query GetBlogCategories($id: ID!) {
   getBlogCategories(id: $id) {
     id
     blogID
-    categoryID
+    catID
     blog {
       id
       title
@@ -1085,45 +573,31 @@ query GetBlogCategories($id: ID!) {
       featured
       categories {
         nextToken
-        startedAt
       }
       mothers {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 query ListBlogCategories(
@@ -1135,7 +609,7 @@ query ListBlogCategories(
     items {
       id
       blogID
-      categoryID
+      catID
       blog {
         id
         title
@@ -1145,84 +619,25 @@ query ListBlogCategories(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      category {
+      cat {
         id
         title
         description
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncBlogCategories(
-  $filter: ModelBlogCategoriesFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncBlogCategories(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      blogID
-      categoryID
-      blog {
-        id
-        title
-        description
-        image
-        autherName
-        featured
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      category {
-        id
-        title
-        description
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }
 query GetQuestionCategories($id: ID!) {
   getQuestionCategories(id: $id) {
     id
     questionID
-    categoryID
+    catID
     question {
       id
       title
@@ -1231,46 +646,32 @@ query GetQuestionCategories($id: ID!) {
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherQuestionsId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 query ListQuestionCategories(
@@ -1286,7 +687,7 @@ query ListQuestionCategories(
     items {
       id
       questionID
-      categoryID
+      catID
       question {
         id
         title
@@ -1295,85 +696,26 @@ query ListQuestionCategories(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherQuestionsId
       }
-      category {
+      cat {
         id
         title
         description
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncQuestionCategories(
-  $filter: ModelQuestionCategoriesFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncQuestionCategories(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      questionID
-      categoryID
-      question {
-        id
-        title
-        description
-        image
-        featured
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        motherQuestionsId
-      }
-      category {
-        id
-        title
-        description
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }
 query GetExperienceCategories($id: ID!) {
   getExperienceCategories(id: $id) {
     id
     experienceID
-    categoryID
+    catID
     experience {
       id
       title
@@ -1382,46 +724,32 @@ query GetExperienceCategories($id: ID!) {
       featured
       comments {
         nextToken
-        startedAt
       }
       categories {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       motherExperiencesId
     }
-    category {
+    cat {
       id
       title
       description
       experiences {
         nextToken
-        startedAt
       }
       blogs {
         nextToken
-        startedAt
       }
       questions {
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     createdAt
     updatedAt
-    _version
-    _deleted
-    _lastChangedAt
   }
 }
 query ListExperienceCategories(
@@ -1437,7 +765,7 @@ query ListExperienceCategories(
     items {
       id
       experienceID
-      categoryID
+      catID
       experience {
         id
         title
@@ -1446,77 +774,18 @@ query ListExperienceCategories(
         featured
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         motherExperiencesId
       }
-      category {
+      cat {
         id
         title
         description
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
     nextToken
-    startedAt
-  }
-}
-query SyncExperienceCategories(
-  $filter: ModelExperienceCategoriesFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncExperienceCategories(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      experienceID
-      categoryID
-      experience {
-        id
-        title
-        description
-        image
-        featured
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        motherExperiencesId
-      }
-      category {
-        id
-        title
-        description
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-    nextToken
-    startedAt
   }
 }

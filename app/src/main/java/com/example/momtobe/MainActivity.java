@@ -10,6 +10,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
 
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+
 import com.amplifyframework.datastore.generated.model.Category;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
@@ -48,6 +50,27 @@ public class MainActivity extends AppCompatActivity {
 //        TextView mEmail = findViewById(R.id.main_email);
 //        mEmail.setText(showEmail);
 
+        GetEmail();
+        TextView mEmail = findViewById(R.id.main_email);
+        mEmail.setText(showEmail);
+
+
+    }
+    private void SentEmailToUserActivity(){
+        Intent intent = new Intent(MainActivity.this, Profile.class);
+        intent.putExtra("EMAIL_ADDRESS",showEmail);
+        startActivity( intent);
+    }
+
+    private void GetEmail(){
+        Bundle bundle = getIntent().getExtras();
+        showEmail = bundle.getString("EMAIL");
+    }
+
+    private void SentEmailToSettingsActivity(){
+        Intent intent = new Intent(MainActivity.this, Settings.class);
+        intent.putExtra("EMAIL_ADDRESS",showEmail);
+        startActivity( intent);
     }
     private void SentEmailToUserActivity(){
         Intent intent = new Intent(MainActivity.this, Profile.class);
@@ -69,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
         mProfileBtn = findViewById(R.id.profile);
         mSettingBtn = findViewById(R.id.setting);
         mLogoutBtn = findViewById(R.id.log_out);
-//        mFavoriteBtn = findViewById(R.id.main_favorite);
+        mFavoriteBtn = findViewById(R.id.main_favorite);
+
     }
     private void ButtonOnListener(){
         mProfileBtn.setOnClickListener(view ->{
@@ -81,21 +105,13 @@ public class MainActivity extends AppCompatActivity {
 //            navigateToSetting();
         });
 
-        mLogoutBtn.setOnClickListener(view-> {
+        mLogoutBtn.setOnClickListener(viww-> {
             logout();
         });
-//        mFavoriteBtn.setOnClickListener(view-> {
-//            startActivity(new Intent(MainActivity.this,SavedActivity.class));
-//        });
-    }
-    private void navigateToProfile(){
-        Intent intent = new Intent(MainActivity.this,Profile.class);
-        startActivity(intent);
+        mFavoriteBtn.setOnClickListener(view-> {
+            startActivity(new Intent(MainActivity.this,SavedActivity.class));
+        });
 
-    }
-    private void navigateToSetting(){
-        Intent intent = new Intent(MainActivity.this,Settings.class);
-        startActivity(intent);
 
     }
     private void navToActivity(){
@@ -118,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.blogs_page:
-                        startActivity(new Intent(getApplicationContext(),Blog.class));
+                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
