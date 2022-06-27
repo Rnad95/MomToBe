@@ -24,7 +24,6 @@ public class AmplifyApplication extends Application {
             Amplify.addPlugin(new AWSS3StoragePlugin());
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSDataStorePlugin());
-
             Amplify.configure(getApplicationContext());
 
             Log.i(TAG, "Initialized Amplify");
