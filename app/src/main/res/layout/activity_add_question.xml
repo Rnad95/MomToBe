@@ -24,7 +24,7 @@
                     android:id="@+id/page_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Product"
+                    android:text="Add Question"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:textColor="#000"
                     android:textSize="20sp" />
@@ -44,7 +44,8 @@
                     android:layout_height="80dp"
                     android:background="@drawable/avatar_placeholder_click"
                     android:clickable="true"
-                    android:padding="5dp">
+                    android:padding="5dp"
+                    tools:ignore="SpeakableTextPresentCheck">
 
                     <ImageView
                         android:id="@+id/Image_experiance"
@@ -62,7 +63,7 @@
                 </RelativeLayout>
 
                 <EditText
-                    android:id="@+id/edit_Experiance_name"
+                    android:id="@+id/edit_Question_name"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="18dp"
@@ -76,7 +77,7 @@
                     android:textColorHint="#666666" />
 
                 <EditText
-                    android:id="@+id/edit_Experiance_desc"
+                    android:id="@+id/edit_Question_desc"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginTop="18dp"
@@ -93,7 +94,7 @@
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="63dp"
-                    />
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Button
                     android:id="@+id/btn_register"

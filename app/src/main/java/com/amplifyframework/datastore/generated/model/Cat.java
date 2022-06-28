@@ -16,19 +16,19 @@ import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the Category type in your schema. */
+/** This is an auto generated class representing the Cat type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "Categories")
-public final class Category implements Model {
-  public static final QueryField ID = field("Category", "id");
-  public static final QueryField TITLE = field("Category", "title");
-  public static final QueryField DESCRIPTION = field("Category", "description");
+@ModelConfig(pluralName = "Cats")
+public final class Cat implements Model {
+  public static final QueryField ID = field("Cat", "id");
+  public static final QueryField TITLE = field("Cat", "title");
+  public static final QueryField DESCRIPTION = field("Cat", "description");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String", isRequired = true) String description;
-  private final @ModelField(targetType="ExperienceCategories") @HasMany(associatedWith = "category", type = ExperienceCategories.class) List<ExperienceCategories> experiences = null;
-  private final @ModelField(targetType="BlogCategories") @HasMany(associatedWith = "category", type = BlogCategories.class) List<BlogCategories> blogs = null;
-  private final @ModelField(targetType="QuestionCategories") @HasMany(associatedWith = "category", type = QuestionCategories.class) List<QuestionCategories> questions = null;
+  private final @ModelField(targetType="ExperienceCategories") @HasMany(associatedWith = "cat", type = ExperienceCategories.class) List<ExperienceCategories> experiences = null;
+  private final @ModelField(targetType="BlogCategories") @HasMany(associatedWith = "cat", type = BlogCategories.class) List<BlogCategories> blogs = null;
+  private final @ModelField(targetType="QuestionCategories") @HasMany(associatedWith = "cat", type = QuestionCategories.class) List<QuestionCategories> questions = null;
   public String getId() {
       return id;
   }
@@ -53,7 +53,7 @@ public final class Category implements Model {
       return questions;
   }
   
-  private Category(String id, String title, String description) {
+  private Cat(String id, String title, String description) {
     this.id = id;
     this.title = title;
     this.description = description;
@@ -66,10 +66,10 @@ public final class Category implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-      Category category = (Category) obj;
-      return ObjectsCompat.equals(getId(), category.getId()) &&
-              ObjectsCompat.equals(getTitle(), category.getTitle()) &&
-              ObjectsCompat.equals(getDescription(), category.getDescription());
+      Cat cat = (Cat) obj;
+      return ObjectsCompat.equals(getId(), cat.getId()) &&
+              ObjectsCompat.equals(getTitle(), cat.getTitle()) &&
+              ObjectsCompat.equals(getDescription(), cat.getDescription());
       }
   }
   
@@ -86,7 +86,7 @@ public final class Category implements Model {
   @Override
    public String toString() {
     return new StringBuilder()
-      .append("Category {")
+      .append("Cat {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("title=" + String.valueOf(getTitle()) + ", ")
       .append("description=" + String.valueOf(getDescription()))
@@ -106,8 +106,8 @@ public final class Category implements Model {
    * @param id the id of the existing item this instance will represent
    * @return an instance of this model with only ID populated
    */
-  public static Category justId(String id) {
-    return new Category(
+  public static Cat justId(String id) {
+    return new Cat(
       id,
       null,
       null
@@ -130,7 +130,7 @@ public final class Category implements Model {
   
 
   public interface BuildStep {
-    Category build();
+    Cat build();
     BuildStep id(String id);
   }
   
@@ -140,10 +140,10 @@ public final class Category implements Model {
     private String title;
     private String description;
     @Override
-     public Category build() {
+     public Cat build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
-        return new Category(
+        return new Cat(
           id,
           title,
           description);

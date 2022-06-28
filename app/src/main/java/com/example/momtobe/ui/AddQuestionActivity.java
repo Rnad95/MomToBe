@@ -24,8 +24,9 @@ import android.widget.Spinner;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.generated.model.Category;
+import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Experience;
+import com.amplifyframework.datastore.generated.model.Question;
 import com.example.momtobe.R;
 
 import java.io.BufferedOutputStream;
@@ -40,7 +41,7 @@ import java.util.stream.Collectors;
 public class AddQuestionActivity extends AppCompatActivity {
     private static final String TAG = AddExperianceActivity.class.getName();
     private static final int REQUEST_CODE = 1234;
-    private ArrayList<Category> arrayListspinner3;
+    private ArrayList<Cat> arrayListspinner3;
     private Handler handler1;
     private Spinner spinner3;
 
@@ -54,7 +55,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     private Button button;
     private EditText title;
     private EditText description;
-    private Experience newQuestion;
+    private Question newQuestion;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -65,8 +66,8 @@ public class AddQuestionActivity extends AppCompatActivity {
         arrayListspinner3 = new ArrayList<>();
         button = findViewById(R.id.btn_register);
         image_Question = findViewById(R.id.Image_experiance);
-        title = findViewById(R.id.edit_Experiance_name);
-        description = findViewById(R.id.edit_Experiance_desc);
+        title = findViewById(R.id.edit_Question_name);
+        description = findViewById(R.id.edit_Question_desc);
 
 
         spinner3=findViewById(R.id.spinner);
@@ -87,7 +88,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         }
         );
         add_Spinner_API_Query();
-        image_Question.setOnClickListener(view ->pictureUpload() );
+//        image_Question.setOnClickListener(view ->pictureUpload() );
 
         button.setOnClickListener(view -> {
             String title1 = title.getText().toString();
@@ -95,22 +96,25 @@ public class AddQuestionActivity extends AppCompatActivity {
 
 
 
-            for (int i = 0; i < arrayListspinner3.size(); i++) {
-
-                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
-
-                    newQuestion = Experience.builder()
-                            .title(title1)
-                            .description(description1)
-                            .featured(false)
-                            .image(currentUri.toString())
-                            .build();
-                }
-            }
+//            for (int i = 0; i < arrayListspinner3.size(); i++) {
+//
+//                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
+//
+//
+//                }
+//
+//            }
+            newQuestion = Question.builder()
+                    .title(title1)
+                    .description(description1)
+                    .featured(false)
+                    .motherQuestionsId("aaaaaaaaaaaaaaaaaaaaaaaaaa")
+//                            .image(currentUri.toString())
+                    .build();
             Amplify.API.mutate(
                     ModelMutation.create(newQuestion),
                     response -> {
-                        Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getTitle());
+                        Log.i("MyAmplifyApp", "Added Todo with id Question: "+response );
                     },
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
@@ -118,10 +122,12 @@ public class AddQuestionActivity extends AppCompatActivity {
     }
     public void add_Spinner_API_Query() {
         Amplify.API.query(
-                ModelQuery.list(Category.class),
+                ModelQuery.list(Cat.class),
                 teamsName -> {
-                    for (Category note : teamsName.getData()) {
-                        arrayListspinner3.add(note);
+                    Log.i(TAG, "add_Spinner_API_Query: "+teamsName);
+
+                    for (Cat category : teamsName.getData()) {
+                        arrayListspinner3.add(category);
                     }
 
                     handler1.sendEmptyMessage(1);

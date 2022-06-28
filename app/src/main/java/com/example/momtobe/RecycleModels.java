@@ -38,6 +38,7 @@ public class RecycleModels extends RecyclerView.Adapter<RecycleModels.taskviewsh
         holder.description.setText(models.get(position).getDescription());
 //        holder.ImageView.setImageURI(models.get(position).getImage());
 
+
     }
 
     @Override
