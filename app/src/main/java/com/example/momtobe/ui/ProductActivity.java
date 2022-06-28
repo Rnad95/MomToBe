@@ -24,6 +24,7 @@ import com.amplifyframework.datastore.generated.model.Product;
 import com.example.momtobe.Blog;
 import com.example.momtobe.Experiance_activity;
 import com.example.momtobe.MainActivity;
+
 import com.example.momtobe.Question_avtivity;
 import com.example.momtobe.R;
 import com.example.momtobe.adapter.ProductCustomAdapter;
@@ -40,17 +41,27 @@ public class ProductActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-
-        /**
-         * bottom Navigation Bar
-         */
-        bottomNavigationView = findViewById(R.id.bottom_navigator);
-        bottomNavigationView.setSelectedItemId(R.id.market_page);
         navigationBar();
+//        navToActivity();
+//        ArrayList<Product> arrayList = new ArrayList<>();
+//
+//        Product product ;
+//
+//
+//        product = Product.builder()
+//                .title("Shoes")
+//                .price(100.00)
+//                .description("The best product")
+//                .featured(false)
+//                .build();
+//
+
+
 
         addProduct = findViewById(R.id.product_add_img);
 
@@ -137,17 +148,20 @@ public class ProductActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
 
+
                     case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.question_page:
-                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
-                        overridePendingTransition(0, 0);
                         return true;
+
                 }
                 return false;
             }
         });
+
     }
 
 

@@ -159,7 +159,6 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
     }
-
     private Boolean validateEmail(){
         String val = mEmailAddress.getEditText().getText().toString();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -175,7 +174,6 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         }
     }
-
     private void signUp(String username,String email, String password) {
 //
         AuthSignUpOptions options = AuthSignUpOptions.builder()

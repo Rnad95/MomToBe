@@ -32,6 +32,15 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+                <activity
+            android:name=".CommentActivity_Eperiance"
+            android:exported="false" />
+        <activity
+            android:name=".CommentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AddQuestionActivity"
+            android:exported="false" />
         <activity
             android:name=".MainDesignActivity"
             android:exported="false" />

@@ -9,7 +9,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Recycle_task"
+        android:id="@+id/Recycle_Comment"
         android:layout_width="370dp"
         android:layout_height="486dp"
         android:layout_alignParentStart="true"
@@ -26,34 +26,11 @@
         android:layout_height="46dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="152dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="78dp"
         android:gravity="center"
         android:text="@string/what_is_your_Experiance"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="78dp"
-        android:layout_height="48dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="81dp"
-        android:layout_marginEnd="19dp"
-        android:text="add" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="298dp"
-        android:layout_height="56dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="105dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="experiances" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigator"
@@ -65,6 +42,18 @@
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/Question_add_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="58dp"
+        android:contentDescription="Add Product"
+        android:elevation="6dp"
+        android:foregroundGravity="right|bottom"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 
 </RelativeLayout>
