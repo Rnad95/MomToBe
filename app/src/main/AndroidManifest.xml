@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MomToBe"
         tools:targetApi="31">
         <activity
+            android:name=".CommentActivity_Eperiance"
+            android:exported="false" />
+        <activity
             android:name=".CommentActivity"
             android:exported="false" />
         <activity
@@ -57,7 +60,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.ProductActivity"
-
+/>
         <activity
             android:name=".ui.AddProductActivity"
             android:exported="false" />

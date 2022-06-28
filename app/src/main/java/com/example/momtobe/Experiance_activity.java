@@ -40,13 +40,14 @@ public class Experiance_activity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     FloatingActionButton addExperince;
     private RecyclerView recycleExperince;
+    public static final String experianceName = "ExperianceName";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        ArrayList<Experience> taskArrayList=new ArrayList<>();
-        Intent intent = getIntent();
+
+//        Intent intent = getIntent();
 
 //        ActionBar actionBar = getSupportActionBar();
 
@@ -99,7 +100,7 @@ public class Experiance_activity extends AppCompatActivity {
                 return false;
             }
         });
-        recycleExperince = findViewById(R.id.Recycle_Question);
+        recycleExperince = findViewById(R.id.Recycle_Comment);
 
 
         handler=new Handler(
@@ -108,7 +109,10 @@ public class Experiance_activity extends AppCompatActivity {
                 Toast.makeText(
                         Experiance_activity.this,
                         "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-            
+                Intent intent=new Intent(getApplicationContext(),CommentActivity_Eperiance.class);
+                String experianceId=taskArrayList.get(position).getId();
+                intent.putExtra(experianceName,experianceId);
+                startActivity(intent);
             });
             recycleExperince.setAdapter(recycleModels);
             recycleExperince.setHasFixedSize(true);

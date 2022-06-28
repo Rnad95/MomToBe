@@ -76,6 +76,7 @@ public class Settings extends AppCompatActivity {
             Mother newMother = Mother.builder()
                     .name(name.getText().toString().equals(null)?mother.getName():name.getText().toString())
                     .numOfChildren(numberOfChildren.getText()==null? mother.getNumOfChildren():numOfChi)
+                    .emailAddress(showEmail)
                     .phoneNumber(phone.getText().toString()==null? mother.getPhoneNumber():phone.getText().toString())
                     .id(mother.getId())
                     .build();

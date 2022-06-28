@@ -24,13 +24,13 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Question;
 
-
 import com.example.momtobe.ui.AddExperianceActivity;
 
 import com.example.momtobe.ui.ProductActivity;
 
 
 import com.example.momtobe.ui.AddProductActivity;
+
 
 import com.example.momtobe.ui.AddQuestionActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -47,6 +47,7 @@ public class Question_avtivity extends AppCompatActivity {
     private static final String TAG = Question_avtivity.class.getName();
     private Handler handler;
     FloatingActionButton addQuestion;
+    public static final String Questionid = "questionId";
 
     Switch simpleSwitch1, simpleSwitch2,simpleSwitch3,simpleSwitch4,simpleSwitch5,simpleSwitch6;
 
@@ -62,8 +63,9 @@ public class Question_avtivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_avtivity);
 
-         navToActivities();
-        RecyclerView RecycleTask = findViewById(R.id.Recycle_Question);
+        RecyclerView RecycleTask = findViewById(R.id.Recycle_Comment);
+        navToActivities();
+
 
 
         DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
@@ -81,6 +83,11 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
                 Toast.makeText(
                         Question_avtivity.this,
                         "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getApplicationContext(),CommentActivity.class);
+                String QuestionId=taskArrayList.get(position).getId();
+                intent.putExtra(Questionid,QuestionId);
+                startActivity(intent);
+
             });
             RecycleTask.setAdapter(recycleModels);
             RecycleTask.setHasFixedSize(true);

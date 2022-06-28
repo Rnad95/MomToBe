@@ -21,7 +21,6 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 
-import com.amplifyframework.datastore.generated.model.Category;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.example.momtobe.registration.LoginActivity;

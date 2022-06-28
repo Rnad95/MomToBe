@@ -9,7 +9,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Recycle_Question"
+        android:id="@+id/Recycle_Comment"
         android:layout_width="370dp"
         android:layout_height="486dp"
         android:layout_alignParentStart="true"
