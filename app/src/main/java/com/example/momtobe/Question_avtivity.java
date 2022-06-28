@@ -24,10 +24,18 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Question;
 
+
 import com.example.momtobe.ui.AddExperianceActivity;
+
+import com.example.momtobe.ui.ProductActivity;
+
+
+import com.example.momtobe.ui.AddProductActivity;
+
 import com.example.momtobe.ui.AddQuestionActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -53,8 +61,10 @@ public class Question_avtivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_avtivity);
-//         navToActivities();
+
+         navToActivities();
         RecyclerView RecycleTask = findViewById(R.id.Recycle_Question);
+
 
         DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
         findViewById(R.id.imageMenu).setOnClickListener(view -> {
