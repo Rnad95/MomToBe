@@ -6,11 +6,14 @@ type Mother @model {
   image : String  #edit the name image_key of image_path
   numOfChildren : Int!
   phoneNumber : String
+  emailAddress:String!
+
 
   comments: [Comment] @hasMany
   products: [Product] @hasMany
   questions: [Question] @hasMany
   experiences: [Experience] @hasMany
+
 
   blogs : [Blog] @manyToMany(relationName: "userBlogs")
 }
@@ -75,6 +78,7 @@ type Product @ model {
   price: Float!
   description: String!
   quantity: Int
+
   image : String  #edit the name image_key of image_path
   featured: Boolean!
   comments: [Comment] @hasMany

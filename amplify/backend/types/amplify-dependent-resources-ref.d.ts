@@ -19,9 +19,16 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "storage": {
-        "s3185b1c84": {
+        "s302dc1ff1": {
             "BucketName": "string",
             "Region": "string"
+        }
+    },
+    "predictions": {
+        "speechGenerator5bbede17": {
+            "region": "string",
+            "language": "string",
+            "voice": "string"
         }
     }
 }

@@ -20,14 +20,14 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "QuestionCategories")
 @Index(name = "byQuestion", fields = {"questionID"})
-@Index(name = "byCategory", fields = {"categoryID"})
+@Index(name = "byCat", fields = {"catID"})
 public final class QuestionCategories implements Model {
   public static final QueryField ID = field("QuestionCategories", "id");
   public static final QueryField QUESTION = field("QuestionCategories", "questionID");
-  public static final QueryField CATEGORY = field("QuestionCategories", "categoryID");
+  public static final QueryField CAT = field("QuestionCategories", "catID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="Question", isRequired = true) @BelongsTo(targetName = "questionID", type = Question.class) Question question;
-  private final @ModelField(targetType="Category", isRequired = true) @BelongsTo(targetName = "categoryID", type = Category.class) Category category;
+  private final @ModelField(targetType="Cat", isRequired = true) @BelongsTo(targetName = "catID", type = Cat.class) Cat cat;
   public String getId() {
       return id;
   }
@@ -36,14 +36,14 @@ public final class QuestionCategories implements Model {
       return question;
   }
   
-  public Category getCategory() {
-      return category;
+  public Cat getCat() {
+      return cat;
   }
   
-  private QuestionCategories(String id, Question question, Category category) {
+  private QuestionCategories(String id, Question question, Cat cat) {
     this.id = id;
     this.question = question;
-    this.category = category;
+    this.cat = cat;
   }
   
   @Override
@@ -56,7 +56,7 @@ public final class QuestionCategories implements Model {
       QuestionCategories questionCategories = (QuestionCategories) obj;
       return ObjectsCompat.equals(getId(), questionCategories.getId()) &&
               ObjectsCompat.equals(getQuestion(), questionCategories.getQuestion()) &&
-              ObjectsCompat.equals(getCategory(), questionCategories.getCategory());
+              ObjectsCompat.equals(getCat(), questionCategories.getCat());
       }
   }
   
@@ -65,7 +65,7 @@ public final class QuestionCategories implements Model {
     return new StringBuilder()
       .append(getId())
       .append(getQuestion())
-      .append(getCategory())
+      .append(getCat())
       .toString()
       .hashCode();
   }
@@ -76,7 +76,7 @@ public final class QuestionCategories implements Model {
       .append("QuestionCategories {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("question=" + String.valueOf(getQuestion()) + ", ")
-      .append("category=" + String.valueOf(getCategory()))
+      .append("cat=" + String.valueOf(getCat()))
       .append("}")
       .toString();
   }
@@ -104,15 +104,15 @@ public final class QuestionCategories implements Model {
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
       question,
-      category);
+      cat);
   }
   public interface QuestionStep {
-    CategoryStep question(Question question);
+    CatStep question(Question question);
   }
   
 
-  public interface CategoryStep {
-    BuildStep category(Category category);
+  public interface CatStep {
+    BuildStep cat(Cat cat);
   }
   
 
@@ -122,10 +122,10 @@ public final class QuestionCategories implements Model {
   }
   
 
-  public static class Builder implements QuestionStep, CategoryStep, BuildStep {
+  public static class Builder implements QuestionStep, CatStep, BuildStep {
     private String id;
     private Question question;
-    private Category category;
+    private Cat cat;
     @Override
      public QuestionCategories build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -133,20 +133,20 @@ public final class QuestionCategories implements Model {
         return new QuestionCategories(
           id,
           question,
-          category);
+          cat);
     }
     
     @Override
-     public CategoryStep question(Question question) {
+     public CatStep question(Question question) {
         Objects.requireNonNull(question);
         this.question = question;
         return this;
     }
     
     @Override
-     public BuildStep category(Category category) {
-        Objects.requireNonNull(category);
-        this.category = category;
+     public BuildStep cat(Cat cat) {
+        Objects.requireNonNull(cat);
+        this.cat = cat;
         return this;
     }
     
@@ -162,10 +162,10 @@ public final class QuestionCategories implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, Question question, Category category) {
+    private CopyOfBuilder(String id, Question question, Cat cat) {
       super.id(id);
       super.question(question)
-        .category(category);
+        .cat(cat);
     }
     
     @Override
@@ -174,8 +174,8 @@ public final class QuestionCategories implements Model {
     }
     
     @Override
-     public CopyOfBuilder category(Category category) {
-      return (CopyOfBuilder) super.category(category);
+     public CopyOfBuilder cat(Cat cat) {
+      return (CopyOfBuilder) super.cat(cat);
     }
   }
   
