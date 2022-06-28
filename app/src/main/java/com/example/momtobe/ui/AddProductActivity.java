@@ -9,8 +9,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,12 +31,15 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AddProductActivity extends AppCompatActivity {
 
     private static final String TAG = AddProductActivity.class.getSimpleName();
     public static final int REQUEST_CODE = 123;
     private String imageKey = "" ;
+    private String userId ;
 
     private ImageView productImage;
     private Button addProduct ;
@@ -59,30 +66,53 @@ public class AddProductActivity extends AppCompatActivity {
         productImage.setOnClickListener(view -> uploadImage());
 
         // AWS Add product api
+        addProduct.setOnClickListener(view -> addProduct());
 
-        addProduct();
 
     }
 
 
     public void addProduct(){
 
+        // Product handler
+
+        Handler handler1 = new Handler(Looper.getMainLooper() , msg -> {
+
+
+            Product product = Product.builder()
+                    .title(addTitle.getText().toString())
+                    .price(Double.parseDouble(addPrice.getText().toString()))
+                    .description(addDesc.getText().toString())
+                    .featured(false)
+                    .image(imageKey)
+                    .quantity(Integer.parseInt(addQuantity.getText().toString()))
+                    .motherProductsId(userId)
+                    .build() ;
+
+            Amplify.API.mutate(ModelMutation.create(product) ,
+                    success -> Log.i(TAG, "Saved item API") ,
+                    error -> Log.e(TAG, "Could not save item to DataStore", error)
+            );
+
+            startActivity(new Intent(getApplicationContext() , ProductActivity.class));
+
+            return true ;
+        });
+
         Amplify.Auth.fetchUserAttributes(
-                attributes -> Log.i("AuthDemo", "User attributes = " + attributes.get(0).getValue().toString()),
+                attributes ->{
+                     userId = attributes.get(0).getValue();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler1.sendMessage(message);
+                },
                 error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
         );
-//        Product product = Product.builder()
-//                .title(addTitle.getText().toString())
-//                .price(addPrice.getText().toString())
-//                .description(addDesc.getText().toString())
-//                .featured(false)
-//                .image(imageKey)
-//                .motherProductsId()
 
-//        Amplify.API.mutate(ModelMutation.create(item) ,
-//                    success -> Log.i(TAG, "Saved item API") ,
-//                    error -> Log.e(TAG, "Could not save item to DataStore", error)
-//            );
+
     }
 
 
@@ -171,5 +201,6 @@ public class AddProductActivity extends AppCompatActivity {
         addPrice = findViewById(R.id.edit_product_price);
         addQuantity = findViewById(R.id.edit_product_quantity);
         productImage = findViewById(R.id.avatar);
+        addProduct = findViewById(R.id.btn_add_product);
     }
 }

@@ -65,7 +65,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Polly",
       "convertType": "speechGenerator"
-
     }
   }
 }

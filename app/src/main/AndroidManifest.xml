@@ -15,25 +15,14 @@
         android:theme="@style/Theme.MomToBe"
         tools:targetApi="31">
         <activity
-            android:name=".CommentActivity_Eperiance"
-            android:exported="false" />
-        <activity
-            android:name=".CommentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.AddQuestionActivity"
+            android:name=".ui.ProductDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".registration.VerificationActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.AddExperianceActivity"
-            android:exported="false" />
-        <activity
             android:name=".registration.SignUpActivity"
             android:exported="true" />
-
-
         <activity
             android:name=".registration.LoginActivity"
             android:exported="false">
@@ -43,6 +32,15 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+                <activity
+            android:name=".CommentActivity_Eperiance"
+            android:exported="false" />
+        <activity
+            android:name=".CommentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AddQuestionActivity"
+            android:exported="false" />
         <activity
             android:name=".MainDesignActivity"
             android:exported="false" />
@@ -50,17 +48,20 @@
             android:name=".Experiance_activity"
             android:exported="false" />
         <activity
-            android:name=".Profile"
-            android:exported="false" />
-        <activity
             android:name=".Question_avtivity"
             android:exported="false" />
         <activity
-            android:name=".SavedActivity"
+            android:name=".Saved"
             android:exported="false" />
         <activity
             android:name=".ui.ProductActivity"
-/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.AddProductActivity"
             android:exported="false" />
@@ -75,7 +76,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"></activity>
     </application>
 
 </manifest>

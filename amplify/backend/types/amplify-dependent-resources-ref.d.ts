@@ -1,41 +1,78 @@
-export type AmplifyDependentResourcesAttributes = {
-    "api": {
-        "momtobe": {
-            "GraphQLAPIKeyOutput": "string",
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
+{
+  "api": {
+    "momtobe": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 100,
+              "apiKeyExpirationDate": "2022-10-05T09:28:43.195Z",
+              "description": "jgjgj"
+            }
+          },
+          "additionalAuthenticationProviders": []
         }
-    },
-    "auth": {
-        "momtobe40d2e53d": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
-            "UserPoolId": "string",
-            "UserPoolArn": "string",
-            "UserPoolName": "string",
-            "AppClientIDWeb": "string",
-            "AppClientID": "string",
-            "CreatedSNSRole": "string"
-        }
-    },
-    "storage": {
-<<<<<<< HEAD
-        "s302dc1ff1": {
-            "BucketName": "string",
-            "Region": "string"
-        }
-    },
-    "predictions": {
-        "speechGenerator5bbede17": {
-            "region": "string",
-            "language": "string",
-            "voice": "string"
-        }
-=======
-        "s3185b1c84": {
-            "BucketName": "string",
-            "Region": "string"
-        }
->>>>>>> aeb49ad96ced964e4ed368866b223f7b01a4276f
+      }
     }
+  },
+  "auth": {
+    "momtobe40d2e53d": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      }
+    }
+  },
+  "storage": {
+    "s302dc1ff1": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+
+    },
+    "s302dc1ff1": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  },
+  "predictions": {
+    "speechGenerator5bbede17": {
+      "providerPlugin": "awscloudformation",
+      "service": "Polly",
+      "convertType": "speechGenerator"
+
+    }
+  },
+  "predictions": {
+    "speechGenerator5bbede17": {
+      "providerPlugin": "awscloudformation",
+      "service": "Polly",
+      "convertType": "speechGenerator"
+    }
+  }
 }

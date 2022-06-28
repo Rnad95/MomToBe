@@ -15,11 +15,10 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/blog_archive_recycler"
+        android:id="@+id/product_archive_recycler"
         android:layout_width="334dp"
         android:layout_height="532dp"
-        android:layout_centerInParent="true"
-        />
+        android:layout_centerInParent="true" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigator"
@@ -32,17 +31,16 @@
         app:menu="@menu/menu" />
 
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/product_add_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="Add Product"
         android:elevation="6dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:foregroundGravity="right|bottom"
         app:srcCompat="@android:drawable/ic_input_add" />
 
