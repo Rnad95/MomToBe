@@ -40,10 +40,6 @@ public class RecycleModels_Question extends RecyclerView.Adapter<RecycleModels_Q
         holder.title.setText(models.get(position).getTitle());
         holder.description.setText(models.get(position).getDescription());
 //        holder.Question_image.setImageURI(models.get(position).getImage());
-        holder.More_comment.setOnClickListener(view -> {
-//            Intent intent=new Intent(Question_avtivity.class,CommentActivity.class)
-        });
-
     }
 
     @Override
@@ -55,13 +51,13 @@ public class RecycleModels_Question extends RecyclerView.Adapter<RecycleModels_Q
     class taskviewsholoder extends RecyclerView.ViewHolder {
         TextView description;
         TextView title;
-        TextView More_comment;
+
 ImageView Question_image;
         public taskviewsholoder(@NonNull View itemView, CustomClickListener listener) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             description=itemView.findViewById(R.id.description);
-            More_comment=itemView.findViewById(R.id.More_comment);
+
             Question_image=itemView.findViewById(R.id.imageView2);
             itemView.setOnClickListener(view -> listener.taskItemClicked(getAdapterPosition()));
 

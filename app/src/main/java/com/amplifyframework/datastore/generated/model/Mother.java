@@ -25,12 +25,14 @@ public final class Mother implements Model {
   public static final QueryField IMAGE = field("Mother", "image");
   public static final QueryField NUM_OF_CHILDREN = field("Mother", "numOfChildren");
   public static final QueryField PHONE_NUMBER = field("Mother", "phoneNumber");
+  public static final QueryField EMAIL_ADDRESS = field("Mother", "emailAddress");
   public static final QueryField ADDRESS_MOTHERS_ID = field("Mother", "addressMothersId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String name;
   private final @ModelField(targetType="String") String image;
   private final @ModelField(targetType="Int", isRequired = true) Integer numOfChildren;
   private final @ModelField(targetType="String") String phoneNumber;
+  private final @ModelField(targetType="String", isRequired = true) String emailAddress;
   private final @ModelField(targetType="Comment") @HasMany(associatedWith = "motherCommentsId", type = Comment.class) List<Comment> comments = null;
   private final @ModelField(targetType="Product") @HasMany(associatedWith = "motherProductsId", type = Product.class) List<Product> products = null;
   private final @ModelField(targetType="Question") @HasMany(associatedWith = "motherQuestionsId", type = Question.class) List<Question> questions = null;
@@ -57,6 +59,10 @@ public final class Mother implements Model {
       return phoneNumber;
   }
   
+  public String getEmailAddress() {
+      return emailAddress;
+  }
+  
   public List<Comment> getComments() {
       return comments;
   }
@@ -81,12 +87,13 @@ public final class Mother implements Model {
       return addressMothersId;
   }
   
-  private Mother(String id, String name, String image, Integer numOfChildren, String phoneNumber, String addressMothersId) {
+  private Mother(String id, String name, String image, Integer numOfChildren, String phoneNumber, String emailAddress, String addressMothersId) {
     this.id = id;
     this.name = name;
     this.image = image;
     this.numOfChildren = numOfChildren;
     this.phoneNumber = phoneNumber;
+    this.emailAddress = emailAddress;
     this.addressMothersId = addressMothersId;
   }
   
@@ -103,6 +110,7 @@ public final class Mother implements Model {
               ObjectsCompat.equals(getImage(), mother.getImage()) &&
               ObjectsCompat.equals(getNumOfChildren(), mother.getNumOfChildren()) &&
               ObjectsCompat.equals(getPhoneNumber(), mother.getPhoneNumber()) &&
+              ObjectsCompat.equals(getEmailAddress(), mother.getEmailAddress()) &&
               ObjectsCompat.equals(getAddressMothersId(), mother.getAddressMothersId());
       }
   }
@@ -115,6 +123,7 @@ public final class Mother implements Model {
       .append(getImage())
       .append(getNumOfChildren())
       .append(getPhoneNumber())
+      .append(getEmailAddress())
       .append(getAddressMothersId())
       .toString()
       .hashCode();
@@ -129,6 +138,7 @@ public final class Mother implements Model {
       .append("image=" + String.valueOf(getImage()) + ", ")
       .append("numOfChildren=" + String.valueOf(getNumOfChildren()) + ", ")
       .append("phoneNumber=" + String.valueOf(getPhoneNumber()) + ", ")
+      .append("emailAddress=" + String.valueOf(getEmailAddress()) + ", ")
       .append("addressMothersId=" + String.valueOf(getAddressMothersId()))
       .append("}")
       .toString();
@@ -153,6 +163,7 @@ public final class Mother implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -163,6 +174,7 @@ public final class Mother implements Model {
       image,
       numOfChildren,
       phoneNumber,
+      emailAddress,
       addressMothersId);
   }
   public interface NameStep {
@@ -171,7 +183,12 @@ public final class Mother implements Model {
   
 
   public interface NumOfChildrenStep {
-    BuildStep numOfChildren(Integer numOfChildren);
+    EmailAddressStep numOfChildren(Integer numOfChildren);
+  }
+  
+
+  public interface EmailAddressStep {
+    BuildStep emailAddress(String emailAddress);
   }
   
 
@@ -184,10 +201,11 @@ public final class Mother implements Model {
   }
   
 
-  public static class Builder implements NameStep, NumOfChildrenStep, BuildStep {
+  public static class Builder implements NameStep, NumOfChildrenStep, EmailAddressStep, BuildStep {
     private String id;
     private String name;
     private Integer numOfChildren;
+    private String emailAddress;
     private String image;
     private String phoneNumber;
     private String addressMothersId;
@@ -201,6 +219,7 @@ public final class Mother implements Model {
           image,
           numOfChildren,
           phoneNumber,
+          emailAddress,
           addressMothersId);
     }
     
@@ -212,9 +231,16 @@ public final class Mother implements Model {
     }
     
     @Override
-     public BuildStep numOfChildren(Integer numOfChildren) {
+     public EmailAddressStep numOfChildren(Integer numOfChildren) {
         Objects.requireNonNull(numOfChildren);
         this.numOfChildren = numOfChildren;
+        return this;
+    }
+    
+    @Override
+     public BuildStep emailAddress(String emailAddress) {
+        Objects.requireNonNull(emailAddress);
+        this.emailAddress = emailAddress;
         return this;
     }
     
@@ -248,10 +274,11 @@ public final class Mother implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name, String image, Integer numOfChildren, String phoneNumber, String addressMothersId) {
+    private CopyOfBuilder(String id, String name, String image, Integer numOfChildren, String phoneNumber, String emailAddress, String addressMothersId) {
       super.id(id);
       super.name(name)
         .numOfChildren(numOfChildren)
+        .emailAddress(emailAddress)
         .image(image)
         .phoneNumber(phoneNumber)
         .addressMothersId(addressMothersId);
@@ -265,6 +292,11 @@ public final class Mother implements Model {
     @Override
      public CopyOfBuilder numOfChildren(Integer numOfChildren) {
       return (CopyOfBuilder) super.numOfChildren(numOfChildren);
+    }
+    
+    @Override
+     public CopyOfBuilder emailAddress(String emailAddress) {
+      return (CopyOfBuilder) super.emailAddress(emailAddress);
     }
     
     @Override

@@ -40,10 +40,5 @@
             android:layout_height="141dp"
             app:srcCompat="@drawable/ic_baseline_face_24" />
 
-        <TextView
-            android:id="@+id/More_comment"
-            android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:text="No More_comment" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

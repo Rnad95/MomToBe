@@ -9,16 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Comment;
 import com.amplifyframework.datastore.generated.model.Experience;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecycleModel_comment extends RecyclerView.Adapter<RecycleModel_comment.taskviewsholoder> {
-    List<Experience> models;
+    List<Comment> models;
     RecycleModel_comment.CustomClickListener listener;
 
-    public RecycleModel_comment(ArrayList<Experience> models, RecycleModel_comment.CustomClickListener listener) {
+    public RecycleModel_comment(ArrayList<Comment> models, RecycleModel_comment.CustomClickListener listener) {
         this.models = models;
         this.listener = listener;
     }
@@ -33,7 +34,7 @@ public class RecycleModel_comment extends RecyclerView.Adapter<RecycleModel_comm
 
     @Override
     public void onBindViewHolder(@NonNull taskviewsholoder holder, int position) {
-        holder.title.setText(models.get(position).getTitle());
+        holder.title.setText(models.get(position).getContent());
 
     }
 
