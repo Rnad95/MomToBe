@@ -21,6 +21,7 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.example.momtobe.registration.LoginActivity;
@@ -39,11 +40,13 @@ public class MainActivity extends AppCompatActivity {
     private Button mLogoutBtn;
     private Button mFavoriteBtn;
     private String showEmail;
+    private Mother mother ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         navToActivity();
 
         ButtonSelector();
@@ -83,29 +86,18 @@ public class MainActivity extends AppCompatActivity {
     private void ButtonOnListener(){
         mProfileBtn.setOnClickListener(view ->{
             SentEmailToUserActivity();
-//            navigateToProfile();
         });
         mSettingBtn.setOnClickListener(view ->{
             SentEmailToSettingsActivity();
-//            navigateToSetting();
         });
 
         mLogoutBtn.setOnClickListener(view-> {
             logout();
         });
+
 //        mFavoriteBtn.setOnClickListener(view-> {
 //            startActivity(new Intent(MainActivity.this,SavedActivity.class));
 //        });
-    }
-    private void navigateToProfile(){
-        Intent intent = new Intent(MainActivity.this,Profile.class);
-        startActivity(intent);
-
-    }
-    private void navigateToSetting(){
-        Intent intent = new Intent(MainActivity.this,Settings.class);
-        startActivity(intent);
-
     }
     private void navToActivity(){
 
@@ -127,7 +119,9 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.blogs_page:
-                        startActivity(new Intent(getApplicationContext(),Blog.class));
+                        Intent intent = new Intent(getApplicationContext(),Blog.class);
+                        intent.putExtra("EMAIL_ADDRESS",showEmail);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
 

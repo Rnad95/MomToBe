@@ -66,7 +66,7 @@ public final class Blog implements Model {
       return mothers;
   }
   
-  private Blog(String id, String title, String description, String image, String autherName, Boolean featured) {
+  public Blog(String id, String title, String description, String image, String autherName, Boolean featured) {
     this.id = id;
     this.title = title;
     this.description = description;

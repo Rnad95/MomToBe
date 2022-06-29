@@ -17,12 +17,14 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
+import com.bumptech.glide.Glide;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -42,6 +44,7 @@ public class Settings extends AppCompatActivity {
     Handler handler;
     Button save_btn;
     ImageButton updateImage ;
+    ImageView imageView ;
 
 
     @Override
@@ -58,8 +61,8 @@ public class Settings extends AppCompatActivity {
 
         handler =  new Handler(Looper.getMainLooper() , msg -> {
             Log.i(TAG, "onCreate: 35 mother -> "+mother);
-//            showImage();
             setSaveButton(mother);
+            showImage();
 
             updateImage = findViewById(R.id.set_change_picture);
             updateImage.setOnClickListener(view -> uploadImage());
@@ -67,6 +70,7 @@ public class Settings extends AppCompatActivity {
          return true ;
         });
     }
+
 
     void findMotherAPI (){
         Amplify.API.query(
@@ -100,6 +104,7 @@ public class Settings extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, REQUEST_CODE);
+        showImage();
 
     }
 
@@ -165,7 +170,28 @@ public class Settings extends AppCompatActivity {
         return image;
     }
 
-    void showImage(){  //TODO waiting for s3 -> hamze
+    void showImage(){
+        imageView = findViewById(R.id.set_profile_picture);
+        Bundle bundle = getIntent().getExtras();
+        String imageKey = bundle.getString("imageLink");
+
+        if (imageKey != null) {
+            setImage(imageKey);
+        }
+    }
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
     }
 
     void setSaveButton (Mother mother){

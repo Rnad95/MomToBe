@@ -40,7 +40,7 @@ public final class UserBlogs implements Model {
       return blog;
   }
   
-  private UserBlogs(String id, Mother mother, Blog blog) {
+  public UserBlogs(String id, Mother mother, Blog blog) {
     this.id = id;
     this.mother = mother;
     this.blog = blog;

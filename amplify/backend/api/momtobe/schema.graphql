@@ -43,8 +43,6 @@ type Blog @model {
 
   categories : [Cat] @manyToMany(relationName: "blogCategories")
   mothers : [Mother] @manyToMany(relationName: "userBlogs")
-
-
 }
 
 type Question @model {

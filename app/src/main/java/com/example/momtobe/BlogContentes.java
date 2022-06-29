@@ -10,8 +10,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Blog;
+import com.amplifyframework.datastore.generated.model.Mother;
+import com.amplifyframework.datastore.generated.model.UserBlogs;
+import com.bumptech.glide.Glide;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,6 +28,11 @@ public class BlogContentes extends AppCompatActivity {
 
     private static final String TAG = "blogContent";
     private final MediaPlayer mp = new MediaPlayer();
+    Mother mother ;
+    String email ;
+    Blog blog ;
+    ImageView imageView ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +40,7 @@ public class BlogContentes extends AppCompatActivity {
         setContentView(R.layout.activity_blog_contentes);
 
         setData();
-
-
-
-//        setBlogImage();
+        setBlogImage();
 //        setSaveBtn();
 
         readContent();
@@ -54,17 +60,54 @@ public class BlogContentes extends AppCompatActivity {
         TextView authorNameView = findViewById(R.id.author_name);
         authorNameView.setText(authorName);
 
-
     }
     void setBlogImage (){
-        ImageView image = findViewById(R.id.blogImage);
+        imageView = findViewById(R.id.blogImage);
+        Bundle bundle = getIntent().getExtras();
+        String imageKey = bundle.getString("imageLink");
+        if (imageKey != null) {
+            setImage(imageKey);
+        }
+    }
+    private void setImage(String image) {
+        Log.i(TAG, "setBlogImage:  -> 73"+ image);
 
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image ),
+                    result -> {
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
     }
 
 
     void setSaveBtn (){
         Button save_btn = findViewById(R.id.save_blog);
         save_btn.setOnClickListener(view->{
+            Bundle bundle = new Bundle();
+            email =  bundle.getString("motherEmail") ;
+            Amplify.API.query(ModelQuery.list(Mother.class),
+                    success->{
+                        if(success.hasData())
+                            for(Mother mother : success.getData()){
+                                {
+                                    if(mother.getEmailAddress().equals(email)){
+                                        UserBlogs userBlogs = new UserBlogs(mother.getId()+blog.getId(),mother,blog);
+                                        mother.getBlogs().add(userBlogs);
+                                        blog.getMothers().add(userBlogs);
+                                    }
+                                }
+                        }
+                    },
+                    fail->{
+
+                    });
 
         });
 

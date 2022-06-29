@@ -67,6 +67,10 @@ public class Blog extends AppCompatActivity {
                     intent.putExtra("author",blogsListTest.get(position).getAuthor());
                     intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
                     intent.putExtra("category",blogsListTest.get(position).getCategory());
+
+                    Bundle bundle = new Bundle();
+                    intent.putExtra("motherEmail",bundle.getString("EMAIL_ADDRESS"));
+
                     startActivity(intent);
                 }
             });
