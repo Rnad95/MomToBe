@@ -113,21 +113,6 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
         );
 
 
-        Amplify.DataStore.observe(Question.class,
-                started -> Log.i(TAG, "Observation began."),
-                change -> {Log.i(TAG, change.item().toString());
-
-                    Bundle bundle=new Bundle();
-                    bundle.putString(QUESTION_Array,change.item().toString());
-                    Message message=new Message();
-                    message.setData(bundle);
-                    handler.sendMessage(message);
-
-
-},
-        failure -> Log.e(TAG, "Observation failed.", failure),
-        () -> Log.i(TAG, "Observation complete.")
-        );
 
         simpleSwitch1 =  findViewById(R.id.switch1);
         simpleSwitch2 =  findViewById(R.id.switch2);

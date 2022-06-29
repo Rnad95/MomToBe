@@ -52,8 +52,9 @@ dependencies {
     // Country Code Picker
     implementation 'com.hbb20:ccp:2.5.4'
 
-    // Product
 
+    // Product
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
 
 
 }

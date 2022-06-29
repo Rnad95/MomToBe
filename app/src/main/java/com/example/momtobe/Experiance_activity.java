@@ -135,22 +135,22 @@ public class Experiance_activity extends AppCompatActivity {
                 error -> Log.e(TAG, error.toString())
         );
 
-        Amplify.DataStore.observe(Experience.class,
-                started -> Log.i(TAG, "Observation began."),
-                change -> {Log.i(TAG, change.item().toString());
-
-                    Bundle bundle=new Bundle();
-                    bundle.putString(EXPERIANCE_Array,change.item().toString());
-
-                    Message message=new Message();
-                    message.setData(bundle);
-                    handler.sendMessage(message);
-
-
-                },
-                failure -> Log.e(TAG, "Observation failed.", failure),
-                () -> Log.i(TAG, "Observation complete.")
-        );
+//        Amplify.DataStore.observe(Experience.class,
+//                started -> Log.i(TAG, "Observation began."),
+//                change -> {Log.i(TAG, change.item().toString());
+//
+//                    Bundle bundle=new Bundle();
+//                    bundle.putString(EXPERIANCE_Array,change.item().toString());
+//
+//                    Message message=new Message();
+//                    message.setData(bundle);
+//                    handler.sendMessage(message);
+//
+//
+//                },
+//                failure -> Log.e(TAG, "Observation failed.", failure),
+//                () -> Log.i(TAG, "Observation complete.")
+//        );
 
     }
 }

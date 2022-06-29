@@ -1,5 +1,6 @@
 package com.example.momtobe;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.Question;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,4 +68,21 @@ public class RecycleModels extends RecyclerView.Adapter<RecycleModels.taskviewsh
     public interface CustomClickListener {
         void taskItemClicked(int position);
     }
+//    private void setImage(String image) {
+//        if(image != null) {
+//            Amplify.Storage.downloadFile(
+//                    image,
+//                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+//                    result -> {
+//                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+//                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+//                        runOnUiThread(() -> {
+//                            Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView);
+//                        });
+//                    },
+//                    error -> Log.e(TAG, "Download Failure", error)
+//            );
+//        }
+//    }
+
 }

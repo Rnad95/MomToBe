@@ -21,7 +21,9 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Comment;
 import com.amplifyframework.datastore.generated.model.Question;
+import com.bumptech.glide.Glide;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class CommentActivity extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class CommentActivity extends AppCompatActivity {
     private Comment newComment;
     private Question question_item;
     private ImageView imageViewComment;
+    private String imageKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,10 @@ public class CommentActivity extends AppCompatActivity {
         );
         handler1=new Handler(
                 Looper.getMainLooper(), msg -> {
+            imageKey=question_item.getImage();
+            if (imageKey != null) {
+                setImage(imageKey);
+            }
 //            imageViewComment.setImageURI(question_item.getImage());
             titleComment.setText(question_item.getTitle());
             descriptionComment.setText(question_item.getDescription());
@@ -86,19 +93,19 @@ public class CommentActivity extends AppCompatActivity {
                 error -> Log.e(TAG, error.toString())
         );
 
-        Amplify.DataStore.observe(Comment.class,
-                started -> Log.i(TAG, "Observation began."),
-                change -> {Log.i(TAG, change.item().toString());
-
-                    Bundle bundle=new Bundle();
-                    bundle.putString(COMMENT_Array,change.item().toString());
-                    Message message=new Message();
-                    message.setData(bundle);
-                    handler.sendMessage(message);
-                    },
-                failure -> Log.e(TAG, "Observation failed.", failure),
-                () -> Log.i(TAG, "Observation complete.")
-        );
+//        Amplify.DataStore.observe(Comment.class,
+//                started -> Log.i(TAG, "Observation began."),
+//                change -> {Log.i(TAG, change.item().toString());
+//
+//                    Bundle bundle=new Bundle();
+//                    bundle.putString(COMMENT_Array,change.item().toString());
+//                    Message message=new Message();
+//                    message.setData(bundle);
+//                    handler.sendMessage(message);
+//                    },
+//                failure -> Log.e(TAG, "Observation failed.", failure),
+//                () -> Log.i(TAG, "Observation complete.")
+//        );
 
         send.setOnClickListener(view -> {
             String content=comment.getText().toString();
@@ -107,7 +114,7 @@ public class CommentActivity extends AppCompatActivity {
                     .experienceCommentsId("sssssss")
                     .productCommentsId("ppppppp")
                     .motherCommentsId("mmmmmmmmmmm")
-                    .questionCommentsId("qqqqqqqqqqqq")
+                    .questionCommentsId(Questionid)
                     .build();
 
             Amplify.API.mutate(
@@ -122,5 +129,21 @@ public class CommentActivity extends AppCompatActivity {
 
 
 
+    }
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> {
+                            Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageViewComment);
+                        });
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
     }
 }
