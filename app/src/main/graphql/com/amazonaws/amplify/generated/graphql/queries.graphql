@@ -6,6 +6,7 @@ query GetMother($id: ID!) {
     image
     numOfChildren
     phoneNumber
+    emailAddress
     comments {
       items {
         id
@@ -87,6 +88,7 @@ query ListMothers(
       image
       numOfChildren
       phoneNumber
+      emailAddress
       comments {
         nextToken
       }
@@ -154,6 +156,7 @@ query GetAddress($id: ID!) {
         image
         numOfChildren
         phoneNumber
+        emailAddress
         createdAt
         updatedAt
         addressMothersId
@@ -484,6 +487,7 @@ query GetUserBlogs($id: ID!) {
       image
       numOfChildren
       phoneNumber
+      emailAddress
       comments {
         nextToken
       }
@@ -539,6 +543,7 @@ query ListUserBlogs(
         image
         numOfChildren
         phoneNumber
+        emailAddress
         createdAt
         updatedAt
         addressMothersId

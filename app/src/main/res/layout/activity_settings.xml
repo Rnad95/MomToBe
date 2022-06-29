@@ -36,6 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:labelFor="@+id/set_mother_phone"
+        android:maxLength="9"
         app:layout_constraintBottom_toTopOf="@+id/set_children_number"
         app:layout_constraintEnd_toEndOf="@+id/set_children_number"
         app:layout_constraintHorizontal_bias="0.0"

@@ -16,7 +16,35 @@
           },
           "additionalAuthenticationProviders": []
         }
+<<<<<<< HEAD
+    },
+    "auth": {
+        "momtobe40d2e53d": {
+            "IdentityPoolId": "string",
+            "IdentityPoolName": "string",
+            "UserPoolId": "string",
+            "UserPoolArn": "string",
+            "UserPoolName": "string",
+            "AppClientIDWeb": "string",
+            "AppClientID": "string",
+            "CreatedSNSRole": "string"
+        }
+    },
+    "storage": {
+        "s302dc1ff1": {
+            "BucketName": "string",
+            "Region": "string"
+        }
+    },
+    "predictions": {
+        "speechGenerator5bbede17": {
+            "region": "string",
+            "language": "string",
+            "voice": "string"
+        }
+=======
       }
+>>>>>>> 0dd3aea9f3bd9bf8590ae52f5654ef47538d5343
     }
   },
   "auth": {
