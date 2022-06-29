@@ -1,6 +1,8 @@
 package com.example.momtobe;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +20,11 @@ import java.util.List;
 public class RecycleModels_Question extends RecyclerView.Adapter<RecycleModels_Question.taskviewsholoder>{
     List<Question> models;
     CustomClickListener listener;
-
-    public RecycleModels_Question(ArrayList<Question> models, CustomClickListener listener) {
+    Context mContext ;
+    public RecycleModels_Question(Context context ,ArrayList<Question> models, CustomClickListener listener) {
         this.models = models;
         this.listener = listener;
+        this.mContext = context ;
     }
 
     @NonNull
@@ -40,6 +43,9 @@ public class RecycleModels_Question extends RecyclerView.Adapter<RecycleModels_Q
         holder.title.setText(models.get(position).getTitle());
         holder.description.setText(models.get(position).getDescription());
 //        holder.Question_image.setImageURI(models.get(position).getImage());
+        holder.Question_image.setImageURI(Uri.parse(mContext.getFilesDir()+ "/" + models.get(position).getImage() + "download.jpg"));
+
+
     }
 
     @Override

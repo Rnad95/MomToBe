@@ -35,6 +35,7 @@ public class MomToBeApplication extends Application {
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSS3StoragePlugin());
             Amplify.addPlugin(new AWSPredictionsPlugin());
+
             Amplify.configure(getApplicationContext());
 
 
