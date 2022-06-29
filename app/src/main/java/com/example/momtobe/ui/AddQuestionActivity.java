@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -46,6 +47,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     private Handler handler1;
     private Spinner spinner3;
     private String imageKey = "" ;
+    private String userId ;
 
     private static final int REQUEST_CODE_SEND = 4567;
 
@@ -110,7 +112,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                     .title(title1)
                     .description(description1)
                     .featured(false)
-                    .motherQuestionsId("aaaaaaaaaaaaaaaaaaaaaaaaaa")
+                    .motherQuestionsId(userId)
 //                            .image(currentUri.toString())
                     .build();
             Amplify.API.mutate(
@@ -121,6 +123,18 @@ public class AddQuestionActivity extends AppCompatActivity {
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
         });
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    userId = attributes.get(0).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler1.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
     }
     public void add_Spinner_API_Query() {
         Amplify.API.query(

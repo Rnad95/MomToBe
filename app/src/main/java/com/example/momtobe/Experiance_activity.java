@@ -41,6 +41,7 @@ public class Experiance_activity extends AppCompatActivity {
     FloatingActionButton addExperince;
     private RecyclerView recycleExperince;
     public static final String experianceName = "ExperianceName";
+    public static final String MotherExperiences = "motherExperiences";
 
 
     @Override
@@ -105,13 +106,15 @@ public class Experiance_activity extends AppCompatActivity {
 
         handler=new Handler(
                 Looper.getMainLooper(), msg -> {
-            RecycleModels recycleModels = new RecycleModels(taskArrayList, position -> {
+            RecycleModels recycleModels = new RecycleModels(getApplicationContext(),taskArrayList, position -> {
                 Toast.makeText(
                         Experiance_activity.this,
                         "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getApplicationContext(),CommentActivity_Eperiance.class);
                 String experianceId=taskArrayList.get(position).getId();
+                String MotherExperiencesId=taskArrayList.get(position).getMotherExperiencesId();
                 intent.putExtra(experianceName,experianceId);
+                intent.putExtra(MotherExperiences,MotherExperiencesId);
                 startActivity(intent);
             });
             recycleExperince.setAdapter(recycleModels);

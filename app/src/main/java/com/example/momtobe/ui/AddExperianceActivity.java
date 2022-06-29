@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -45,7 +46,7 @@ public class AddExperianceActivity extends AppCompatActivity {
     private Handler handler1;
     private Spinner spinner3;
     private String imageKey = "" ;
-
+    private String userId ;
 
 
     private ImageView image_experiance;
@@ -94,7 +95,7 @@ image_experiance.setOnClickListener(view ->uploadImage());
                     .description(description1)
                     .featured(false)
                             .image(imageKey)
-                    .motherExperiencesId("ssssssssssssssssssss")
+                    .motherExperiencesId(userId)
                     .build();
             Amplify.API.mutate(
                     ModelMutation.create(newExperience),
@@ -109,7 +110,18 @@ image_experiance.setOnClickListener(view ->uploadImage());
 
         });
 
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    userId = attributes.get(0).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
 
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler1.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
 
 
 
@@ -217,5 +229,6 @@ image_experiance.setOnClickListener(view ->uploadImage());
         }
         );
     }
+
 
 }

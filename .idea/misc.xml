@@ -21,7 +21,19 @@
         <entry key="..\:/MomToBe/app/src/main/res/layout/use_switch.xml" value="0.203125" />
         <entry key="..\:/MomToBe/app/src/main/res/menu/navigation_menu_bar.xml" value="0.22" />
         <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_blog.xml" value="0.1921875" />
+        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_blog_contentes.xml" value="0.25" />
         <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_add_product.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_comment_eperiance.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_product.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_product_details.xml" value="0.25" />
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/comment_item_layout.xml" value="0.1" />
+        <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/product_recycler_view_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_settings.xml" value="0.1921875" />
+        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_sign_up.xml" value="0.1921875" />
+
         <entry key="app/src/main/res/drawable/background_bar.xml" value="0.1785" />
         <entry key="app/src/main/res/drawable/botton_nav_bar.xml" value="0.1785" />
         <entry key="app/src/main/res/drawable/home.xml" value="0.172" />

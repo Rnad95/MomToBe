@@ -79,7 +79,7 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
 
         handler=new Handler(
                 Looper.getMainLooper(), msg -> {
-            RecycleModels_Question recycleModels = new RecycleModels_Question(taskArrayList, position -> {
+            RecycleModels_Question recycleModels = new RecycleModels_Question(getApplicationContext(),taskArrayList, position -> {
                 Toast.makeText(
                         Question_avtivity.this,
                         "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();

@@ -6,6 +6,7 @@ subscription OnCreateMother {
     image
     numOfChildren
     phoneNumber
+    emailAddress
     comments {
       items {
         id
@@ -82,6 +83,7 @@ subscription OnUpdateMother {
     image
     numOfChildren
     phoneNumber
+    emailAddress
     comments {
       items {
         id
@@ -158,6 +160,7 @@ subscription OnDeleteMother {
     image
     numOfChildren
     phoneNumber
+    emailAddress
     comments {
       items {
         id
@@ -277,6 +280,7 @@ subscription OnCreateAddress {
         image
         numOfChildren
         phoneNumber
+        emailAddress
         createdAt
         updatedAt
         addressMothersId
@@ -301,6 +305,7 @@ subscription OnUpdateAddress {
         image
         numOfChildren
         phoneNumber
+        emailAddress
         createdAt
         updatedAt
         addressMothersId
@@ -325,6 +330,7 @@ subscription OnDeleteAddress {
         image
         numOfChildren
         phoneNumber
+        emailAddress
         createdAt
         updatedAt
         addressMothersId
@@ -850,6 +856,7 @@ subscription OnCreateUserBlogs {
       image
       numOfChildren
       phoneNumber
+      emailAddress
       comments {
         nextToken
       }
@@ -900,6 +907,7 @@ subscription OnUpdateUserBlogs {
       image
       numOfChildren
       phoneNumber
+      emailAddress
       comments {
         nextToken
       }
@@ -950,6 +958,7 @@ subscription OnDeleteUserBlogs {
       image
       numOfChildren
       phoneNumber
+      emailAddress
       comments {
         nextToken
       }

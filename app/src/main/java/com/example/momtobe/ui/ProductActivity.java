@@ -3,13 +3,29 @@ package com.example.momtobe.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.example.momtobe.Blog;
 import com.example.momtobe.Experiance_activity;
@@ -22,46 +38,114 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class ProductActivity extends AppCompatActivity {
     FloatingActionButton addProduct ;
+    private List<Product> myProducts;
+    private List<Product> myList;
+
 
     BottomNavigationView bottomNavigationView;
-
+    EditText search ;
+    private Handler handler;
+    private Button searchBtn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
+
         navigationBar();
-//        navToActivity();
-//        ArrayList<Product> arrayList = new ArrayList<>();
-//
-//        Product product ;
-//
-//
-//        product = Product.builder()
-//                .title("Shoes")
-//                .price(100.00)
-//                .description("The best product")
-//                .featured(false)
-//                .build();
-//
+
+        declareConstant();
 
 
 
-        addProduct = findViewById(R.id.product_add_img);
+
+
 
         addProduct.setOnClickListener(v -> {
-            navigateToAddTask();
+            navigateToAddProduct();
+        });
+
+        searchBtn.setOnClickListener(v -> {
+            searchFunction();
         });
 
 
     }
 
 
+
+    @Override
+    protected void onResume() {
+
+        myProducts = new ArrayList<>();
+        myList = new ArrayList<>();
+
+
+        handler = new Handler(Looper.getMainLooper() , msg -> {
+            if (myList.isEmpty()) myList = myProducts ;
+            RecyclerView recyclerView = findViewById(R.id.product_archive_recycler);
+
+            ProductCustomAdapter customRecyclerView = new ProductCustomAdapter(getApplicationContext() , myList, new ProductCustomAdapter.CustomClickListener() {
+                @Override
+                public void onTaskItemClicked(int position) {
+                    Intent productDetailActivity = new Intent(getApplicationContext() , ProductDetailsActivity.class);
+                    productDetailActivity.removeExtra("id");
+                    productDetailActivity.putExtra("id" ,  myList.get(position).getId().toString());
+                    startActivity(productDetailActivity);
+                }
+
+            });
+
+            recyclerView.setAdapter(customRecyclerView);
+
+
+            recyclerView.setHasFixedSize(true);
+
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+            return true ;
+        });
+
+
+        Amplify.API.query(
+                ModelQuery.list(Product.class),
+                response -> {
+
+                    for (Product product : response.getData()) {
+                        myProducts.add(product);
+                    }
+                    Log.i("tasks" , myProducts.toString()) ;
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler.sendMessage(message);
+
+                },
+                error -> Log.e("MyAmplifyApp", "Query failure", error)
+        );
+
+
+
+
+
+        super.onResume();
+    }
+
+
     public void navigationBar() {
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.market_page);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -97,8 +181,29 @@ public class ProductActivity extends AppCompatActivity {
     }
 
 
-    public void navigateToAddTask(){
+    public void navigateToAddProduct(){
         startActivity(new Intent(this , AddProductActivity.class));
+    }
+
+    public void declareConstant(){
+        addProduct = findViewById(R.id.product_add_img);
+        search = findViewById(R.id.product_archive_search);
+        searchBtn = findViewById(R.id.btn_product_search);
+
+    }
+
+    public void searchFunction(){
+                String text = search.getText().toString();
+
+                myList = myProducts.stream().filter(index -> index.getTitle().toLowerCase().contains(text)).collect(Collectors.toList()) ;
+
+                Log.i("My Product" , myList.toString()) ;
+
+                Bundle bundle = new Bundle();
+                bundle.putString("data" , "Done");
+                Message message = new Message();
+                message.setData(bundle);
+                handler.sendMessage(message);
     }
 
 
