@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         ButtonSelector();
         ButtonOnListener();
-        GetEmail();
-
+//        GetEmail();
 //        TextView mEmail = findViewById(R.id.main_email);
 //        mEmail.setText(showEmail);
 
@@ -64,35 +63,31 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EMAIL_ADDRESS",showEmail);
         startActivity( intent);
     }
-
     private void GetEmail(){
         Bundle bundle = getIntent().getExtras();
         showEmail = bundle.getString("EMAIL");
     }
-
     private void ButtonSelector() {
         mProfileBtn = findViewById(R.id.profile);
         mSettingBtn = findViewById(R.id.setting);
         mLogoutBtn = findViewById(R.id.log_out);
-//        mFavoriteBtn = findViewById(R.id.main_favorite);
+        mFavoriteBtn = findViewById(R.id.main_favorite);
 
     }
     private void ButtonOnListener(){
         mProfileBtn.setOnClickListener(view ->{
             SentEmailToUserActivity();
-//            navigateToProfile();
         });
         mSettingBtn.setOnClickListener(view ->{
             SentEmailToSettingsActivity();
-//            navigateToSetting();
         });
 
         mLogoutBtn.setOnClickListener(view-> {
             logout();
         });
-//        mFavoriteBtn.setOnClickListener(view-> {
-//            startActivity(new Intent(MainActivity.this,SavedActivity.class));
-//        });
+        mFavoriteBtn.setOnClickListener(view-> {
+            startActivity(new Intent(MainActivity.this,SavedActivity.class));
+        });
     }
     private void navigateToProfile(){
         Intent intent = new Intent(MainActivity.this,Profile.class);

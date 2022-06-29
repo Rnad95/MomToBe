@@ -92,11 +92,7 @@ public class ProductActivity extends AppCompatActivity {
             });
 
             recyclerView.setAdapter(customRecyclerView);
-
-
-
             recyclerView.setHasFixedSize(true);
-
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
             return true ;
@@ -130,6 +126,8 @@ public class ProductActivity extends AppCompatActivity {
 
 
     public void navigationBar() {
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.market_page);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -139,8 +137,6 @@ public class ProductActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.exp_page:
-                        startActivity(new Intent(getApplicationContext(), Experiance_activity.class));
-                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.blogs_page:
@@ -155,6 +151,8 @@ public class ProductActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                 }

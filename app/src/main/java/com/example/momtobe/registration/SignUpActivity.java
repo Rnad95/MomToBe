@@ -70,14 +70,6 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-        mLoginPrompt.setOnClickListener(view -> {
-            Intent navigateToSignUpIntent = new Intent(this, LoginActivity.class);
-            navigateToSignUpIntent.putExtra("data",fullName);
-            startActivity(navigateToSignUpIntent);
-
-
-        });
-
         mSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

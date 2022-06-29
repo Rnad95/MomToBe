@@ -45,7 +45,6 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
 //        holder.productQuantity.setText(productDataList.get(position).getQuantity().toString());
 
 
-
     }
 
     @Override

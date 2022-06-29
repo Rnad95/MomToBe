@@ -173,7 +173,7 @@ public class AddProductActivity extends AppCompatActivity {
             bitmap = getBitmapFromUri(currentUri);
             File file = new File(getApplicationContext().getFilesDir(), currentUriStr );
             OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, os);
             os.close();
 
             // upload to s3

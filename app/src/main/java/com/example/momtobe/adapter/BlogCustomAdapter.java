@@ -7,14 +7,22 @@ package com.example.momtobe.adapter;
         import androidx.annotation.NonNull;
         import androidx.recyclerview.widget.RecyclerView;
 
-        import com.amplifyframework.datastore.generated.model.Blog;
+
         import com.example.momtobe.R;
+        import com.example.momtobe.remote.Blog;
+
+        import java.util.ArrayList;
         import java.util.List;
 
     public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.CustomHoleder> {
 
         List<Blog> blogList;
         CustomClickListener listener;
+
+        public BlogCustomAdapter(List<Blog> blogList) {
+            this.blogList = blogList;
+        }
+
         public BlogCustomAdapter(List<Blog> blogList, CustomClickListener listener) {
             this.blogList = blogList;
             this.listener = listener;
@@ -30,8 +38,8 @@ package com.example.momtobe.adapter;
         @Override
         public void onBindViewHolder(@NonNull CustomHoleder holder, int position) {
             holder.blogTitle.setText(blogList.get(position).getTitle());
-            holder.blogDescription.setText(blogList.get(position).getDescription());
-            holder.blogAuthorName.setText(blogList.get(position).getAutherName());
+            holder.blogDescription.setText(blogList.get(position).getContent());
+            holder.blogAuthorName.setText(blogList.get(position).getAuthor());
         }
         @Override
         public int getItemCount() {
@@ -41,7 +49,7 @@ package com.example.momtobe.adapter;
 
             TextView blogTitle ;
             TextView blogDescription;
-    //        TextView blogImage ;
+//            TextView blogImage ;
             TextView blogAuthorName;
 
             CustomClickListener listener ;
@@ -51,7 +59,6 @@ package com.example.momtobe.adapter;
                 blogTitle = itemView.findViewById(R.id.blog_archive_title);
                 blogDescription = itemView.findViewById(R.id.blog_archive_desc);
                 blogAuthorName = itemView.findViewById(R.id.blog_archive_autherName);
-
                 itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
             }
         }

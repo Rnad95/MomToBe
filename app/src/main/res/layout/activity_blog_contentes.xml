@@ -22,7 +22,7 @@
         android:id="@+id/BlogContent"
         android:layout_width="317dp"
         android:layout_height="522dp"
-        android:text="Blog Conntent"
+        android:text="Blog Content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
