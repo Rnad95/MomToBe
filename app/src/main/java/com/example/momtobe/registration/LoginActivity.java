@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar loadingProgressBar;
     private String emailAddress;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
