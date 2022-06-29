@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         ButtonOnListener();
 //        GetEmail();
 
+
 //        TextView mEmail = findViewById(R.id.main_email);
 //        mEmail.setText(showEmail);
 

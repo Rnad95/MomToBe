@@ -14,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MomToBe"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+
         <activity
             android:name=".ui.ProductDetailsActivity"
             android:exported="false" />
@@ -25,12 +30,13 @@
             android:exported="true" />
         <activity
             android:name=".registration.LoginActivity"
-            android:exported="false">
+            android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+
         </activity>
                 <activity
             android:name=".CommentActivity_Eperiance"
@@ -51,16 +57,16 @@
             android:name=".Question_avtivity"
             android:exported="false" />
         <activity
-            android:name=".Saved"
+            android:name=".SavedActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ProductActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".ui.AddProductActivity"

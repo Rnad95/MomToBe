@@ -9,6 +9,7 @@ mutation CreateMother(
     image
     numOfChildren
     phoneNumber
+    emailAddress
     comments {
       items {
         id
@@ -88,6 +89,7 @@ mutation UpdateMother(
     image
     numOfChildren
     phoneNumber
+    emailAddress
     comments {
       items {
         id
@@ -167,6 +169,7 @@ mutation DeleteMother(
     image
     numOfChildren
     phoneNumber
+    emailAddress
     comments {
       items {
         id
@@ -298,6 +301,7 @@ mutation CreateAddress(
         image
         numOfChildren
         phoneNumber
+        emailAddress
         createdAt
         updatedAt
         addressMothersId
@@ -325,6 +329,7 @@ mutation UpdateAddress(
         image
         numOfChildren
         phoneNumber
+        emailAddress
         createdAt
         updatedAt
         addressMothersId
@@ -352,6 +357,7 @@ mutation DeleteAddress(
         image
         numOfChildren
         phoneNumber
+        emailAddress
         createdAt
         updatedAt
         addressMothersId
@@ -925,6 +931,7 @@ mutation CreateUserBlogs(
       image
       numOfChildren
       phoneNumber
+      emailAddress
       comments {
         nextToken
       }
@@ -978,6 +985,7 @@ mutation UpdateUserBlogs(
       image
       numOfChildren
       phoneNumber
+      emailAddress
       comments {
         nextToken
       }
@@ -1031,6 +1039,7 @@ mutation DeleteUserBlogs(
       image
       numOfChildren
       phoneNumber
+      emailAddress
       comments {
         nextToken
       }
