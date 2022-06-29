@@ -42,7 +42,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         holder.productTitle.setText(productDataList.get(position).getTitle());
         holder.productDescription.setText(productDataList.get(position).getDescription());
         holder.productPrice.setText(productDataList.get(position).getPrice().toString());
-        holder.productQuantity.setText(productDataList.get(position).getQuantity().toString());
+//        holder.productQuantity.setText(productDataList.get(position).getQuantity().toString());
 
 
 
@@ -68,7 +68,7 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
             productPrice = itemView.findViewById(R.id.product_archive_price);
             productDescription = itemView.findViewById(R.id.product_archive_desc);
             productQuantity = itemView.findViewById(R.id.product_archive_quantity);
-            productImage = itemView.findViewById(R.id.product_archive_img);
+//            productImage = itemView.findViewById(R.id.product_archive_img);
 
             itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
         }
