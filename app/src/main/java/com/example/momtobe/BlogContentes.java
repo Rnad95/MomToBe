@@ -70,12 +70,10 @@ public class BlogContentes extends AppCompatActivity {
         }
     }
     private void setImage(String image) {
-        Log.i(TAG, "setBlogImage:  -> 73"+ image);
-
         if(image != null) {
             Amplify.Storage.downloadFile(
                     image,
-                    new File(getApplicationContext().getFilesDir() + "/" + image ),
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
                     result -> {
                         Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
                         Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());

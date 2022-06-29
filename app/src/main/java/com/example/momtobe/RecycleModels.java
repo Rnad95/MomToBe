@@ -1,5 +1,8 @@
 package com.example.momtobe;
 
+import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.Question;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecycleModels extends RecyclerView.Adapter<RecycleModels.taskviewsholoder>{
     List<Experience> models;
     CustomClickListener listener;
-
-    public RecycleModels(ArrayList<Experience> models, CustomClickListener listener) {
+    Context mContext ;
+    public RecycleModels(Context context ,ArrayList<Experience> models, CustomClickListener listener) {
         this.models = models;
         this.listener = listener;
+        this.mContext = context ;
     }
 
     @NonNull
@@ -37,6 +43,8 @@ public class RecycleModels extends RecyclerView.Adapter<RecycleModels.taskviewsh
         holder.title.setText(models.get(position).getTitle());
         holder.description.setText(models.get(position).getDescription());
 //        holder.ImageView.setImageURI(models.get(position).getImage());
+        holder.ImageView.setImageURI(Uri.parse(mContext.getFilesDir()+ "/" + models.get(position).getImage() + "download.jpg"));
+
 
 
     }
@@ -65,4 +73,21 @@ public class RecycleModels extends RecyclerView.Adapter<RecycleModels.taskviewsh
     public interface CustomClickListener {
         void taskItemClicked(int position);
     }
+//    private void setImage(String image) {
+//        if(image != null) {
+//            Amplify.Storage.downloadFile(
+//                    image,
+//                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+//                    result -> {
+//                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+//                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+//                        runOnUiThread(() -> {
+//                            Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView);
+//                        });
+//                    },
+//                    error -> Log.e(TAG, "Download Failure", error)
+//            );
+//        }
+//    }
+
 }
