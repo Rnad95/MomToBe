@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         ButtonSelector();
         ButtonOnListener();
         GetEmail();
+        Log.i(TAG, "onCreate: email->"+showEmail);
+        SentEmailToUserActivity();
+        SentEmailToSettingsActivity();
 
 //        TextView mEmail = findViewById(R.id.main_email);
 //        mEmail.setText(showEmail);

@@ -52,7 +52,6 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
-
     },
     "s302dc1ff1": {
       "service": "S3",
@@ -65,7 +64,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Polly",
       "convertType": "speechGenerator"
-
     }
   }
 }
