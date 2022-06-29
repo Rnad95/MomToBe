@@ -106,7 +106,7 @@ public class CommentActivity_Eperiance extends AppCompatActivity {
             String content=comment.getText().toString();
             newComment = Comment.builder()
                     .content(content)
-                    .experienceCommentsId("48e8807e-ee56-49a6-a225-ebf620db84ca")
+                    .experienceCommentsId(Experiance_item.getId())
                     .productCommentsId("ppppppp")
                     .motherCommentsId("mmmmmmmmmmm")
                     .questionCommentsId("qqqqqqqqqqqq")
