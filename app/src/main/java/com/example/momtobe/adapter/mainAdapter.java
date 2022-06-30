@@ -40,7 +40,7 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.CustomHoleder>
         public void onBindViewHolder(@NonNull mainAdapter.CustomHoleder holder, int position) {
             holder.blogTitle.setText(blogList.get(position).getTitle());
 //            Uri uri = Uri.parse(blogList.get(position).getImageLink());
-            holder.blogImage.setImageURI(Uri.parse(blogList.get(position).getImageLink()));
+//            holder.blogImage.setImageURI(Uri.parse(blogList.get(position).getImageLink()));
         }
         @Override
         public int getItemCount() {

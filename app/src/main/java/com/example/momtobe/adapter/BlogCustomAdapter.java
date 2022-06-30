@@ -1,32 +1,33 @@
 package com.example.momtobe.adapter;
 
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.TextView;
-        import androidx.annotation.NonNull;
-        import androidx.recyclerview.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.momtobe.R;
+import com.example.momtobe.remote.Blog;
+import java.util.List;
 
-        import com.example.momtobe.R;
-        import com.example.momtobe.remote.Blog;
+import java.util.ArrayList;
+import java.util.List;
 
-        import java.util.ArrayList;
-        import java.util.List;
+public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.CustomHoleder> {
 
-    public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.CustomHoleder> {
+    List<Blog> blogList;
+    CustomClickListener listener;
 
-        List<Blog> blogList;
-        CustomClickListener listener;
+    public BlogCustomAdapter(List<Blog> blogList) {
+        this.blogList = blogList;
+    }
 
-        public BlogCustomAdapter(List<Blog> blogList) {
-            this.blogList = blogList;
-        }
+    public BlogCustomAdapter(List<Blog> blogList, CustomClickListener listener) {
+        this.blogList = blogList;
+        this.listener = listener;
+    }
 
-        public BlogCustomAdapter(List<Blog> blogList, CustomClickListener listener) {
-            this.blogList = blogList;
-            this.listener = listener;
-        }
 
         @NonNull
         @Override

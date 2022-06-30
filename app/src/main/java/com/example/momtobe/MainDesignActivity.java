@@ -32,7 +32,7 @@ import java.util.List;
 
 public class MainDesignActivity extends AppCompatActivity {
     private final String TAG = MainDesignActivity.class.getSimpleName();
-    private String url ="https://72c286f302fa3f.lhrtunnel.link/blogs";
+    private String url ="https://e717393f5555dc.lhrtunnel.link/blogs";
     Handler handler;
     mainAdapter adapter;
     RecyclerView recyclerView;
@@ -55,6 +55,11 @@ public class MainDesignActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        setRecyclerView();
+    }
+
+    private void setRecyclerView(){
+
         handler = new Handler(Looper.getMainLooper() , msg -> {
             recyclerView = findViewById(R.id.main2_recycler_view);
             mainAdapter blogCustomAdapter = new mainAdapter(blogsListTest, new mainAdapter.CustomClickListener() {
@@ -75,7 +80,6 @@ public class MainDesignActivity extends AppCompatActivity {
             return true ;
         });
     }
-
     private void CallAPI() throws IOException {
         RequestQueue queue = Volley.newRequestQueue(this);
 

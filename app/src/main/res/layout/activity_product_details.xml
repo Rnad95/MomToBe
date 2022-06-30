@@ -33,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/product_details_text_title"
         app:layout_constraintVertical_bias="0.528" />
 
+
     <TextView
         android:id="@+id/product_details_price"
         android:layout_width="wrap_content"
@@ -44,11 +45,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/product_details_text_description"
-        app:layout_constraintVertical_bias="0.712" />
-
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/product_details_quantity"
@@ -61,10 +61,9 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product_details_text_description"
-        app:layout_constraintVertical_bias="0.703" />
+        app:layout_constraintTop_toBottomOf="@+id/product_details_text_description" />
 
     <ImageView
         android:id="@+id/product_details_img"
@@ -77,6 +76,50 @@
         app:layout_constraintTop_toBottomOf="@+id/product_details_text_title"
         app:layout_constraintVertical_bias="0.644"
         app:srcCompat="@drawable/product" />
+
+    <Button
+        android:id="@+id/product_call_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="152dp"
+        android:text="Call the owner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_comment_recyclier_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/product_comment_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/product_comment_add_comment_edit"
+        android:layout_width="308dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="comment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/product_comment_add_btn" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

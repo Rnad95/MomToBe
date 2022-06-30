@@ -68,7 +68,7 @@ public class SavedActivity extends AppCompatActivity {
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     private RequestQueue queue;
     private RequestQueue mQueue;
-    private String url ="https://72c286f302fa3f.lhrtunnel.link/blogs";
+    private String url ="https://jsonkeeper.com/b/WAVV";
     private TextView tv;
 
     @Override

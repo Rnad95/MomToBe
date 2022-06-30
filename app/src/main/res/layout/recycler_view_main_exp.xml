@@ -7,7 +7,7 @@
     android:layout_margin="10dp"
     android:id="@+id/mother_cardview"
     app:cardElevation="6dp"
-    android:background="@drawable/background_bar"
+    android:background="@color/white"
 
     >
 
@@ -15,8 +15,10 @@
         android:id="@+id/background_color"
         android:layout_width="356dp"
         android:layout_height="301dp"
-        android:background="@drawable/background_bar"
+        android:background="#C0C0C0"
         android:padding="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingBottom="5dp"
 
         >
 
