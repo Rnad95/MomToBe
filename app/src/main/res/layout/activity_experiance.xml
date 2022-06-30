@@ -9,7 +9,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Recycle_Comment"
+        android:id="@+id/Recycle_Experiance"
         android:layout_width="370dp"
         android:layout_height="486dp"
         android:layout_alignParentStart="true"
@@ -43,7 +43,7 @@
         app:menu="@menu/menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/Question_add_img"
+        android:id="@+id/Experiance_add_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

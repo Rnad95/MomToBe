@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/button2" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Recycle_Comment"
+        android:id="@+id/Recycle_Experiance"
         android:layout_width="402dp"
         android:layout_height="368dp"
         android:layout_alignParentStart="true"

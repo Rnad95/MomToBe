@@ -50,7 +50,7 @@ public class CommentActivity extends AppCompatActivity {
         taskArrayList = new ArrayList<>();
         comment = findViewById(R.id.editTextTextPersonName);
         send = findViewById(R.id.button2);
-        recycleTask = findViewById(R.id.Recycle_Comment);
+        recycleTask = findViewById(R.id.Recycle_Experiance);
         imageViewComment = findViewById(R.id.imageViewComment);
         titleComment = findViewById(R.id.titleComment);
         descriptionComment = findViewById(R.id.descriptionComment);

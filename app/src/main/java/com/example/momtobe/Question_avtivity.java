@@ -63,7 +63,7 @@ public class Question_avtivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_avtivity);
 
-        RecyclerView RecycleTask = findViewById(R.id.Recycle_Comment);
+        RecyclerView RecycleTask = findViewById(R.id.Recycle_Question);
         navToActivities();
 
 

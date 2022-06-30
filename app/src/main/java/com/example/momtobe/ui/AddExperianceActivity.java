@@ -28,6 +28,7 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Experience;
+import com.amplifyframework.datastore.generated.model.ExperienceCategories;
 import com.example.momtobe.R;
 
 import java.io.BufferedOutputStream;
@@ -83,20 +84,23 @@ image_experiance.setOnClickListener(view ->uploadImage());
 
 
 
-//            for (int i = 0; i < arrayListspinner3.size(); i++) {
-//
-//                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
-
-//                }
-
-//            }
             newExperience = Experience.builder()
                     .title(title1)
                     .description(description1)
                     .featured(false)
                             .image(imageKey)
                     .motherExperiencesId(userId)
+
                     .build();
+
+
+//            for (int i = 0; i < arrayListspinner3.size(); i++) {
+//
+//                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
+//                    ExperienceCategories experienceCategories=new ExperienceCategories(arrayListspinner3.get(i).getId()+newExperience.getId(),arrayListspinner3.get(i),newExperience);
+//                }
+//
+//            }
             Amplify.API.mutate(
                     ModelMutation.create(newExperience),
                     response -> {
