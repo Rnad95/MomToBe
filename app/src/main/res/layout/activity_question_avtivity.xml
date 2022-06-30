@@ -88,6 +88,8 @@
                 android:layout_marginEnd="16dp"
                 android:contentDescription="Add Product"
                 android:elevation="6dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="70dp"
                 android:foregroundGravity="right|bottom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -189,5 +191,14 @@
 
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/purple_500"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu" />
 
 </RelativeLayout>
