@@ -166,7 +166,7 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
         });
 
 
-        FloatingActionButton addQuestion = findViewById(R.id.Question_add_img);
+        FloatingActionButton addQuestion = findViewById(R.id.product_add_img);
 
         addQuestion.setOnClickListener(v ->{
 

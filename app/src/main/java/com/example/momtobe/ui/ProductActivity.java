@@ -105,9 +105,7 @@ public class ProductActivity extends AppCompatActivity {
 
             recyclerView.setAdapter(customRecyclerView);
 
-
             recyclerView.setHasFixedSize(true);
-
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
@@ -155,8 +153,6 @@ public class ProductActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.exp_page:
-                        startActivity(new Intent(getApplicationContext(), Experiance_activity.class));
-                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.blogs_page:
@@ -171,6 +167,8 @@ public class ProductActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                 }
