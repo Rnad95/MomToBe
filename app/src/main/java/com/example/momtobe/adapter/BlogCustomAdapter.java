@@ -62,8 +62,10 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
                 blogAuthorName = itemView.findViewById(R.id.blog_archive_autherName);
                 itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
             }
+
         }
-        public interface CustomClickListener{
-            void onTaskItemClicked(int position);
+    }
+    public interface CustomClickListener{
+        void onTaskItemClicked(int position);
     }
 }
