@@ -18,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
 import com.example.momtobe.SavedActivity;
 import com.example.momtobe.adapter.BlogCustomAdapter;
 import com.example.momtobe.ui.ProductActivity;
@@ -42,7 +43,8 @@ public class Blog extends AppCompatActivity {
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     private RequestQueue queue;
     private RequestQueue mQueue;
-    private String url ="https://jsonkeeper.com/b/Y854";
+    BottomNavigationView bottomNavigationView;
+    private String url ="https://jsonkeeper.com/b/WAVV";
     private TextView tv;
 
     @Override
@@ -50,12 +52,56 @@ public class Blog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog);
         mQueue = Volley.newRequestQueue(this);
-
+        navToActivities();
         try {
             CallAPI();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        setRecyclerView();
+
+    }
+
+    private void navToActivities(){
+
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.blogs_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.home_page:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+    }
+    private void setRecyclerView(){
         handler = new Handler(Looper.getMainLooper() , msg -> {
             recyclerView = findViewById(R.id.blog_archive_recycler);
             BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(blogsListTest, new BlogCustomAdapter.CustomClickListener() {
@@ -75,11 +121,8 @@ public class Blog extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             return true ;
         });
-
     }
-
     private void CallAPI() throws IOException {
-        url = "https://jsonkeeper.com/b/Y854";
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -125,5 +168,3 @@ public class Blog extends AppCompatActivity {
     }
 
 }
-
-

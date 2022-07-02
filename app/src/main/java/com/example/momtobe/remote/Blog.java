@@ -17,6 +17,11 @@ public class Blog {
         this.category = category;
     }
 
+    public Blog(String title, String imageLink) {
+        this.title = title;
+        this.imageLink = imageLink;
+    }
+
     public String getTitle() {
         return title;
     }

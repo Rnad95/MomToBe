@@ -7,9 +7,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.momtobe.R;
 import com.example.momtobe.remote.Blog;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,7 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
         this.blogList = blogList;
         this.listener = listener;
     }
+
 
     @NonNull
     @Override

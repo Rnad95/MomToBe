@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.EditProductActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="50dp"
+            android:layout_marginTop="15dp"
+            >
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Product"
+                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                android:textColor="#000" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="20dp" />
+
+            <RelativeLayout
+                android:id="@+id/edit_lyt_avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/avatar_placeholder_click"
+                android:clickable="true"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/ic_photo"
+                    app:tint="#cccccc" />
+
+                <ImageView
+                    android:id="@+id/edit_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/edit_edit_product_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edit_text_round"
+                android:hint="Title"
+                android:inputType="text"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666" />
+
+            <EditText
+                android:id="@+id/edit_edit_product_desc"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edit_text_round"
+                android:hint="Description"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666" />
+
+            <EditText
+                android:id="@+id/edit_edit_product_price"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edit_text_round"
+                android:hint="Price"
+                android:inputType="text"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666" />
+
+            <EditText
+                android:id="@+id/edit_edit_product_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edit_text_round"
+                android:hint="Quantity"
+                android:inputType="text"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666" />
+
+            <Button
+                android:id="@+id/edit_btn_add_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_dark"
+                android:text="Save"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="15dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
