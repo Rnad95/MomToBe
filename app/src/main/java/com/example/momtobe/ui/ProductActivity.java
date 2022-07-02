@@ -64,10 +64,6 @@ public class ProductActivity extends AppCompatActivity {
         declareConstant();
 
 
-
-
-
-
         addProduct.setOnClickListener(v -> {
             navigateToAddProduct();
         });
