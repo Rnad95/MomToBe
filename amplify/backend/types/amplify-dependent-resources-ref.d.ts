@@ -1,4 +1,5 @@
 export type AmplifyDependentResourcesAttributes = {
+
     "api": {
         "momtobe": {
             "GraphQLAPIKeyOutput": "string",
@@ -32,3 +33,4 @@ export type AmplifyDependentResourcesAttributes = {
         }
     }
 }
+

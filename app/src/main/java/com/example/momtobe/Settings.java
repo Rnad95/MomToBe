@@ -59,6 +59,7 @@ public class Settings extends AppCompatActivity {
         handler =  new Handler(Looper.getMainLooper() , msg -> {
             Log.i(TAG, "onCreate: 35 mother -> "+mother);
 //            showImage();
+            setMotherData();
             setSaveButton(mother);
 
             updateImage = findViewById(R.id.set_change_picture);
@@ -66,6 +67,17 @@ public class Settings extends AppCompatActivity {
 
          return true ;
         });
+    }
+
+    void setMotherData (){
+        EditText name = findViewById(R.id.set_mother_name);
+        EditText phone = findViewById(R.id.set_phone);
+        EditText numberOfChildren = findViewById(R.id.set_children_number);
+
+        name.setText(mother.getName());
+        phone.setText(mother.getPhoneNumber());
+        numberOfChildren.setText(mother.getNumOfChildren().toString());
+
     }
 
     void findMotherAPI (){

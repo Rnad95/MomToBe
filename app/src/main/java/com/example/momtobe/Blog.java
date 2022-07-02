@@ -37,14 +37,13 @@ import java.util.List;
 public class Blog extends AppCompatActivity {
     private final String TAG = SavedActivity.class.getSimpleName();
     Handler handler;
-    BlogCustomAdapter adapter;
     RecyclerView recyclerView;
     List<com.amplifyframework.datastore.generated.model.Blog> blogs;
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     private RequestQueue queue;
     private RequestQueue mQueue;
     BottomNavigationView bottomNavigationView;
-    private String url ="https://jsonkeeper.com/b/WAVV";
+    private String url ="https://jsonkeeper.com/b/MKEL";
     private TextView tv;
 
     @Override
@@ -61,7 +60,6 @@ public class Blog extends AppCompatActivity {
         setRecyclerView();
 
     }
-
     private void navToActivities(){
 
         /**
@@ -104,15 +102,16 @@ public class Blog extends AppCompatActivity {
     private void setRecyclerView(){
         handler = new Handler(Looper.getMainLooper() , msg -> {
             recyclerView = findViewById(R.id.blog_archive_recycler);
-            BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(blogsListTest, new BlogCustomAdapter.CustomClickListener() {
+            BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),blogsListTest, new BlogCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
-                    intent.putExtra("title",blogsListTest.get(position).getTitle());
+                    intent.putExtra("blogId", position);
+                    intent.putExtra("title",  blogsListTest.get(position).getTitle());
                     intent.putExtra("content",blogsListTest.get(position).getContent());
-                    intent.putExtra("author",blogsListTest.get(position).getAuthor());
+                    intent.putExtra("author", blogsListTest.get(position).getAuthor());
                     intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
-                    intent.putExtra("category",blogsListTest.get(position).getCategory());
+                    intent.putExtra("category" ,blogsListTest.get(position).getCategory());
                     startActivity(intent);
                 }
             });
@@ -124,7 +123,6 @@ public class Blog extends AppCompatActivity {
     }
     private void CallAPI() throws IOException {
         RequestQueue queue = Volley.newRequestQueue(this);
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
@@ -154,8 +152,6 @@ public class Blog extends AppCompatActivity {
                         message.setData(bundle);
                         handler.sendMessage(message);
 
-
-
                     } catch (JSONException e) {
                         Log.e(TAG, "CallAPI: FROM CATCH ");
                     }
@@ -168,3 +164,4 @@ public class Blog extends AppCompatActivity {
     }
 
 }
+

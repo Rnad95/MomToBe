@@ -62,7 +62,7 @@ public class MainDesignActivity extends AppCompatActivity {
 
         handler = new Handler(Looper.getMainLooper() , msg -> {
             recyclerView = findViewById(R.id.main2_recycler_view);
-            mainAdapter blogCustomAdapter = new mainAdapter(blogsListTest, new mainAdapter.CustomClickListener() {
+            mainAdapter blogCustomAdapter = new mainAdapter(getApplicationContext(),blogsListTest, new mainAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
@@ -99,10 +99,11 @@ public class MainDesignActivity extends AppCompatActivity {
                             LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
                             String title = t.get("title").toString();
                             String content = t.get("content").toString();
-
-                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content);
+                            String imageLink = t.get("imageLink").toString();
+                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,imageLink);
                             blogsListTest.add(blog);
                         }
+
                         Bundle bundle = new Bundle();
                         bundle.putString("data" , "Done");
                         Message message = new Message();

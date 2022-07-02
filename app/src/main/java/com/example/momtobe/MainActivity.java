@@ -1,22 +1,29 @@
 package com.example.momtobe;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +37,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.example.momtobe.adapter.mainAdapter;
 import com.example.momtobe.registration.LoginActivity;
 
@@ -44,41 +52,43 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     BottomNavigationView bottomNavigationView;
-    private Button mProfileBtn;
-    private Button mSettingBtn;
-    private Button mLogoutBtn;
-    private Button mFavoriteBtn;
+
     private String showEmail;
-    private String url ="https://jsonkeeper.com/b/WAVV";
+    private String url ="https://jsonkeeper.com/b/MKEL";
     Handler handler;
-    mainAdapter adapter;
     RecyclerView recyclerView;
     ListView listView;
     TextView mViewAll;
-    List<com.amplifyframework.datastore.generated.model.Blog> blogs;
+    ImageView mImage;
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     ArrayList<String> taskArrayList=new ArrayList<>();
     private Handler handler1;
+    private Date dateParse;
+    private String userId;
+    private String userName;
+    TextView mFullName;
+    private Handler handler2;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navToActivity();
-
         itemsSelector();
         ButtonOnListener();
-//        GetEmail();
 
-
-//        TextView mEmail = findViewById(R.id.main_email);
-//        mEmail.setText(showEmail);
+        setUserInformation();
+        GetEmail();
 
         mViewAll = findViewById(R.id.view_all_blogs);
         mViewAll.setOnClickListener(view -> {
@@ -96,12 +106,66 @@ public class MainActivity extends AppCompatActivity {
         setRecyclerViewForQuestion();
 
     }
+    private void fetchUserInformation(){
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    userId = attributes.get(0).getValue();
+                    userName = attributes.get(2).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , userName);
+
+                    Message message = new Message();
+                    message.setData(bundle);
+
+                    runOnUiThread(() -> {
+                        mFullName.setText(userName);
+                    });
+
+                    Log.i(TAG, "fetchUserInformation: "+ attributes);
+                    Log.i(TAG, "fetchUserInformation: 0 "+ attributes.get(0).getValue());
+                    Log.i(TAG, "fetchUserInformation: 1 "+ attributes.get(1).getValue());
+                    Log.i(TAG, "fetchUserInformation: 2 "+ attributes.get(2).getValue());
+                    Log.i(TAG, "fetchUserInformation: 3 "+ attributes.get(3).getValue());
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
+    }
+    private void setUserInformation(){
+        fetchUserInformation();
+
+        Amplify.Storage.getUrl("1734345085.jpg",
+                success ->{
+                        String url = success.getUrl().toString();
+                        runOnUiThread(() -> {
+
+                            Glide.with(this).load(url).into(mImage);
+                        });
+
+                },
+                error -> Log.e(TAG,  "display Failed", error)
+        );
+    }
     private void setRecyclerViewForQuestion(){
         listView = findViewById(R.id.list_view);
         handler1 = new Handler(
                 Looper.getMainLooper(), msg -> {
             ArrayAdapter<String> adapter =new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,taskArrayList);
             listView.setAdapter(adapter);
+            listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
+                    String QuestionId=taskArrayList.get(position)+"?";
+                    intent.putExtra("QuestionId",QuestionId);
+                    startActivity(intent);
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
             return true;
 
         }
@@ -125,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler(Looper.getMainLooper() , msg -> {
             recyclerView = findViewById(R.id.main2_recycler_view);
-            mainAdapter blogCustomAdapter = new mainAdapter(blogsListTest, new mainAdapter.CustomClickListener() {
+            mainAdapter blogCustomAdapter = new mainAdapter(getApplicationContext(),blogsListTest, new mainAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
@@ -143,40 +207,51 @@ public class MainActivity extends AppCompatActivity {
             return true ;
         });
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void CallAPI() throws IOException {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
+                    JSONArray jsonArray = null;
                     try {
-                        JSONArray jsonArray = response.getJSONObject("_embedded").getJSONArray("blogs");
+                        jsonArray = response.getJSONObject("_embedded").getJSONArray("blogs");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                        Gson gson = new Gson();
+                    Gson gson = new Gson();
                         String json = gson.toJson(jsonArray);
                         List<JsonObject> arrayList = new ArrayList();
                         arrayList = gson.fromJson(jsonArray.toString(),ArrayList.class);
 
                         for (int i = 0; i < arrayList.toArray().length; i++) {
-                            Log.i(TAG, "CallAPI: SIZE =>"+ arrayList.size());
                             Object getrow = arrayList.get(i);
                             LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
+                            String date = t.get("date").toString();
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-M-dd");
                             String title = t.get("title").toString();
                             String content = t.get("content").toString();
-
-                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content);
-                            blogsListTest.add(blog);
+                            String imageLink = t.get("imageLink").toString();
+                            try {
+                                dateParse = simpleDateFormat.parse(date);
+                                String afterDate = "2022-06-01";
+                                if(dateParse.after(simpleDateFormat.parse(afterDate))){
+                                com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,imageLink);
+                                blogsListTest.add(blog);
+                                    Log.i(TAG, "CallAPI: SUCCESS FROM DATA");
+                                }
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                         }
                         Bundle bundle = new Bundle();
                         bundle.putString("data" , "Done");
                         Message message = new Message();
                         message.setData(bundle);
                         handler.sendMessage(message);
+                        
 
-
-
-                    } catch (JSONException e) {
-                        Log.e(TAG, "CallAPI: FROM CATCH ");
-                    }
                 },
                 error -> {
                     Log.e(TAG, "CallAPI: ", error);
@@ -189,44 +264,55 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EMAIL_ADDRESS",showEmail);
         startActivity( intent);
     }
-    private void SentEmailToSettingsActivity(){
-        Intent intent = new Intent(MainActivity.this, Settings.class);
-        intent.putExtra("EMAIL_ADDRESS",showEmail);
-        startActivity( intent);
-    }
     private void GetEmail(){
         Bundle bundle = getIntent().getExtras();
         showEmail = bundle.getString("EMAIL");
     }
     private void itemsSelector() {
-        mProfileBtn = findViewById(R.id.profile);
-        mLogoutBtn = findViewById(R.id.log_out);
-        mFavoriteBtn = findViewById(R.id.main_favorite);
 
+        mImage = findViewById(R.id.image_profile);
+        mFullName = findViewById(R.id.user_full_name);
 
     }
     private void ButtonOnListener(){
-        mProfileBtn.setOnClickListener(view ->{
-            SentEmailToUserActivity();
-        });
+//        mProfileBtn.setOnClickListener(view ->{
+//            SentEmailToUserActivity();
+//        });
+//
+//        mLogoutBtn.setOnClickListener(view-> {
+//            logout();
+//        });
+//        mFavoriteBtn.setOnClickListener(view-> {
+//            startActivity(new Intent(MainActivity.this,SavedActivity.class));
+//        });
+        mImage.setOnClickListener(view ->{
 
-        mLogoutBtn.setOnClickListener(view-> {
-            logout();
-        });
-        mFavoriteBtn.setOnClickListener(view-> {
-            startActivity(new Intent(MainActivity.this,SavedActivity.class));
         });
     }
-    private void navigateToProfile(){
-        Intent intent = new Intent(MainActivity.this,Profile.class);
-        startActivity(intent);
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.popup_menu, menu);
+        return true;
     }
-    private void navigateToSetting(){
-        Intent intent = new Intent(MainActivity.this,Settings.class);
-        startActivity(intent);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_profile:
+                SentEmailToUserActivity();
+                return true;
+            case R.id.action_favorite:
+                startActivity(new Intent(MainActivity.this,SavedActivity.class));
 
+                return true;
+            case R.id.action_logout:
+                logout();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
+
     private void navToActivity(){
 
         /**
