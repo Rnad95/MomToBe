@@ -21,7 +21,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.bumptech.glide.Glide;
 import com.example.momtobe.R;
@@ -40,16 +42,20 @@ public class AddProductActivity extends AppCompatActivity {
     private static final String TAG = AddProductActivity.class.getSimpleName();
     public static final int REQUEST_CODE = 123;
     private String imageKey = "" ;
-    private String userId ;
+    private String userId  , userEmail;
 
     private ImageView productImage;
+
     private Button addProduct ;
+
     private EditText addTitle ;
     private EditText addDesc ;
     private EditText addQuantity ;
     private EditText addPrice ;
 
-
+    private Handler handler2;
+    private Handler handler1;
+    private Handler handler;
 
 
     @Override
@@ -75,7 +81,7 @@ public class AddProductActivity extends AppCompatActivity {
 
         // Product handler
 
-        Handler handler1 = new Handler(Looper.getMainLooper() , msg -> {
+        handler = new Handler(Looper.getMainLooper() , msg -> {
 
 
             Product product = Product.builder()
@@ -98,18 +104,7 @@ public class AddProductActivity extends AppCompatActivity {
             return true ;
         });
 
-        Amplify.Auth.fetchUserAttributes(
-                attributes ->{
-                     userId = attributes.get(0).getValue();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("data" , "Done");
-
-                        Message message = new Message();
-                        message.setData(bundle);
-                        handler1.sendMessage(message);
-                },
-                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-        );
+        getUserId();
 
 
     }
@@ -219,6 +214,43 @@ public class AddProductActivity extends AppCompatActivity {
                     error -> Log.e(TAG, "Download Failure", error)
             );
         }
+    }
+
+    public void getUserId(){
+        handler2 = new Handler(Looper.getMainLooper() , msg -> {
+            Amplify.API.query(
+                    ModelQuery.list(Mother.class, Mother.EMAIL_ADDRESS.contains(userEmail)),
+                    response -> {
+                        for (Mother mother : response.getData()) {
+                            userId =  mother.getId() ;
+                        }
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+
+            return true ;
+        });
+
+
+        Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        Log.i("UserEmail" , attributes.toString());
+                        userEmail = attributes.get(3).getValue();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler2.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+            );
+
     }
 
 }

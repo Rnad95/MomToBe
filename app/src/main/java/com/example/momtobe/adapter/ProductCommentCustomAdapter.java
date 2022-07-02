@@ -37,7 +37,6 @@ public class ProductCommentCustomAdapter extends RecyclerView.Adapter<ProductCom
         this.productCommentList = models;
         this.listener = listener;
         this.userId = userId ;
-
     }
 
     @NonNull
@@ -53,7 +52,7 @@ public class ProductCommentCustomAdapter extends RecyclerView.Adapter<ProductCom
 
         holder.title.setText(productCommentList.get(position).getContent());
 
-//        setCommentUserName(holder , position);
+        setCommentUserName(holder , position);
 
         setDeleteBtn(holder , position);
 
@@ -110,6 +109,8 @@ public class ProductCommentCustomAdapter extends RecyclerView.Adapter<ProductCom
 
 
     public void setDeleteBtn(@NonNull taskviewsholoder holder, int position){
+        Log.i("UserAuthId" , userId) ;
+        Log.i("UserCommentId" , productCommentList.get(position).getMotherCommentsId().toString()) ;
         if (productCommentList.get(position).getMotherCommentsId().equals(userId)) {
 
             holder.deleteButton.setVisibility(View.VISIBLE);

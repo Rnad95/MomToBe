@@ -17,9 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:hint="Email"
+        android:text="r.khawatreh13@gmail.com"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
-        android:text="baraaabusara@gmail.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

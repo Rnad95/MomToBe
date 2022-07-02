@@ -35,46 +35,45 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
     }
 
 
+    @NonNull
+    @Override
+    public CustomHoleder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View listItemView = layoutInflater.inflate(R.layout.reciclerview_content ,parent , false);
+        return new CustomHoleder(listItemView, listener);
+    }
+    @Override
+    public void onBindViewHolder(@NonNull CustomHoleder holder, int position) {
+        holder.blogTitle.setText(blogList.get(position).getTitle());
+        holder.blogDescription.setText(blogList.get(position).getContent());
+        holder.blogAuthorName.setText(blogList.get(position).getAuthor());
+        String url = blogList.get(position).getImageLink().toString();
+        Glide.with(context).load(url).into(holder.blogImage);
 
-        @NonNull
-        @Override
-        public CustomHoleder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-            View listItemView = layoutInflater.inflate(R.layout.reciclerview_content ,parent , false);
-            return new CustomHoleder(listItemView, listener);
-        }
-        @Override
-        public void onBindViewHolder(@NonNull CustomHoleder holder, int position) {
-            holder.blogTitle.setText(blogList.get(position).getTitle());
-            holder.blogDescription.setText(blogList.get(position).getContent());
-            holder.blogAuthorName.setText(blogList.get(position).getAuthor());
-            String url = blogList.get(position).getImageLink().toString();
-            Glide.with(context).load(url).into(holder.blogImage);
+    }
+    @Override
+    public int getItemCount() {
+        return blogList.size();
+    }
+    static class CustomHoleder extends RecyclerView.ViewHolder {
 
-        }
-        @Override
-        public int getItemCount() {
-            return blogList.size();
-        }
-        static class CustomHoleder extends RecyclerView.ViewHolder {
+        TextView  blogTitle ;
+        TextView  blogDescription;
+        ImageView blogImage ;
+        TextView  blogAuthorName;
 
-            TextView  blogTitle ;
-            TextView  blogDescription;
-            ImageView blogImage ;
-            TextView  blogAuthorName;
-
-            CustomClickListener listener ;
-            public CustomHoleder(@NonNull View itemView , CustomClickListener listener) {
-                super(itemView);
-                this.listener = listener;
-                blogTitle = itemView.findViewById(R.id.blog_archive_title);
-                blogDescription = itemView.findViewById(R.id.blog_archive_desc);
-                blogAuthorName = itemView.findViewById(R.id.blog_archive_autherName);
-                blogImage = itemView.findViewById(R.id.blog_favorite_img);
-                itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
-            }
+        CustomClickListener listener ;
+        public CustomHoleder(@NonNull View itemView , CustomClickListener listener) {
+            super(itemView);
+            this.listener = listener;
+            blogTitle = itemView.findViewById(R.id.blog_archive_title);
+            blogDescription = itemView.findViewById(R.id.blog_archive_desc);
+            blogAuthorName = itemView.findViewById(R.id.blog_archive_autherName);
+            blogImage = itemView.findViewById(R.id.blog_favorite_img);
+            itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
         }
     }
+
     public interface CustomClickListener{
         void onTaskItemClicked(int position);
     }
