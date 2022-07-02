@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
     private String userName;
     TextView mFullName;
     private Handler handler2;
+    private String email;
+    private String imageKey;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -87,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
         itemsSelector();
         ButtonOnListener();
         setUserInformation();
-        GetEmail();
 
         mViewAll = findViewById(R.id.view_all_blogs);
         mViewAll.setOnClickListener(view -> {
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 attributes ->{
                     userId = attributes.get(0).getValue();
                     userName = attributes.get(2).getValue();
+                    email = attributes.get(3).getValue();
                     Bundle bundle = new Bundle();
                     bundle.putString("data" , userName);
 
@@ -131,6 +134,19 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setUserInformation(){
         fetchUserInformation();
+
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                getSuccess -> {
+                    for (Mother mother : getSuccess.getData()) {
+                        if(mother.getEmailAddress().equals(email))
+                            imageKey = mother.getName();
+                    }
+
+                    handler.sendEmptyMessage(1);
+                },
+                error -> Log.e(TAG, error.toString())
+        );
 
         Amplify.Storage.getUrl("1734345085.jpg",
                 success ->{
@@ -263,10 +279,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("EMAIL_ADDRESS",showEmail);
         startActivity( intent);
     }
-    private void GetEmail(){
-        Bundle bundle = getIntent().getExtras();
-        showEmail = bundle.getString("EMAIL");
-    }
     private void itemsSelector() {
 
         mImage = findViewById(R.id.image_profile);
@@ -311,7 +323,6 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
     private void navToActivity(){
 
         /**

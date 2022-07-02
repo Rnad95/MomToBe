@@ -127,7 +127,7 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
                     statusSwitch1 = simpleSwitch1.getTextOn().toString();
 
                     Amplify.API.query(
-                ModelQuery.list(Cat.class,Cat.TITLE.eq("age")),
+                ModelQuery.list(Cat.class,Cat.TITLE.eq("ayyoub-1")),
                 teamsName -> {
                     for (Cat note : teamsName.getData()) {
 
