@@ -46,11 +46,13 @@ public class ProductActivity extends AppCompatActivity {
     FloatingActionButton addProduct ;
     private List<Product> myProducts;
     private List<Product> myList;
+    private String userId  =  "" ;
 
 
     BottomNavigationView bottomNavigationView;
     EditText search ;
     private Handler handler;
+    private Handler handler1;
     private Button searchBtn;
 
 
@@ -65,9 +67,6 @@ public class ProductActivity extends AppCompatActivity {
 
 
 
-
-
-
         addProduct.setOnClickListener(v -> {
             navigateToAddProduct();
         });
@@ -75,7 +74,6 @@ public class ProductActivity extends AppCompatActivity {
         searchBtn.setOnClickListener(v -> {
             searchFunction();
         });
-
 
     }
 
@@ -91,13 +89,13 @@ public class ProductActivity extends AppCompatActivity {
         handler = new Handler(Looper.getMainLooper() , msg -> {
             if (myList.isEmpty()) myList = myProducts ;
             RecyclerView recyclerView = findViewById(R.id.product_archive_recycler);
-
-            ProductCustomAdapter customRecyclerView = new ProductCustomAdapter(getApplicationContext() , myList, new ProductCustomAdapter.CustomClickListener() {
+            ProductCustomAdapter customRecyclerView = new ProductCustomAdapter(getApplicationContext() , myList , userId, new ProductCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent productDetailActivity = new Intent(getApplicationContext() , ProductDetailsActivity.class);
                     productDetailActivity.removeExtra("id");
                     productDetailActivity.putExtra("id" ,  myList.get(position).getId().toString());
+                    productDetailActivity.putExtra("userId" , userId);
                     startActivity(productDetailActivity);
                 }
 
@@ -114,19 +112,41 @@ public class ProductActivity extends AppCompatActivity {
         });
 
 
+        handler1 = new Handler(Looper.getMainLooper() , msg -> {
+
+            Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        userId = attributes.get(0).getValue();
+                        Log.i("UserAuthDone" , userId);
+                        Log.i("tasks" , myProducts.toString()) ;
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+            );
+
+
+            return true ;
+        });
+
+
         Amplify.API.query(
                 ModelQuery.list(Product.class),
                 response -> {
-
                     for (Product product : response.getData()) {
                         myProducts.add(product);
                     }
+
+
                     Log.i("tasks" , myProducts.toString()) ;
                     Bundle bundle = new Bundle();
                     bundle.putString("data" , "Done");
                     Message message = new Message();
                     message.setData(bundle);
-                    handler.sendMessage(message);
+                    handler1.sendMessage(message);
 
                 },
                 error -> Log.e("MyAmplifyApp", "Query failure", error)
@@ -201,8 +221,10 @@ public class ProductActivity extends AppCompatActivity {
                 bundle.putString("data" , "Done");
                 Message message = new Message();
                 message.setData(bundle);
-                handler.sendMessage(message);
+                handler1.sendMessage(message);
     }
+
+
 
 
 

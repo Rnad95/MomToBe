@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Product;
+import com.bumptech.glide.Glide;
 import com.example.momtobe.R;
 
 import java.io.BufferedOutputStream;
@@ -61,8 +62,6 @@ public class AddProductActivity extends AppCompatActivity {
 
 
         // Upload Image
-
-
         productImage.setOnClickListener(view -> uploadImage());
 
         // AWS Add product api
@@ -184,6 +183,9 @@ public class AddProductActivity extends AppCompatActivity {
                     result -> {
                         Log.i(TAG, "Successfully uploaded: " + result.getKey()) ;
                         imageKey = result.getKey();
+                        runOnUiThread(() -> {
+                            setImage(imageKey);
+                        });
                         Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
                     },
                     storageFailure -> Log.e(TAG, "Upload failed", storageFailure)
@@ -203,4 +205,20 @@ public class AddProductActivity extends AppCompatActivity {
         productImage = findViewById(R.id.avatar);
         addProduct = findViewById(R.id.btn_add_product);
     }
+
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(productImage));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
+    }
+
 }

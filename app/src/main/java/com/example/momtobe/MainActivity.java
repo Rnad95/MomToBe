@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         navToActivity();
         itemsSelector();
         ButtonOnListener();
+
         setUserInformation();
 
         mViewAll = findViewById(R.id.view_all_blogs);
