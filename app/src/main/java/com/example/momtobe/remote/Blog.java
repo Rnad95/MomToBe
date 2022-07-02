@@ -63,27 +63,3 @@ public class Blog {
         this.category = category;
     }
 }
-////        package com.example.momtobe.remote;
-//
-//import java.util.List;
-//
-//import lombok.AllArgsConstructor;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
-//import lombok.ToString;
-//
-//
-//@Data
-//@ToString
-//@AllArgsConstructor
-////@NoArgsConstructor
-//public class Blog {
-//
-//    private Long id;
-//    private String title;
-//    private String Content;
-//    private String Author;
-//    private String imageLink;
-//    private String Category;
-//
-//}

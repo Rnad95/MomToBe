@@ -35,6 +35,7 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
     }
 
 
+
         @NonNull
         @Override
         public CustomHoleder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -73,7 +74,8 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
                 itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
             }
         }
-        public interface CustomClickListener{
-            void onTaskItemClicked(int position);
+    }
+    public interface CustomClickListener{
+        void onTaskItemClicked(int position);
     }
 }

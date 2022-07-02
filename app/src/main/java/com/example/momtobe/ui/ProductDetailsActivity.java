@@ -97,9 +97,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             RecyclerView recyclerView = findViewById(R.id.product_comment_recyclier_view);
 
-            ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, position -> {
-                Toast.makeText(this, "The item clicked => " + commentArrayList.get(position).toString(), Toast.LENGTH_SHORT).show();
-            });
+
+            ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
+                @Override
+                public void onTaskItemClicked(int position) {
+                    Log.i(TAG , "This is comment");
+                    Toast.makeText(ProductDetailsActivity.this, "this item is clicked", Toast.LENGTH_SHORT).show();
+                    setDetails();
+                }
+            } , userId );
 
             recyclerView.setAdapter(customRecyclerView);
 
@@ -114,6 +120,26 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         });
 
+        Handler handler1 = new Handler(Looper.getMainLooper() , msg -> {
+
+            Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        userId = attributes.get(0).getValue();
+                        Log.i("userName" , userId);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+            );
+
+
+            return true ;
+        });
+
+        if (!commentArrayList.isEmpty()) commentArrayList.clear();
         Amplify.API.query(
                 ModelQuery.get(Product.class, intent.getStringExtra("id")),
                 response -> {
@@ -125,7 +151,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     if(response.getData().getQuantity() == null) quantity = "0";
                     else quantity = response.getData().getQuantity().toString();
                     imageKey = response.getData().getImage();
-                    userId = response.getData().getMotherProductsId() ;
                     commentArrayList.addAll(response.getData().getComments());
 
 
@@ -135,7 +160,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                     Message message = new Message();
                     message.setData(bundle);
-                    handler.sendMessage(message);
+                    handler1.sendMessage(message);
 
 
                 },
@@ -193,6 +218,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     public void addComment(){
+
         Intent intent = getIntent();
         String commentContent= productCommentEditText.getText().toString();
 
