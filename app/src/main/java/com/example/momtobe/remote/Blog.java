@@ -17,8 +17,9 @@ public class Blog {
         this.category = category;
     }
 
-    public Blog(String title, String imageLink) {
+    public Blog(String title, String content,String imageLink) {
         this.title = title;
+        this.content = content;
         this.imageLink = imageLink;
     }
 

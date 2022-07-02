@@ -19,7 +19,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/user_full_name"
                     android:layout_width="95dp"
                     android:layout_height="26dp"
                     android:layout_marginStart="299dp"
@@ -31,10 +31,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/image_profile"
                     android:layout_width="58dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="24dp"
@@ -50,10 +50,10 @@
                     android:layout_marginStart="16dp"
                     android:text="Home"
                     android:textSize="24dp"
-                    app:layout_constraintEnd_toStartOf="@+id/textView"
+                    app:layout_constraintEnd_toStartOf="@+id/user_full_name"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile"
                     tools:textStyle="bold" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout

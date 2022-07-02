@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Blog"
-        android:textSize="40dp"
-        />
+        android:textSize="40dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/blog_archive_recycler"

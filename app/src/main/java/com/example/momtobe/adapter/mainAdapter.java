@@ -1,5 +1,6 @@
 package com.example.momtobe.adapter;
 
+import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.momtobe.MainActivity;
 import com.example.momtobe.R;
 import com.example.momtobe.remote.Blog;
 
@@ -19,15 +22,21 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.CustomHoleder>
 
         List<Blog> blogList;
         CustomClickListener listener;
+        Context context ;
 
         public mainAdapter(List<Blog> blogList) {
             this.blogList = blogList;
         }
-
-        public mainAdapter(List<Blog> blogList, mainAdapter.CustomClickListener listener) {
-            this.blogList = blogList;
-            this.listener = listener;
-        }
+//
+//        public mainAdapter(List<Blog> blogList, mainAdapter.CustomClickListener listener) {
+//            this.blogList = blogList;
+//            this.listener = listener;
+//        }
+    public mainAdapter(Context context,List<Blog> blogList, mainAdapter.CustomClickListener listener) {
+        this.blogList = blogList;
+        this.listener = listener;
+        this.context = context;
+    }
 
         @NonNull
         @Override
@@ -39,9 +48,9 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.CustomHoleder>
         @Override
         public void onBindViewHolder(@NonNull mainAdapter.CustomHoleder holder, int position) {
             holder.blogTitle.setText(blogList.get(position).getTitle());
-//            Uri uri = Uri.parse(blogList.get(position).getImageLink());
-//            holder.blogImage.setImageURI(Uri.parse(blogList.get(position).getImageLink()));
-        }
+            String url = blogList.get(position).getImageLink().toString();
+            Glide.with(context).load(url).into(holder.blogImage);
+             }
         @Override
         public int getItemCount() {
             return blogList.size();

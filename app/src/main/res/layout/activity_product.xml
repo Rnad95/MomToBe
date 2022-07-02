@@ -9,15 +9,16 @@
 
 
     <LinearLayout
+        android:id="@+id/layout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/product_archive_search"
             android:layout_width="300dp"
-            android:layout_margin="5dp"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:hint="Search"
             android:inputType="text" />
 
@@ -25,8 +26,7 @@
             android:id="@+id/btn_product_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search"
-            />
+            android:text="Search" />
     </LinearLayout>
 
 
@@ -34,9 +34,10 @@
         android:id="@+id/product_archive_recycler"
         android:layout_width="match_parent"
         android:layout_height="532dp"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/layout_search"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp" />
 

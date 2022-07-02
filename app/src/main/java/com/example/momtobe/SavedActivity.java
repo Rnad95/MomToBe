@@ -1,9 +1,9 @@
 package com.example.momtobe;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -68,7 +68,7 @@ public class SavedActivity extends AppCompatActivity {
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     private RequestQueue queue;
     private RequestQueue mQueue;
-    private String url ="https://jsonkeeper.com/b/WAVV";
+    private String url ="https://jsonkeeper.com/b/MKEL";
     private TextView tv;
 
     @Override
@@ -85,7 +85,7 @@ public class SavedActivity extends AppCompatActivity {
         }
          handler = new Handler(Looper.getMainLooper() , msg -> {
             recyclerView = findViewById(R.id.saved_recycler_view);
-            BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(blogsListTest, new BlogCustomAdapter.CustomClickListener() {
+            BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),blogsListTest, new BlogCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
