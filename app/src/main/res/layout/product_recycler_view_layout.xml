@@ -111,8 +111,36 @@
             app:layout_constraintTop_toBottomOf="@+id/product_archive_desc"
             app:layout_constraintVertical_bias="0.944" />
 
+        <TextView
+            android:id="@+id/product_archive_update_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:textSize="11sp"
+            android:padding="3dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/product_archive_quantity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/product_archive_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-
+        <TextView
+            android:id="@+id/product_archive_delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="Delete"
+            android:visibility="invisible"
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/product_archive_quantity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toEndOf="@+id/product_archive_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

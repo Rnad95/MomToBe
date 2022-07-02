@@ -33,3 +33,4 @@ export type AmplifyDependentResourcesAttributes = {
         }
     }
 }
+

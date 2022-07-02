@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         navToActivity();
         itemsSelector();
         ButtonOnListener();
+
         setUserInformation();
         GetEmail();
 
