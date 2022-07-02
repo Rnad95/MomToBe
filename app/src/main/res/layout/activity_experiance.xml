@@ -33,7 +33,7 @@
         android:textStyle="bold" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigator"
+        android:id="@+id/bottom_navigator_experiance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

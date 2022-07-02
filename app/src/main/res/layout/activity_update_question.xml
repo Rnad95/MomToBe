@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddExperianceActivity">
+    tools:context=".updateExperiance_Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,10 +21,10 @@
             android:paddingBottom="50dp">
 
             <TextView
-                android:id="@+id/page_title"
+                android:id="@+id/page_title_update_Question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Experiance"
+                android:text="update Question"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                 android:textColor="#000"
                 android:textSize="20sp" />
@@ -39,7 +39,7 @@
                 android:layout_height="20dp" />
 
             <RelativeLayout
-                android:id="@+id/lyt_avatar"
+                android:id="@+id/lyt_avatar_update"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/avatar_placeholder_click"
@@ -48,7 +48,7 @@
                 tools:ignore="SpeakableTextPresentCheck">
 
                 <ImageView
-                    android:id="@+id/Image_Experiance"
+                    android:id="@+id/Image_Question_update"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="20dp"
@@ -56,14 +56,14 @@
                     app:tint="#cccccc" />
 
                 <ImageView
-                    android:id="@+id/avatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:id="@+id/avatar_update"
+                    android:layout_width="75dp"
+                    android:layout_height="63dp" />
 
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/edit_Experiance_name"
+                android:id="@+id/edit_Question_name_update"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="18dp"
@@ -77,7 +77,7 @@
                 android:textColorHint="#666666" />
 
             <EditText
-                android:id="@+id/edit_Experiance_desc"
+                android:id="@+id/edit_Question_desc_update"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="18dp"
@@ -91,19 +91,19 @@
                 android:textColorHint="#666666" />
 
             <Spinner
-                android:id="@+id/spinner_exeriance"
+                android:id="@+id/spinner_exeriance_update"
                 android:layout_width="match_parent"
                 android:layout_height="63dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/btn_register_experiance"
+                android:id="@+id/btn_register_Question_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/btn_dark"
-                android:text="Add Exoeriance"
+                android:text="update Question"
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>

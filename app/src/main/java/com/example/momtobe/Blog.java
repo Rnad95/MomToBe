@@ -30,7 +30,6 @@ import com.google.gson.internal.LinkedTreeMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,6 @@ public class Blog extends AppCompatActivity {
     private RequestQueue mQueue;
     BottomNavigationView bottomNavigationView;
     private String url ="https://jsonkeeper.com/b/WAVV";
-
     private TextView tv;
 
     @Override
@@ -55,7 +53,6 @@ public class Blog extends AppCompatActivity {
         setContentView(R.layout.activity_blog);
         mQueue = Volley.newRequestQueue(this);
         navToActivities();
-
         try {
             CallAPI();
         } catch (IOException e) {
@@ -99,13 +96,9 @@ public class Blog extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-
                 }
-            });
-            recyclerView.setAdapter(blogCustomAdapter);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            return true ;
+                return false;
+            }
         });
     }
     private void setRecyclerView(){
@@ -128,7 +121,6 @@ public class Blog extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             return true ;
         });
-
     }
     private void CallAPI() throws IOException {
         RequestQueue queue = Volley.newRequestQueue(this);

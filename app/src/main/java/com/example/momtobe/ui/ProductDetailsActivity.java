@@ -97,10 +97,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             RecyclerView recyclerView = findViewById(R.id.product_comment_recyclier_view);
 
-            ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, position -> {
-                Toast.makeText(this, "The item clicked => " + commentArrayList.get(position).toString(), Toast.LENGTH_SHORT).show();
-            });
-
+            ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
+                @Override
+                public void onTaskItemClicked(int position) {
+                    Log.i(TAG , "This is comment");
+                    Toast.makeText(ProductDetailsActivity.this, "this item is clicked", Toast.LENGTH_SHORT).show();
+                    setDetails();
+                }
+            } , userId );
             recyclerView.setAdapter(customRecyclerView);
 
 

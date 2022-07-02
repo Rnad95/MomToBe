@@ -4,26 +4,38 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/MomToBe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2115" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/activity_add_experiance.xml" value="0.20416666666666666" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/activity_add_question.xml" value="0.20416666666666666" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/activity_comment.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/activity_experiance.xml" value="0.19010416666666666" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/activity_product.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/activity_question.xml" value="0.22" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/activity_question_avtivity.xml" value="0.20416666666666666" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/activity_update_question.xml" value="0.20416666666666666" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/comment_item_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/drawerlayout.xml" value="0.1984375" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/experiance_item_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/fragment_blank.xml" value="0.19010416666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/fragment_question_.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/navigation_action_bar.xml" value="0.1984375" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/product_recycler_view_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/question_avtivity.xml" value="0.20416666666666666" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/question_item_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/reciclerview_content.xml" value="0.203125" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/switch_item.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/task_item_layout.xml" value="0.203125" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/task_item_layout_question.xml" value="0.203125" />
+        <entry key="..\:/MomToBe/app/src/main/res/layout/update_experiance_activity.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/layout/use_switch.xml" value="0.203125" />
+        <entry key="..\:/MomToBe/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
         <entry key="..\:/MomToBe/app/src/main/res/menu/navigation_menu_bar.xml" value="0.22" />
         <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_blog.xml" value="0.1921875" />
         <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_blog_contentes.xml" value="0.25" />
         <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_profile.xml" value="0.25" />
-
+        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_settings.xml" value="0.1921875" />
+        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_sign_up.xml" value="0.1921875" />
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_add_product.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_comment_eperiance.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_product.xml" value="0.36666666666666664" />
@@ -31,9 +43,6 @@
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/comment_item_layout.xml" value="0.1" />
         <entry key="..\:/Users/hamzh/Desktop/Final project/MomApp/MomToBe/app/src/main/res/layout/product_recycler_view_layout.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_settings.xml" value="0.1921875" />
-        <entry key="..\:/Users/acer/ASAC/MomToBe/app/src/main/res/layout/activity_sign_up.xml" value="0.1921875" />
-
         <entry key="app/src/main/res/drawable/background_bar.xml" value="0.1785" />
         <entry key="app/src/main/res/drawable/botton_nav_bar.xml" value="0.1785" />
         <entry key="app/src/main/res/drawable/home.xml" value="0.172" />

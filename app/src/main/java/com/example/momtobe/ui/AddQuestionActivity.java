@@ -28,7 +28,10 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Experience;
+import com.amplifyframework.datastore.generated.model.ExperienceCategories;
 import com.amplifyframework.datastore.generated.model.Question;
+import com.amplifyframework.datastore.generated.model.QuestionCategories;
+import com.bumptech.glide.Glide;
 import com.example.momtobe.R;
 
 import java.io.BufferedOutputStream;
@@ -68,8 +71,8 @@ public class AddQuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_question);
         arrayListspinner3 = new ArrayList<>();
-        button = findViewById(R.id.btn_register);
-        image_Question = findViewById(R.id.Image_experiance);
+        button = findViewById(R.id.btn_register_Question);
+        image_Question = findViewById(R.id.Image_Question);
         title = findViewById(R.id.edit_Question_name);
         description = findViewById(R.id.edit_Question_desc);
 
@@ -92,7 +95,10 @@ public class AddQuestionActivity extends AppCompatActivity {
         }
         );
         add_Spinner_API_Query();
-        image_Question.setOnClickListener(view ->uploadImage() );
+        image_Question.setOnClickListener(view ->{
+            uploadImage();
+            setImage(imageKey);
+        } );
 
         button.setOnClickListener(view -> {
             String title1 = title.getText().toString();
@@ -100,21 +106,35 @@ public class AddQuestionActivity extends AppCompatActivity {
 
 
 
-//            for (int i = 0; i < arrayListspinner3.size(); i++) {
-//
-//                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
-//
-//
-//                }
-//
-//            }
+            for (int i = 0; i < arrayListspinner3.size(); i++) {
+
+                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
+
+                    QuestionCategories questionCategories=QuestionCategories
+                            .builder()
+                            .question(newQuestion)
+                            .cat(arrayListspinner3.get(i))
+                            .build();
+                    Amplify.API.mutate(
+                            ModelMutation.create(questionCategories),
+                            response -> {
+                                Log.i("MyAmplifyApp", "Added Todo with  categrey Question id: " + response.getData().getId());},
+                            error -> Log.e("MyAmplifyApp", "Create failed", error)
+                    );
+
+                    Toast.makeText(this, "categrey id:"+questionCategories.getId(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
             newQuestion = Question.builder()
                     .title(title1)
                     .description(description1)
                     .featured(false)
                     .motherQuestionsId(userId)
-//                            .image(currentUri.toString())
+                            .image(imageKey)
+
                     .build();
+
             Amplify.API.mutate(
                     ModelMutation.create(newQuestion),
                     response -> {
@@ -217,6 +237,21 @@ public class AddQuestionActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(image_Question));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
     }
 
 }

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -37,7 +38,8 @@ public class Experiance_activity extends AppCompatActivity {
     private RecyclerView recycleExperince;
     public static final String experianceName = "ExperianceName";
     public static final String MotherExperiences = "motherExperiences";
-
+    private String userId  =  "" ;
+    private Handler handler1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class Experiance_activity extends AppCompatActivity {
         /**
          * bottom Navigation Bar
          */
-        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView = findViewById(R.id.bottom_navigator_experiance);
         bottomNavigationView.setSelectedItemId(R.id.exp_page);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -96,7 +98,7 @@ public class Experiance_activity extends AppCompatActivity {
 
         handler=new Handler(
                 Looper.getMainLooper(), msg -> {
-            RecycleModels recycleModels = new RecycleModels(getApplicationContext(),taskArrayList, position -> {
+            RecycleModels_experiance recycleModels = new RecycleModels_experiance(getApplicationContext(),userId,taskArrayList, position -> {
                 Toast.makeText(
                         Experiance_activity.this,
                         "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
@@ -113,8 +115,25 @@ public class Experiance_activity extends AppCompatActivity {
             return true;
         }
         );
-       
-    
+
+        handler1 = new Handler(Looper.getMainLooper() , msg -> {
+
+            Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        userId = attributes.get(0).getValue();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+            );
+
+
+            return true ;
+        });
  
         Amplify.API.query(
                 ModelQuery.list(Experience.class),
@@ -123,7 +142,11 @@ public class Experiance_activity extends AppCompatActivity {
                         taskArrayList.add(experince);
                     }
 
-                    handler.sendEmptyMessage(1);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler1.sendMessage(message);
                 },
                 error -> Log.e(TAG, error.toString())
         );
@@ -146,4 +169,6 @@ public class Experiance_activity extends AppCompatActivity {
 //        );
 
     }
+
+
 }

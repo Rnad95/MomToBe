@@ -1,4 +1,4 @@
-package com.example.momtobe.ui;
+package com.example.momtobe;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -30,7 +30,7 @@ import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.ExperienceCategories;
 import com.bumptech.glide.Glide;
-import com.example.momtobe.R;
+import com.example.momtobe.ui.AddExperianceActivity;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -39,9 +39,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
-public class AddExperianceActivity extends AppCompatActivity {
+public class updateExperiance_Activity extends AppCompatActivity {
     private static final String TAG = AddExperianceActivity.class.getName();
     private static final int REQUEST_CODE = 1234;
     private ArrayList<Cat> arrayListspinner3;
@@ -55,97 +56,64 @@ public class AddExperianceActivity extends AppCompatActivity {
     private Button button;
     private EditText title;
     private EditText description;
+    private Experience newExperience1;
+    private String editTitle;
+    private String editDesc;
+    private String editImageKey;
+    private String title1;
+    private String description1;
+
+    private Intent intent;
     private Experience newExperience;
-
-
+    private List<ExperienceCategories> expreianceCat;
+    private String idExperiance;
+    private List<ExperienceCategories> experienceCategories1;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_experiance);
-         arrayListspinner3 = new ArrayList<>();
-        button = findViewById(R.id.btn_register_experiance);
-        image_experiance = findViewById(R.id.Image_Experiance);
-        title = findViewById(R.id.edit_Experiance_name);
-        description = findViewById(R.id.edit_Experiance_desc);
-        spinner3=findViewById(R.id.spinner_exeriance);
+        setContentView(R.layout.update_experiance_activity);
 
 
 
+
+        // take id of experiance from recycle view
+        intent = getIntent();
+        idExperiance = intent.getStringExtra("id");
+
+        Log.i(TAG, "onCreate:"+idExperiance);
+        // do find by id
+
+        declare_find();
+
+        // add the categrey that is have it in the aws
+
+        add_Spinner_API_Query();
+
+        // call the handler 1
 
         setHandler1();
 
-        add_Spinner_API_Query();
-image_experiance.setOnClickListener(view ->{uploadImage();
-    setImage(imageKey);
+        // set all the items in the xml and change the value inside of it
 
-});
-
-        button.setOnClickListener(view -> {
-            String title1 = title.getText().toString();
-            String description1 = description.getText().toString();
+        setDetails();
 
 
 
 
-            newExperience = Experience.builder()
-                    .title(title1)
-                    .description(description1)
-                    .featured(false)
-                            .image(imageKey)
-                    .motherExperiencesId(userId)
-
-                    .build();
 
 
 
-            Amplify.API.mutate(
-                    ModelMutation.create(newExperience),
-                    response -> {
-                        Log.i("MyAmplifyApp", "Added Todo with title: " + response.getData().getTitle());},
-                    error -> Log.e("MyAmplifyApp", "Create failed", error)
-            );
-
-            for (int i = 0; i < arrayListspinner3.size(); i++) {
-
-                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
-                    ExperienceCategories experienceCategories=ExperienceCategories
-                            .builder()
-                            .cat(arrayListspinner3.get(i))
-                            .experience(newExperience).build();
-                    Amplify.API.mutate(
-                            ModelMutation.create(experienceCategories),
-                            response -> {
-                                Log.i("MyAmplifyApp", "Added Todo with  categrey Experiance id: " + response.getData().getId());},
-                            error -> Log.e("MyAmplifyApp", "Create failed", error)
-                    );
-
-                    Toast.makeText(this, "categrey id:"+experienceCategories.getId(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-
+        // upload the image and change it in aws
+        image_experiance.setOnClickListener(view ->{uploadImage();
+            setImage(imageKey);
 
         });
-
-        Amplify.Auth.fetchUserAttributes(
-                attributes ->{
-                    userId = attributes.get(0).getValue();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("data" , "Done");
-
-                    Message message = new Message();
-                    message.setData(bundle);
-                    handler1.sendMessage(message);
-                },
-                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-        );
 
 
 
     }
-
 
     public void add_Spinner_API_Query() {
         Amplify.API.query(
@@ -262,5 +230,118 @@ image_experiance.setOnClickListener(view ->{uploadImage();
                     error -> Log.e(TAG, "Download Failure", error)
             );
         }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void setDetails() {
+
+
+
+        Handler handler = new Handler(Looper.getMainLooper(), msg -> {
+            title.setText(editTitle);
+            description.setText(editDesc);
+            if (editImageKey != null) {
+                setImage(editImageKey);
+            }
+            experienceCategories1 = expreianceCat.stream().filter(index->index.getExperience().getId().equals(idExperiance)).collect(Collectors.toList());
+            Log.i("TAG", "setDetails"+experienceCategories1.toString()+"Experiance catagery:"+idExperiance);
+            // button that is take the update data and save it in aws
+            button.setOnClickListener(view -> updateProduct());
+            return true;
+
+        });
+
+        Amplify.API.query(
+                ModelQuery.get(Experience.class, intent.getStringExtra("id")),
+                response -> {
+                    Log.i(TAG, (response.getData()).getTitle());
+                    editTitle = response.getData().getTitle();
+                    editDesc = response.getData().getDescription();
+                    editImageKey = response.getData().getImage();
+                    newExperience = response.getData();
+                    expreianceCat = response.getData().getCategories();
+                    Log.i(TAG, "setDetails: "+ expreianceCat.toString());
+                    Bundle bundle = new Bundle();
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler.sendMessage(message);
+
+
+                },
+                error -> Log.e("MyAmplifyApp", error.toString(), error)
+        );
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void updateProduct(){
+
+        Handler handler2 = new Handler(Looper.getMainLooper() , msg -> {
+            title1 = title.getText().toString();
+            description1 = description.getText().toString();
+
+
+    newExperience1 = Experience.builder()
+            .title(title1)
+            .description(description1)
+            .featured(false)
+            .id(intent.getStringExtra("id"))
+            .image(imageKey)
+            .motherExperiencesId(userId)
+            .build();
+
+
+
+            Amplify.API.mutate(
+                    ModelMutation.update(newExperience1),
+                    response -> {
+                        Log.i("MyAmplifyApp", "Added Todo with title: " + response.getData());},
+                    error -> Log.e("MyAmplifyApp", "Create failed", error)
+            );
+
+            startActivity(new Intent(getApplicationContext() , Experiance_activity.class));
+
+            return true ;
+        });
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    userId = attributes.get(0).getValue();
+                    handler2.sendEmptyMessage(1);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
+
+
+        for (int i = 0; i < arrayListspinner3.size(); i++) {
+            if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
+String idCat=arrayListspinner3.get(i).getId();
+
+                ExperienceCategories experienceCategories=ExperienceCategories
+                        .builder()
+                        .cat(arrayListspinner3.get(i))
+                        .experience(newExperience)
+                        .id(experienceCategories1.get(0).getId())
+                        .build();
+                Amplify.API.mutate(
+                        ModelMutation.update(experienceCategories),
+                        response -> {
+                            Log.i("MyAmplifyApp", "Added Todo with  categrey Experiance id: " + response.getData().getId());},
+                        error -> Log.e("MyAmplifyApp", "Create failed", error)
+                );
+
+                Toast.makeText(this, "categrey id:"+experienceCategories.getId(), Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+    }
+
+    public void declare_find(){
+
+        arrayListspinner3 = new ArrayList<>();
+        button = findViewById(R.id.btn_register_Question_update);
+        image_experiance = findViewById(R.id.Image_Question_update);
+        title = findViewById(R.id.edit_Question_name_update);
+        description = findViewById(R.id.edit_Question_desc_update);
+        spinner3=findViewById(R.id.spinner_exeriance_update);
     }
 }
