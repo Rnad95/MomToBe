@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MomToBe</string>
+    <string name="what_is_your_question">what is your Question</string>
+    <string name="filter">filter</string>
+    <string name="serch">serch</string>
+
+    <string name="what_is_your_Experiance">what_is_your_Experiance</string>
+
+
+    <string name="product_name">Product Name</string>
+    <string name="quantity_1">Quantity : 1</string>
+    <string name="status_new">Status : New</string>
+    <string name="price_10_jd">Price : 10 JD</string>
+    <string name="short_description">Short description for the product</string>
+
+    <string name="hadeel">Author: Hadeel</string>
+
+    <string name="title_activity_profile">profile</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+</resources>

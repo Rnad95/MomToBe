@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
 MERGED from [androidx.databinding:viewbinding:7.1.3] /home/renad/.gradle/caches/transforms-3/b68af224366ab0157cc0787b4524ebeb/transformed/viewbinding-7.1.3/AndroidManifest.xml:17:1-24:12
 MERGED from [com.amplifyframework:aws-api:1.35.4] /home/renad/.gradle/caches/transforms-3/d1061039d97080ee712830de279281f9/transformed/aws-api-1.35.4/AndroidManifest.xml:16:1-26:12
 MERGED from [com.amplifyframework:aws-datastore:1.35.4] /home/renad/.gradle/caches/transforms-3/66e95921950b205ea8fa43099d3c93cf/transformed/aws-datastore-1.35.4/AndroidManifest.xml:16:1-24:12
@@ -97,35 +97,35 @@ MERGED from [io.reactivex.rxjava3:rxandroid:3.0.0] /home/renad/.gradle/caches/tr
 MERGED from [androidx.multidex:multidex:2.0.1] /home/renad/.gradle/caches/transforms-3/e6ab9a3756693c6e196d3c6146ec350a/transformed/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
 MERGED from [io.michaelrocks:libphonenumber-android:8.12.28] /home/renad/.gradle/caches/transforms-3/9275c00795d08c10900287e145fc6789/transformed/libphonenumber-android-8.12.28/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.play:core:1.9.1] /home/renad/.gradle/caches/transforms-3/5e9fdd8679c114e4a95ead7fa22639d9/transformed/core-1.9.1/AndroidManifest.xml:2:1-23:12
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
 	package
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:4:5-34
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:4:5-34
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 	xmlns:tools
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:3:5-51
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:1-96:12
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:6:5-79
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:6:5-79
 MERGED from [com.amazonaws:aws-android-sdk-s3:2.46.0] /home/renad/.gradle/caches/transforms-3/51cf98c97ab4d76f356fca308d694875/transformed/aws-android-sdk-s3-2.46.0/AndroidManifest.xml:10:5-79
 MERGED from [com.amazonaws:aws-android-sdk-s3:2.46.0] /home/renad/.gradle/caches/transforms-3/51cf98c97ab4d76f356fca308d694875/transformed/aws-android-sdk-s3-2.46.0/AndroidManifest.xml:10:5-79
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.49.0] /home/renad/.gradle/caches/transforms-3/0b5fe882a2c3b1b9a3810524316fe4ea/transformed/aws-android-sdk-mobile-client-2.49.0/AndroidManifest.xml:18:5-79
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.49.0] /home/renad/.gradle/caches/transforms-3/0b5fe882a2c3b1b9a3810524316fe4ea/transformed/aws-android-sdk-mobile-client-2.49.0/AndroidManifest.xml:18:5-79
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:6:22-76
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:6:22-76
 uses-permission#android.permission.INTERNET
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:7:5-67
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:7:5-67
 MERGED from [com.amplifyframework:aws-api:1.35.4] /home/renad/.gradle/caches/transforms-3/d1061039d97080ee712830de279281f9/transformed/aws-api-1.35.4/AndroidManifest.xml:24:5-67
 MERGED from [com.amplifyframework:aws-api:1.35.4] /home/renad/.gradle/caches/transforms-3/d1061039d97080ee712830de279281f9/transformed/aws-api-1.35.4/AndroidManifest.xml:24:5-67
 MERGED from [com.amplifyframework:core:1.36.0] /home/renad/.gradle/caches/transforms-3/05a6459204ad52be11197d343933947b/transformed/core-1.36.0/AndroidManifest.xml:24:5-67
@@ -133,9 +133,9 @@ MERGED from [com.amplifyframework:core:1.36.0] /home/renad/.gradle/caches/transf
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.49.0] /home/renad/.gradle/caches/transforms-3/0b5fe882a2c3b1b9a3810524316fe4ea/transformed/aws-android-sdk-mobile-client-2.49.0/AndroidManifest.xml:17:5-67
 MERGED from [com.amazonaws:aws-android-sdk-mobile-client:2.49.0] /home/renad/.gradle/caches/transforms-3/0b5fe882a2c3b1b9a3810524316fe4ea/transformed/aws-android-sdk-mobile-client-2.49.0/AndroidManifest.xml:17:5-67
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:7:22-64
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:7:22-64
 application
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:8:5-94:19
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:8:5-94:19
 MERGED from [com.amplifyframework:aws-storage-s3:1.35.4] /home/renad/.gradle/caches/transforms-3/dbf18ed4ef266a6e5b16b467de332413/transformed/aws-storage-s3-1.35.4/AndroidManifest.xml:24:5-28:19
 MERGED from [com.amplifyframework:aws-storage-s3:1.35.4] /home/renad/.gradle/caches/transforms-3/dbf18ed4ef266a6e5b16b467de332413/transformed/aws-storage-s3-1.35.4/AndroidManifest.xml:24:5-28:19
 MERGED from [com.amplifyframework:core:1.36.0] /home/renad/.gradle/caches/transforms-3/05a6459204ad52be11197d343933947b/transformed/core-1.36.0/AndroidManifest.xml:26:5-30:19
@@ -169,169 +169,169 @@ MERGED from [com.google.android.play:core:1.9.1] /home/renad/.gradle/caches/tran
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.7.0] /home/renad/.gradle/caches/transforms-3/06b9ff76571b350908c3cbd324fadbc4/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:17:9-35
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:15:9-41
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:15:9-41
 	android:hardwareAccelerated
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:10:9-44
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:10:9-44
 	android:fullBackupContent
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:13:9-54
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:13:9-54
 	android:roundIcon
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:16:9-54
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:16:9-54
 	tools:targetApi
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:19:9-29
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:19:9-29
 	android:icon
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:14:9-43
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:14:9-43
 	android:allowBackup
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:18:9-45
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:18:9-45
 	android:dataExtractionRules
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:12:9-65
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:12:9-65
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:9:9-43
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:9:9-43
 activity#com.example.momtobe.CommentActivity_Eperiance
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:20:9-22:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:20:9-22:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:22:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:22:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:21:13-54
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:21:13-54
 activity#com.example.momtobe.CommentActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:23:9-25:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:23:9-25:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:25:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:25:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:24:13-44
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:24:13-44
 activity#com.example.momtobe.ui.AddQuestionActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:26:9-29:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:26:9-29:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:29:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:29:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:28:13-51
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:28:13-51
 activity#com.example.momtobe.registration.VerificationActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:30:9-32:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:30:9-32:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:32:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:31:13-62
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:31:13-62
 activity#com.example.momtobe.ui.AddExperianceActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:33:9-35:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:33:9-35:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:35:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:35:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:34:13-53
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:34:13-53
 activity#com.example.momtobe.registration.SignUpActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:36:9-44:20
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:36:9-44:20
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:38:13-36
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:38:13-36
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:37:13-56
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:37:13-56
 intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:image/*
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:39:13-43:29
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:39:13-43:29
 action#android.intent.action.SEND
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:40:17-68
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:40:17-68
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:40:25-66
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:40:25-66
 category#android.intent.category.DEFAULT
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:41:17-75
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:41:17-75
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:41:27-73
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:41:27-73
 data
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:42:17-51
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:42:17-51
 	android:mimeType
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:42:23-49
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:42:23-49
 activity#com.example.momtobe.registration.LoginActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:45:9-53:20
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:45:9-53:20
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:47:13-36
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:47:13-36
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:46:13-55
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:46:13-55
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:49:13-52:29
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:49:13-52:29
 action#android.intent.action.MAIN
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:50:17-69
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:50:17-69
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:50:25-66
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:50:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:51:17-77
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:51:17-77
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:51:27-74
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:51:27-74
 activity#com.example.momtobe.MainDesignActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:54:9-58:20
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:54:9-58:20
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:56:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:55:13-47
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:55:13-47
 activity#com.example.momtobe.Experiance_activity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:59:9-61:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:59:9-61:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:61:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:61:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:60:13-48
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:60:13-48
 activity#com.example.momtobe.Profile
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:63:9-65:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:63:9-65:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:65:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:65:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:64:13-36
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:64:13-36
 activity#com.example.momtobe.Question_avtivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:66:9-68:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:66:9-68:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:68:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:68:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:67:13-46
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:67:13-46
 activity#com.example.momtobe.SavedActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:69:9-71:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:69:9-71:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:71:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:71:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:70:13-42
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:70:13-42
 activity#com.example.momtobe.ui.ProductActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:72:9-74:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:72:9-74:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:74:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:74:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:73:13-47
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:73:13-47
 activity#com.example.momtobe.ui.AddProductActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:76:9-78:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:76:9-78:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:78:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:78:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:77:13-50
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:77:13-50
 activity#com.example.momtobe.BlogContentes
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:79:9-81:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:79:9-81:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:81:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:81:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:80:13-42
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:80:13-42
 activity#com.example.momtobe.Settings
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:82:9-84:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:82:9-84:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:84:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:84:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:83:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:83:13-37
 activity#com.example.momtobe.Blog
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:85:9-87:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:85:9-87:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:87:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:87:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:86:13-33
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:86:13-33
 activity#com.example.momtobe.ui.ProductDetailsActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:88:9-90:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:88:9-90:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:90:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:90:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:89:13-54
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:89:13-54
 activity#com.example.momtobe.MainActivity
-ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:91:9-93:40
+ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:91:9-93:40
 	android:exported
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:93:13-37
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:93:13-37
 	android:name
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:92:13-41
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:92:13-41
 uses-sdk
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:7.1.3] /home/renad/.gradle/caches/transforms-3/b68af224366ab0157cc0787b4524ebeb/transformed/viewbinding-7.1.3/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.databinding:viewbinding:7.1.3] /home/renad/.gradle/caches/transforms-3/b68af224366ab0157cc0787b4524ebeb/transformed/viewbinding-7.1.3/AndroidManifest.xml:20:5-22:41
 MERGED from [com.amplifyframework:aws-api:1.35.4] /home/renad/.gradle/caches/transforms-3/d1061039d97080ee712830de279281f9/transformed/aws-api-1.35.4/AndroidManifest.xml:20:5-22:41
@@ -518,18 +518,18 @@ MERGED from [io.michaelrocks:libphonenumber-android:8.12.28] /home/renad/.gradle
 MERGED from [io.michaelrocks:libphonenumber-android:8.12.28] /home/renad/.gradle/caches/transforms-3/9275c00795d08c10900287e145fc6789/transformed/libphonenumber-android-8.12.28/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.play:core:1.9.1] /home/renad/.gradle/caches/transforms-3/5e9fdd8679c114e4a95ead7fa22639d9/transformed/core-1.9.1/AndroidManifest.xml:4:3-70
 MERGED from [com.google.android.play:core:1.9.1] /home/renad/.gradle/caches/transforms-3/5e9fdd8679c114e4a95ead7fa22639d9/transformed/core-1.9.1/AndroidManifest.xml:4:3-70
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 	tools:overrideLibrary
 		ADDED from [com.amazonaws:aws-android-sdk-mobile-client:2.49.0] /home/renad/.gradle/caches/transforms-3/0b5fe882a2c3b1b9a3810524316fe4ea/transformed/aws-android-sdk-mobile-client-2.49.0/AndroidManifest.xml:15:9-93
 	android:targetSdkVersion
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-		ADDED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
-		INJECTED from /home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+		ADDED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
+		INJECTED from /home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 service#com.amazonaws.mobileconnectors.s3.transferutility.TransferService
 ADDED from [com.amplifyframework:aws-storage-s3:1.35.4] /home/renad/.gradle/caches/transforms-3/dbf18ed4ef266a6e5b16b467de332413/transformed/aws-storage-s3-1.35.4/AndroidManifest.xml:25:9-27:38
 	android:enabled

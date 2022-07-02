@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.momtobe">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name=".MomToBeApplication"
+        android:hardwareAccelerated="false"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MomToBe"
+        tools:targetApi="31">
+        <activity
+            android:name=".CommentActivity_Eperiance"
+            android:exported="false" />
+        <activity
+            android:name=".CommentActivity"
+            android:exported="false" />
+        <activity
+
+            android:name=".ui.AddQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".registration.VerificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AddExperianceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".registration.SignUpActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".registration.LoginActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainDesignActivity"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".Experiance_activity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Question_avtivity"
+            android:exported="false" />
+        <activity
+            android:name=".SavedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ProductActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BlogContentes"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".Blog"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

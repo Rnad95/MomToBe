@@ -6,16 +6,16 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+8-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="32" />
-9-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml
+9-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-11-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:6:5-79
-11-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:6:22-76
+11-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:6:5-79
+11-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:6:22-76
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:7:5-67
-12-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:7:22-64
+12-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:7:5-67
+12-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:7:22-64
 13
 14    <!-- Permission will be merged into the manifest of the hosting app. -->
 15    <!-- Is required to launch foreground extraction service for targetSdkVersion 28+. -->
@@ -24,172 +24,172 @@
 16-->[com.google.android.play:core:1.9.1] /home/renad/.gradle/caches/transforms-3/5e9fdd8679c114e4a95ead7fa22639d9/transformed/core-1.9.1/AndroidManifest.xml:8:20-72
 17
 18    <application
-18-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:8:5-94:19
+18-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:8:5-94:19
 19        android:name="com.example.momtobe.MomToBeApplication"
-19-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:9:9-43
+19-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:9:9-43
 20        android:allowBackup="true"
-20-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:11:9-35
+20-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:11:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 21-->[androidx.core:core:1.7.0] /home/renad/.gradle/caches/transforms-3/06b9ff76571b350908c3cbd324fadbc4/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
 22        android:dataExtractionRules="@xml/data_extraction_rules"
-22-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:12:9-65
+22-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:12:9-65
 23        android:debuggable="true"
 24        android:fullBackupContent="@xml/backup_rules"
-24-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:13:9-54
+24-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:13:9-54
 25        android:hardwareAccelerated="false"
-25-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:10:9-44
+25-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:10:9-44
 26        android:icon="@mipmap/ic_launcher"
-26-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:14:9-43
+26-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:14:9-43
 27        android:label="@string/app_name"
-27-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:15:9-41
+27-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:15:9-41
 28        android:roundIcon="@mipmap/ic_launcher_round"
-28-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:16:9-54
+28-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:16:9-54
 29        android:supportsRtl="true"
-29-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:17:9-35
+29-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:17:9-35
 30        android:testOnly="true"
 31        android:theme="@style/Theme.MomToBe" >
-31-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:18:9-45
+31-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:18:9-45
 32        <activity
-32-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:20:9-22:40
+32-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:20:9-22:40
 33            android:name="com.example.momtobe.CommentActivity_Eperiance"
-33-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:21:13-54
+33-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:21:13-54
 34            android:exported="false" />
-34-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:22:13-37
+34-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:22:13-37
 35        <activity
-35-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:23:9-25:40
+35-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:23:9-25:40
 36            android:name="com.example.momtobe.CommentActivity"
-36-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:24:13-44
+36-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:24:13-44
 37            android:exported="false" />
-37-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:25:13-37
+37-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:25:13-37
 38        <activity
-38-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:26:9-29:40
+38-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:26:9-29:40
 39            android:name="com.example.momtobe.ui.AddQuestionActivity"
-39-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:28:13-51
+39-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:28:13-51
 40            android:exported="false" />
-40-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:29:13-37
+40-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:29:13-37
 41        <activity
-41-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:30:9-32:40
+41-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:30:9-32:40
 42            android:name="com.example.momtobe.registration.VerificationActivity"
-42-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:31:13-62
+42-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:31:13-62
 43            android:exported="false" />
-43-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:32:13-37
+43-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:32:13-37
 44        <activity
-44-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:33:9-35:40
+44-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:33:9-35:40
 45            android:name="com.example.momtobe.ui.AddExperianceActivity"
-45-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:34:13-53
+45-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:34:13-53
 46            android:exported="false" />
-46-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:35:13-37
+46-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:35:13-37
 47        <activity
-47-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:36:9-44:20
+47-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:36:9-44:20
 48            android:name="com.example.momtobe.registration.SignUpActivity"
-48-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:37:13-56
+48-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:37:13-56
 49            android:exported="true" >
-49-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:38:13-36
+49-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:38:13-36
 50            <intent-filter>
-50-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:39:13-43:29
+50-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:39:13-43:29
 51                <action android:name="android.intent.action.SEND" />
-51-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:40:17-68
-51-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:40:25-66
+51-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:40:17-68
+51-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:40:25-66
 52
 53                <category android:name="android.intent.category.DEFAULT" />
-53-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:41:17-75
-53-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:41:27-73
+53-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:41:17-75
+53-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:41:27-73
 54
 55                <data android:mimeType="image/*" />
-55-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:42:17-51
-55-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:42:23-49
+55-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:42:17-51
+55-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:42:23-49
 56            </intent-filter>
 57        </activity>
 58        <activity
-58-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:45:9-53:20
+58-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:45:9-53:20
 59            android:name="com.example.momtobe.registration.LoginActivity"
-59-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:46:13-55
+59-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:46:13-55
 60            android:exported="true" >
-60-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:47:13-36
+60-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:47:13-36
 61            <intent-filter>
-61-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:49:13-52:29
+61-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:49:13-52:29
 62                <action android:name="android.intent.action.MAIN" />
-62-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:50:17-69
-62-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:50:25-66
+62-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:50:17-69
+62-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:50:25-66
 63
 64                <category android:name="android.intent.category.LAUNCHER" />
-64-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:51:17-77
-64-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:51:27-74
+64-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:51:17-77
+64-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:51:27-74
 65            </intent-filter>
 66        </activity>
 67        <activity
-67-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:54:9-58:20
+67-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:54:9-58:20
 68            android:name="com.example.momtobe.MainDesignActivity"
-68-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:55:13-47
+68-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:55:13-47
 69            android:exported="false" >
-69-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:56:13-37
+69-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:56:13-37
 70        </activity>
 71        <activity
-71-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:59:9-61:40
+71-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:59:9-61:40
 72            android:name="com.example.momtobe.Experiance_activity"
-72-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:60:13-48
+72-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:60:13-48
 73            android:exported="false" />
-73-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:61:13-37
+73-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:61:13-37
 74        <activity
-74-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:63:9-65:40
+74-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:63:9-65:40
 75            android:name="com.example.momtobe.Profile"
-75-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:64:13-36
+75-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:64:13-36
 76            android:exported="false" />
-76-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:65:13-37
+76-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:65:13-37
 77        <activity
-77-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:66:9-68:40
+77-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:66:9-68:40
 78            android:name="com.example.momtobe.Question_avtivity"
-78-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:67:13-46
+78-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:67:13-46
 79            android:exported="false" />
-79-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:68:13-37
+79-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:68:13-37
 80        <activity
-80-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:69:9-71:40
+80-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:69:9-71:40
 81            android:name="com.example.momtobe.SavedActivity"
-81-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:70:13-42
+81-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:70:13-42
 82            android:exported="false" />
-82-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:71:13-37
+82-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:71:13-37
 83        <activity
-83-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:72:9-74:40
+83-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:72:9-74:40
 84            android:name="com.example.momtobe.ui.ProductActivity"
-84-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:73:13-47
+84-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:73:13-47
 85            android:exported="false" />
-85-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:74:13-37
+85-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:74:13-37
 86        <activity
-86-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:76:9-78:40
+86-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:76:9-78:40
 87            android:name="com.example.momtobe.ui.AddProductActivity"
-87-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:77:13-50
+87-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:77:13-50
 88            android:exported="false" />
-88-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:78:13-37
+88-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:78:13-37
 89        <activity
-89-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:79:9-81:40
+89-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:79:9-81:40
 90            android:name="com.example.momtobe.BlogContentes"
-90-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:80:13-42
+90-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:80:13-42
 91            android:exported="false" />
-91-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:81:13-37
+91-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:81:13-37
 92        <activity
-92-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:82:9-84:40
+92-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:82:9-84:40
 93            android:name="com.example.momtobe.Settings"
-93-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:83:13-37
+93-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:83:13-37
 94            android:exported="false" />
-94-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:84:13-37
+94-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:84:13-37
 95        <activity
-95-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:85:9-87:40
+95-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:85:9-87:40
 96            android:name="com.example.momtobe.Blog"
-96-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:86:13-33
+96-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:86:13-33
 97            android:exported="false" />
-97-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:87:13-37
+97-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:87:13-37
 98        <activity
-98-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:88:9-90:40
+98-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:88:9-90:40
 99            android:name="com.example.momtobe.ui.ProductDetailsActivity"
-99-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:89:13-54
+99-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:89:13-54
 100            android:exported="false" />
-100-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:90:13-37
+100-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:90:13-37
 101        <activity
-101-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:91:9-93:40
+101-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:91:9-93:40
 102            android:name="com.example.momtobe.MainActivity"
-102-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:92:13-41
+102-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:92:13-41
 103            android:exported="false" />
-103-->/home/renad/Desktop/MyFiles/MomToBe/app/src/main/AndroidManifest.xml:93:13-37
+103-->/home/renad/Desktop/Final/MomToBe/app/src/main/AndroidManifest.xml:93:13-37
 104
 105        <service
 105-->[com.amplifyframework:aws-storage-s3:1.35.4] /home/renad/.gradle/caches/transforms-3/dbf18ed4ef266a6e5b16b467de332413/transformed/aws-storage-s3-1.35.4/AndroidManifest.xml:25:9-27:38

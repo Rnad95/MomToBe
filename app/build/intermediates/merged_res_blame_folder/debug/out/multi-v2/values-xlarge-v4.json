@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xlarge-v4/values-xlarge-v4.xml",
+            "outputFile": "/home/renad/Desktop/Final/MomToBe/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
                     "source": "/home/renad/.gradle/caches/transforms-3/4f100c598fd81c92e27a29ab909995a3/transformed/appcompat-1.4.2/res/values-xlarge-v4/values-xlarge-v4.xml",

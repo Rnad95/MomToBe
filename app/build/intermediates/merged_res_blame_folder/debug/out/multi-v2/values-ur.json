@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur.xml",
+            "outputFile": "/home/renad/Desktop/Final/MomToBe/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur.xml",
             "map": [
                 {
                     "source": "/home/renad/.gradle/caches/transforms-3/e03260358c29d381b8fc2b9ffcc65879/transformed/navigation-ui-2.3.5/res/values-ur/values-ur.xml",
