@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -51,6 +52,7 @@ import com.google.gson.internal.LinkedTreeMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -69,13 +71,18 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     TextView mViewAll;
     ImageView mImage;
+    private ImageView imageView;
+
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     ArrayList<String> taskArrayList=new ArrayList<>();
     private Handler handler1;
+    private Handler handlerMom;
+
     private Date dateParse;
     private String userId;
     private String userName;
     TextView mFullName;
+    Mother mother ;
     private Handler handler2;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -88,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
         ButtonOnListener();
 
         setUserInformation();
-        GetEmail();
 
         mViewAll = findViewById(R.id.view_all_blogs);
         mViewAll.setOnClickListener(view -> {
@@ -106,7 +112,15 @@ public class MainActivity extends AppCompatActivity {
         setRecyclerViewForQuestion();
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUserInformation();
+    }
+
     private void fetchUserInformation(){
+
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
                     userId = attributes.get(0).getValue();
@@ -121,18 +135,67 @@ public class MainActivity extends AppCompatActivity {
                         mFullName.setText(userName);
                     });
 
+                    findMotherAPI(attributes.get(3).getValue());
+
                     Log.i(TAG, "fetchUserInformation: "+ attributes);
                     Log.i(TAG, "fetchUserInformation: 0 "+ attributes.get(0).getValue());
                     Log.i(TAG, "fetchUserInformation: 1 "+ attributes.get(1).getValue());
                     Log.i(TAG, "fetchUserInformation: 2 "+ attributes.get(2).getValue());
                     Log.i(TAG, "fetchUserInformation: 3 "+ attributes.get(3).getValue());
+
+                    handlerMom =  new Handler(Looper.getMainLooper(), msg->{
+                        setImage(mother.getImage());
+                        return true ;
+                    });
                 },
                 error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
         );
     }
+
+    void findMotherAPI (String emailId ){
+        Log.i(TAG, "findMotherAPI: id ->"+emailId);
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                success->{
+                    if(success.hasData())
+                    {
+                        for (Mother curMother : success.getData())
+                        {
+                            if(curMother.getEmailAddress().equals(emailId)){
+                                Log.i(TAG, "findMotherAPI: mother->"+mother);
+                                mother  = curMother;
+                            }
+                            Bundle bundle = new Bundle();
+                            bundle.putString("data","Done");
+                            Message message = new Message();
+                            message.setData(bundle);
+                            handlerMom.sendMessage(message);
+                        }
+                    }
+                },
+                fail->{
+                    Log.i(TAG, "onCreate: failed to find mother in database");
+                }
+        );
+    }
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        imageView = findViewById(R.id.image_profile);
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
+    }
+
     private void setUserInformation(){
         fetchUserInformation();
-
         Amplify.Storage.getUrl("1734345085.jpg",
                 success ->{
                         String url = success.getUrl().toString();
@@ -145,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
                 error -> Log.e(TAG,  "display Failed", error)
         );
     }
+
     private void setRecyclerViewForQuestion(){
         listView = findViewById(R.id.list_view);
         handler1 = new Handler(
@@ -286,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
 //            startActivity(new Intent(MainActivity.this,SavedActivity.class));
 //        });
         mImage.setOnClickListener(view ->{
-
+            SentEmailToUserActivity();
         });
     }
     @Override
