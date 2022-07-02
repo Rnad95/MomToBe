@@ -107,9 +107,9 @@ public class Blog extends AppCompatActivity {
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
                     intent.putExtra("blogId", position);
-                    intent.putExtra("title",  blogsListTest.get(position).getTitle());
-                    intent.putExtra("content",blogsListTest.get(position).getContent());
-                    intent.putExtra("author", blogsListTest.get(position).getAuthor());
+                    intent.putExtra("title",    blogsListTest.get(position).getTitle());
+                    intent.putExtra("content",  blogsListTest.get(position).getContent());
+                    intent.putExtra("author",   blogsListTest.get(position).getAuthor());
                     intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
                     intent.putExtra("category" ,blogsListTest.get(position).getCategory());
                     startActivity(intent);

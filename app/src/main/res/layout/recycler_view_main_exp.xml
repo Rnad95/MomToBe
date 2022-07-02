@@ -49,6 +49,36 @@
             android:textSize="19dp"
             android:textStyle="bold|italic" />
 
+        <TextView
+            android:id="@+id/mother_content"
+            android:layout_width="244dp"
+            android:layout_height="114dp"
+            android:layout_below="@+id/mother_image"
+            android:layout_alignStart="@+id/mother_image"
+            android:layout_alignEnd="@+id/mother_image"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="-1dp"
+            android:layout_marginBottom="12dp"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:id="@+id/mother_Author"
+            android:layout_width="244dp"
+            android:layout_height="114dp"
+            android:layout_below="@+id/mother_image"
+            android:layout_alignStart="@+id/mother_image"
+            android:layout_alignEnd="@+id/mother_image"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="-1dp"
+            android:layout_marginBottom="12dp"
+            android:visibility="invisible"
+            />
+
 
     </RelativeLayout>
 

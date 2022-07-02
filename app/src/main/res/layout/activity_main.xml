@@ -45,7 +45,9 @@
                     app:civ_border_width="2dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/man_avatar" />
+                    android:src="@drawable/man_avatar"
+                    />
+
 
                 <TextView
                     android:id="@+id/textView4"

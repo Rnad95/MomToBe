@@ -47,6 +47,7 @@ public class BlogContentes extends AppCompatActivity {
     private TextView authorNameView;
     private ImageButton save_btn;
     private String userId;
+    private String author;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,12 +86,12 @@ public class BlogContentes extends AppCompatActivity {
             Bundle bundle = new Bundle();
             email =  bundle.getString("motherEmail") ;
             index = bundle.getInt("blogId");
-
+            author = bundle.getString("author");
             image = bundle.getString("imageLink");
-            Log.i(TAG, "setSaveBtn: "+index);
+            Log.i(TAG, "setSaveBtn: AUTHOR: " + author);
             blog = Blog.builder().title(title)
                     .description(content)
-                    .autherName(authorName)
+                    .autherName("author")
                     .featured(true)
                     .image(image)
                     .build();
@@ -167,7 +168,5 @@ public class BlogContentes extends AppCompatActivity {
             Log.e("MyAmplifyApp", "Error writing audio file", error);
         }
     }
-
-
 
 }

@@ -53,6 +53,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -140,8 +141,10 @@ public class MainActivity extends AppCompatActivity {
                 ModelQuery.list(Mother.class),
                 getSuccess -> {
                     for (Mother mother : getSuccess.getData()) {
-                        if(mother.getEmailAddress().equals(email))
+                        if (mother.getEmailAddress().equals(email)) {
                             imageKey = mother.getName();
+                            Log.i(TAG, "setUserInformation: +" + imageKey);
+                        }
                     }
 
                     handler.sendEmptyMessage(1);
@@ -149,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 error -> Log.e(TAG, error.toString())
         );
 
-        Amplify.Storage.getUrl("1734345085.jpg",
+        Amplify.Storage.getUrl(imageKey+".jpg",
                 success ->{
                         String url = success.getUrl().toString();
                         runOnUiThread(() -> {
@@ -171,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
-                    String QuestionId=taskArrayList.get(position)+"?";
+                    String QuestionId=taskArrayList.get(position);
                     intent.putExtra("QuestionId",QuestionId);
                     startActivity(intent);
 
@@ -205,21 +208,27 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler(Looper.getMainLooper() , msg -> {
             recyclerView = findViewById(R.id.main2_recycler_view);
-            mainAdapter blogCustomAdapter = new mainAdapter(getApplicationContext(),blogsListTest, new mainAdapter.CustomClickListener() {
+            mainAdapter blogCustomAdapter = new mainAdapter(getApplicationContext(),
+                    blogsListTest,
+                    new mainAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
+
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
                     intent.putExtra("title",blogsListTest.get(position).getTitle());
                     intent.putExtra("content",blogsListTest.get(position).getContent());
                     intent.putExtra("author",blogsListTest.get(position).getAuthor());
                     intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
                     intent.putExtra("category",blogsListTest.get(position).getCategory());
+                    Log.i(TAG, "onTaskItemClicked: "+blogsListTest.get(position).getTitle());
                     startActivity(intent);
                 }
             });
             recyclerView.setAdapter(blogCustomAdapter);
             recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false));
+            recyclerView.setLayoutManager(new LinearLayoutManager(this,
+                    LinearLayoutManager.HORIZONTAL,
+                    false));
             return true ;
         });
     }
