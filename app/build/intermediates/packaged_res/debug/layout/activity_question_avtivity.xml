@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Question_avtivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/layoutToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+
+                android:background="@color/purple_700"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp">
+
+                <ImageView
+                    android:id="@+id/imageMenu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_baseline_menu_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/titleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:text="Question Activity"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageprfile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="100dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_baseline_face_24"
+                    app:tint="@color/white" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="242dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="104dp"
+                android:text="@string/what_is_your_question"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/Recycle_Comment"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Recycle_Comment"
+                android:layout_width="403dp"
+                android:layout_height="533dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/product_add_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="Add Product"
+                android:elevation="6dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="70dp"
+                android:foregroundGravity="right|bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@android:drawable/ic_input_add"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/NavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_gravity="start">
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="age of the baby"
+
+                        />
+
+                    <Switch
+                        android:id="@+id/switch1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:checked="true"
+                        android:text="1-2 month"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Switch
+                        android:id="@+id/switch2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:checked="true"
+                        android:text="2-3 month"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Switch
+                        android:id="@+id/switch3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:checked="true"
+                        android:text="3-4 month"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+                    <Switch
+                        android:id="@+id/switch4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:checked="true"
+                        android:text="4-5 month"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Switch
+                        android:id="@+id/switch5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:checked="true"
+                        android:text="5-6 month"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Switch
+                        android:id="@+id/switch6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:checked="true"
+                        android:text="6-7 month"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                    <Button
+                        android:id="@+id/filter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="filter" />
+                </LinearLayout>
+            </com.google.android.material.chip.ChipGroup>
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/purple_500"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu" />
+
+</RelativeLayout>

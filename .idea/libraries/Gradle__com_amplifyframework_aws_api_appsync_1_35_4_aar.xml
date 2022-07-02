@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.amplifyframework:aws-api-appsync:1.35.4@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ecbfc0b4a28c74f3309e8b343a5a1b3a/transformed/aws-api-appsync-1.35.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ecbfc0b4a28c74f3309e8b343a5a1b3a/transformed/aws-api-appsync-1.35.4/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ecbfc0b4a28c74f3309e8b343a5a1b3a/transformed/aws-api-appsync-1.35.4/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.amplifyframework/aws-api-appsync/1.35.4/cdbaf5ffc391ce3a211044db6d3683f119da2610/aws-api-appsync-1.35.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

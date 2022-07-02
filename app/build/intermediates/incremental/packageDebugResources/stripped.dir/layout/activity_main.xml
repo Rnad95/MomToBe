@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/user_full_name"
+                    android:layout_width="95dp"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/image_profile"
+                    app:layout_constraintStart_toStartOf="@+id/image_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_profile"
+                    android:layout_width="58dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="28dp"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/man_avatar" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="113dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="Logo"
+                    android:textSize="36dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_full_name"
+                    app:layout_constraintEnd_toStartOf="@+id/image_profile"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.277"
+                    tools:textStyle="bold" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="369dp"
+                    android:layout_height="271dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="19dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="24dp"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:ignore="UselessParent">
+
+                            </RelativeLayout>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/main2_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+
+                            </androidx.recyclerview.widget.RecyclerView>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/view_all_blogs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textSize="15sp"
+                        android:textStyle="bold|italic"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="RelativeOverlap" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Most Recent Question"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="369dp"
+                    android:layout_height="198dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.477"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    app:layout_constraintVertical_bias="1.0">
+
+                </ListView>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Blogs"
+                    android:textAllCaps="true"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                <!--                <Button-->
+<!--                    android:id="@+id/profile"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="28dp"-->
+<!--                    android:layout_marginEnd="108dp"-->
+<!--                    android:text="Profile"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/image_profile"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/log_out"-->
+<!--                    android:layout_width="111dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginTop="76dp"-->
+<!--                    android:layout_marginEnd="40dp"-->
+<!--                    android:text="Logout"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/user_full_name"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/main_favorite"-->
+<!--                    android:layout_width="76dp"-->
+<!--                    android:layout_height="38dp"-->
+<!--                    android:layout_marginTop="36dp"-->
+<!--                    android:layout_marginEnd="32dp"-->
+<!--                    android:text="Saved"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/image_profile"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/purple_500"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu" />
+
+
+</RelativeLayout>

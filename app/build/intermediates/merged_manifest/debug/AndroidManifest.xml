@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.momtobe"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="32" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permission will be merged into the manifest of the hosting app. -->
+    <!-- Is required to launch foreground extraction service for targetSdkVersion 28+. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name="com.example.momtobe.MomToBeApplication"
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:debuggable="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/Theme.MomToBe" >
+        <activity
+            android:name="com.example.momtobe.CommentActivity_Eperiance"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.CommentActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.ui.AddQuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.registration.VerificationActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.ui.AddExperianceActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.registration.SignUpActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.momtobe.registration.LoginActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.momtobe.MainDesignActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="com.example.momtobe.Experiance_activity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.Profile"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.Question_avtivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.SavedActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.ui.ProductActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.ui.AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.BlogContentes"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.Settings"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.Blog"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.ui.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.momtobe.MainActivity"
+            android:exported="false" />
+
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
+
+        <activity
+            android:name="com.amplifyframework.devmenu.DeveloperMenuActivity"
+            android:theme="@style/OverlayActivity" />
+        <activity
+            android:name="com.amazonaws.mobileconnectors.cognitoauth.activities.CustomTabsManagerActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.example.momtobe.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+        </provider> <!-- The activities will be merged into the manifest of the hosting app. -->
+        <activity
+            android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
+            android:enabled="false"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:process=":playcore_missing_splits_activity"
+            android:stateNotNeeded="true" />
+        <activity
+            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+            android:enabled="false"
+            android:exported="false"
+            android:stateNotNeeded="true"
+            android:theme="@style/Theme.PlayCore.Transparent" /> <!-- The services will be merged into the manifest of the hosting app. -->
+        <service
+            android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"
+            android:enabled="false"
+            android:exported="true" >
+            <meta-data
+                android:name="com.google.android.play.core.assetpacks.versionCode"
+                android:value="10901" />
+        </service>
+        <service
+            android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService"
+            android:enabled="false"
+            android:exported="false" />
+    </application>
+
+</manifest>

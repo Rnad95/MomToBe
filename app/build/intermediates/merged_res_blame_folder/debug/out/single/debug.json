@@ -1,0 +1,286 @@
+[
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_main_design.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_main_design.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_main.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_home.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/home.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_profile.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_profile.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_blog_contentes.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_blog_contentes.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable-v24_man_avatar.jpg.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable-v24/man_avatar.jpg"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/menu_menu.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/menu/menu.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_unfavorite.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_unfavorite.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/navigation_nav_graph.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_comment_eperiance.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_comment_eperiance.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_task_item_layout_question.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/task_item_layout_question.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/raw_awsconfiguration.json.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/raw/awsconfiguration.json"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_add_question.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_add_question.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_question_answer.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_question_answer.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable-v24_experience.png.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable-v24/experience.png"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_add_product.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_add_product.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_product.jpg.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/product.jpg"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_product_details.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_product_details.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_botton_nav_bar.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/botton_nav_bar.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_upload_image.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/upload_image.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_background_bar.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/background_bar.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_reciclerview_content.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/reciclerview_content.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_saved.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_saved.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_blog.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_blog.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/menu_popup_menu.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/menu/popup_menu.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_login.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_task_item_layout.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/task_item_layout.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_selector_main.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/selector_main.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_verification.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_verification.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_question_avtivity.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_question_avtivity.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_experiance.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_experiance.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_sign_up.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/xml_backup_rules.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_avatar_placeholder_click.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/avatar_placeholder_click.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_product_recycler_view_layout.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/product_recycler_view_layout.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_product.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_product.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/raw_amplifyconfiguration.json.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/raw/amplifyconfiguration.json"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_btn_dark.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/btn_dark.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable-v24_logo_word.png.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable-v24/logo_word.png"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_comment_item_layout.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/comment_item_layout.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_edit_text_round.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/edit_text_round.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_blog_mom.jpg.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/blog_mom.jpg"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/menu_navigation_menu_bar.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/menu/navigation_menu_bar.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_shopping.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_shopping.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_settings.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_settings.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/xml_data_extraction_rules.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_favorite.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_favorite.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_add_experiance.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_add_experiance.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_switch_item.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/switch_item.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_blog.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_blog.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_recycler_view_main_exp.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/recycler_view_main_exp.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_selector.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/selector.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_photo.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_photo.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_activity_comment.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/activity_comment.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/layout_menu_blogs.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/layout/menu_blogs.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_baseline_face_24.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_baseline_face_24.xml"
+    },
+    {
+        "merged": "/home/renad/Desktop/MyFiles/MomToBe/app/build/intermediates/merged_res/debug/drawable_ic_baseline_menu_24.xml.flat",
+        "source": "/home/renad/Desktop/MyFiles/MomToBe/app/src/main/res/drawable/ic_baseline_menu_24.xml"
+    }
+]

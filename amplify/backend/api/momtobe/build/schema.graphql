@@ -1,0 +1,888 @@
+
+type Mother {
+  id: ID!
+  name: String!
+  image: String
+  numOfChildren: Int!
+  phoneNumber: String
+  emailAddress: String!
+  comments(filter: ModelCommentFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelCommentConnection
+  products(filter: ModelProductFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelProductConnection
+  questions(filter: ModelQuestionFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelQuestionConnection
+  experiences(filter: ModelExperienceFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelExperienceConnection
+  blogs(filter: ModelUserBlogsFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelUserBlogsConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  addressMothersId: ID
+}
+
+type Comment {
+  id: ID!
+  content: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  motherCommentsId: ID
+  questionCommentsId: ID
+  experienceCommentsId: ID
+  productCommentsId: ID
+}
+
+type Address {
+  id: ID!
+  country: String!
+  city: String!
+  street: String!
+  postalCode: Int
+  mothers(filter: ModelMotherFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMotherConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Blog {
+  id: ID!
+  title: String!
+  description: String!
+  image: String
+  autherName: String!
+  featured: Boolean!
+  categories(filter: ModelBlogCategoriesFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelBlogCategoriesConnection
+  mothers(filter: ModelUserBlogsFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelUserBlogsConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Question {
+  id: ID!
+  title: String!
+  description: String!
+  image: String
+  featured: Boolean!
+  comments(filter: ModelCommentFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelCommentConnection
+  categories(filter: ModelQuestionCategoriesFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelQuestionCategoriesConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  motherQuestionsId: ID
+}
+
+type Experience {
+  id: ID!
+  title: String!
+  description: String!
+  image: String
+  featured: Boolean!
+  comments(filter: ModelCommentFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelCommentConnection
+  categories(filter: ModelExperienceCategoriesFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelExperienceCategoriesConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  motherExperiencesId: ID
+}
+
+type Product {
+  id: ID!
+  title: String!
+  price: Float!
+  description: String!
+  quantity: Int
+  image: String
+  featured: Boolean!
+  comments(filter: ModelCommentFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelCommentConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  motherProductsId: ID
+}
+
+type Cat {
+  id: ID!
+  title: String!
+  description: String!
+  experiences(filter: ModelExperienceCategoriesFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelExperienceCategoriesConnection
+  blogs(filter: ModelBlogCategoriesFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelBlogCategoriesConnection
+  questions(filter: ModelQuestionCategoriesFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelQuestionCategoriesConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type UserBlogs {
+  id: ID!
+  motherID: ID!
+  blogID: ID!
+  mother: Mother!
+  blog: Blog!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type BlogCategories {
+  id: ID!
+  blogID: ID!
+  catID: ID!
+  blog: Blog!
+  cat: Cat!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type QuestionCategories {
+  id: ID!
+  questionID: ID!
+  catID: ID!
+  question: Question!
+  cat: Cat!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type ExperienceCategories {
+  id: ID!
+  experienceID: ID!
+  catID: ID!
+  experience: Experience!
+  cat: Cat!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelMotherConnection {
+  items: [Mother]!
+  nextToken: String
+}
+
+input ModelMotherFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  image: ModelStringInput
+  numOfChildren: ModelIntInput
+  phoneNumber: ModelStringInput
+  emailAddress: ModelStringInput
+  and: [ModelMotherFilterInput]
+  or: [ModelMotherFilterInput]
+  not: ModelMotherFilterInput
+  addressMothersId: ModelIDInput
+}
+
+type Query {
+  getMother(id: ID!): Mother
+  listMothers(filter: ModelMotherFilterInput, limit: Int, nextToken: String): ModelMotherConnection
+  getComment(id: ID!): Comment
+  listComments(filter: ModelCommentFilterInput, limit: Int, nextToken: String): ModelCommentConnection
+  getAddress(id: ID!): Address
+  listAddresses(filter: ModelAddressFilterInput, limit: Int, nextToken: String): ModelAddressConnection
+  getBlog(id: ID!): Blog
+  listBlogs(filter: ModelBlogFilterInput, limit: Int, nextToken: String): ModelBlogConnection
+  getQuestion(id: ID!): Question
+  listQuestions(filter: ModelQuestionFilterInput, limit: Int, nextToken: String): ModelQuestionConnection
+  getExperience(id: ID!): Experience
+  listExperiences(filter: ModelExperienceFilterInput, limit: Int, nextToken: String): ModelExperienceConnection
+  getProduct(id: ID!): Product
+  listProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String): ModelProductConnection
+  getCat(id: ID!): Cat
+  listCats(filter: ModelCatFilterInput, limit: Int, nextToken: String): ModelCatConnection
+  getUserBlogs(id: ID!): UserBlogs
+  listUserBlogs(filter: ModelUserBlogsFilterInput, limit: Int, nextToken: String): ModelUserBlogsConnection
+  getBlogCategories(id: ID!): BlogCategories
+  listBlogCategories(filter: ModelBlogCategoriesFilterInput, limit: Int, nextToken: String): ModelBlogCategoriesConnection
+  getQuestionCategories(id: ID!): QuestionCategories
+  listQuestionCategories(filter: ModelQuestionCategoriesFilterInput, limit: Int, nextToken: String): ModelQuestionCategoriesConnection
+  getExperienceCategories(id: ID!): ExperienceCategories
+  listExperienceCategories(filter: ModelExperienceCategoriesFilterInput, limit: Int, nextToken: String): ModelExperienceCategoriesConnection
+}
+
+input ModelMotherConditionInput {
+  name: ModelStringInput
+  image: ModelStringInput
+  numOfChildren: ModelIntInput
+  phoneNumber: ModelStringInput
+  emailAddress: ModelStringInput
+  and: [ModelMotherConditionInput]
+  or: [ModelMotherConditionInput]
+  not: ModelMotherConditionInput
+  addressMothersId: ModelIDInput
+}
+
+input CreateMotherInput {
+  id: ID
+  name: String!
+  image: String
+  numOfChildren: Int!
+  phoneNumber: String
+  emailAddress: String!
+  addressMothersId: ID
+}
+
+input UpdateMotherInput {
+  id: ID!
+  name: String
+  image: String
+  numOfChildren: Int
+  phoneNumber: String
+  emailAddress: String
+  addressMothersId: ID
+}
+
+input DeleteMotherInput {
+  id: ID!
+}
+
+type Mutation {
+  createMother(input: CreateMotherInput!, condition: ModelMotherConditionInput): Mother
+  updateMother(input: UpdateMotherInput!, condition: ModelMotherConditionInput): Mother
+  deleteMother(input: DeleteMotherInput!, condition: ModelMotherConditionInput): Mother
+  createComment(input: CreateCommentInput!, condition: ModelCommentConditionInput): Comment
+  updateComment(input: UpdateCommentInput!, condition: ModelCommentConditionInput): Comment
+  deleteComment(input: DeleteCommentInput!, condition: ModelCommentConditionInput): Comment
+  createAddress(input: CreateAddressInput!, condition: ModelAddressConditionInput): Address
+  updateAddress(input: UpdateAddressInput!, condition: ModelAddressConditionInput): Address
+  deleteAddress(input: DeleteAddressInput!, condition: ModelAddressConditionInput): Address
+  createBlog(input: CreateBlogInput!, condition: ModelBlogConditionInput): Blog
+  updateBlog(input: UpdateBlogInput!, condition: ModelBlogConditionInput): Blog
+  deleteBlog(input: DeleteBlogInput!, condition: ModelBlogConditionInput): Blog
+  createQuestion(input: CreateQuestionInput!, condition: ModelQuestionConditionInput): Question
+  updateQuestion(input: UpdateQuestionInput!, condition: ModelQuestionConditionInput): Question
+  deleteQuestion(input: DeleteQuestionInput!, condition: ModelQuestionConditionInput): Question
+  createExperience(input: CreateExperienceInput!, condition: ModelExperienceConditionInput): Experience
+  updateExperience(input: UpdateExperienceInput!, condition: ModelExperienceConditionInput): Experience
+  deleteExperience(input: DeleteExperienceInput!, condition: ModelExperienceConditionInput): Experience
+  createProduct(input: CreateProductInput!, condition: ModelProductConditionInput): Product
+  updateProduct(input: UpdateProductInput!, condition: ModelProductConditionInput): Product
+  deleteProduct(input: DeleteProductInput!, condition: ModelProductConditionInput): Product
+  createCat(input: CreateCatInput!, condition: ModelCatConditionInput): Cat
+  updateCat(input: UpdateCatInput!, condition: ModelCatConditionInput): Cat
+  deleteCat(input: DeleteCatInput!, condition: ModelCatConditionInput): Cat
+  createUserBlogs(input: CreateUserBlogsInput!, condition: ModelUserBlogsConditionInput): UserBlogs
+  updateUserBlogs(input: UpdateUserBlogsInput!, condition: ModelUserBlogsConditionInput): UserBlogs
+  deleteUserBlogs(input: DeleteUserBlogsInput!, condition: ModelUserBlogsConditionInput): UserBlogs
+  createBlogCategories(input: CreateBlogCategoriesInput!, condition: ModelBlogCategoriesConditionInput): BlogCategories
+  updateBlogCategories(input: UpdateBlogCategoriesInput!, condition: ModelBlogCategoriesConditionInput): BlogCategories
+  deleteBlogCategories(input: DeleteBlogCategoriesInput!, condition: ModelBlogCategoriesConditionInput): BlogCategories
+  createQuestionCategories(input: CreateQuestionCategoriesInput!, condition: ModelQuestionCategoriesConditionInput): QuestionCategories
+  updateQuestionCategories(input: UpdateQuestionCategoriesInput!, condition: ModelQuestionCategoriesConditionInput): QuestionCategories
+  deleteQuestionCategories(input: DeleteQuestionCategoriesInput!, condition: ModelQuestionCategoriesConditionInput): QuestionCategories
+  createExperienceCategories(input: CreateExperienceCategoriesInput!, condition: ModelExperienceCategoriesConditionInput): ExperienceCategories
+  updateExperienceCategories(input: UpdateExperienceCategoriesInput!, condition: ModelExperienceCategoriesConditionInput): ExperienceCategories
+  deleteExperienceCategories(input: DeleteExperienceCategoriesInput!, condition: ModelExperienceCategoriesConditionInput): ExperienceCategories
+}
+
+type Subscription {
+  onCreateMother: Mother @aws_subscribe(mutations: ["createMother"])
+  onUpdateMother: Mother @aws_subscribe(mutations: ["updateMother"])
+  onDeleteMother: Mother @aws_subscribe(mutations: ["deleteMother"])
+  onCreateComment: Comment @aws_subscribe(mutations: ["createComment"])
+  onUpdateComment: Comment @aws_subscribe(mutations: ["updateComment"])
+  onDeleteComment: Comment @aws_subscribe(mutations: ["deleteComment"])
+  onCreateAddress: Address @aws_subscribe(mutations: ["createAddress"])
+  onUpdateAddress: Address @aws_subscribe(mutations: ["updateAddress"])
+  onDeleteAddress: Address @aws_subscribe(mutations: ["deleteAddress"])
+  onCreateBlog: Blog @aws_subscribe(mutations: ["createBlog"])
+  onUpdateBlog: Blog @aws_subscribe(mutations: ["updateBlog"])
+  onDeleteBlog: Blog @aws_subscribe(mutations: ["deleteBlog"])
+  onCreateQuestion: Question @aws_subscribe(mutations: ["createQuestion"])
+  onUpdateQuestion: Question @aws_subscribe(mutations: ["updateQuestion"])
+  onDeleteQuestion: Question @aws_subscribe(mutations: ["deleteQuestion"])
+  onCreateExperience: Experience @aws_subscribe(mutations: ["createExperience"])
+  onUpdateExperience: Experience @aws_subscribe(mutations: ["updateExperience"])
+  onDeleteExperience: Experience @aws_subscribe(mutations: ["deleteExperience"])
+  onCreateProduct: Product @aws_subscribe(mutations: ["createProduct"])
+  onUpdateProduct: Product @aws_subscribe(mutations: ["updateProduct"])
+  onDeleteProduct: Product @aws_subscribe(mutations: ["deleteProduct"])
+  onCreateCat: Cat @aws_subscribe(mutations: ["createCat"])
+  onUpdateCat: Cat @aws_subscribe(mutations: ["updateCat"])
+  onDeleteCat: Cat @aws_subscribe(mutations: ["deleteCat"])
+  onCreateUserBlogs: UserBlogs @aws_subscribe(mutations: ["createUserBlogs"])
+  onUpdateUserBlogs: UserBlogs @aws_subscribe(mutations: ["updateUserBlogs"])
+  onDeleteUserBlogs: UserBlogs @aws_subscribe(mutations: ["deleteUserBlogs"])
+  onCreateBlogCategories: BlogCategories @aws_subscribe(mutations: ["createBlogCategories"])
+  onUpdateBlogCategories: BlogCategories @aws_subscribe(mutations: ["updateBlogCategories"])
+  onDeleteBlogCategories: BlogCategories @aws_subscribe(mutations: ["deleteBlogCategories"])
+  onCreateQuestionCategories: QuestionCategories @aws_subscribe(mutations: ["createQuestionCategories"])
+  onUpdateQuestionCategories: QuestionCategories @aws_subscribe(mutations: ["updateQuestionCategories"])
+  onDeleteQuestionCategories: QuestionCategories @aws_subscribe(mutations: ["deleteQuestionCategories"])
+  onCreateExperienceCategories: ExperienceCategories @aws_subscribe(mutations: ["createExperienceCategories"])
+  onUpdateExperienceCategories: ExperienceCategories @aws_subscribe(mutations: ["updateExperienceCategories"])
+  onDeleteExperienceCategories: ExperienceCategories @aws_subscribe(mutations: ["deleteExperienceCategories"])
+}
+
+type ModelCommentConnection {
+  items: [Comment]!
+  nextToken: String
+}
+
+input ModelCommentFilterInput {
+  id: ModelIDInput
+  content: ModelStringInput
+  and: [ModelCommentFilterInput]
+  or: [ModelCommentFilterInput]
+  not: ModelCommentFilterInput
+  motherCommentsId: ModelIDInput
+  questionCommentsId: ModelIDInput
+  experienceCommentsId: ModelIDInput
+  productCommentsId: ModelIDInput
+}
+
+input ModelCommentConditionInput {
+  content: ModelStringInput
+  and: [ModelCommentConditionInput]
+  or: [ModelCommentConditionInput]
+  not: ModelCommentConditionInput
+  motherCommentsId: ModelIDInput
+  questionCommentsId: ModelIDInput
+  experienceCommentsId: ModelIDInput
+  productCommentsId: ModelIDInput
+}
+
+input CreateCommentInput {
+  id: ID
+  content: String!
+  motherCommentsId: ID
+  questionCommentsId: ID
+  experienceCommentsId: ID
+  productCommentsId: ID
+}
+
+input UpdateCommentInput {
+  id: ID!
+  content: String
+  motherCommentsId: ID
+  questionCommentsId: ID
+  experienceCommentsId: ID
+  productCommentsId: ID
+}
+
+input DeleteCommentInput {
+  id: ID!
+}
+
+type ModelAddressConnection {
+  items: [Address]!
+  nextToken: String
+}
+
+input ModelAddressFilterInput {
+  id: ModelIDInput
+  country: ModelStringInput
+  city: ModelStringInput
+  street: ModelStringInput
+  postalCode: ModelIntInput
+  and: [ModelAddressFilterInput]
+  or: [ModelAddressFilterInput]
+  not: ModelAddressFilterInput
+}
+
+input ModelAddressConditionInput {
+  country: ModelStringInput
+  city: ModelStringInput
+  street: ModelStringInput
+  postalCode: ModelIntInput
+  and: [ModelAddressConditionInput]
+  or: [ModelAddressConditionInput]
+  not: ModelAddressConditionInput
+}
+
+input CreateAddressInput {
+  id: ID
+  country: String!
+  city: String!
+  street: String!
+  postalCode: Int
+}
+
+input UpdateAddressInput {
+  id: ID!
+  country: String
+  city: String
+  street: String
+  postalCode: Int
+}
+
+input DeleteAddressInput {
+  id: ID!
+}
+
+type ModelBlogConnection {
+  items: [Blog]!
+  nextToken: String
+}
+
+input ModelBlogFilterInput {
+  id: ModelIDInput
+  title: ModelStringInput
+  description: ModelStringInput
+  image: ModelStringInput
+  autherName: ModelStringInput
+  featured: ModelBooleanInput
+  and: [ModelBlogFilterInput]
+  or: [ModelBlogFilterInput]
+  not: ModelBlogFilterInput
+}
+
+input ModelBlogConditionInput {
+  title: ModelStringInput
+  description: ModelStringInput
+  image: ModelStringInput
+  autherName: ModelStringInput
+  featured: ModelBooleanInput
+  and: [ModelBlogConditionInput]
+  or: [ModelBlogConditionInput]
+  not: ModelBlogConditionInput
+}
+
+input CreateBlogInput {
+  id: ID
+  title: String!
+  description: String!
+  image: String
+  autherName: String!
+  featured: Boolean!
+}
+
+input UpdateBlogInput {
+  id: ID!
+  title: String
+  description: String
+  image: String
+  autherName: String
+  featured: Boolean
+}
+
+input DeleteBlogInput {
+  id: ID!
+}
+
+type ModelQuestionConnection {
+  items: [Question]!
+  nextToken: String
+}
+
+input ModelQuestionFilterInput {
+  id: ModelIDInput
+  title: ModelStringInput
+  description: ModelStringInput
+  image: ModelStringInput
+  featured: ModelBooleanInput
+  and: [ModelQuestionFilterInput]
+  or: [ModelQuestionFilterInput]
+  not: ModelQuestionFilterInput
+  motherQuestionsId: ModelIDInput
+}
+
+input ModelQuestionConditionInput {
+  title: ModelStringInput
+  description: ModelStringInput
+  image: ModelStringInput
+  featured: ModelBooleanInput
+  and: [ModelQuestionConditionInput]
+  or: [ModelQuestionConditionInput]
+  not: ModelQuestionConditionInput
+  motherQuestionsId: ModelIDInput
+}
+
+input CreateQuestionInput {
+  id: ID
+  title: String!
+  description: String!
+  image: String
+  featured: Boolean!
+  motherQuestionsId: ID
+}
+
+input UpdateQuestionInput {
+  id: ID!
+  title: String
+  description: String
+  image: String
+  featured: Boolean
+  motherQuestionsId: ID
+}
+
+input DeleteQuestionInput {
+  id: ID!
+}
+
+type ModelExperienceConnection {
+  items: [Experience]!
+  nextToken: String
+}
+
+input ModelExperienceFilterInput {
+  id: ModelIDInput
+  title: ModelStringInput
+  description: ModelStringInput
+  image: ModelStringInput
+  featured: ModelBooleanInput
+  and: [ModelExperienceFilterInput]
+  or: [ModelExperienceFilterInput]
+  not: ModelExperienceFilterInput
+  motherExperiencesId: ModelIDInput
+}
+
+input ModelExperienceConditionInput {
+  title: ModelStringInput
+  description: ModelStringInput
+  image: ModelStringInput
+  featured: ModelBooleanInput
+  and: [ModelExperienceConditionInput]
+  or: [ModelExperienceConditionInput]
+  not: ModelExperienceConditionInput
+  motherExperiencesId: ModelIDInput
+}
+
+input CreateExperienceInput {
+  id: ID
+  title: String!
+  description: String!
+  image: String
+  featured: Boolean!
+  motherExperiencesId: ID
+}
+
+input UpdateExperienceInput {
+  id: ID!
+  title: String
+  description: String
+  image: String
+  featured: Boolean
+  motherExperiencesId: ID
+}
+
+input DeleteExperienceInput {
+  id: ID!
+}
+
+type ModelProductConnection {
+  items: [Product]!
+  nextToken: String
+}
+
+input ModelProductFilterInput {
+  id: ModelIDInput
+  title: ModelStringInput
+  price: ModelFloatInput
+  description: ModelStringInput
+  quantity: ModelIntInput
+  image: ModelStringInput
+  featured: ModelBooleanInput
+  and: [ModelProductFilterInput]
+  or: [ModelProductFilterInput]
+  not: ModelProductFilterInput
+  motherProductsId: ModelIDInput
+}
+
+input ModelProductConditionInput {
+  title: ModelStringInput
+  price: ModelFloatInput
+  description: ModelStringInput
+  quantity: ModelIntInput
+  image: ModelStringInput
+  featured: ModelBooleanInput
+  and: [ModelProductConditionInput]
+  or: [ModelProductConditionInput]
+  not: ModelProductConditionInput
+  motherProductsId: ModelIDInput
+}
+
+input CreateProductInput {
+  id: ID
+  title: String!
+  price: Float!
+  description: String!
+  quantity: Int
+  image: String
+  featured: Boolean!
+  motherProductsId: ID
+}
+
+input UpdateProductInput {
+  id: ID!
+  title: String
+  price: Float
+  description: String
+  quantity: Int
+  image: String
+  featured: Boolean
+  motherProductsId: ID
+}
+
+input DeleteProductInput {
+  id: ID!
+}
+
+type ModelCatConnection {
+  items: [Cat]!
+  nextToken: String
+}
+
+input ModelCatFilterInput {
+  id: ModelIDInput
+  title: ModelStringInput
+  description: ModelStringInput
+  and: [ModelCatFilterInput]
+  or: [ModelCatFilterInput]
+  not: ModelCatFilterInput
+}
+
+input ModelCatConditionInput {
+  title: ModelStringInput
+  description: ModelStringInput
+  and: [ModelCatConditionInput]
+  or: [ModelCatConditionInput]
+  not: ModelCatConditionInput
+}
+
+input CreateCatInput {
+  id: ID
+  title: String!
+  description: String!
+}
+
+input UpdateCatInput {
+  id: ID!
+  title: String
+  description: String
+}
+
+input DeleteCatInput {
+  id: ID!
+}
+
+type ModelUserBlogsConnection {
+  items: [UserBlogs]!
+  nextToken: String
+}
+
+input ModelUserBlogsFilterInput {
+  id: ModelIDInput
+  motherID: ModelIDInput
+  blogID: ModelIDInput
+  and: [ModelUserBlogsFilterInput]
+  or: [ModelUserBlogsFilterInput]
+  not: ModelUserBlogsFilterInput
+}
+
+input ModelUserBlogsConditionInput {
+  motherID: ModelIDInput
+  blogID: ModelIDInput
+  and: [ModelUserBlogsConditionInput]
+  or: [ModelUserBlogsConditionInput]
+  not: ModelUserBlogsConditionInput
+}
+
+input CreateUserBlogsInput {
+  id: ID
+  motherID: ID!
+  blogID: ID!
+}
+
+input UpdateUserBlogsInput {
+  id: ID!
+  motherID: ID
+  blogID: ID
+}
+
+input DeleteUserBlogsInput {
+  id: ID!
+}
+
+type ModelBlogCategoriesConnection {
+  items: [BlogCategories]!
+  nextToken: String
+}
+
+input ModelBlogCategoriesFilterInput {
+  id: ModelIDInput
+  blogID: ModelIDInput
+  catID: ModelIDInput
+  and: [ModelBlogCategoriesFilterInput]
+  or: [ModelBlogCategoriesFilterInput]
+  not: ModelBlogCategoriesFilterInput
+}
+
+input ModelBlogCategoriesConditionInput {
+  blogID: ModelIDInput
+  catID: ModelIDInput
+  and: [ModelBlogCategoriesConditionInput]
+  or: [ModelBlogCategoriesConditionInput]
+  not: ModelBlogCategoriesConditionInput
+}
+
+input CreateBlogCategoriesInput {
+  id: ID
+  blogID: ID!
+  catID: ID!
+}
+
+input UpdateBlogCategoriesInput {
+  id: ID!
+  blogID: ID
+  catID: ID
+}
+
+input DeleteBlogCategoriesInput {
+  id: ID!
+}
+
+type ModelQuestionCategoriesConnection {
+  items: [QuestionCategories]!
+  nextToken: String
+}
+
+input ModelQuestionCategoriesFilterInput {
+  id: ModelIDInput
+  questionID: ModelIDInput
+  catID: ModelIDInput
+  and: [ModelQuestionCategoriesFilterInput]
+  or: [ModelQuestionCategoriesFilterInput]
+  not: ModelQuestionCategoriesFilterInput
+}
+
+input ModelQuestionCategoriesConditionInput {
+  questionID: ModelIDInput
+  catID: ModelIDInput
+  and: [ModelQuestionCategoriesConditionInput]
+  or: [ModelQuestionCategoriesConditionInput]
+  not: ModelQuestionCategoriesConditionInput
+}
+
+input CreateQuestionCategoriesInput {
+  id: ID
+  questionID: ID!
+  catID: ID!
+}
+
+input UpdateQuestionCategoriesInput {
+  id: ID!
+  questionID: ID
+  catID: ID
+}
+
+input DeleteQuestionCategoriesInput {
+  id: ID!
+}
+
+type ModelExperienceCategoriesConnection {
+  items: [ExperienceCategories]!
+  nextToken: String
+}
+
+input ModelExperienceCategoriesFilterInput {
+  id: ModelIDInput
+  experienceID: ModelIDInput
+  catID: ModelIDInput
+  and: [ModelExperienceCategoriesFilterInput]
+  or: [ModelExperienceCategoriesFilterInput]
+  not: ModelExperienceCategoriesFilterInput
+}
+
+input ModelExperienceCategoriesConditionInput {
+  experienceID: ModelIDInput
+  catID: ModelIDInput
+  and: [ModelExperienceCategoriesConditionInput]
+  or: [ModelExperienceCategoriesConditionInput]
+  not: ModelExperienceCategoriesConditionInput
+}
+
+input CreateExperienceCategoriesInput {
+  id: ID
+  experienceID: ID!
+  catID: ID!
+}
+
+input UpdateExperienceCategoriesInput {
+  id: ID!
+  experienceID: ID
+  catID: ID
+}
+
+input DeleteExperienceCategoriesInput {
+  id: ID!
+}
+
