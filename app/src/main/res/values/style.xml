@@ -8,23 +8,12 @@
         <item name="colorPrimary">@color/mom_colorPrimary</item>
         <item name="colorPrimaryDark">@color/mom_colorPrimaryDark</item>
         <item name="colorAccent">@color/mom_colorPrimary</item>
-        <item name="android:statusBarColor">@color/mom_colorWhitePure</item>
+        <item name="android:statusBarColor">@color/black</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
-    <style name="mom_FontStyleBold">
-        <item name="android:text"></item>
-    </style>
-
-
-
-    <style name="mom_FontStyleMedium">
-        <item name="android:text"></item>
-    </style>
-
-    <style name="mom_FontStyleRegular">
-        <item name="android:text"></item>
-    </style>
 
     <style name="mom_EditText">
         <item name="android:layout_width">match_parent</item>
@@ -66,7 +55,6 @@
         <item name="android:textColor">@color/mom_colorTextPrimary</item>
         <item name="android:layout_marginStart">@dimen/mom_spacing_standard_1</item>
         <item name="android:layout_marginEnd">@dimen/_140sdp</item>
-        <item name="android:textAppearance">@style/mom_FontStyleBold</item>
         <item name="android:layout_marginTop">@dimen/mom_spacing_22</item>
         <item name="android:text"></item>
     </style>
@@ -89,7 +77,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">end</item>
-        <item name="android:textAppearance">@style/mom_FontStyleMedium</item>
+
         <item name="android:textSize">@dimen/mom_font_size_small</item>
     </style>
 
@@ -126,14 +114,12 @@
         <item name="android:paddingTop">@dimen/mom_spacing_standard_new</item>
         <item name="android:paddingBottom">@dimen/mom_spacing_standard_new</item>
         <item name="android:gravity">center</item>
-        <item name="android:textAppearance">@style/mom_FontStyleMedium</item>
         <item name="android:textColor">@color/mom_colorPrimary</item>
         <item name="android:textSize">@dimen/mom_font_size_medium</item>
         <item name="android:layout_alignParentEnd">true</item>
     </style>
 
     <style name="mom_TitleTextView">
-        <item name="android:textAppearance">@style/mom_FontStyleBold</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/mom_colorBlackLight</item>
@@ -154,7 +140,6 @@
     <style name="mom_TextViewTransferDetail">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/mom_FontStyleMedium</item>
         <item name="android:gravity">center|end</item>
         <item name="android:paddingTop">@dimen/mom_spacing_standard_new</item>
         <item name="android:paddingBottom">@dimen/mom_spacing_standard_new</item>
@@ -179,7 +164,6 @@
         <item name="android:drawablePadding">@dimen/mom_spacing_standard</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@style/mom_FontStyleMedium</item>
         <item name="android:gravity">center|start</item>
         <item name="android:textColor">@color/mom_colorTextPrimary</item>
         <item name="android:textSize">@dimen/mom_font_size_medium</item>
