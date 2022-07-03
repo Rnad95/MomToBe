@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "fetchUserInformation: 3 "+ attributes.get(3).getValue());
 
                     handlerMom =  new Handler(Looper.getMainLooper(), msg->{
-                        setImage(mother.getImage());
+//                        setImage(mother.getImage());
                         return true ;
                     });
                 },

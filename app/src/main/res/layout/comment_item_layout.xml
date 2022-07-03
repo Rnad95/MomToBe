@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:padding="20dp"
-    android:layout_margin="20dp"
+    android:padding="30dp"
     android:background="#FF5722"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -19,7 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <TextView
                 android:id="@+id/comment_username"
                 android:layout_width="wrap_content"
@@ -29,7 +27,8 @@
                 android:text="User Name"
                 android:textAlignment="viewStart"
                 android:textSize="12sp"
-                android:textStyle="bold|italic"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -58,12 +57,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/comment_delete_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delete"
-                android:visibility="invisible"
-                android:textSize="12sp"
+                android:id="@+id/comment_delete_btn"
+                android:drawable="@drawable/ic_baseline_delete_24"
+                android:padding="3dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                app:icon="@drawable/ic_baseline_delete_24"
+                app:iconGravity="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.934"
