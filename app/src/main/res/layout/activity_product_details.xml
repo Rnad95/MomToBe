@@ -104,7 +104,7 @@
         android:id="@+id/product_comment_add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send"
+        android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -115,7 +115,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="comment"
+        android:hint="Add your comment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/product_comment_add_btn" />
 

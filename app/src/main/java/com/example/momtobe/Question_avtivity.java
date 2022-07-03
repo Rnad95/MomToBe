@@ -74,7 +74,7 @@ public class Question_avtivity extends AppCompatActivity {
 
         });
 
-NavigationView navigationView=findViewById(R.id.NavigationView);
+        NavigationView navigationView=findViewById(R.id.NavigationView);
         navigationView.setItemIconTintList(null);
 
         handler=new Handler(
@@ -122,47 +122,47 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
         simpleSwitch6 =  findViewById(R.id.switch6);
         Button filter=findViewById(R.id.filter);
         filter.setOnClickListener(view -> {
-        String statusSwitch1, statusSwitch2,statusSwitch3,statusSwitch4,statusSwitch5,statusSwitch6;
-                if (simpleSwitch1.isChecked()){
-                    statusSwitch1 = simpleSwitch1.getTextOn().toString();
+            String statusSwitch1, statusSwitch2,statusSwitch3,statusSwitch4,statusSwitch5,statusSwitch6;
+            if (simpleSwitch1.isChecked()){
+                statusSwitch1 = simpleSwitch1.getTextOn().toString();
 
-                    Amplify.API.query(
-                ModelQuery.list(Cat.class,Cat.TITLE.eq("age")),
-                teamsName -> {
-                    for (Cat note : teamsName.getData()) {
+                Amplify.API.query(
+                        ModelQuery.list(Cat.class,Cat.TITLE.eq("age")),
+                        teamsName -> {
+                            for (Cat note : teamsName.getData()) {
 
-                    }
+                            }
 
-                    handler.sendEmptyMessage(1);
-                },
-                error -> Log.e(TAG, error.toString())
-        );
-                }
-                if (simpleSwitch2.isChecked()) {
-                    statusSwitch2 = simpleSwitch2.getTextOn().toString();
-                    Toast.makeText(getApplicationContext(), "Switch2 on"+statusSwitch2, Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "onCreate statusSwitch2: "+statusSwitch2);
-                }
-                if (simpleSwitch3.isChecked()) {
-                    statusSwitch3 = simpleSwitch3.getTextOn().toString();
-                    Toast.makeText(getApplicationContext(), "Switch3 on"+statusSwitch3, Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "onCreate statusSwitch3: "+statusSwitch3);
-                }
-                if (simpleSwitch4.isChecked()) {
-                    statusSwitch4 = simpleSwitch4.getTextOn().toString();
-                    Toast.makeText(getApplicationContext(), "Switch4 on"+statusSwitch4, Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "onCreate statusSwitch4: "+statusSwitch4);
-                }
-                if (simpleSwitch5.isChecked()){
-                    statusSwitch5 = simpleSwitch5.getTextOn().toString();
-                    Toast.makeText(getApplicationContext(), "Switch5 on"+statusSwitch5, Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "onCreate statusSwitch5: "+statusSwitch5);
-                }
-                if (simpleSwitch6.isChecked()){
-                    statusSwitch6 = simpleSwitch6.getTextOn().toString();
-                    Toast.makeText(getApplicationContext(), "Switch6 on"+statusSwitch6, Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "onCreate statusSwitch6: "+statusSwitch6);
-                }
+                            handler.sendEmptyMessage(1);
+                        },
+                        error -> Log.e(TAG, error.toString())
+                );
+            }
+            if (simpleSwitch2.isChecked()) {
+                statusSwitch2 = simpleSwitch2.getTextOn().toString();
+                Toast.makeText(getApplicationContext(), "Switch2 on"+statusSwitch2, Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "onCreate statusSwitch2: "+statusSwitch2);
+            }
+            if (simpleSwitch3.isChecked()) {
+                statusSwitch3 = simpleSwitch3.getTextOn().toString();
+                Toast.makeText(getApplicationContext(), "Switch3 on"+statusSwitch3, Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "onCreate statusSwitch3: "+statusSwitch3);
+            }
+            if (simpleSwitch4.isChecked()) {
+                statusSwitch4 = simpleSwitch4.getTextOn().toString();
+                Toast.makeText(getApplicationContext(), "Switch4 on"+statusSwitch4, Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "onCreate statusSwitch4: "+statusSwitch4);
+            }
+            if (simpleSwitch5.isChecked()){
+                statusSwitch5 = simpleSwitch5.getTextOn().toString();
+                Toast.makeText(getApplicationContext(), "Switch5 on"+statusSwitch5, Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "onCreate statusSwitch5: "+statusSwitch5);
+            }
+            if (simpleSwitch6.isChecked()){
+                statusSwitch6 = simpleSwitch6.getTextOn().toString();
+                Toast.makeText(getApplicationContext(), "Switch6 on"+statusSwitch6, Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "onCreate statusSwitch6: "+statusSwitch6);
+            }
         });
 
 
@@ -174,7 +174,7 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
             startActivity(intent1);
 
         } );
-}
+    }
 
 //    public ScanResult getAllMemos() {
 //
@@ -264,3 +264,4 @@ NavigationView navigationView=findViewById(R.id.NavigationView);
         });
     }
 }
+

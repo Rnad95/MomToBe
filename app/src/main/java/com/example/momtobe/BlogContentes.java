@@ -58,6 +58,7 @@ public class BlogContentes extends AppCompatActivity {
 
 //        setBlogImage();
         setSaveBtn();
+//        removeSave();
         readContent();
     }
     void setData(){
@@ -69,6 +70,7 @@ public class BlogContentes extends AppCompatActivity {
         content = bundle.getString("content");
         contentView = findViewById(R.id.BlogContent);
         contentView.setText(content);
+
         authorName = bundle.getString("author");
         authorNameView = findViewById(R.id.author_name);
         authorNameView.setText(authorName);
@@ -135,6 +137,44 @@ public class BlogContentes extends AppCompatActivity {
                     fail->{
                     });
         });
+    }
+    void removeSave (){
+        Amplify.API.query(ModelQuery.list(Mother.class),
+                foundMother ->{
+                    for(Mother mother : foundMother.getData()){
+//                    if(mother.getEmailAddress().equals(email))
+                        {
+                            Amplify.API.query(ModelQuery.list(Blog.class),
+                                    foundBlog->{
+                                        for(Blog blog : foundBlog.getData())
+                                        {
+//                                        if(blog.getId().equals(blogId))
+                                            {
+                                                UserBlogs relation =  UserBlogs.builder().mother(mother).blog(blog).build();
+                                                Amplify.API.mutate(ModelMutation.delete(relation),
+                                                        response -> {
+                                                            Log.i("MyAmplifyApp", "Deleted ");
+                                                            finish();
+                                                        },
+                                                        error -> Log.e("MyAmplifyApp", "delete failed", error)
+                                                );
+                                            }
+                                        }
+
+                                    },
+                                    notFoundBlog->{
+                                        Log.e("MyAmplifyApp", "delete failed", notFoundBlog);
+                                    });
+                        }
+                    }
+
+
+                },
+                notFound ->{
+                    Log.e("MyAmplifyApp", "delete failed", notFound);
+
+                }
+        );
     }
     void readContent (){
         ImageButton sound = findViewById(R.id.sound_on_btn);

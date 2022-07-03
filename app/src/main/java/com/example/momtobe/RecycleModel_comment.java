@@ -1,5 +1,6 @@
 package com.example.momtobe;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,15 +47,16 @@ public class RecycleModel_comment extends RecyclerView.Adapter<RecycleModel_comm
 
 
     class taskviewsholoder extends RecyclerView.ViewHolder {
-        private final TextView title;
+        TextView title;
         TextView description;
-
-
 
 
         public taskviewsholoder(@NonNull View listTaskView, RecycleModel_comment.CustomClickListener listener) {
             super(listTaskView);
             title = itemView.findViewById(R.id.title);
+            Log.i("TAG", "taskviewsholoder: "+title);
+            listTaskView.setOnClickListener(v -> listener.taskItemClicked(getAdapterPosition()));
+
         }
     }
 

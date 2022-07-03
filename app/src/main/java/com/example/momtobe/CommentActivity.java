@@ -118,6 +118,7 @@ public class CommentActivity extends AppCompatActivity {
 
         }
         );
+
         Amplify.API.query(
                 ModelQuery.get(Question.class,questionid),
                 teamsName -> {

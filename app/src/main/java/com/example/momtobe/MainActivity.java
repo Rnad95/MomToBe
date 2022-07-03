@@ -25,6 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,7 @@ import com.google.gson.internal.LinkedTreeMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.text.ParseException;
@@ -60,28 +62,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     BottomNavigationView bottomNavigationView;
-
-    private String showEmail;
-    private String url ="https://jsonkeeper.com/b/MKEL";
-    Handler handler;
     RecyclerView recyclerView;
     ListView listView;
-    TextView mViewAll;
-    ImageView mImage;
+    TextView mViewAll, mFullName;
+    private ImageView imageView, mImage;
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     ArrayList<String> taskArrayList=new ArrayList<>();
-    private Handler handler1;
+    private Handler handler1, handlerMom,handler2, handler;
     private Date dateParse;
-    private String userId;
-    private String userName;
-    TextView mFullName;
-    private Handler handler2;
-    private String email;
-    private String imageKey;
-
+    private String userId, userName, email, imageKey, showEmail, url ="https://jsonkeeper.com/b/MKEL";
+    Mother mother ;
+    CircleImageView profileImage;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,12 +100,29 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        popMenuView();
         setRecyclerViewForBlogs();
         getQuestions();
         setRecyclerViewForQuestion();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.popup_menu, menu);
+        return true;
+    }
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUserInformation();
+    }
+
     private void fetchUserInformation(){
+
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
                     userId = attributes.get(0).getValue();
@@ -125,18 +138,69 @@ public class MainActivity extends AppCompatActivity {
                         mFullName.setText(userName);
                     });
 
+                    findMotherAPI(attributes.get(3).getValue());
+
                     Log.i(TAG, "fetchUserInformation: "+ attributes);
                     Log.i(TAG, "fetchUserInformation: 0 "+ attributes.get(0).getValue());
                     Log.i(TAG, "fetchUserInformation: 1 "+ attributes.get(1).getValue());
                     Log.i(TAG, "fetchUserInformation: 2 "+ attributes.get(2).getValue());
                     Log.i(TAG, "fetchUserInformation: 3 "+ attributes.get(3).getValue());
+
+                    handlerMom =  new Handler(Looper.getMainLooper(), msg->{
+                        Log.i(TAG, "fetchUserInformation: "+mother.getImage());
+                        setImage(mother.getImage());
+
+                        return true ;
+                    });
                 },
                 error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
         );
     }
+
+    void findMotherAPI (String emailId ){
+        Log.i(TAG, "findMotherAPI: id ->"+emailId);
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                success->{
+                    if(success.hasData())
+                    {
+                        for (Mother curMother : success.getData())
+                        {
+                            if(curMother.getEmailAddress().equals(emailId)){
+                                Log.i(TAG, "findMotherAPI: mother->"+mother);
+                                mother  = curMother;
+                            }
+                            Bundle bundle = new Bundle();
+                            bundle.putString("data","Done");
+                            Message message = new Message();
+                            message.setData(bundle);
+                            handlerMom.sendMessage(message);
+                        }
+                    }
+                },
+                fail->{
+                    Log.i(TAG, "onCreate: failed to find mother in database");
+                }
+        );
+    }
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        imageView = findViewById(R.id.image_profile);
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
+    }
+
     private void setUserInformation(){
         fetchUserInformation();
-
         Amplify.API.query(
                 ModelQuery.list(Mother.class),
                 getSuccess -> {
@@ -164,25 +228,17 @@ public class MainActivity extends AppCompatActivity {
                 error -> Log.e(TAG,  "display Failed", error)
         );
     }
+
     private void setRecyclerViewForQuestion(){
         listView = findViewById(R.id.list_view);
         handler1 = new Handler(
                 Looper.getMainLooper(), msg -> {
             ArrayAdapter<String> adapter =new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,taskArrayList);
             listView.setAdapter(adapter);
-            listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
-                    String QuestionId=taskArrayList.get(position);
-                    intent.putExtra("QuestionId",QuestionId);
-                    startActivity(intent);
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    startActivity(new Intent(getApplicationContext(),CommentActivity.class));
                 }
             });
             return true;
@@ -275,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
                         Message message = new Message();
                         message.setData(bundle);
                         handler.sendMessage(message);
-                        
+
 
                 },
                 error -> {
@@ -293,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
 
         mImage = findViewById(R.id.image_profile);
         mFullName = findViewById(R.id.user_full_name);
+        profileImage = findViewById(R.id.image_profile);
 
     }
     private void ButtonOnListener(){
@@ -307,14 +364,10 @@ public class MainActivity extends AppCompatActivity {
 //            startActivity(new Intent(MainActivity.this,SavedActivity.class));
 //        });
         mImage.setOnClickListener(view ->{
-
+            SentEmailToUserActivity();
         });
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.popup_menu, menu);
-        return true;
-    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

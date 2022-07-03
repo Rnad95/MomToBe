@@ -8,27 +8,26 @@
     tools:context=".ui.ProductActivity">
 
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal"
-       >
-       <com.google.android.material.textfield.TextInputEditText
-           android:id="@+id/product_archive_search"
-           android:layout_width="300dp"
-           android:layout_margin="5dp"
-           android:layout_height="wrap_content"
-           android:hint="Search"
-           android:inputType="text" />
+    <LinearLayout
+        android:id="@+id/layout_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-       <Button
-           android:id="@+id/btn_product_search"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Search"
-           />
-   </LinearLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/product_archive_search"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Search"
+            android:inputType="text" />
 
+        <Button
+            android:id="@+id/btn_product_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+    </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView

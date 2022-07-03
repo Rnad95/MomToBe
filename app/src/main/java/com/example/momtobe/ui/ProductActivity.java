@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.example.momtobe.Blog;
 import com.example.momtobe.Experiance_activity;
@@ -46,14 +47,20 @@ public class ProductActivity extends AppCompatActivity {
     FloatingActionButton addProduct ;
     private List<Product> myProducts;
     private List<Product> myList;
-    private String userId  =  "" ;
+    private String userId , userEmail ;
 
 
-    BottomNavigationView bottomNavigationView;
-    EditText search ;
+    private BottomNavigationView bottomNavigationView;
+
+    private EditText search ;
+
     private Handler handler;
     private Handler handler1;
+    private Handler handler2;
+
     private Button searchBtn;
+
+
 
 
     @Override
@@ -114,20 +121,7 @@ public class ProductActivity extends AppCompatActivity {
 
         handler1 = new Handler(Looper.getMainLooper() , msg -> {
 
-            Amplify.Auth.fetchUserAttributes(
-                    attributes ->{
-                        userId = attributes.get(0).getValue();
-                        Log.i("UserAuthDone" , userId);
-                        Log.i("tasks" , myProducts.toString()) ;
-                        Bundle bundle = new Bundle();
-                        bundle.putString("data" , "Done");
-                        Message message = new Message();
-                        message.setData(bundle);
-                        handler.sendMessage(message);
-                    },
-                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-            );
-
+            getUserId();
 
             return true ;
         });
@@ -224,8 +218,42 @@ public class ProductActivity extends AppCompatActivity {
                 handler1.sendMessage(message);
     }
 
+    public void getUserId(){
+
+        handler2 = new Handler(Looper.getMainLooper() , msg -> {
+            Amplify.API.query(
+                    ModelQuery.list(Mother.class, Mother.EMAIL_ADDRESS.contains(userEmail)),
+                    response -> {
+                        for (Mother mother : response.getData()) {
+                            userId =  mother.getId() ;
+                        }
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+
+            return true ;
+        });
 
 
+        Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        Log.i("UserEmail" , attributes.toString());
+                        userEmail = attributes.get(3).getValue();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler2.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
 
+    }
 
 }
