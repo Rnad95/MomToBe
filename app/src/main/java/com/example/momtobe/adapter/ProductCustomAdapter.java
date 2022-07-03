@@ -61,14 +61,11 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         //        holder.productImage.setText(productDataList.get(position).getImage());
         holder.productTitle.setText(productDataList.get(position).getTitle());
         holder.productDescription.setText(productDataList.get(position).getDescription());
-        holder.productPrice.setText(productDataList.get(position).getPrice().toString());
-        holder.productQuantity.setText(productDataList.get(position).getQuantity().toString());
+        holder.productPrice.setText("Price :" + productDataList.get(position).getPrice().toString());
+        holder.productQuantity.setText("Quantity :" + productDataList.get(position).getQuantity().toString());
         holder.productImage.setImageURI(Uri.parse(mContext.getFilesDir()+ "/" + productDataList.get(position).getImage() + "download.jpg"));
-
         setDeleteBtn(holder , position);
         setUpdateBtn(holder , position);
-
-
     }
 
     @Override

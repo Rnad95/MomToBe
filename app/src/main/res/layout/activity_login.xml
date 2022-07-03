@@ -24,11 +24,13 @@
             android:layout_marginStart="@dimen/mom_spacing_standard_1"
             android:layout_marginTop="@dimen/mom_signin_tvTitleMarginTop"
             android:text="@string/mom_sign_in"
-            android:textAppearance="@style/mom_FontStyleBold"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_bold"
             android:textColor="@color/mom_colorTextPrimary"
             android:textSize="@dimen/mom_tv_SignInTitle" />
         <EditText
             android:id="@+id/email"
+            android:fontFamily="@font/poppins_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/mom_spacing_22"
@@ -62,6 +64,7 @@
             android:layout_marginTop="@dimen/mom_spacing_22"
             android:layout_marginEnd="@dimen/mom_spacing_standard_1"
             android:shadowRadius="36"
+            android:fontFamily="@font/poppins_regular"
             android:text="Log In" />
 
 
@@ -72,6 +75,7 @@
             android:gravity="center"
             android:padding="@dimen/mom_spacing_standard_1"
             android:text="Don\'t have Account? SIGN UP"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/mom_colorGrey" />
 
         <ProgressBar

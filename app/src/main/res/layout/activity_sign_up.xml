@@ -17,7 +17,7 @@
         android:layout_marginTop="@dimen/_50sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         android:text="Sign Up"
-        android:textAppearance="@style/mom_FontStyleBold"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/mom_colorTextPrimary"
         android:textSize="@dimen/mom_tv_SignInTitle" />
     <LinearLayout
@@ -195,5 +195,4 @@
         app:layout_constraintVertical_bias="0.3" />
 
 </LinearLayout>
-
 

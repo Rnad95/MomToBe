@@ -3,10 +3,8 @@
     <style name="Theme.MomToBe" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/mom_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/mom_colorPrimaryDark</item>
         <item name="colorAccent">@color/mom_colorPrimary</item>
         <item name="android:statusBarColor">@color/mom_colorWhitePure</item>
-
     </style>
 
     <style name="Theme.MomToBe.NoActionBar">

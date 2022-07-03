@@ -37,6 +37,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AddProductActivity extends AppCompatActivity {
 
     private static final String TAG = AddProductActivity.class.getSimpleName();

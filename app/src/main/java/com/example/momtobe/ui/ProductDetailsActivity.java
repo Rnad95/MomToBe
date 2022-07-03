@@ -87,9 +87,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         handler = new Handler(Looper.getMainLooper(), msg -> {
 
             productTitle.setText(title);
-            productDesc.setText(desc);
-            productPrice.setText(price);
-            productQuantity.setText(quantity);
+            productDesc.setText( desc);
+            productPrice.setText("Price : " + price);
+            productQuantity.setText("Quantity : " + quantity);
             if (imageKey != null) {
                 setImage(imageKey);
             }
