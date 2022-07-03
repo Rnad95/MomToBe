@@ -1,7 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Circular">
         <item name="cornerSize">50%</item>
     </style>
+    <style name="momAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/mom_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/mom_colorPrimaryDark</item>
+        <item name="colorAccent">@color/mom_colorPrimary</item>
+        <item name="android:statusBarColor">@color/mom_colorWhitePure</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="mom_FontStyleBold">
+        <item name="android:text"></item>
+    </style>
+
+
+
+    <style name="mom_FontStyleMedium">
+        <item name="android:text"></item>
+    </style>
+
+    <style name="mom_FontStyleRegular">
+        <item name="android:text"></item>
+    </style>
+
+    <style name="mom_EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lastBaselineToBottomHeight" tools:targetApi="p">
+            @dimen/mom_spacing_standard_2
+        </item>
+        <item name="android:backgroundTint">@color/mom_colorBottomEditTextLine</item>
+        <item name="android:layout_marginEnd">@dimen/mom_spacing_standard_1</item>
+        <item name="android:layout_marginStart">@dimen/mom_spacing_standard_1</item>
+    </style>
+
+    <style name="mom_Button" parent="Theme.MaterialComponents">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textColor">@color/mom_colorWhitePure</item>
+        <item name="android:textSize">@dimen/mom_spacing_14</item>
+        <item name="android:layout_marginTop">@dimen/mom_spacing_standard_new</item>
+        <item name="android:padding">@dimen/mom_spacing_standard</item>
+        <item name="android:background">@drawable/bank_btn_background</item>
+    </style>
+
+    <style name="mom_TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/mom_font_size_xxxlarge2</item>
+        <item name="android:textColor">@color/mom_colorTextPrimary</item>
+        <item name="android:layout_marginStart">@dimen/mom_spacing_standard_1</item>
+        <item name="android:layout_marginEnd">@dimen/_140sdp</item>
+        <item name="android:textAppearance">@style/mom_FontStyleBold</item>
+        <item name="android:layout_marginTop">@dimen/mom_spacing_22</item>
+        <item name="android:text"></item>
+    </style>
+
+    <style name="mom_DescriptionTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/mom_colorTextSecondary</item>
+        <item name="android:layout_marginStart">@dimen/mom_spacing_standard_1</item>
+        <item name="android:layout_marginEnd">@dimen/mom_spacing_xlarge</item>
+        <item name="android:layout_marginTop">@dimen/mom_spacing_22</item>
+        <item name="android:text"></item>
+        <item name="android:lineSpacingExtra">@dimen/mom_spacing_control_half</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="mom_ForgetPasswordTextView">
+        <!--        <item name="android:layout_marginEnd">@dimen/spacing_standard_1</item>-->
+        <!--        <item name="android:layout_marginStart">@dimen/spacing_standard_1</item>-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">end</item>
+        <item name="android:textAppearance">@style/mom_FontStyleMedium</item>
+        <item name="android:textSize">@dimen/mom_font_size_small</item>
+    </style>
+
+    <style name="mom_BackImageView">
+        <item name="android:layout_marginTop">@dimen/mom_spacing_standard</item>
+        <item name="android:layout_width">@dimen/_36sdp</item>
+        <item name="android:layout_height">@dimen/_36sdp</item>
+        <item name="android:src">@drawable/bank_ic_keyboard_arrow_left_black_24dp</item>
+    </style>
+
+    <style name="mom_ButtonPayment" parent="Theme.MaterialComponents">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/mom_spacing_6</item>
+        <item name="android:textColor">@color/mom_colorWhitePure</item>
+    </style>
+
+    <style name="mom_TransactionNameTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/mom_spacing_standard_1</item>
+        <item name="android:paddingBottom">@dimen/mom_spacing_standard_1</item>
+        <item name="android:textColor">@color/mom_colorTextSecondary</item>
+        <item name="android:textSize">@dimen/mom_font_size_medium</item>
+        <item name="android:gravity">center|start</item>
+    </style>
+
+    <style name="mom_TransactionAmountTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/mom_spacing_standard_new</item>
+        <item name="android:paddingBottom">@dimen/mom_spacing_standard_new</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/mom_FontStyleMedium</item>
+        <item name="android:textColor">@color/mom_colorPrimary</item>
+        <item name="android:textSize">@dimen/mom_font_size_medium</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+
+    <style name="mom_TitleTextView">
+        <item name="android:textAppearance">@style/mom_FontStyleBold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/mom_colorBlackLight</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="mom_SubTitelTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/mom_spacing_standard_new</item>
+        <item name="android:paddingBottom">@dimen/mom_spacing_standard_new</item>
+        <item name="android:textSize">@dimen/mom_font_size_small</item>
+        <item name="android:textColor">@color/mom_colorTextSecondary</item>
+        <item name="android:gravity">center|start</item>
+    </style>
+
+    <style name="mom_TextViewTransferDetail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/mom_FontStyleMedium</item>
+        <item name="android:gravity">center|end</item>
+        <item name="android:paddingTop">@dimen/mom_spacing_standard_new</item>
+        <item name="android:paddingBottom">@dimen/mom_spacing_standard_new</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/mom_colorTextPrimary</item>
+        <item name="android:textSize">@dimen/mom_font_size_medium</item>
+    </style>
+
+    <style name="mom_TextViewTransfer">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:layout_marginEnd">@dimen/mom_spacing_standard_1</item>
+        <item name="android:paddingTop">@dimen/mom_spacing_standard_new</item>
+        <item name="android:paddingBottom">@dimen/mom_spacing_standard_new</item>
+        <item name="android:textColor">@color/mom_colorTextSecondary</item>
+        <item name="android:textSize">@dimen/mom_font_size_medium</item>
+    </style>
+
+    <style name="mom_MenuTextViewItem">
+        <item name="android:drawableEnd">@drawable/bank_ic_keyboard_arrow_right_black_24dp</item>
+        <item name="android:drawablePadding">@dimen/mom_spacing_standard</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/mom_FontStyleMedium</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:textColor">@color/mom_colorTextPrimary</item>
+        <item name="android:textSize">@dimen/mom_font_size_medium</item>
+    </style>
+
+    <style name="mom_TermsConditionTextView">
+        <item name="android:layout_marginEnd">@dimen/mom_spacing_standard_1</item>
+        <item name="android:drawablePadding">@dimen/mom_spacing_standard_1</item>
+        <item name="android:layout_marginStart">@dimen/mom_spacing_standard_1</item>
+        <item name="android:layout_marginTop">@dimen/mom_spacing_standard_new1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/mom_colorTextSecondary</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableStart">@drawable/bank_badge_layout</item>
+        <item name="android:lineSpacingExtra">@dimen/mom_spacing_control</item>
+        <item name="android:text"></item>
+    </style>
+
+    <style name="TextInputLayoutStyle">
+        <item name="android:textSize">@dimen/mom_font_size_medium</item>
+    </style>
+
+    <style name="mom_ChangePasswordEditText">
+        <item name="android:layout_marginEnd">@dimen/mom_spacing_standard_1</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/mom_spacing_standard_1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/_20sdp</item>
+    </style>
+
+    <style name="mom_BranchItemStyle">
+        <item name="android:layout_marginStart">@dimen/mom_spacing_standard_1</item>
+        <item name="android:layout_marginEnd">@dimen/mom_spacing_standard_1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:textColor">@color/mom_colorTextSecondary</item>
+        <item name="android:paddingTop">@dimen/mom_spacing_14</item>
+        <item name="android:paddingBottom">@dimen/mom_spacing_14</item>
+        <item name="android:drawablePadding">@dimen/mom_spacing_standard_new</item>
+    </style>
+
+    <style name="mom_ViewLineSeprate">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+
+    <style name="mom_PasswordVisibilityImageView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/mom_spacing_standard_new</item>
+        <item name="android:paddingTop">@dimen/mom_spacing_10</item>
+        <item name="android:paddingBottom">@dimen/mom_spacing_14</item>
+        <item name="android:src">@drawable/bank_ic_visibility_off_black_24dp</item>
+    </style>
+    
+    <style name="roundimageview" parent="">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">20dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
 </resources>

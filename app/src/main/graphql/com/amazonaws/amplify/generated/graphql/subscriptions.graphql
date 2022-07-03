@@ -7,6 +7,7 @@ subscription OnCreateMother {
     numOfChildren
     phoneNumber
     emailAddress
+    faveBlogs
     comments {
       items {
         id
@@ -84,6 +85,7 @@ subscription OnUpdateMother {
     numOfChildren
     phoneNumber
     emailAddress
+    faveBlogs
     comments {
       items {
         id
@@ -161,6 +163,7 @@ subscription OnDeleteMother {
     numOfChildren
     phoneNumber
     emailAddress
+    faveBlogs
     comments {
       items {
         id
@@ -281,6 +284,7 @@ subscription OnCreateAddress {
         numOfChildren
         phoneNumber
         emailAddress
+        faveBlogs
         createdAt
         updatedAt
         addressMothersId
@@ -306,6 +310,7 @@ subscription OnUpdateAddress {
         numOfChildren
         phoneNumber
         emailAddress
+        faveBlogs
         createdAt
         updatedAt
         addressMothersId
@@ -331,6 +336,7 @@ subscription OnDeleteAddress {
         numOfChildren
         phoneNumber
         emailAddress
+        faveBlogs
         createdAt
         updatedAt
         addressMothersId
@@ -857,6 +863,7 @@ subscription OnCreateUserBlogs {
       numOfChildren
       phoneNumber
       emailAddress
+      faveBlogs
       comments {
         nextToken
       }
@@ -908,6 +915,7 @@ subscription OnUpdateUserBlogs {
       numOfChildren
       phoneNumber
       emailAddress
+      faveBlogs
       comments {
         nextToken
       }
@@ -959,6 +967,7 @@ subscription OnDeleteUserBlogs {
       numOfChildren
       phoneNumber
       emailAddress
+      faveBlogs
       comments {
         nextToken
       }

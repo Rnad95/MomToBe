@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,15 +18,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
@@ -55,7 +47,6 @@ import org.json.JSONException;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -68,16 +59,18 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     BottomNavigationView bottomNavigationView;
     RecyclerView recyclerView;
-    ListView listView;
+    RecyclerView recyclerViewQuestion;
     TextView mViewAll, mFullName;
     private ImageView imageView, mImage;
-    List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
-    ArrayList<String> taskArrayList=new ArrayList<>();
+    List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();
+    ArrayList<Question> questionList = new ArrayList<>();
     private Handler handler1, handlerMom,handler2, handler;
     private Date dateParse;
     private String userId, userName, email, imageKey, showEmail, url ="https://jsonkeeper.com/b/MKEL";
     Mother mother ;
     CircleImageView profileImage;
+    public static final String QuestionId = "questionId";
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,9 +140,11 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "fetchUserInformation: 3 "+ attributes.get(3).getValue());
 
                     handlerMom =  new Handler(Looper.getMainLooper(), msg->{
-                        Log.i(TAG, "fetchUserInformation: "+mother.getImage());
-                        setImage(mother.getImage());
+                            try {
+                                setImage(mother.getImage());
+                            }catch (Exception err){
 
+                            }
                         return true ;
                     });
                 },
@@ -230,17 +225,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setRecyclerViewForQuestion(){
-        listView = findViewById(R.id.list_view);
+        recyclerViewQuestion = findViewById(R.id.recycler_view_question);
         handler1 = new Handler(
                 Looper.getMainLooper(), msg -> {
-            ArrayAdapter<String> adapter =new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,taskArrayList);
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    startActivity(new Intent(getApplicationContext(),CommentActivity.class));
-                }
+            HomeQuestionAdapter homeQuestionAdapter = new HomeQuestionAdapter(getApplicationContext(),questionList, position -> {
+
+                Intent intent=new Intent(getApplicationContext(),CommentActivity.class);
+                String QuestionId=questionList.get(position).getId();
+                intent.putExtra(QuestionId,QuestionId);
+                startActivity(intent);
+
             });
+            recyclerViewQuestion.setAdapter(homeQuestionAdapter);
+            recyclerViewQuestion.setHasFixedSize(true);
+            recyclerViewQuestion.setLayoutManager(new LinearLayoutManager(this));
             return true;
 
         }
@@ -252,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
                 ModelQuery.list(Question.class),
                 teamsName -> {
                     for (Question question : teamsName.getData()) {
-                        taskArrayList.add(question.getDescription());
+                        questionList.add(question);
                     }
 
                     handler1.sendEmptyMessage(1);

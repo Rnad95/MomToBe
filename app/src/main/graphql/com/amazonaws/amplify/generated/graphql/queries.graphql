@@ -7,6 +7,7 @@ query GetMother($id: ID!) {
     numOfChildren
     phoneNumber
     emailAddress
+    faveBlogs
     comments {
       items {
         id
@@ -89,6 +90,7 @@ query ListMothers(
       numOfChildren
       phoneNumber
       emailAddress
+      faveBlogs
       comments {
         nextToken
       }
@@ -157,6 +159,7 @@ query GetAddress($id: ID!) {
         numOfChildren
         phoneNumber
         emailAddress
+        faveBlogs
         createdAt
         updatedAt
         addressMothersId
@@ -488,6 +491,7 @@ query GetUserBlogs($id: ID!) {
       numOfChildren
       phoneNumber
       emailAddress
+      faveBlogs
       comments {
         nextToken
       }
@@ -544,6 +548,7 @@ query ListUserBlogs(
         numOfChildren
         phoneNumber
         emailAddress
+        faveBlogs
         createdAt
         updatedAt
         addressMothersId

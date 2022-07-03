@@ -1,86 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="280dp"
-    android:layout_height="200dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="30dp"
-    android:layout_margin="10dp"
-    android:id="@+id/mother_cardview"
-    app:cardElevation="6dp"
-    android:background="@color/white"
-
-    >
-
     <RelativeLayout
-        android:id="@+id/background_color"
-        android:layout_width="356dp"
-        android:layout_height="301dp"
-        android:background="#C0C0C0"
-        android:padding="5dp"
-        android:layout_marginBottom="5dp"
-        android:paddingBottom="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:padding="@dimen/_10sdp"
+    android:id="@+id/mother_cardview"
+    app:cardElevation="10dp">
 
-        >
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/mother_image"
+        android:layout_width="254dp"
+        android:layout_height="137dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="13dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/blog_mom"
+        app:shapeAppearanceOverlay="@style/roundimageview" />
 
-        <ImageView
-            android:id="@+id/mother_image"
-            android:layout_width="243dp"
-            android:layout_height="134dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="80dp"
-            android:src="@drawable/blog_mom" />
+    <TextView
+        android:id="@+id/mother_title"
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mother_image"
+        android:layout_alignStart="@+id/mother_image"
+        android:layout_alignEnd="@+id/mother_image"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:text="Blog"
+        android:textColor="#FAFAFA"
+        android:textSize="19dp"
+        android:textStyle="bold|italic" />
 
-        <TextView
-            android:id="@+id/mother_title"
-            android:layout_width="244dp"
-            android:layout_height="114dp"
-            android:layout_below="@+id/mother_image"
-            android:layout_alignStart="@+id/mother_image"
-            android:layout_alignEnd="@+id/mother_image"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="-1dp"
-            android:layout_marginBottom="12dp"
-            android:text="Blog"
-            android:textSize="19dp"
-            android:textStyle="bold|italic" />
+    <TextView
+        android:id="@+id/mother_content"
+        android:layout_width="244dp"
+        android:layout_height="114dp"
+        android:layout_below="@+id/mother_image"
+        android:layout_alignStart="@+id/mother_image"
+        android:layout_alignEnd="@+id/mother_image"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
+        android:gravity="center"
+        android:visibility="invisible" />
 
-        <TextView
-            android:id="@+id/mother_content"
-            android:layout_width="244dp"
-            android:layout_height="114dp"
-            android:layout_below="@+id/mother_image"
-            android:layout_alignStart="@+id/mother_image"
-            android:layout_alignEnd="@+id/mother_image"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="-1dp"
-            android:layout_marginBottom="12dp"
-            android:visibility="invisible"
-            />
-
-        <TextView
-            android:id="@+id/mother_Author"
-            android:layout_width="244dp"
-            android:layout_height="114dp"
-            android:layout_below="@+id/mother_image"
-            android:layout_alignStart="@+id/mother_image"
-            android:layout_alignEnd="@+id/mother_image"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="-1dp"
-            android:layout_marginBottom="12dp"
-            android:visibility="invisible"
-            />
+    <TextView
+        android:id="@+id/mother_Author"
+        android:layout_width="244dp"
+        android:layout_height="114dp"
+        android:layout_below="@+id/mother_image"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:gravity="center"
+        android:visibility="invisible" />
 
 
     </RelativeLayout>
 
 
-</androidx.cardview.widget.CardView>

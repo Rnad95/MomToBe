@@ -97,7 +97,6 @@ public class BlogContentes extends AppCompatActivity {
                     .featured(true)
                     .image(image)
                     .build();
-
             Amplify.API.mutate(
                     ModelMutation.create(blog),
                     success ->{

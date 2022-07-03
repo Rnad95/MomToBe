@@ -62,7 +62,7 @@ public class Profile extends AppCompatActivity {
             return true ;
         });
 
-        setFavBtn(mother);
+        setFavBtn();
         setSettingsBtn();
 
 
@@ -133,7 +133,7 @@ public class Profile extends AppCompatActivity {
 
 
 
-    void setFavBtn(Mother mother){
+    void setFavBtn(){
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);
         favBtn.setOnClickListener(view->{
             Intent intent = new Intent(Profile.this,SavedActivity.class);

@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -24,12 +23,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Question;
 
-import com.example.momtobe.ui.AddExperianceActivity;
-
 import com.example.momtobe.ui.ProductActivity;
-
-
-import com.example.momtobe.ui.AddProductActivity;
 
 
 import com.example.momtobe.ui.AddQuestionActivity;
@@ -79,7 +73,7 @@ public class Question_avtivity extends AppCompatActivity {
 
         handler=new Handler(
                 Looper.getMainLooper(), msg -> {
-            RecycleModels_Question recycleModels = new RecycleModels_Question(getApplicationContext(),taskArrayList, position -> {
+            HomeQuestionAdapter recycleModels = new HomeQuestionAdapter(getApplicationContext(),taskArrayList, position -> {
                 Toast.makeText(
                         Question_avtivity.this,
                         "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
