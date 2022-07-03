@@ -65,7 +65,7 @@
                 android:id="@+id/edit_product_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="@dimen/fab_margin"
                 android:background="@drawable/edit_text_round"
                 android:hint="Title"
                 android:inputType="text"

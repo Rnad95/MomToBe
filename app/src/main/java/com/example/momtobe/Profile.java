@@ -99,7 +99,6 @@ public class Profile extends AppCompatActivity {
 
 
     void setMotherInfo(Mother mother){
-
         Log.i(TAG, "setMotherInfo: 100 ->" + mother);
         TextView mMotherName = findViewById(R.id.pro_mother_name);
         TextView mMotherPhone = findViewById(R.id.pro_mother_phone);
