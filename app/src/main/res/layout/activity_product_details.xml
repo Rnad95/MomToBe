@@ -53,6 +53,7 @@
                            android:text="title"
                            android:layout_weight = "1"
                            android:textColor="@color/black"
+                           android:fontFamily="@font/poppins_medium"
                            android:textSize="25sp" />
 
                        <Button
@@ -60,6 +61,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Call"
+                           android:fontFamily="@font/poppins_regular"
                            android:drawableRight="@drawable/ic_baseline_phone_24"
                            app:layout_constraintEnd_toEndOf="parent"
                            app:layout_constraintHorizontal_bias="0.952"
@@ -73,6 +75,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="Desciption"
+                        android:fontFamily="@font/poppins_medium"
                         android:textColor="@color/black"
                         android:textSize="13sp" />
 
@@ -88,6 +91,7 @@
                             android:padding="5dp"
                             android:layout_weight = "1"
                             android:text="Price : 15"
+                            android:fontFamily="@font/poppins_medium"
                             android:textColor="@color/black"
                             android:textSize="18sp" />
 
@@ -99,6 +103,7 @@
                             android:layout_weight = "1"
                             android:text="Quantity : 5"
                             android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
                             android:textSize="18sp" />
                     </LinearLayout>
 
@@ -120,7 +125,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_below="@id/product_comment_recyclier_view"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_3sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_5sdp"
                     >
+
                     <EditText
                         android:id="@+id/product_comment_add_comment_edit"
                         android:layout_width="300dp"
@@ -138,7 +148,8 @@
                         android:id="@+id/product_comment_add_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:icon="@drawable/ic_baseline_add_comment_24"
+                        android:text="Add"
+                        android:fontFamily="@font/poppins_medium"
                         app:iconGravity="textStart"
                         android:textSize="@dimen/_7sdp"
                         />
