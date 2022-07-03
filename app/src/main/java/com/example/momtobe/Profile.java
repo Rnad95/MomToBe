@@ -58,16 +58,11 @@ public class Profile extends AppCompatActivity {
         });
 
         handler =  new Handler(Looper.getMainLooper(), msg->{
-            setMotherInfo(mother);
+            setMotherInfo();
             return true ;
         });
-
-        setFavBtn(mother);
+        setFavBtn();
         setSettingsBtn();
-
-
-
-
     }
 
     void findMotherAPI (String emailId ){
@@ -98,7 +93,7 @@ public class Profile extends AppCompatActivity {
     }
 
 
-    void setMotherInfo(Mother mother){
+    void setMotherInfo(){
 
         Log.i(TAG, "setMotherInfo: 100 ->" + mother);
         TextView mMotherName = findViewById(R.id.pro_mother_name);
@@ -133,7 +128,7 @@ public class Profile extends AppCompatActivity {
 
 
 
-    void setFavBtn(Mother mother){
+    void setFavBtn(){
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);
         favBtn.setOnClickListener(view->{
             Intent intent = new Intent(Profile.this,SavedActivity.class);

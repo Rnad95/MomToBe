@@ -8,7 +8,6 @@ type Mother @model {
   phoneNumber : String
   emailAddress:String!
 
-
   comments: [Comment] @hasMany
   products: [Product] @hasMany
   questions: [Question] @hasMany
