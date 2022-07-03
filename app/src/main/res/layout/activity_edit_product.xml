@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddProductActivity">
+    tools:context=".ui.EditProductActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:id="@+id/page_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Product"
+                android:text="Edit Product"
                 android:textSize="20sp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                 android:textColor="#000" />
@@ -40,7 +40,7 @@
                 android:layout_height="20dp" />
 
             <RelativeLayout
-                android:id="@+id/lyt_avatar"
+                android:id="@+id/edit_lyt_avatar"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@color/white"
@@ -56,7 +56,7 @@
                     />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/avatar"
+                    android:id="@+id/edit_avatar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/avatar_placeholder_click"
@@ -64,10 +64,10 @@
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/edit_product_name"
+                android:id="@+id/edit_edit_product_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="@dimen/fab_margin"
+                android:layout_marginTop="18dp"
                 android:background="@drawable/edit_text_round"
                 android:hint="Title"
                 android:inputType="text"
@@ -78,7 +78,7 @@
                 android:textColorHint="#666666" />
 
             <EditText
-                android:id="@+id/edit_product_desc"
+                android:id="@+id/edit_edit_product_desc"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="18dp"
@@ -92,7 +92,7 @@
                 android:textColorHint="#666666" />
 
             <EditText
-                android:id="@+id/edit_product_price"
+                android:id="@+id/edit_edit_product_price"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="18dp"
@@ -106,7 +106,7 @@
                 android:textColorHint="#666666" />
 
             <EditText
-                android:id="@+id/edit_product_quantity"
+                android:id="@+id/edit_edit_product_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="18dp"
@@ -119,18 +119,16 @@
                 android:textColor="@android:color/black"
                 android:textColorHint="#666666" />
 
-                <Button
-                    android:id="@+id/btn_add_product"
-                    style="@style/mom_Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_margin="@dimen/mom_spacing_30"
-                    android:background="@drawable/btn_dark"
-                    android:text="Add Product"
-                    android:textColor="#FFFFFF"
-                    android:layout_marginTop="15dp"
-                    />
+            <Button
+                android:id="@+id/edit_btn_add_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_dark"
+                android:text="Save"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="15dp"
+                />
 
         </LinearLayout>
 

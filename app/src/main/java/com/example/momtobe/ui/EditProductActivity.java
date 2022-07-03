@@ -2,6 +2,8 @@ package com.example.momtobe.ui;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,19 +16,21 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Comment;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Product;
 import com.bumptech.glide.Glide;
 import com.example.momtobe.R;
+import com.example.momtobe.adapter.ProductCommentCustomAdapter;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -34,69 +38,72 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AddProductActivity extends AppCompatActivity {
-
-    private static final String TAG = AddProductActivity.class.getSimpleName();
+public class EditProductActivity extends AppCompatActivity {
     public static final int REQUEST_CODE = 123;
-    private String imageKey = "" ;
-    private String userId  , userEmail;
+    private static final String TAG = ProductDetailsActivity.class.getSimpleName();
+    private String editTitle, editDesc, editPrice , editQuantity , userId  , editImageKey , userEmail;
 
-    private ImageView productImage;
+    ArrayList<Comment> commentArrayList = new ArrayList<>() ;
 
-    private Button addProduct ;
+    private CircleImageView editImageView;
 
-    private EditText addTitle ;
-    private EditText addDesc ;
-    private EditText addQuantity ;
-    private EditText addPrice ;
+    private EditText editProductTitle;
+    private EditText editProductDesc;
+    private EditText editProductPrice;
+    private EditText editProductQuantity;
+
+    private Button saveBtn ;
 
     private Handler handler2;
     private Handler handler1;
     private Handler handler;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_product);
+        setContentView(R.layout.activity_edit_product);
 
-        // Declare const
+        // Declare Constant
         declareConst();
+
+        // Set prev details
+        setDetails();
 
 
         // Upload Image
-        productImage.setOnClickListener(view -> uploadImage());
+        editImageView.setOnClickListener(view -> uploadImage());
 
-        // AWS Add product api
-        addProduct.setOnClickListener(view -> addProduct());
+
+        // Update Image
+        saveBtn.setOnClickListener(view -> updateProduct());
 
 
     }
 
 
-    public void addProduct(){
-
-        // Product handler
-
-        handler = new Handler(Looper.getMainLooper() , msg -> {
+    public void updateProduct(){
+         handler1 = new Handler(Looper.getMainLooper() , msg -> {
 
 
             Product product = Product.builder()
-                    .title(addTitle.getText().toString())
-                    .price(Double.parseDouble(addPrice.getText().toString()))
-                    .description(addDesc.getText().toString())
+                    .title(editProductTitle.getText().toString())
+                    .price(Double.parseDouble(editProductPrice.getText().toString()))
+                    .description(editProductDesc.getText().toString())
                     .featured(false)
-                    .image(imageKey)
-                    .quantity(Integer.parseInt(addQuantity.getText().toString()))
+                    .image(editImageKey)
+                    .quantity(Integer.parseInt(editProductQuantity.getText().toString()))
                     .motherProductsId(userId)
+                    .id(getIntent().getStringExtra("id"))
                     .build() ;
 
-            Amplify.API.mutate(ModelMutation.create(product) ,
+
+            Amplify.API.mutate(ModelMutation.update(product) ,
                     success -> Log.i(TAG, "Saved item API") ,
                     error -> Log.e(TAG, "Could not save item to DataStore", error)
             );
@@ -106,12 +113,69 @@ public class AddProductActivity extends AppCompatActivity {
             return true ;
         });
 
-        getUserId();
-
+      getUserId();
 
     }
 
+    public void setDetails() {
+        Intent intent = getIntent();
 
+        Handler handler = new Handler(Looper.getMainLooper(), msg -> {
+
+            editProductTitle.setText(editTitle);
+            editProductDesc.setText(editDesc);
+            editProductPrice.setText(editPrice);
+            editProductQuantity.setText(editQuantity);
+            if (editImageKey != null) {
+                    setImage(editImageKey);
+            }
+
+
+            return true;
+
+        });
+
+        Amplify.API.query(
+                ModelQuery.get(Product.class, intent.getStringExtra("id")),
+                response -> {
+                    Log.i(TAG, (response.getData()).getTitle());
+
+                    editTitle = response.getData().getTitle();
+                    editDesc = response.getData().getDescription();
+                    editPrice = response.getData().getPrice().toString();
+                    if (response.getData().getQuantity() == null) editQuantity = "0";
+                    else editQuantity = response.getData().getQuantity().toString();
+                    editImageKey = response.getData().getImage();
+
+
+                    Bundle bundle = new Bundle();
+
+
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler.sendMessage(message);
+
+
+                },
+                error -> Log.e("MyAmplifyApp", error.toString(), error)
+        );
+
+    }
+
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(editImageView));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
+    }
 
     public void uploadImage(){
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -179,9 +243,9 @@ public class AddProductActivity extends AppCompatActivity {
                     file,
                     result -> {
                         Log.i(TAG, "Successfully uploaded: " + result.getKey()) ;
-                        imageKey = result.getKey();
+                        editImageKey = result.getKey();
                         runOnUiThread(() -> {
-                            setImage(imageKey);
+                            setImage(editImageKey);
                         });
                         Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
                     },
@@ -193,29 +257,13 @@ public class AddProductActivity extends AppCompatActivity {
         }
 
     }
-
     public void declareConst(){
-        addTitle = findViewById(R.id.edit_product_name);
-        addDesc = findViewById(R.id.edit_product_desc);
-        addPrice = findViewById(R.id.edit_product_price);
-        addQuantity = findViewById(R.id.edit_product_quantity);
-        productImage = findViewById(R.id.avatar);
-        addProduct = findViewById(R.id.btn_add_product);
-    }
-
-    private void setImage(String image) {
-        if(image != null) {
-            Amplify.Storage.downloadFile(
-                    image,
-                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
-                    result -> {
-                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
-                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
-                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(productImage));
-                    },
-                    error -> Log.e(TAG, "Download Failure", error)
-            );
-        }
+        editProductTitle = findViewById(R.id.edit_edit_product_name);
+        editProductDesc = findViewById(R.id.edit_edit_product_desc);
+        editProductPrice = findViewById(R.id.edit_edit_product_price);
+        editProductQuantity = findViewById(R.id.edit_edit_product_quantity);
+        editImageView = findViewById(R.id.edit_avatar);
+        saveBtn = findViewById(R.id.edit_btn_add_product);
     }
 
     public void getUserId(){
@@ -231,7 +279,7 @@ public class AddProductActivity extends AppCompatActivity {
                         bundle.putString("data" , "Done");
                         Message message = new Message();
                         message.setData(bundle);
-                        handler.sendMessage(message);
+                        handler1.sendMessage(message);
                     },
                     error -> Log.e("MyAmplifyApp", "Query failure", error)
             );
@@ -241,17 +289,17 @@ public class AddProductActivity extends AppCompatActivity {
 
 
         Amplify.Auth.fetchUserAttributes(
-                    attributes ->{
-                        Log.i("UserEmail" , attributes.toString());
-                        userEmail = attributes.get(3).getValue();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("data" , "Done");
-                        Message message = new Message();
-                        message.setData(bundle);
-                        handler2.sendMessage(message);
-                    },
-                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-            );
+                attributes ->{
+                    Log.i("UserEmail" , attributes.toString());
+                    userEmail = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler2.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
 
     }
 

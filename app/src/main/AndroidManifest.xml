@@ -23,6 +23,11 @@
             android:exported="false" />
         <activity
             android:name=".updateExperiance_Activity"
+            android:exported="false"
+/>
+        <activity
+            android:name=".ui.EditProductActivity"
+
             android:exported="false" />
         <activity
             android:name=".CommentActivity_Eperiance"
@@ -41,7 +46,13 @@
             android:exported="false" />
         <activity
             android:name=".registration.SignUpActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".registration.LoginActivity"
             android:exported="true">
@@ -53,7 +64,9 @@
         </activity>
         <activity
             android:name=".MainDesignActivity"
+
             android:exported="false" />
+
         <activity
             android:name=".Experiance_activity"
             android:exported="false" />
@@ -77,7 +90,13 @@
             android:exported="false" />
         <activity
             android:name=".Settings"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Blog"
             android:exported="false" />

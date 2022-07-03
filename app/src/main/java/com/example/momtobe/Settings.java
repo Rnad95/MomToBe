@@ -17,12 +17,14 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
+import com.bumptech.glide.Glide;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -37,10 +39,15 @@ public class Settings extends AppCompatActivity {
     public static final int REQUEST_CODE = 123;
 
     private String imageKey = "" ;
-    private String showEmail;
     Mother mother ;
-    Handler handler;
     Button save_btn;
+    Handler handler;
+    Handler handlerId ;
+    private String emailId;
+    private ImageView imageView;
+
+
+
     ImageButton updateImage ;
 
 
@@ -49,17 +56,37 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        Bundle bundle = getIntent().getExtras();
-        showEmail = bundle.getString("EMAIL_ADDRESS");
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    emailId = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handlerId.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
+
+        handlerId =  new Handler(Looper.getMainLooper(),msg->{
+            Log.i(TAG, "onCreate: handlerId ->" + emailId);
+            findMotherAPI(emailId);
+            return true ;
+        });
 
         save_btn = findViewById(R.id.set_save_btn);
 
-        findMotherAPI();
-
         handler =  new Handler(Looper.getMainLooper() , msg -> {
-            Log.i(TAG, "onCreate: 35 mother -> "+mother);
-//            showImage();
+            Log.i(TAG, "onCreate: 80 mother -> "+mother);
+
+            setMotherData();
             setSaveButton(mother);
+
+            Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
+            if (mother.getImage() != null) {
+                setImage(mother.getImage());
+            }
 
             updateImage = findViewById(R.id.set_change_picture);
             updateImage.setOnClickListener(view -> uploadImage());
@@ -68,34 +95,20 @@ public class Settings extends AppCompatActivity {
         });
     }
 
-    void findMotherAPI (){
-        Amplify.API.query(
-                ModelQuery.list(Mother.class),
-                success->{
-                    if(success.hasData())
-                    {
-                        for (Mother curMother : success.getData())
-                        {
-                            if(curMother.getEmailAddress().equals(showEmail)){
-
-                                mother  = curMother;
-
-                            }
-                            Bundle bundle = new Bundle();
-                            bundle.putString("data","Done");
-                            Message message = new Message();
-                            message.setData(bundle);
-                            handler.sendMessage(message);
-                        }
-                    }
-                },
-                fail->{
-                    Log.i(TAG, "onCreate: failed to find mother in database");
-                }
-        );
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
     }
-
-
     public void uploadImage(){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -132,7 +145,7 @@ public class Settings extends AppCompatActivity {
             bitmap = getBitmapFromUri(currentUri);
             File file = new File(getApplicationContext().getFilesDir(), currentUriStr );
             OutputStream os = new BufferedOutputStream(new FileOutputStream(file));
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, os);
             os.close();
 
             // upload to s3
@@ -143,7 +156,13 @@ public class Settings extends AppCompatActivity {
                     result -> {
                         Log.i(TAG, "Successfully uploaded: " + result.getKey()) ;
                         imageKey = result.getKey();
+
+                        if (result.getKey() != null) {
+                            setImage(result.getKey());
+                        }
+
                         Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
                     },
                     storageFailure -> Log.e(TAG, "Upload failed", storageFailure)
             );
@@ -153,7 +172,6 @@ public class Settings extends AppCompatActivity {
         }
 
     }
-
     private Bitmap getBitmapFromUri(Uri uri) throws IOException {
 
         ParcelFileDescriptor parcelFileDescriptor =
@@ -165,7 +183,50 @@ public class Settings extends AppCompatActivity {
         return image;
     }
 
-    void showImage(){  //TODO waiting for s3 -> hamze
+
+
+    void setMotherData (){
+        EditText name = findViewById(R.id.set_mother_name);
+        EditText phone = findViewById(R.id.set_phone);
+        EditText numberOfChildren = findViewById(R.id.set_children_number);
+        imageView = findViewById(R.id.set_profile_picture);
+
+        Log.i(TAG, "setMotherData: mother ->"+mother);
+        name.setText(mother.getName());
+        phone.setText(mother.getPhoneNumber());
+        numberOfChildren.setText(mother.getNumOfChildren().toString());
+
+        imageKey=mother.getImage();
+
+
+
+    }
+
+    void findMotherAPI (String emailId ){
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                success->{
+                    if(success.hasData())
+                    {
+                        for (Mother curMother : success.getData())
+                        {
+                            if(curMother.getEmailAddress().equals(emailId)){
+
+                                mother  = curMother;
+
+                            }
+                            Bundle bundle = new Bundle();
+                            bundle.putString("data","Done");
+                            Message message = new Message();
+                            message.setData(bundle);
+                            handler.sendMessage(message);
+                        }
+                    }
+                },
+                fail->{
+                    Log.i(TAG, "onCreate: failed to find mother in database");
+                }
+        );
     }
 
     void setSaveButton (Mother mother){
@@ -184,7 +245,7 @@ public class Settings extends AppCompatActivity {
             Mother newMother = Mother.builder()
                     .name(nameString)
                     .numOfChildren(numOfChildrenInt)
-                    .emailAddress(showEmail)
+                    .emailAddress(emailId)
                     .phoneNumber(phoneString)
                     .image(imageKey)
                     .id(mother.getId())
@@ -200,8 +261,9 @@ public class Settings extends AppCompatActivity {
             );
 
 
+
             Intent intent = new Intent(Settings.this,Profile.class);
-            intent.putExtra("EMAIL_ADDRESS",showEmail);
+//            intent.putExtra("EMAIL_ADDRESS",emailId);
             startActivity(intent);
 
         });

@@ -3,50 +3,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mom_colorBackgroundFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     tools:context=".ui.ProductActivity">
 
-
-
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal"
-       >
-       <com.google.android.material.textfield.TextInputEditText
-           android:id="@+id/product_archive_search"
-           android:layout_width="300dp"
-           android:layout_margin="5dp"
-           android:layout_height="wrap_content"
-           android:hint="Search"
-           android:inputType="text" />
-
-       <Button
-           android:id="@+id/btn_product_search"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Search"
-           />
-   </LinearLayout>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_archive_recycler"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="532dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/product_search_bar"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="@dimen/mom_spacing_standard"
+                android:layout_marginRight="@dimen/mom_spacing_standard"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/product_archive_search"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/mom_spacing_standard_1"
+                    android:layout_marginTop="@dimen/mom_spacing_control"
+                    android:layout_marginEnd="@dimen/mom_spacing_standard_1"
+                    android:backgroundTint="@color/mom_colorBottomEditTextLine"
+                    android:hint="Search for a product"
+                    android:inputType="text"
+                    android:lastBaselineToBottomHeight="@dimen/mom_spacing_standard_2" />
+
+                <Button
+                    android:id="@+id/btn_product_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_9sdp" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/product_archive_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_search_bar"
+                android:layout_marginStart="@dimen/mom_spacing_standard"
+                android:layout_marginTop="@dimen/mom_spacing_standard"
+                android:layout_marginEnd="@dimen/mom_spacing_standard"
+                android:overScrollMode="never" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/purple_500"
+        app:itemBackground="@color/mom_colorPrimary"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu" />
@@ -63,6 +82,7 @@
         android:contentDescription="Add Product"
         android:elevation="6dp"
         android:foregroundGravity="right|bottom"
+        app:backgroundTint="@color/mom_colorPrimary"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

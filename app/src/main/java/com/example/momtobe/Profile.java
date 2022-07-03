@@ -3,6 +3,8 @@ package com.example.momtobe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,39 +17,61 @@ import android.widget.TextView;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
+import com.bumptech.glide.Glide;
+
+import java.io.File;
 
 
 public class Profile extends AppCompatActivity {
     private static final String TAG = "profile";
     Mother mother ;
     Handler handler ;
+    Handler handlerId ;
+    String imageKey;
     private String motherEmail;
+    private String emailId;
+    private ImageView imageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Bundle bundle = getIntent().getExtras();
-        motherEmail = bundle.getString("EMAIL_ADDRESS");
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    emailId = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
 
-        findMotherAPI();
-        setFavBtn(mother);
-        setSettingsBtn();
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handlerId.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
 
-//        Log.i(TAG, "onCreate 39 : motherName-> "+mother.getName());
+        handlerId =  new Handler(Looper.getMainLooper(),msg->{
+            Log.i(TAG, "onCreate: handlerId ->" + emailId);
+            findMotherAPI(emailId);
+            return true ;
+        });
+
         handler =  new Handler(Looper.getMainLooper(), msg->{
             setMotherInfo(mother);
             return true ;
         });
 
+        setFavBtn(mother);
+        setSettingsBtn();
+
+
+
+
     }
 
-    void setMotherImage(Mother mother){  //TODO waiting for s3 -> hamze
-        ImageView motherImage = findViewById(R.id.pro_profile_picture);
-
-    }
-    void findMotherAPI (){
+    void findMotherAPI (String emailId ){
+        Log.i(TAG, "findMotherAPI: id ->"+emailId);
         Amplify.API.query(
                 ModelQuery.list(Mother.class),
                 success->{
@@ -55,10 +79,9 @@ public class Profile extends AppCompatActivity {
                     {
                         for (Mother curMother : success.getData())
                         {
-                            if(curMother.getEmailAddress().equals(motherEmail)){
-
+                            if(curMother.getEmailAddress().equals(emailId)){
+                                Log.i(TAG, "findMotherAPI: mother->"+mother);
                                 mother  = curMother;
-
                             }
                             Bundle bundle = new Bundle();
                             bundle.putString("data","Done");
@@ -74,18 +97,40 @@ public class Profile extends AppCompatActivity {
         );
     }
 
-    void setMotherInfo(Mother mother){
 
+    void setMotherInfo(Mother mother){
+        Log.i(TAG, "setMotherInfo: 100 ->" + mother);
         TextView mMotherName = findViewById(R.id.pro_mother_name);
         TextView mMotherPhone = findViewById(R.id.pro_mother_phone);
         TextView mMotherNumberOfChildren = findViewById(R.id.pro_mother_number_of_children);
-
 
         mMotherName.setText("Mother Name : "+mother.getName());
         mMotherPhone.setText("Mother Phone Number : "+mother.getPhoneNumber().toString());
         mMotherNumberOfChildren.setText("Mother Number Of Children : "+mother.getNumOfChildren().toString());
 
+        Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
+        if (mother.getImage() != null) {
+            setImage(mother.getImage());
+        }
     }
+
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        imageView = findViewById(R.id.pro_profile_picture);
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
+    }
+
+
 
     void setFavBtn(Mother mother){
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);
@@ -95,6 +140,7 @@ public class Profile extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
     void setSettingsBtn () {
         Button settingsBtn =  findViewById(R.id.pro_settings_btn);
         settingsBtn.setOnClickListener(view->{
@@ -104,5 +150,6 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+
 
 }

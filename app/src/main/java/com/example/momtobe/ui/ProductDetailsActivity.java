@@ -37,7 +37,7 @@ import java.util.List;
 public class ProductDetailsActivity extends AppCompatActivity {
 
     private static final String TAG = ProductDetailsActivity.class.getSimpleName();
-    private String title, desc, price , quantity , userId , phoneNumber , imageKey;
+    private String title, desc, price , quantity , userId , phoneNumber , imageKey , callUserId , userEmail;
 
     ArrayList<Comment> commentArrayList = new ArrayList<>() ;
 
@@ -54,6 +54,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private EditText productCommentEditText ;
 
     private RecyclerView commentRecyclerView ;
+    private Handler handler1;
+    private Handler handler2;
+    private Handler handler;
 
 
     @Override
@@ -81,12 +84,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     public void setDetails(){
         Intent intent = getIntent();
-        Handler handler = new Handler(Looper.getMainLooper(), msg -> {
+        handler = new Handler(Looper.getMainLooper(), msg -> {
 
             productTitle.setText(title);
-            productDesc.setText(desc);
-            productPrice.setText(price);
-            productQuantity.setText(quantity);
+            productDesc.setText( desc);
+            productPrice.setText("Price : " + price);
+            productQuantity.setText("Quantity : " + quantity);
             if (imageKey != null) {
                 setImage(imageKey);
             }
@@ -97,7 +100,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             RecyclerView recyclerView = findViewById(R.id.product_comment_recyclier_view);
 
-            ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
+           ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Log.i(TAG , "This is comment");
@@ -105,6 +108,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     setDetails();
                 }
             } , userId );
+
             recyclerView.setAdapter(customRecyclerView);
 
 
@@ -118,6 +122,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         });
 
+       getUserId();
+
+        if (!commentArrayList.isEmpty()) commentArrayList.clear();
+
         Amplify.API.query(
                 ModelQuery.get(Product.class, intent.getStringExtra("id")),
                 response -> {
@@ -129,18 +137,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     if(response.getData().getQuantity() == null) quantity = "0";
                     else quantity = response.getData().getQuantity().toString();
                     imageKey = response.getData().getImage();
-                    userId = response.getData().getMotherProductsId() ;
                     commentArrayList.addAll(response.getData().getComments());
-
-
+                    callUserId = response.getData().getMotherProductsId() ;
 
                     Bundle bundle = new Bundle();
 
-
                     Message message = new Message();
                     message.setData(bundle);
-                    handler.sendMessage(message);
-
+                    handler1.sendMessage(message);
 
                 },
                 error -> Log.e("MyAmplifyApp", error.toString(), error)
@@ -177,23 +181,24 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     public void startCallIntent(){
-//        Amplify.API.query(
-//                ModelQuery.get(Mother.class, userId),
-//                response -> {
-//                    Log.i(TAG, (response.getData()).getPhoneNumber());
-//
-//                    phoneNumber = response.getData().getPhoneNumber();
-//
-//                    runOnUiThread(() -> {
-//
-//                    });
-//
-//                },
-//                error -> Log.e("MyAmplifyApp", error.toString(), error)
-//        );
-        Intent intent = new Intent(Intent.ACTION_DIAL) ;
-        intent.setData(Uri.parse("tel:" + "078711111"));
-        startActivity(intent);
+        Log.i("callId" , callUserId);
+        Amplify.API.query(
+                ModelQuery.get(Mother.class, callUserId),
+                response -> {
+                    Log.i(TAG, (response.getData()).getPhoneNumber());
+
+                    phoneNumber = response.getData().getPhoneNumber();
+
+                    runOnUiThread(() -> {
+                        Intent intent = new Intent(Intent.ACTION_DIAL) ;
+                        intent.setData(Uri.parse("tel:" + response.getData().getPhoneNumber()));
+                        startActivity(intent);
+                    });
+
+                },
+                error -> Log.e("MyAmplifyApp", error.toString(), error)
+        );
+
     }
 
     public void addComment(){
@@ -210,13 +215,57 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         Amplify.API.mutate(
                 ModelMutation.create(newComment),
-                response -> {
-                    Log.i("MyAmplifyApp", "Product comment is added: "+response.getData());
-                },
+                response -> Log.i("MyAmplifyApp", "Product comment is added: "+response.getData()),
                 error -> Log.e("MyAmplifyApp", "Create failed", error)
         );
 
         setDetails();
+        productCommentEditText.setText("");
+    }
+
+    public void getUserId(){
+
+        handler2 = new Handler(Looper.getMainLooper() , msg -> {
+            Amplify.API.query(
+                    ModelQuery.list(Mother.class, Mother.EMAIL_ADDRESS.contains(userEmail)),
+                    response -> {
+                        for (Mother mother : response.getData()) {
+                            userId =  mother.getId() ;
+                        }
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+
+            return true ;
+        });
+
+        handler1 = new Handler(Looper.getMainLooper() , msg -> {
+
+            Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        Log.i("UserEmail" , attributes.toString());
+                        userEmail = attributes.get(3).getValue();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler2.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+            );
+
+            return true ;
+        });
+
+
+
+
     }
 
 }
