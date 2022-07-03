@@ -106,6 +106,23 @@ public class AddQuestionActivity extends AppCompatActivity {
 
 
 
+            newQuestion = Question.builder()
+                    .title(title1)
+                    .description(description1)
+                    .featured(false)
+                    .motherQuestionsId(userId)
+                            .image(imageKey)
+
+                    .build();
+
+            Amplify.API.mutate(
+                    ModelMutation.create(newQuestion),
+                    response -> {
+                        Log.i("MyAmplifyApp", "Added Todo with id Question: "+response );
+                    },
+                    error -> Log.e("MyAmplifyApp", "Create failed", error)
+            );
+
             for (int i = 0; i < arrayListspinner3.size(); i++) {
 
                 if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
@@ -126,22 +143,6 @@ public class AddQuestionActivity extends AppCompatActivity {
                 }
 
             }
-            newQuestion = Question.builder()
-                    .title(title1)
-                    .description(description1)
-                    .featured(false)
-                    .motherQuestionsId(userId)
-                            .image(imageKey)
-
-                    .build();
-
-            Amplify.API.mutate(
-                    ModelMutation.create(newQuestion),
-                    response -> {
-                        Log.i("MyAmplifyApp", "Added Todo with id Question: "+response );
-                    },
-                    error -> Log.e("MyAmplifyApp", "Create failed", error)
-            );
         });
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{

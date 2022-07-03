@@ -338,10 +338,10 @@ String idCat=arrayListspinner3.get(i).getId();
     public void declare_find(){
 
         arrayListspinner3 = new ArrayList<>();
-        button = findViewById(R.id.btn_register_Question_update);
-        image_experiance = findViewById(R.id.Image_Question_update);
-        title = findViewById(R.id.edit_Question_name_update);
-        description = findViewById(R.id.edit_Question_desc_update);
-        spinner3=findViewById(R.id.spinner_exeriance_update);
+        button = findViewById(R.id.btn_register_Experiance_update);
+        image_experiance = findViewById(R.id.Image_Experiance_update);
+        title = findViewById(R.id.edit_Experiance_name_update);
+        description = findViewById(R.id.edit_Experiance_desc_update);
+        spinner3=findViewById(R.id.spinner_experiance_update);
     }
 }

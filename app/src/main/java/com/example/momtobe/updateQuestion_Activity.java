@@ -27,11 +27,11 @@ import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
+import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.ExperienceCategories;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.amplifyframework.datastore.generated.model.QuestionCategories;
 import com.bumptech.glide.Glide;
-import com.example.momtobe.ui.AddExperianceActivity;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -44,32 +44,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class updateQuestion_Activity extends AppCompatActivity {
-    private static final String TAG = AddExperianceActivity.class.getName();
     private static final int REQUEST_CODE = 1234;
+    private final String TAG = updateQuestion_Activity.class.getName();
     private ArrayList<Cat> arrayListspinner3;
+    private Button update;
+    private ImageView image_question_update;
+    private EditText title_question_update;
+    private EditText description_question_update;
+    private Spinner spinner3_question_update;
     private Handler handler1;
-    private Spinner spinner3;
-    private String imageKey = "";
-    private String userId;
-
-
-    private ImageView image_experiance;
-    private Button button;
-    private EditText title;
-    private EditText description;
-    private Question newQuestion1;
     private String editTitle;
     private String editDesc;
     private String editImageKey;
-    private String title1;
-    private String description1;
-
-    private Intent intent;
     private Question newQuestion;
-    private List<QuestionCategories> expreianceCat;
-    private String idExperiance;
-    private List<QuestionCategories> QuestionCategories1;
-    private String idQuestion1;
+    private List<QuestionCategories> questionCat;
+    private String idQuestion;
+    private String userId;
+    private List<QuestionCategories> questionCategories1;
+    private String imageKey;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -81,18 +74,20 @@ public class updateQuestion_Activity extends AppCompatActivity {
         setHandler1();
         setDetails();
 
+
     }
 
     public void declare_find() {
 
         arrayListspinner3 = new ArrayList<>();
-        button = findViewById(R.id.btn_register_Question_update);
-        image_experiance = findViewById(R.id.Image_Question_update);
-        title = findViewById(R.id.edit_Question_name_update);
-        description = findViewById(R.id.edit_Question_desc_update);
-        spinner3 = findViewById(R.id.spinner_exeriance_update);
+        update = findViewById(R.id.btn_register_Question_update);
+        image_question_update = findViewById(R.id.Image_Question_update);
+        title_question_update = findViewById(R.id.edit_Question_name_update);
+        description_question_update = findViewById(R.id.edit_Question_desc_update);
+        spinner3_question_update = findViewById(R.id.spinner_Question_update);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void add_Spinner_API_Query() {
         Amplify.API.query(
                 ModelQuery.list(Cat.class),
@@ -105,8 +100,9 @@ public class updateQuestion_Activity extends AppCompatActivity {
                 },
                 error -> Log.e(TAG, error.toString())
         );
-    }
 
+
+    }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setHandler1(){
 
@@ -118,29 +114,30 @@ public class updateQuestion_Activity extends AppCompatActivity {
 
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerlist);
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner3.setAdapter(arrayAdapter);
+            spinner3_question_update.setAdapter(arrayAdapter);
 
             return true;
 
         }
         );
     }
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setDetails() {
 
-
+        Intent intent=getIntent();
+        idQuestion = intent.getStringExtra("idQuestion");
 
         Handler handler = new Handler(Looper.getMainLooper(), msg -> {
-            title.setText(editTitle);
-            description.setText(editDesc);
+            title_question_update.setText(editTitle);
+            description_question_update.setText(editDesc);
             if (editImageKey != null) {
                 setImage(editImageKey);
             }
-            QuestionCategories1 = expreianceCat.stream().filter(index->index.getQuestion().getId().equals(idQuestion1)).collect(Collectors.toList());
-            Log.i("TAG", "setDetails"+ QuestionCategories1.toString()+"Experiance catagery:"+ idExperiance);
+
+            questionCategories1 = questionCat.stream().filter(index->index.getQuestion().getId().equals(idQuestion)).collect(Collectors.toList());
+
             // button that is take the update data and save it in aws
-            button.setOnClickListener(view -> updateProduct());
+            update.setOnClickListener(view -> updateProduct());
             return true;
 
         });
@@ -153,7 +150,7 @@ public class updateQuestion_Activity extends AppCompatActivity {
                     editDesc = response.getData().getDescription();
                     editImageKey = response.getData().getImage();
                     newQuestion = response.getData();
-//                    QuestionCat = response.getData().getCategories();
+                    questionCat = response.getData().getCategories();
 
                     Bundle bundle = new Bundle();
                     Message message = new Message();
@@ -166,21 +163,20 @@ public class updateQuestion_Activity extends AppCompatActivity {
         );
 
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void updateProduct(){
 
         Handler handler2 = new Handler(Looper.getMainLooper() , msg -> {
-            title1 = title.getText().toString();
-            description1 = description.getText().toString();
+         String   title1 = title_question_update.getText().toString();
+         String   description1 = description_question_update.getText().toString();
 
 
-            newQuestion1 = Question.builder()
+           Question newQuestion1 = Question.builder()
                     .title(title1)
                     .description(description1)
                     .featured(false)
-                    .id(intent.getStringExtra("id"))
+                    .id(idQuestion)
                     .image(imageKey)
-                    .motherQuestionsId(userId)
+                   .motherQuestionsId(userId)
                     .build();
 
 
@@ -192,7 +188,7 @@ public class updateQuestion_Activity extends AppCompatActivity {
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
 
-            startActivity(new Intent(getApplicationContext() , Experiance_activity.class));
+            startActivity(new Intent(getApplicationContext() , Question_avtivity.class));
 
             return true ;
         });
@@ -205,43 +201,29 @@ public class updateQuestion_Activity extends AppCompatActivity {
         );
 
 
-//        for (int i = 0; i < arrayListspinner3.size(); i++) {
-//            if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
-//                String idCat=arrayListspinner3.get(i).getId();
-//
-//                QuestionCategories QuestionCategories=QuestionCategories
-//                        .builder()
-//                        .question(newQuestion)
-//                        .cat(arrayListspinner3.get(i))
-//                        .id(QuestionCategories1.get(0).getId())
-//                        .build();
-//                Amplify.API.mutate(
-//                        ModelMutation.update(QuestionCategories),
-//                        response -> {
-//                            Log.i("MyAmplifyApp", "Added Todo with  categrey Experiance id: " + response.getData().getId());},
-//                        error -> Log.e("MyAmplifyApp", "Create failed", error)
-//                );
-//
-//                Toast.makeText(this, "categrey id:"+QuestionCategories.getId(), Toast.LENGTH_SHORT).show();
-//            }
-//
-//        }
+        for (int i = 0; i < arrayListspinner3.size(); i++) {
+            if (arrayListspinner3.get(i).getTitle() == spinner3_question_update.getSelectedItem().toString()) {
+                String idCat=arrayListspinner3.get(i).getId();
 
+                QuestionCategories questionCategories=QuestionCategories
+                        .builder()
+                        .question(newQuestion)
+                        .cat(arrayListspinner3.get(i))
+                        .id(questionCategories1.get(0).getId())
+                        .build();
+                Amplify.API.mutate(
+                        ModelMutation.update(questionCategories),
+                        response -> {
+                            Log.i("MyAmplifyApp", "Added Todo with  categrey Experiance id: " + response.getData().getId());},
+                        error -> Log.e("MyAmplifyApp", "Create failed", error)
+                );
 
-    }
-    private void setImage(String image) {
-        if(image != null) {
-            Amplify.Storage.downloadFile(
-                    image,
-                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
-                    result -> {
-                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
-                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
-                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(image_experiance));
-                    },
-                    error -> Log.e(TAG, "Download Failure", error)
-            );
+                Toast.makeText(this, "categrey id:"+questionCategories.getId(), Toast.LENGTH_SHORT).show();
+            }
+
         }
+
+
     }
     public void uploadImage(){
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -309,6 +291,20 @@ public class updateQuestion_Activity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+    private void setImage(String image) {
+        if(image != null) {
+            Amplify.Storage.downloadFile(
+                    image,
+                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+                    result -> {
+                        Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
+                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(image_question_update));
+                    },
+                    error -> Log.e(TAG, "Download Failure", error)
+            );
+        }
     }
 
 
