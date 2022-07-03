@@ -40,6 +40,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class EditProductActivity extends AppCompatActivity {
     public static final int REQUEST_CODE = 123;
     private static final String TAG = ProductDetailsActivity.class.getSimpleName();
@@ -47,7 +49,7 @@ public class EditProductActivity extends AppCompatActivity {
 
     ArrayList<Comment> commentArrayList = new ArrayList<>() ;
 
-    private ImageView editImageView;
+    private CircleImageView editImageView;
 
     private EditText editProductTitle;
     private EditText editProductDesc;
@@ -300,7 +302,5 @@ public class EditProductActivity extends AppCompatActivity {
         );
 
     }
-
-
 
 }
