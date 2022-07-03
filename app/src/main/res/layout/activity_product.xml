@@ -18,7 +18,9 @@
             android:layout_height="wrap_content">
             <LinearLayout
                 android:id="@+id/product_search_bar"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="@dimen/mom_spacing_standard"
+                android:layout_marginRight="@dimen/mom_spacing_standard"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -26,6 +28,7 @@
                     android:id="@+id/product_archive_search"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginStart="@dimen/mom_spacing_standard_1"
                     android:layout_marginTop="@dimen/mom_spacing_control"
                     android:layout_marginEnd="@dimen/mom_spacing_standard_1"
@@ -39,7 +42,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Search"
-                    android:textSize="@dimen/_7sdp" />
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_9sdp" />
 
             </LinearLayout>
 
@@ -78,6 +82,7 @@
         android:contentDescription="Add Product"
         android:elevation="6dp"
         android:foregroundGravity="right|bottom"
+        app:backgroundTint="@color/mom_colorPrimary"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>
