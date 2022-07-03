@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Welcome To MomToBe"
         android:textSize="32dp"
+        android:fontFamily="@font"
         android:textStyle="bold|italic"
 
 

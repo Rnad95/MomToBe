@@ -32,6 +32,7 @@ import com.amplifyframework.datastore.generated.model.ExperienceCategories;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.amplifyframework.datastore.generated.model.QuestionCategories;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.Question_avtivity;
 import com.example.momtobe.R;
 
 import java.io.BufferedOutputStream;
@@ -143,6 +144,9 @@ public class AddQuestionActivity extends AppCompatActivity {
                 }
 
             }
+
+            startActivity(new Intent(getApplicationContext() , Question_avtivity.class));
+
         });
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{

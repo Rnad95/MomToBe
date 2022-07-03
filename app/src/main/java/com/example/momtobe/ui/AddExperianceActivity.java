@@ -126,6 +126,7 @@ image_experiance.setOnClickListener(view ->{uploadImage();
             }
 
 
+            startActivity(new Intent(getApplicationContext() , Experience.class));
 
         });
 

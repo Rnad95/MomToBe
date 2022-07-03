@@ -81,7 +81,9 @@ public class CommentActivity_Question extends AppCompatActivity {
             );
 
             setDetails();
+            comment.setText("");
         });
+
 
     }
     private void setImage(String image) {

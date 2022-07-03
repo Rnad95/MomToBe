@@ -87,6 +87,7 @@ public class CommentActivity_Eperiance extends AppCompatActivity {
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
             setDetails();
+            comment.setText("");
         });
 
 
