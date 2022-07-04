@@ -2,6 +2,7 @@ package com.example.momtobe.ui;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -59,7 +61,6 @@ public class ProductActivity extends AppCompatActivity {
     private Handler handler2;
 
     private Button searchBtn;
-
 
 
 
@@ -204,6 +205,7 @@ public class ProductActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void searchFunction(){
                 String text = search.getText().toString();
 

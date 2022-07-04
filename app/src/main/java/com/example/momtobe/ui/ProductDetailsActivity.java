@@ -87,9 +87,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         handler = new Handler(Looper.getMainLooper(), msg -> {
 
             productTitle.setText(title);
-            productDesc.setText(desc);
-            productPrice.setText(price);
-            productQuantity.setText(quantity);
+            productDesc.setText( desc);
+            productPrice.setText("Price : " + price);
+            productQuantity.setText("Quantity : " + quantity);
             if (imageKey != null) {
                 setImage(imageKey);
             }
@@ -100,8 +100,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             RecyclerView recyclerView = findViewById(R.id.product_comment_recyclier_view);
 
-            Log.i("userIdAdded" , userId);
-            ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
+           ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Log.i(TAG , "This is comment");

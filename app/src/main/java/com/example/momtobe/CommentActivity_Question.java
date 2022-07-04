@@ -22,12 +22,13 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Comment;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.adapter.ProductCommentCustomAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
 
-public class CommentActivity extends AppCompatActivity {
-    private static final String TAG = CommentActivity.class.getName();
+public class CommentActivity_Question extends AppCompatActivity {
+    private static final String TAG = CommentActivity_Question.class.getName();
     private Handler handler;
 
     private String COMMENT_Array="Comment Array";
@@ -42,6 +43,9 @@ public class CommentActivity extends AppCompatActivity {
     private TextView titleComment;
     private TextView descriptionComment;
     private String questionid;
+    private String userId  =  "" ;
+    private Handler handler1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,7 @@ public class CommentActivity extends AppCompatActivity {
         taskArrayList = new ArrayList<>();
         comment = findViewById(R.id.editTextTextPersonName);
         send = findViewById(R.id.button2);
-        recycleTask = findViewById(R.id.Recycle_Comment);
+        recycleTask = findViewById(R.id.Recycle_Comment_Experiance);
         imageViewComment = findViewById(R.id.imageViewComment);
         titleComment = findViewById(R.id.titleComment);
         descriptionComment = findViewById(R.id.descriptionComment);
@@ -77,7 +81,9 @@ public class CommentActivity extends AppCompatActivity {
             );
 
             setDetails();
+            comment.setText("");
         });
+
 
     }
     private void setImage(String image) {
@@ -106,21 +112,43 @@ public class CommentActivity extends AppCompatActivity {
             }
             titleComment.setText(question_item.getTitle());
             descriptionComment.setText(question_item.getDescription());
-            RecycleModel_comment recycleModels = new RecycleModel_comment(taskArrayList, position -> {
-                Toast.makeText(
-                        CommentActivity.this,
-                        "The item clicked => " + taskArrayList.get(position).getContent(), Toast.LENGTH_SHORT).show();
-            });
-            recycleTask.setAdapter(recycleModels);
+
+            ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(taskArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
+                @Override
+                public void onTaskItemClicked(int position) {
+                    Log.i(TAG , "This is comment");
+                    Toast.makeText(CommentActivity_Question.this, "this item is clicked", Toast.LENGTH_SHORT).show();
+                    setDetails();
+                }
+            } , userId );
+            recycleTask.setAdapter(customRecyclerView);
             recycleTask.setHasFixedSize(true);
             recycleTask.setLayoutManager(new LinearLayoutManager(this));
             return true;
 
         }
         );
+        handler1 = new Handler(Looper.getMainLooper() , msg -> {
+
+            Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        userId = attributes.get(0).getValue();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+            );
+
+
+            return true ;
+        });
         Amplify.API.query(
                 ModelQuery.get(Question.class,questionid),
                 teamsName -> {
+                    taskArrayList.removeAll(teamsName.getData().getComments());
                     for (Comment Comment : teamsName.getData().getComments()) {
                         taskArrayList.add(Comment);
                     }
@@ -129,7 +157,7 @@ public class CommentActivity extends AppCompatActivity {
                     bundle1.putString(COMMENT_Array,"DONE");
                     Message message1=new Message();
                     message1.setData(bundle1);
-                    handler.sendMessage(message1);
+                    handler1.sendMessage(message1);
                 },
                 error -> Log.e(TAG, error.toString())
         );

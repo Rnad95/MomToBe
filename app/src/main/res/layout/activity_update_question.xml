@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.EditProductActivity">
+    tools:context=".updateExperiance_Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,21 +15,19 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="50dp"
-            android:layout_marginTop="15dp"
-            >
+            android:paddingBottom="50dp">
 
             <TextView
-                android:id="@+id/page_title"
-                android:fontFamily="@font/poppins_bold"
+                android:id="@+id/page_title_update_Question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit Product"
-                android:textSize="20sp"
+                android:text="update Question"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                android:textColor="#000" />
+                android:textColor="#000"
+                android:textSize="20sp" />
 
             <View
                 android:layout_width="0dp"
@@ -41,35 +39,34 @@
                 android:layout_height="20dp" />
 
             <RelativeLayout
-                android:id="@+id/edit_lyt_avatar"
+                android:id="@+id/lyt_avatar_update"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:background="@color/white"
+                android:background="@drawable/avatar_placeholder_click"
                 android:clickable="true"
-                >
+                android:padding="5dp"
+                tools:ignore="SpeakableTextPresentCheck">
 
                 <ImageView
+                    android:id="@+id/Image_Question_update"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="25dp"
+                    android:padding="20dp"
                     app:srcCompat="@drawable/ic_photo"
-                    app:tint="#cccccc"
-                    />
+                    app:tint="#cccccc" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/edit_avatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/avatar_placeholder_click"
-                    />
+                <ImageView
+                    android:id="@+id/avatar_update"
+                    android:layout_width="75dp"
+                    android:layout_height="63dp" />
+
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/edit_edit_product_name"
+                android:id="@+id/edit_Question_name_update"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="18dp"
-                android:fontFamily="@font/poppins_regular"
                 android:background="@drawable/edit_text_round"
                 android:hint="Title"
                 android:inputType="text"
@@ -80,10 +77,9 @@
                 android:textColorHint="#666666" />
 
             <EditText
-                android:id="@+id/edit_edit_product_desc"
+                android:id="@+id/edit_Question_desc_update"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:fontFamily="@font/poppins_regular"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edit_text_round"
                 android:hint="Description"
@@ -94,47 +90,21 @@
                 android:textColor="@android:color/black"
                 android:textColorHint="#666666" />
 
-            <EditText
-                android:id="@+id/edit_edit_product_price"
+            <Spinner
+                android:id="@+id/spinner_Question_update"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/edit_text_round"
-                android:fontFamily="@font/poppins_regular"
-                android:hint="Price"
-                android:inputType="text"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textColorHint="#666666" />
-
-            <EditText
-                android:id="@+id/edit_edit_product_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/poppins_regular"
-                android:background="@drawable/edit_text_round"
-                android:hint="Quantity"
-                android:inputType="text"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textColorHint="#666666" />
+                android:layout_height="63dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/edit_btn_add_product"
+                android:id="@+id/btn_register_Question_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="@drawable/btn_dark"
-                android:text="Save"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="#FFFFFF"
                 android:layout_marginTop="15dp"
-                />
+                android:background="@drawable/btn_dark"
+                android:text="update Question"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 
