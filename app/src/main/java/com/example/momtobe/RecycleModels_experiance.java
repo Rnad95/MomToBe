@@ -47,10 +47,9 @@ public class RecycleModels_experiance extends RecyclerView.Adapter<RecycleModels
         holder.description.setText(models.get(position).getDescription());
 //        holder.ImageView.setImageURI(models.get(position).getImage());
         holder.ImageView.setImageURI(Uri.parse(mContext.getFilesDir()+ "/" + models.get(position).getImage() + "download.jpg"));
-String idItems=models.get(position).getId();
-deleteItem(holder,position);
-updateItem(holder,position);
-
+        String idItems=models.get(position).getId();
+        deleteItem(holder,position);
+        updateItem(holder,position);
     }
 
     @Override

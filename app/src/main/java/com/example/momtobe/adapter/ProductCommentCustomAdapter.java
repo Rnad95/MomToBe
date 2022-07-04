@@ -96,6 +96,8 @@ public class ProductCommentCustomAdapter extends RecyclerView.Adapter<ProductCom
             return true ;
         });
 
+        Log.i("userId3" ,  productCommentList.get(position).getMotherCommentsId()) ;
+
         Amplify.API.query(
                 ModelQuery.get(Mother.class, productCommentList.get(position).getMotherCommentsId()),
                 response -> {
