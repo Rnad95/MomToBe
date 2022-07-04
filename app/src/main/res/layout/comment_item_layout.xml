@@ -62,6 +62,7 @@
                 android:drawable="@drawable/ic_baseline_delete_24"
                 android:padding="3dp"
                 android:minHeight="0dp"
+                android:visibility="invisible"
                 android:minWidth="0dp"
                 app:icon="@drawable/ic_baseline_delete_24"
                 app:iconGravity="textStart"
