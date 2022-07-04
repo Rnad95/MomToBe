@@ -41,13 +41,11 @@ public class Settings extends AppCompatActivity {
     private String imageKey = "" ;
     Mother mother ;
     Button save_btn;
+    Button cancel_btn;
     Handler handler;
     Handler handlerId ;
     private String emailId;
     private ImageView imageView;
-
-
-
     ImageButton updateImage ;
 
 
@@ -55,6 +53,8 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        setCancelButton();
 
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
@@ -75,17 +75,17 @@ public class Settings extends AppCompatActivity {
             return true ;
         });
 
-        save_btn = findViewById(R.id.set_save_btn);
-
         handler =  new Handler(Looper.getMainLooper() , msg -> {
             Log.i(TAG, "onCreate: 80 mother -> "+mother);
 
             setMotherData();
-            setSaveButton(mother);
+            setSaveButton();
 
             Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
-            if (mother.getImage() != null) {
+            try {
                 setImage(mother.getImage());
+            }catch (Exception error){
+
             }
 
             updateImage = findViewById(R.id.set_change_picture);
@@ -157,8 +157,10 @@ public class Settings extends AppCompatActivity {
                         Log.i(TAG, "Successfully uploaded: " + result.getKey()) ;
                         imageKey = result.getKey();
 
-                        if (result.getKey() != null) {
-                            setImage(result.getKey());
+                        try {
+                            setImage(mother.getImage());
+                        }catch (Exception error){
+
                         }
 
                         Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
@@ -228,9 +230,18 @@ public class Settings extends AppCompatActivity {
                 }
         );
     }
+    void setCancelButton (){
+        cancel_btn = findViewById(R.id.set_cancel_btn);
+        cancel_btn.setOnClickListener(view ->{
+            Intent intent = new Intent(Settings.this,Profile.class);
+            startActivity(intent);
+        });
 
-    void setSaveButton (Mother mother){
+    }
 
+    void setSaveButton (){
+
+        save_btn = findViewById(R.id.set_save_btn);
         save_btn.setOnClickListener(view->{
 
             EditText name = findViewById(R.id.set_mother_name);
@@ -248,6 +259,7 @@ public class Settings extends AppCompatActivity {
                     .emailAddress(emailId)
                     .phoneNumber(phoneString)
                     .image(imageKey)
+                    .faveBlogs(mother.getFaveBlogs())
                     .id(mother.getId())
                     .build();
 

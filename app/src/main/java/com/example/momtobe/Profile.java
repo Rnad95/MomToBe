@@ -1,5 +1,6 @@
 package com.example.momtobe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +20,8 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.ui.ProductActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 
@@ -31,12 +35,16 @@ public class Profile extends AppCompatActivity {
     private String motherEmail;
     private String emailId;
     private ImageView imageView;
+    BottomNavigationView bottomNavigationView;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        navToActivity();
 
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
@@ -95,18 +103,21 @@ public class Profile extends AppCompatActivity {
 
     void setMotherInfo(){
 
+
         Log.i(TAG, "setMotherInfo: 100 ->" + mother);
         TextView mMotherName = findViewById(R.id.pro_mother_name);
         TextView mMotherPhone = findViewById(R.id.pro_mother_phone);
         TextView mMotherNumberOfChildren = findViewById(R.id.pro_mother_number_of_children);
 
-        mMotherName.setText("Mother Name : "+mother.getName());
-        mMotherPhone.setText("Mother Phone Number : "+mother.getPhoneNumber().toString());
-        mMotherNumberOfChildren.setText("Mother Number Of Children : "+mother.getNumOfChildren().toString());
+        mMotherName.setText(mother.getName());
+        mMotherPhone.setText(mother.getPhoneNumber().toString());
+        mMotherNumberOfChildren.setText(mother.getNumOfChildren().toString());
 
         Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
-        if (mother.getImage() != null) {
+        try {
             setImage(mother.getImage());
+        }catch (Exception error){
+
         }
     }
 
@@ -126,8 +137,6 @@ public class Profile extends AppCompatActivity {
         }
     }
 
-
-
     void setFavBtn(){
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);
         favBtn.setOnClickListener(view->{
@@ -146,6 +155,48 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+
+    private void navToActivity(){
+
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.home_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.home_page:
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        startActivity(new Intent(getApplicationContext(),Blog.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+
+    }
+
 
 
 }

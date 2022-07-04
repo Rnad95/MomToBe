@@ -1,4 +1,5 @@
 package com.example.momtobe;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Blog;
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.android.volley.Cache;
 import com.android.volley.Network;
 import com.android.volley.Request;
@@ -33,7 +36,9 @@ import com.example.momtobe.adapter.BlogCustomAdapter;
 import com.example.momtobe.adapter.ProductCustomAdapter;
 import com.example.momtobe.api.BlogAPIService;
 import com.example.momtobe.remote.Embedded;
+import com.example.momtobe.ui.ProductActivity;
 import com.example.momtobe.ui.ProductDetailsActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -49,6 +54,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -62,13 +68,20 @@ public class SavedActivity extends AppCompatActivity {
 
     private final String TAG = SavedActivity.class.getSimpleName();
     Handler handler;
+    Handler handlerMom;
+    Handler handlerId ;
     BlogCustomAdapter adapter;
     RecyclerView recyclerView;
     List<Blog> blogs;
+    Mother mother;
+    private String emailId;
+    BottomNavigationView bottomNavigationView;
+
+
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     private RequestQueue queue;
     private RequestQueue mQueue;
-    private String url ="https://jsonkeeper.com/b/MKEL";
+    private String url ="https://jsonkeeper.com/b/FV5T";
     private TextView tv;
 
     @Override
@@ -83,17 +96,54 @@ public class SavedActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
+        handlerId =  new Handler(Looper.getMainLooper(),msg->{
+//            Log.i(TAG, "onCreate: handlerId ->" + emailId);
+            findMotherAPI(emailId);
+            return true ;
+        });
+
          handler = new Handler(Looper.getMainLooper() , msg -> {
+
+             Amplify.Auth.fetchUserAttributes(
+                     attributes ->{
+                         emailId = attributes.get(3).getValue();
+                         Bundle bundle = new Bundle();
+                         bundle.putString("data" , "Done");
+
+                         Message message = new Message();
+                         message.setData(bundle);
+                         handlerId.sendMessage(message);
+                     },
+                     error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+             );
+            return true ;
+        });
+
+        handlerMom = new Handler(Looper.getMainLooper(),msg->{
+            List<com.example.momtobe.remote.Blog> favBlogsList= new ArrayList<>();
+            for (String id : mother.getFaveBlogs())
+            {
+                for(com.example.momtobe.remote.Blog blog : blogsListTest){
+                    if(blog.getId().equals(id)){
+                        favBlogsList.add(blog);
+                    }
+                }
+            }
+
             recyclerView = findViewById(R.id.saved_recycler_view);
-            BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),blogsListTest, new BlogCustomAdapter.CustomClickListener() {
+            BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),favBlogsList, new BlogCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
-                    intent.putExtra("title",blogsListTest.get(position).getTitle());
+                    intent.putExtra("position", blogsListTest.get(position).getId());
+                    intent.putExtra("title",  blogsListTest.get(position).getTitle());
                     intent.putExtra("content",blogsListTest.get(position).getContent());
-                    intent.putExtra("author",blogsListTest.get(position).getAuthor());
+                    intent.putExtra("author", blogsListTest.get(position).getAuthor());
                     intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
-                    intent.putExtra("category",blogsListTest.get(position).getCategory());
+                    intent.putExtra("category" ,blogsListTest.get(position).getCategory());
                     startActivity(intent);
                 }
             });
@@ -105,11 +155,37 @@ public class SavedActivity extends AppCompatActivity {
 
     }
 
+    void findMotherAPI (String emailId ){
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                success->{
+                    if(success.hasData())
+                    {
+                        for (Mother curMother : success.getData())
+                        {
+                            if(curMother.getEmailAddress().equals(emailId)){
+
+                                mother  = curMother;
+
+                            }
+                            Bundle bundle = new Bundle();
+                            bundle.putString("data","Done");
+                            Message message = new Message();
+                            message.setData(bundle);
+                            handlerMom.sendMessage(message);
+                        }
+                    }
+                },
+                fail->{
+                    Log.i(TAG, "onCreate: failed to find mother in database");
+                }
+        );
+    }
+
 
 
     private void CallAPI() throws IOException {
         RequestQueue queue = Volley.newRequestQueue(this);
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
@@ -129,9 +205,11 @@ public class SavedActivity extends AppCompatActivity {
                             String imageLink = t.get("imageLink").toString();
                             String author = t.get("author").toString();
                             String category = t.get("category").toString();
-                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,author,imageLink,category);
+                            String blogId = t.get("blogId").toString();
+                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category);
                             blogsListTest.add(blog);
-                            Log.i(TAG, "CallAPI: Author: "+blog.getAuthor());
+
+                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
                         }
                         Bundle bundle = new Bundle();
                         bundle.putString("data" , "Done");
@@ -140,15 +218,54 @@ public class SavedActivity extends AppCompatActivity {
                         handler.sendMessage(message);
 
                     } catch (JSONException e) {
-                        Log.e(TAG, "CallAPI: ERROR FROM CATCH => "+e.getMessage());
+                        Log.e(TAG, "CallAPI: FROM CATCH ");
                     }
                 },
                 error -> {
-                    Log.e(TAG, "CallAPI: ",error );
+                    Log.e(TAG, "CallAPI: ", error);
                 }
         );
         queue.add(jsonObjectRequest);
     }
 
+    private void navToActivity(){
 
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.home_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.home_page:
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        startActivity(new Intent(getApplicationContext(), com.example.momtobe.Blog.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+
+    }
 }

@@ -58,6 +58,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,25 +66,32 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     private String showEmail;
-    private String url ="https://jsonkeeper.com/b/MKEL";
-    Handler handler;
+    private String url ="https://jsonkeeper.com/b/FV5T";
+    private String userId;
+    private String userName;
+
+    private Handler handler;
+    private Handler handler2;
+    private Handler handler1;
+    private Handler handlerMom;
+
     RecyclerView recyclerView;
+
     ListView listView;
+
     TextView mViewAll;
-    ImageView mImage;
+    TextView mFullName;
+
+    private ImageView mImage;
     private ImageView imageView;
 
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     ArrayList<String> taskArrayList=new ArrayList<>();
-    private Handler handler1;
-    private Handler handlerMom;
 
     private Date dateParse;
-    private String userId;
-    private String userName;
-    TextView mFullName;
+
     Mother mother ;
-    private Handler handler2;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -144,8 +152,14 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "fetchUserInformation: 3 "+ attributes.get(3).getValue());
 
                     handlerMom =  new Handler(Looper.getMainLooper(), msg->{
-                        if(mother.getImage()!=null)
-                        setImage(mother.getImage());
+                        try {
+                            setImage(mother.getImage());
+                        }catch (Exception error){
+
+                        }
+//                        if(mother.getImage()!=null)
+//                        setImage(mother.getImage());
+
                         return true ;
                     });
                 },
@@ -258,11 +272,12 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
-                    intent.putExtra("title",blogsListTest.get(position).getTitle());
+                    intent.putExtra("position", blogsListTest.get(position).getId());
+                    intent.putExtra("title",  blogsListTest.get(position).getTitle());
                     intent.putExtra("content",blogsListTest.get(position).getContent());
-                    intent.putExtra("author",blogsListTest.get(position).getAuthor());
+                    intent.putExtra("author", blogsListTest.get(position).getAuthor());
                     intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
-                    intent.putExtra("category",blogsListTest.get(position).getCategory());
+                    intent.putExtra("category" ,blogsListTest.get(position).getCategory());
                     startActivity(intent);
                 }
             });
@@ -273,50 +288,43 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
+
     private void CallAPI() throws IOException {
         RequestQueue queue = Volley.newRequestQueue(this);
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
-                    JSONArray jsonArray = null;
                     try {
-                        jsonArray = response.getJSONObject("_embedded").getJSONArray("blogs");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                        JSONArray jsonArray = response.getJSONObject("_embedded").getJSONArray("blogs");
 
-                    Gson gson = new Gson();
+                        Gson gson = new Gson();
                         String json = gson.toJson(jsonArray);
                         List<JsonObject> arrayList = new ArrayList();
                         arrayList = gson.fromJson(jsonArray.toString(),ArrayList.class);
 
                         for (int i = 0; i < arrayList.toArray().length; i++) {
+                            Log.i(TAG, "CallAPI: SIZE =>"+ arrayList.size());
                             Object getrow = arrayList.get(i);
                             LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
-                            String date = t.get("date").toString();
-                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-M-dd");
                             String title = t.get("title").toString();
                             String content = t.get("content").toString();
                             String imageLink = t.get("imageLink").toString();
-                            try {
-                                dateParse = simpleDateFormat.parse(date);
-                                String afterDate = "2022-06-01";
-                                if(dateParse.after(simpleDateFormat.parse(afterDate))){
-                                com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,imageLink);
-                                blogsListTest.add(blog);
-                                    Log.i(TAG, "CallAPI: SUCCESS FROM DATA");
-                                }
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
+                            String author = t.get("author").toString();
+                            String category = t.get("category").toString();
+                            String blogId = t.get("blogId").toString();
+                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category);
+                            blogsListTest.add(blog);
+
+                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
                         }
                         Bundle bundle = new Bundle();
                         bundle.putString("data" , "Done");
                         Message message = new Message();
                         message.setData(bundle);
                         handler.sendMessage(message);
-                        
 
+                    } catch (JSONException e) {
+                        Log.e(TAG, "CallAPI: FROM CATCH ");
+                    }
                 },
                 error -> {
                     Log.e(TAG, "CallAPI: ", error);
@@ -324,6 +332,7 @@ public class MainActivity extends AppCompatActivity {
         );
         queue.add(jsonObjectRequest);
     }
+
     private void SentEmailToUserActivity(){
         Intent intent = new Intent(MainActivity.this, Profile.class);
         intent.putExtra("EMAIL_ADDRESS",showEmail);

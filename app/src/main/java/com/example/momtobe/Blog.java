@@ -32,6 +32,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Blog extends AppCompatActivity {
@@ -43,8 +44,9 @@ public class Blog extends AppCompatActivity {
     private RequestQueue queue;
     private RequestQueue mQueue;
     BottomNavigationView bottomNavigationView;
-    private String url ="https://jsonkeeper.com/b/MKEL";
+    private String url ="https://jsonkeeper.com/b/FV5T";
     private TextView tv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,8 +107,10 @@ public class Blog extends AppCompatActivity {
             BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),blogsListTest, new BlogCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
+                    Log.i(TAG, "onTaskItemClicked: position ->" + position);
+
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
-                    intent.putExtra("blogId", position);
+                    intent.putExtra("position", blogsListTest.get(position).getId());
                     intent.putExtra("title",  blogsListTest.get(position).getTitle());
                     intent.putExtra("content",blogsListTest.get(position).getContent());
                     intent.putExtra("author", blogsListTest.get(position).getAuthor());
@@ -142,9 +146,11 @@ public class Blog extends AppCompatActivity {
                             String imageLink = t.get("imageLink").toString();
                             String author = t.get("author").toString();
                             String category = t.get("category").toString();
-                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,author,imageLink,category);
+                            String blogId = t.get("blogId").toString();
+                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category);
                             blogsListTest.add(blog);
-                            Log.i(TAG, "CallAPI: Author: "+blog.getAuthor());
+
+                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
                         }
                         Bundle bundle = new Bundle();
                         bundle.putString("data" , "Done");

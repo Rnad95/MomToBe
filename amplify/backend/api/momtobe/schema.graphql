@@ -7,6 +7,8 @@ type Mother @model {
   numOfChildren : Int!
   phoneNumber : String
   emailAddress:String!
+  faveBlogs: [String]
+
 
   comments: [Comment] @hasMany
   products: [Product] @hasMany

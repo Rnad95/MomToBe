@@ -39,6 +39,8 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -174,6 +176,8 @@ public class SignUpActivity extends AppCompatActivity {
                 failure -> {
                     Log.e(TAG, "Uploaded failed.", failure);
                     runOnUiThread(() -> {
+
+                        List<String> blogIdx = new ArrayList<>() ;
                         Address address = Address.builder()
                                 .country("Jordan")
                                 .city("Amman")
@@ -181,10 +185,11 @@ public class SignUpActivity extends AppCompatActivity {
                                 .build();
                         Mother mother = Mother.builder()
                                 .name(fullName)
-                                .numOfChildren(1)
+                                .numOfChildren(numOfChildren)
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
                                 .addressMothersId(address.getId())
+                                .faveBlogs(blogIdx)
                                 .build();
 
 
