@@ -43,8 +43,7 @@ public class Blog extends AppCompatActivity {
     private RequestQueue queue;
     private RequestQueue mQueue;
     BottomNavigationView bottomNavigationView;
-
-    private String url ="https://jsonkeeper.com/b/MKEL";
+    private String url ="https://jsonkeeper.com/b/FV5T";
 
     private TextView tv;
 
@@ -54,9 +53,7 @@ public class Blog extends AppCompatActivity {
         setContentView(R.layout.activity_blog);
         mQueue = Volley.newRequestQueue(this);
         navToActivities();
-        try {
-            CallAPI();
-        } catch (IOException e) {
+        try {CallAPI();} catch (IOException e) {
             e.printStackTrace();
         }
         setRecyclerView();
@@ -109,9 +106,10 @@ public class Blog extends AppCompatActivity {
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
                     intent.putExtra("blogId", position);
-                    intent.putExtra("title",  blogsListTest.get(position).getTitle());
-                    intent.putExtra("content",blogsListTest.get(position).getContent());
-                    intent.putExtra("author", blogsListTest.get(position).getAuthor());
+                    intent.putExtra("title",    blogsListTest.get(position).getTitle());
+                    intent.putExtra("date",    blogsListTest.get(position).getDate());
+                    intent.putExtra("content",  blogsListTest.get(position).getContent());
+                    intent.putExtra("author",   blogsListTest.get(position).getAuthor());
                     intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
                     intent.putExtra("category" ,blogsListTest.get(position).getCategory());
                     startActivity(intent);
@@ -129,7 +127,6 @@ public class Blog extends AppCompatActivity {
                 response -> {
                     try {
                         JSONArray jsonArray = response.getJSONObject("_embedded").getJSONArray("blogs");
-
                         Gson gson = new Gson();
                         String json = gson.toJson(jsonArray);
                         List<JsonObject> arrayList = new ArrayList();
@@ -144,7 +141,8 @@ public class Blog extends AppCompatActivity {
                             String imageLink = t.get("imageLink").toString();
                             String author = t.get("author").toString();
                             String category = t.get("category").toString();
-                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,author,imageLink,category);
+                            String date = t.get("date").toString();
+                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,author,imageLink,category,date);
                             blogsListTest.add(blog);
                             Log.i(TAG, "CallAPI: Author: "+blog.getAuthor());
                         }
@@ -166,4 +164,3 @@ public class Blog extends AppCompatActivity {
     }
 
 }
-

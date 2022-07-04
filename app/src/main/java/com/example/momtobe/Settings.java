@@ -84,9 +84,9 @@ public class Settings extends AppCompatActivity {
             setSaveButton(mother);
 
             Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
-            if (mother.getImage() != null) {
+
                 setImage(mother.getImage());
-            }
+
 
             updateImage = findViewById(R.id.set_change_picture);
             updateImage.setOnClickListener(view -> uploadImage());
@@ -192,12 +192,13 @@ public class Settings extends AppCompatActivity {
         imageView = findViewById(R.id.set_profile_picture);
 
         Log.i(TAG, "setMotherData: mother ->"+mother);
-        name.setText(mother.getName());
-        phone.setText(mother.getPhoneNumber());
-        numberOfChildren.setText(mother.getNumOfChildren().toString());
+        if(mother != null) {
+            name.setText(mother.getName());
+            phone.setText(mother.getPhoneNumber());
+            numberOfChildren.setText(mother.getNumOfChildren().toString());
 
-        imageKey=mother.getImage();
-
+            imageKey = mother.getImage();
+        }
 
 
     }

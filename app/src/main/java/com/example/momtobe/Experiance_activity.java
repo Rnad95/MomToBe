@@ -65,7 +65,7 @@ public class Experiance_activity extends AppCompatActivity {
         /**
          * bottom Navigation Bar
          */
-        bottomNavigationView = findViewById(R.id.bottom_navigator_experiance);
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.exp_page);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

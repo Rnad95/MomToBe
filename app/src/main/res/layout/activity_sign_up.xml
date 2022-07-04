@@ -10,23 +10,16 @@
     android:padding="20dp"
     >
 
-    <!--    logo-->
-    <!--    <ImageView-->
-    <!--        android:layout_width="250dp"-->
-    <!--        android:layout_height="150dp"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:layout_marginBottom="10dp"-->
-    <!--        />-->
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome To MomToBe"
-        android:textSize="32dp"
-        android:fontFamily="@font"
-        android:textStyle="bold|italic"
-
-
-        />
+        android:layout_marginStart="@dimen/mom_spacing_standard_1"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:text="Sign Up"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/mom_colorTextPrimary"
+        android:textSize="@dimen/mom_tv_SignInTitle" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,13 +34,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Full Name"
-            app:counterEnabled="true"
-            app:counterMaxLength="25"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mom_spacing_22"
+                android:paddingBottom="@dimen/_20sdp"
                 android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!--        Number of Children        -->
@@ -62,19 +55,53 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mom_spacing_22"
+                android:paddingBottom="@dimen/_20sdp"
                 android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--        Email                     -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mom_spacing_22"
+                android:paddingBottom="@dimen/_20sdp"
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--        Password                  -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mom_spacing_22"
+                android:paddingBottom="@dimen/_20sdp"
+
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!--          Upload Image            -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+
+            android:paddingTop="20dp"
             >
             <ImageView
                 android:id="@+id/image_view"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="5dp"
                 app:srcCompat="@drawable/upload_image"
                 android:layout_marginStart="50dp"
                 />
@@ -97,72 +124,58 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                >
-                <com.hbb20.CountryCodePicker
-                    android:id="@+id/register_country_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:ccp_showNameCode="false"
-                    app:ccp_flagBorderColor="@color/black"
-                    />
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/register_phone_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/black"
-                    android:maxLength="9"
-                    android:inputType="number"/>
-            </LinearLayout>
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <!--        Email                     -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/register_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <!--        Password                  -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/register_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            app:passwordToggleEnabled="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
+                android:orientation="horizontal">
+
+                <com.hbb20.CountryCodePicker
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="0dp"
+                    app:ccp_defaultPhoneCode="962"
+                    app:ccp_showFlag="true"
+                    app:ccp_showNameCode="false"
+                    app:ccp_showPhoneCode="false" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/register_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:enabled="false"
-            android:background="@color/black"
-            android:textColor="@color/white"
-            android:layout_marginTop="35dp"
-            />
+            style="@style/mom_Button"
+            android:layout_marginStart="@dimen/mom_spacing_standard_1"
+            android:layout_marginTop="@dimen/mom_spacing_22"
+            android:layout_marginEnd="@dimen/mom_spacing_standard_1"
+            android:shadowRadius="36"
+            android:text="Sign Up" />
         <TextView
-            android:id="@+id/sign_up_prompt"
+            android:id="@+id/sign_in_prompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Have An Account? LOGIN"
-            android:textColor="#4267B2"
+            android:textColor="@color/mom_colorGrey"
             android:layout_gravity="center"
             />
 
@@ -181,5 +194,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-
 </LinearLayout>
+

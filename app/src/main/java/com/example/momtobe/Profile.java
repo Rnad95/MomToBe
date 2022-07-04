@@ -58,11 +58,11 @@ public class Profile extends AppCompatActivity {
         });
 
         handler =  new Handler(Looper.getMainLooper(), msg->{
-            setMotherInfo(mother);
+            setMotherInfo();
             return true ;
         });
 
-        setFavBtn(mother);
+        setFavBtn();
         setSettingsBtn();
 
 
@@ -98,18 +98,19 @@ public class Profile extends AppCompatActivity {
     }
 
 
-    void setMotherInfo(Mother mother){
+    void setMotherInfo(){
+
         Log.i(TAG, "setMotherInfo: 100 ->" + mother);
         TextView mMotherName = findViewById(R.id.pro_mother_name);
         TextView mMotherPhone = findViewById(R.id.pro_mother_phone);
         TextView mMotherNumberOfChildren = findViewById(R.id.pro_mother_number_of_children);
-
+        if (mother != null) {
         mMotherName.setText("Mother Name : "+mother.getName());
         mMotherPhone.setText("Mother Phone Number : "+mother.getPhoneNumber().toString());
         mMotherNumberOfChildren.setText("Mother Number Of Children : "+mother.getNumOfChildren().toString());
 
         Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
-        if (mother.getImage() != null) {
+
             setImage(mother.getImage());
         }
     }
@@ -132,7 +133,7 @@ public class Profile extends AppCompatActivity {
 
 
 
-    void setFavBtn(Mother mother){
+    void setFavBtn(){
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);
         favBtn.setOnClickListener(view->{
             Intent intent = new Intent(Profile.this,SavedActivity.class);

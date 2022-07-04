@@ -1,7 +1,5 @@
 package com.example.momtobe.registration;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,13 +15,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
-import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
@@ -45,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = SignUpActivity.class.getSimpleName();
     private TextView mLoginPrompt;
     private TextInputLayout mFullName,mNumOfChildren,mEmailAddress,mPassword;
-    private TextInputEditText mPhoneNumber;
+    private EditText mPhoneNumber;
     private Button mImage, mSignUp;
     public static final int REQUEST_CODE = 123;
     private ProgressBar loadingProgressBar;
@@ -61,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        mLoginPrompt = findViewById(R.id.sign_up_prompt);
+        mLoginPrompt = findViewById(R.id.sign_in_prompt);
         mFullName = findViewById(R.id.register_full_name);
         mNumOfChildren = findViewById(R.id.register_children_no);
         mImage = findViewById(R.id.register_upload_image);
@@ -72,7 +69,6 @@ public class SignUpActivity extends AppCompatActivity {
         mPassword = findViewById(R.id.register_password);
         mSignUp = findViewById(R.id.btn_register);
         loadingProgressBar = findViewById(R.id.loading);
-
 
         fullName = mFullName.getEditText().getText().toString();
         try {
@@ -125,7 +121,9 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-
+        mLoginPrompt.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        });
     }
 
     private void saveDataInAWS(){
@@ -151,7 +149,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 .build();
                         Mother mother = Mother.builder()
                                 .name(fullName)
-                                .numOfChildren(1)
+                                .numOfChildren(numOfChildren)
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
                                 .image(imageKey)
@@ -181,7 +179,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 .build();
                         Mother mother = Mother.builder()
                                 .name(fullName)
-                                .numOfChildren(1)
+                                .numOfChildren(numOfChildren)
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
                                 .addressMothersId(address.getId())

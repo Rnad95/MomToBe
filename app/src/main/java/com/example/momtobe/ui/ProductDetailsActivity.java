@@ -100,7 +100,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             RecyclerView recyclerView = findViewById(R.id.product_comment_recyclier_view);
 
-           ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
+            Log.i("userIdAdded" , userId);
+            ProductCommentCustomAdapter customRecyclerView = new ProductCommentCustomAdapter(commentArrayList, new ProductCommentCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Log.i(TAG , "This is comment");
@@ -122,7 +123,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         });
 
-       getUserId();
+        getUserId();
 
         if (!commentArrayList.isEmpty()) commentArrayList.clear();
 

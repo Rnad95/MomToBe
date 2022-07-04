@@ -220,6 +220,11 @@
         <item name="android:paddingBottom">@dimen/mom_spacing_14</item>
         <item name="android:src">@drawable/bank_ic_visibility_off_black_24dp</item>
     </style>
-
+    
+    <style name="roundimageview" parent="">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">20dp</item>
+        <item name="color">@color/white</item>
+    </style>
 
 </resources>

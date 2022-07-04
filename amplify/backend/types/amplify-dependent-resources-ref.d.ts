@@ -32,6 +32,12 @@ export type AmplifyDependentResourcesAttributes = {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+}
+=======
+>>>>>>> 7cf661f231b44716ebff611c5f68a0f088d9279b
+=======
 =======
 }
 >>>>>>> b1b10d46b6cf08ba2dd79b4ab5ae6596e3bc3c97
+>>>>>>> 20fad58c45d5000fca0ce1151eedda4e16e8a595

@@ -79,7 +79,7 @@ public class Question_avtivity extends AppCompatActivity {
 //        navigationView.setItemIconTintList(null);
 
 
-setHandler();
+        setHandler();
 
 
 
@@ -163,7 +163,7 @@ setHandler();
             startActivity(intent1);
 
         } );
-}
+    }
 
 
 

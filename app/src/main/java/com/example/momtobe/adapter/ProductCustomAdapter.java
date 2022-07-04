@@ -1,18 +1,12 @@
 package com.example.momtobe.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,12 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Product;
-import com.bumptech.glide.Glide;
 import com.example.momtobe.R;
 import com.example.momtobe.ui.EditProductActivity;
-import com.example.momtobe.ui.ProductDetailsActivity;
 
-import java.io.File;
 import java.util.List;
 
 public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdapter.CustomHoleder> {
@@ -89,11 +80,11 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         public CustomHoleder(@NonNull View itemView , CustomClickListener listener) {
             super(itemView);
             this.listener = listener;
-            productTitle = itemView.findViewById(R.id.product_archive_title);
+            productTitle = itemView.findViewById(R.id.blog_archive_title);
             productPrice = itemView.findViewById(R.id.product_archive_price);
-            productDescription = itemView.findViewById(R.id.product_archive_desc);
+            productDescription = itemView.findViewById(R.id.blog_archive_desc);
             productQuantity = itemView.findViewById(R.id.product_archive_quantity);
-            productImage = itemView.findViewById(R.id.product_archive_img);
+            productImage = itemView.findViewById(R.id.blog_favorite_img);
             productUpdate = itemView.findViewById(R.id.product_archive_update_btn);
             productDelete = itemView.findViewById(R.id.product_archive_delete_btn);
 
