@@ -81,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navToActivity();
-        animation = AnimationUtils.loadAnimation(this,R.anim.animation);
-        mAnimationView = findViewById(R.id.animation);
-        mAnimationView.setAnimation(animation);
 
         itemsSelector();
         ButtonOnListener();

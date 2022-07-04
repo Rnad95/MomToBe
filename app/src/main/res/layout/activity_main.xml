@@ -146,15 +146,7 @@
                     app:layout_constraintVertical_bias="0.416"
                     tools:ignore="RelativeOverlap" />
 
-                <ImageView
-                    android:id="@+id/animation"
-                    android:layout_width="33dp"
-                    android:layout_height="29dp"
-                    android:src="@drawable/ic_arrow"
-                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-                    app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
