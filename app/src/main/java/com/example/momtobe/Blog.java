@@ -55,9 +55,7 @@ public class Blog extends AppCompatActivity {
         setContentView(R.layout.activity_blog);
         mQueue = Volley.newRequestQueue(this);
         navToActivities();
-        try {
-            CallAPI();
-        } catch (IOException e) {
+        try {CallAPI();} catch (IOException e) {
             e.printStackTrace();
         }
         setRecyclerView();
@@ -132,7 +130,6 @@ public class Blog extends AppCompatActivity {
                 response -> {
                     try {
                         JSONArray jsonArray = response.getJSONObject("_embedded").getJSONArray("blogs");
-
                         Gson gson = new Gson();
                         String json = gson.toJson(jsonArray);
                         List<JsonObject> arrayList = new ArrayList();
@@ -147,8 +144,11 @@ public class Blog extends AppCompatActivity {
                             String imageLink = t.get("imageLink").toString();
                             String author = t.get("author").toString();
                             String category = t.get("category").toString();
+                            String date = t.get("date").toString();
+
                             String blogId = t.get("blogId").toString();
-                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category);
+                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category,date);
+
                             blogsListTest.add(blog);
 
 //                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
@@ -171,4 +171,3 @@ public class Blog extends AppCompatActivity {
     }
 
 }
-

@@ -23,11 +23,9 @@
             android:exported="false" />
         <activity
             android:name=".updateExperiance_Activity"
-            android:exported="false"
-/>
+            android:exported="false" />
         <activity
             android:name=".ui.EditProductActivity"
-
             android:exported="false" />
         <activity
             android:name=".CommentActivity_Eperiance"
@@ -58,15 +56,12 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainDesignActivity"
-
             android:exported="false" />
-
         <activity
             android:name=".Experiance_activity"
             android:exported="false" />

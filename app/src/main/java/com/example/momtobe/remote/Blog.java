@@ -8,20 +8,35 @@ public class Blog {
     private String author;
     private String imageLink;
     private String category;
+    private String date;
 
-    public Blog(String id , String title, String content, String author, String imageLink, String category) {
+    public Blog(String title, String content, String author, String imageLink, String category, String date) {
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.imageLink = imageLink;
+        this.category = category;
+        this.date = date;
+    }
+
+    public Blog(String id , String title, String content, String author, String imageLink, String category, String date) {
         this.id=id ;
         this.title = title;
         this.content = content;
         this.author = author;
         this.imageLink = imageLink;
         this.category = category;
+        this.date = date ;
     }
 
     public Blog(String title, String content,String imageLink) {
         this.title = title;
         this.content = content;
         this.imageLink = imageLink;
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public String getTitle() {

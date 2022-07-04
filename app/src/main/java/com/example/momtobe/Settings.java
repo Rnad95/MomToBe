@@ -235,8 +235,6 @@ public class Settings extends AppCompatActivity {
             Intent intent = new Intent(Settings.this,Profile.class);
             startActivity(intent);
         });
-
-
     }
 
     void setSaveButton (){

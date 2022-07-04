@@ -58,8 +58,8 @@ public class BlogContentes extends AppCompatActivity {
     Handler handlerId ;
     Mother mother ;
     List <String> blogIds = new ArrayList<>();
-
-
+    private String userId;
+    private String author;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,6 +199,7 @@ public class BlogContentes extends AppCompatActivity {
                                 save_btn.setColorFilter(color);
                             }
                         });
+
                     },
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
@@ -286,6 +287,7 @@ public class BlogContentes extends AppCompatActivity {
         });
 
     }
+
 
 
 }

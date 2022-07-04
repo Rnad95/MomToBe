@@ -41,7 +41,7 @@ public class RecycleModels_Question extends RecyclerView.Adapter<RecycleModels_Q
         View listTaskView = layoutInflater.inflate(R.layout.question_item_layout, parent, false);
         return new taskviewsholoder(listTaskView, listener);
     }
-//public void getActivity(){
+    //public void getActivity(){
 //
 //
 //}

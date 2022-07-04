@@ -131,13 +131,15 @@ public class Profile extends AppCompatActivity {
         TextView mMotherName = findViewById(R.id.pro_mother_name);
         TextView mMotherPhone = findViewById(R.id.pro_mother_phone);
         TextView mMotherNumberOfChildren = findViewById(R.id.pro_mother_number_of_children);
-
-        mMotherName.setText(mother.getName());
-        mMotherPhone.setText(mother.getPhoneNumber().toString());
-        mMotherNumberOfChildren.setText(mother.getNumOfChildren().toString());
-
+        if (mother != null)
+        {
+            mMotherName.setText(mother.getName());
+            mMotherPhone.setText(mother.getPhoneNumber().toString());
+            mMotherNumberOfChildren.setText(mother.getNumOfChildren().toString());
+        }
         Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
         try {
+
             setImage(mother.getImage());
         }catch (Exception error){
 
@@ -159,6 +161,7 @@ public class Profile extends AppCompatActivity {
             );
         }
     }
+
 
     void setFavBtn(){
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);

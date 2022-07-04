@@ -48,8 +48,11 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.CustomHoleder>
         @Override
         public void onBindViewHolder(@NonNull mainAdapter.CustomHoleder holder, int position) {
             holder.blogTitle.setText(blogList.get(position).getTitle());
+            holder.blogAuthor.setText(blogList.get(position).getAuthor());
+            holder.blogContent.setText(blogList.get(position).getContent());
             String url = blogList.get(position).getImageLink().toString();
             Glide.with(context).load(url).into(holder.blogImage);
+
              }
         @Override
         public int getItemCount() {
@@ -59,6 +62,8 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.CustomHoleder>
 
             TextView blogTitle ;
             ImageView blogImage ;
+            TextView blogAuthor;
+            TextView blogContent;
 
             mainAdapter.CustomClickListener listener ;
             public CustomHoleder(@NonNull View itemView , mainAdapter.CustomClickListener listener) {
@@ -66,6 +71,8 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.CustomHoleder>
                 this.listener = listener;
                 blogTitle = itemView.findViewById(R.id.mother_title);
                 blogImage = itemView.findViewById(R.id.mother_image);
+                blogAuthor = itemView.findViewById(R.id.mother_Author);
+                blogContent = itemView.findViewById(R.id.mother_content);
                 itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
             }
         }

@@ -78,7 +78,7 @@
         <entry key="app/src/main/res/layout/activity_add_product.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/activity_add_question.xml" value="0.16394927536231885" />
         <entry key="app/src/main/res/layout/activity_blog.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_blog_contentes.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_blog_contentes.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_comment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_comment_eperiance.xml" value="0.16394927536231885" />
         <entry key="app/src/main/res/layout/activity_edit_product.xml" value="0.16394927536231885" />
@@ -92,7 +92,7 @@
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_question_avtivity.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/activity_saved.xml" value="0.21" />
-        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_verification.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/comment_item_layout.xml" value="0.16394927536231885" />
