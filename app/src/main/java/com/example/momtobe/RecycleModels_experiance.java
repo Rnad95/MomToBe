@@ -60,8 +60,8 @@ updateItem(holder,position);
 
 
     class taskviewsholoder extends RecyclerView.ViewHolder {
-        private final Button delete;
-        private final Button update;
+        private final TextView delete;
+        private final TextView update;
         TextView description;
         TextView title;
         ImageView ImageView;
@@ -69,7 +69,7 @@ updateItem(holder,position);
         public taskviewsholoder(@NonNull View itemView, CustomClickListener listener) {
             super(itemView);
             title = itemView.findViewById(R.id.title_comment);
-            description=itemView.findViewById(R.id.description);
+            description=itemView.findViewById(R.id.description_Experiance);
             ImageView=itemView.findViewById(R.id.image);
             delete = itemView.findViewById(R.id.button3);
             update = itemView.findViewById(R.id.button4);

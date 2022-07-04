@@ -77,7 +77,8 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@android:color/black"
-                android:textColorHint="#666666" />
+                android:textColorHint="#666666"
+                />
 
             <EditText
                 android:id="@+id/edit_product_desc"
@@ -92,7 +93,8 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@android:color/black"
-                android:textColorHint="#666666" />
+                android:textColorHint="#666666"
+                />
 
             <EditText
                 android:id="@+id/edit_product_price"
