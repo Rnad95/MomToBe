@@ -57,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
     private File file;
     private String imageKey, fullName,password,emailAddress, image, phoneNumber, key;
     private int numOfChildren;
+    List<String> blogIdx = new ArrayList<>();
 
 
     @Override
@@ -153,10 +154,11 @@ public class SignUpActivity extends AppCompatActivity {
                                 .build();
                         Mother mother = Mother.builder()
                                 .name(fullName)
-                                .numOfChildren(1)
+                                .numOfChildren(numOfChildren)
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
                                 .image(imageKey)
+                                .faveBlogs(blogIdx)
                                 .addressMothersId(address.getId())
                                 .build();
 
@@ -177,19 +179,21 @@ public class SignUpActivity extends AppCompatActivity {
                     Log.e(TAG, "Uploaded failed.", failure);
                     runOnUiThread(() -> {
 
-                        List<String> blogIdx = new ArrayList<>() ;
+
+
                         Address address = Address.builder()
                                 .country("Jordan")
                                 .city("Amman")
                                 .street("University of Jordan street")
                                 .build();
+
                         Mother mother = Mother.builder()
                                 .name(fullName)
                                 .numOfChildren(numOfChildren)
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
-                                .addressMothersId(address.getId())
                                 .faveBlogs(blogIdx)
+                                .addressMothersId(address.getId())
                                 .build();
 
 

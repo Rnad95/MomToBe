@@ -98,7 +98,7 @@ public class SavedActivity extends AppCompatActivity {
 
         handlerId =  new Handler(Looper.getMainLooper(),msg->{
 //            Log.i(TAG, "onCreate: handlerId ->" + emailId);
-            findMotherAPI(emailId);
+            findMotherAPI();
             return true ;
         });
 
@@ -176,7 +176,7 @@ public class SavedActivity extends AppCompatActivity {
 
     }
 
-    void findMotherAPI (String emailId ){
+    void findMotherAPI (){
         Amplify.API.query(
                 ModelQuery.list(Mother.class),
                 success->{

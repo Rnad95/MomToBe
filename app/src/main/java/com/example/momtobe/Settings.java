@@ -25,6 +25,7 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.registration.LoginActivity;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -53,8 +54,13 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
         setCancelButton();
+        fetchUserData ();
+        logout();
+    }
+
+
+    void fetchUserData () {
 
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
@@ -75,6 +81,33 @@ public class Settings extends AppCompatActivity {
             return true ;
         });
 
+    }
+    void findMotherAPI (String emailId ){
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                success->{
+                    if(success.hasData())
+                    {
+                        for (Mother curMother : success.getData())
+                        {
+                            if(curMother.getEmailAddress().equals(emailId)){
+
+                                mother  = curMother;
+
+                            }
+                            Bundle bundle = new Bundle();
+                            bundle.putString("data","Done");
+                            Message message = new Message();
+                            message.setData(bundle);
+                            handler.sendMessage(message);
+                        }
+                    }
+                },
+                fail->{
+                    Log.i(TAG, "onCreate: failed to find mother in database");
+                }
+        );
+
         handler =  new Handler(Looper.getMainLooper() , msg -> {
             Log.i(TAG, "onCreate: 80 mother -> "+mother);
 
@@ -87,12 +120,23 @@ public class Settings extends AppCompatActivity {
             }catch (Exception error){
 
             }
-
             updateImage = findViewById(R.id.set_change_picture);
             updateImage.setOnClickListener(view -> uploadImage());
 
-         return true ;
+            return true ;
         });
+
+    }
+    void setMotherData (){
+        EditText name = findViewById(R.id.set_mother_name);
+        EditText phone = findViewById(R.id.set_phone);
+        EditText numberOfChildren = findViewById(R.id.set_children_number);
+        imageView = findViewById(R.id.set_profile_picture);
+
+        name.setText(mother.getName());
+        phone.setText(mother.getPhoneNumber());
+        numberOfChildren.setText(mother.getNumOfChildren().toString());
+        imageKey=mother.getImage();
     }
 
     private void setImage(String image) {
@@ -158,7 +202,7 @@ public class Settings extends AppCompatActivity {
                         imageKey = result.getKey();
 
                         try {
-                            setImage(mother.getImage());
+                            setImage(imageKey);
                         }catch (Exception error){
 
                         }
@@ -185,57 +229,13 @@ public class Settings extends AppCompatActivity {
         return image;
     }
 
-
-
-    void setMotherData (){
-        EditText name = findViewById(R.id.set_mother_name);
-        EditText phone = findViewById(R.id.set_phone);
-        EditText numberOfChildren = findViewById(R.id.set_children_number);
-        imageView = findViewById(R.id.set_profile_picture);
-
-        Log.i(TAG, "setMotherData: mother ->"+mother);
-        name.setText(mother.getName());
-        phone.setText(mother.getPhoneNumber());
-        numberOfChildren.setText(mother.getNumOfChildren().toString());
-
-        imageKey=mother.getImage();
-
-
-
-    }
-
-    void findMotherAPI (String emailId ){
-        Amplify.API.query(
-                ModelQuery.list(Mother.class),
-                success->{
-                    if(success.hasData())
-                    {
-                        for (Mother curMother : success.getData())
-                        {
-                            if(curMother.getEmailAddress().equals(emailId)){
-
-                                mother  = curMother;
-
-                            }
-                            Bundle bundle = new Bundle();
-                            bundle.putString("data","Done");
-                            Message message = new Message();
-                            message.setData(bundle);
-                            handler.sendMessage(message);
-                        }
-                    }
-                },
-                fail->{
-                    Log.i(TAG, "onCreate: failed to find mother in database");
-                }
-        );
-    }
     void setCancelButton (){
         cancel_btn = findViewById(R.id.set_cancel_btn);
         cancel_btn.setOnClickListener(view ->{
             Intent intent = new Intent(Settings.this,Profile.class);
             startActivity(intent);
         });
+
 
     }
 
@@ -273,11 +273,31 @@ public class Settings extends AppCompatActivity {
             );
 
 
-
             Intent intent = new Intent(Settings.this,Profile.class);
 //            intent.putExtra("EMAIL_ADDRESS",emailId);
             startActivity(intent);
 
         });
     }
-}
+
+    private void logout() {
+        Button logout = findViewById(R.id.set_logout);
+        logout.setOnClickListener(view->{
+            Amplify.Auth.signOut(
+                    () -> {
+                        Log.i(TAG, "Signed out successfully");
+                        startActivity(new Intent(Settings.this, LoginActivity.class));
+                        authSession();
+                        finish();
+                    },
+                    error -> Log.e(TAG, error.toString())
+            );
+        });
+
+    }
+    private void authSession() {
+        Amplify.Auth.fetchAuthSession(
+                result -> Log.i(TAG, "Auth Session" + result.toString()),
+                error -> Log.e(TAG, error.toString())
+        );
+    }}

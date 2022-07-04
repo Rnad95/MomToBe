@@ -16,10 +16,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.registration.LoginActivity;
 import com.example.momtobe.ui.ProductActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -45,7 +47,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         navToActivity();
-
+//        fetchUserInfo();
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
                     emailId = attributes.get(3).getValue();
@@ -61,19 +63,37 @@ public class Profile extends AppCompatActivity {
 
         handlerId =  new Handler(Looper.getMainLooper(),msg->{
             Log.i(TAG, "onCreate: handlerId ->" + emailId);
-            findMotherAPI(emailId);
+            findMotherAPI();
             return true ;
         });
 
-        handler =  new Handler(Looper.getMainLooper(), msg->{
-            setMotherInfo();
-            return true ;
-        });
         setFavBtn();
         setSettingsBtn();
     }
 
-    void findMotherAPI (String emailId ){
+
+    void fetchUserInfo (){
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    emailId = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handlerId.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
+
+        handlerId =  new Handler(Looper.getMainLooper(),msg->{
+            Log.i(TAG, "onCreate: handlerId ->" + emailId);
+            findMotherAPI();
+            return true ;
+        });
+    }
+
+    void findMotherAPI (){
         Log.i(TAG, "findMotherAPI: id ->"+emailId);
         Amplify.API.query(
                 ModelQuery.list(Mother.class),
@@ -98,6 +118,10 @@ public class Profile extends AppCompatActivity {
                     Log.i(TAG, "onCreate: failed to find mother in database");
                 }
         );
+        handler =  new Handler(Looper.getMainLooper(), msg->{
+            setMotherInfo();
+            return true ;
+        });
     }
 
 
@@ -195,6 +219,7 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+
 
 
 

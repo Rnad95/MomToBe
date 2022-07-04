@@ -82,7 +82,7 @@ public class BlogContentes extends AppCompatActivity {
 
         handlerId =  new Handler(Looper.getMainLooper(), msg->{
 //            Log.i(TAG, "onCreate: handlerId ->" + emailId);
-            findMotherAPI(emailId);
+            findMotherAPI();
             return true ;
         });
 
@@ -103,7 +103,7 @@ public class BlogContentes extends AppCompatActivity {
         setSaveBtn();
     }
 
-    void findMotherAPI (String emailId ){
+    void findMotherAPI (){
         Log.i(TAG, "findMotherAPI: id ->"+emailId);
         Amplify.API.query(
                 ModelQuery.list(Mother.class),
@@ -172,8 +172,6 @@ public class BlogContentes extends AppCompatActivity {
                 blogIds.add(blogId);
 
             }
-
-//            Log.i(TAG, "setSaveBtn: blogIdx -> "+blogIdx);
 
             Mother newMother = Mother.builder()
                     .name(mother.getName())

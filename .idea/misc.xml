@@ -88,11 +88,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20720151610865445" />
         <entry key="app/src/main/res/layout/activity_main_design.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_product_details.xml" value="0.16394927536231885" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.5890804597701149" />
+        <entry key="app/src/main/res/layout/activity_product_details.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_question_avtivity.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/activity_saved.xml" value="0.21" />
-        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_verification.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/comment_item_layout.xml" value="0.16394927536231885" />
@@ -105,6 +105,7 @@
         <entry key="app/src/main/res/layout/switch_item.xml" value="0.16394927536231885" />
         <entry key="app/src/main/res/layout/task_item_layout.xml" value="0.16394927536231885" />
         <entry key="app/src/main/res/layout/task_item_layout_question.xml" value="0.16394927536231885" />
+        <entry key="app/src/main/res/layout/update_experiance_activity.xml" value="0.16394927536231885" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.25" />
         <entry key="app/src/main/res/menu/navigation_menu_bar.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/menu/popup_menu.xml" value="0.16979166666666667" />
@@ -116,5 +117,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

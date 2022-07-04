@@ -98,11 +98,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         navToActivity();
         itemsSelector();
         ButtonOnListener();
 
-        setUserInformation();
+        fetchUserInformation();
+        Amplify.Storage.getUrl("1734345085.jpg",
+                success ->{
+                    String url = success.getUrl().toString();
+                    runOnUiThread(() -> {
+
+                        Glide.with(this).load(url).into(mImage);
+                    });
+
+                },
+                error -> Log.e(TAG,  "display Failed", error)
+        );
 
         mViewAll = findViewById(R.id.view_all_blogs);
         mViewAll.setOnClickListener(view -> {
