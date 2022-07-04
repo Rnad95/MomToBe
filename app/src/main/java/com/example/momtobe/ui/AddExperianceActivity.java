@@ -3,6 +3,8 @@ package com.example.momtobe.ui;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -29,9 +31,11 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.ExperienceCategories;
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.bumptech.glide.Glide;
 import com.example.momtobe.Experiance_activity;
 import com.example.momtobe.R;
+import com.example.momtobe.adapter.ProductCustomAdapter;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -46,10 +50,10 @@ public class AddExperianceActivity extends AppCompatActivity {
     private static final String TAG = AddExperianceActivity.class.getName();
     private static final int REQUEST_CODE = 1234;
     private ArrayList<Cat> arrayListspinner3;
-    private Handler handler1;
+    private Handler handler , handler1 , handler2;
     private Spinner spinner3;
     private String imageKey = "" ;
-    private String userId ;
+    private String userId , userEmail ;
 
 
     private ImageView image_experiance;
@@ -72,78 +76,72 @@ public class AddExperianceActivity extends AppCompatActivity {
         spinner3=findViewById(R.id.spinner_exeriance);
 
 
+        image_experiance.setOnClickListener(view ->{
+            uploadImage();
 
+        });
 
         setHandler1();
 
         add_Spinner_API_Query();
-image_experiance.setOnClickListener(view ->{uploadImage();
-    setImage(imageKey);
 
-});
+
 
         button.setOnClickListener(view -> {
-            String title1 = title.getText().toString();
-            String description1 = description.getText().toString();
+
+            handler = new Handler(Looper.getMainLooper() , msg -> {
+
+                String title1 = title.getText().toString();
+                String description1 = description.getText().toString();
 
 
 
 
-            newExperience = Experience.builder()
-                    .title(title1)
-                    .description(description1)
-                    .featured(false)
-                            .image(imageKey)
-                    .motherExperiencesId(userId)
-
-                    .build();
-
+                newExperience = Experience.builder()
+                        .title(title1)
+                        .description(description1)
+                        .featured(false)
+                        .image(imageKey)
+                        .motherExperiencesId(userId)
+                        .build();
 
 
-            Amplify.API.mutate(
-                    ModelMutation.create(newExperience),
-                    response -> {
-                        Log.i("MyAmplifyApp", "Added Todo with title: " + response.getData().getTitle());},
-                    error -> Log.e("MyAmplifyApp", "Create failed", error)
-            );
 
-            for (int i = 0; i < arrayListspinner3.size(); i++) {
+                Amplify.API.mutate(
+                        ModelMutation.create(newExperience),
+                        response -> {
+                            Log.i("MyAmplifyApp", "Added Todo with title: " + response.getData().getTitle());},
+                        error -> Log.e("MyAmplifyApp", "Create failed", error)
+                );
 
-                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
-                    ExperienceCategories experienceCategories=ExperienceCategories
-                            .builder()
-                            .cat(arrayListspinner3.get(i))
-                            .experience(newExperience).build();
-                    Amplify.API.mutate(
-                            ModelMutation.create(experienceCategories),
-                            response -> {
-                                Log.i("MyAmplifyApp", "Added Todo with  categrey Experiance id: " + response.getData().getId());},
-                            error -> Log.e("MyAmplifyApp", "Create failed", error)
-                    );
+                for (int i = 0; i < arrayListspinner3.size(); i++) {
 
-                    Toast.makeText(this, "categrey id:"+experienceCategories.getId(), Toast.LENGTH_SHORT).show();
+                    if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
+                        ExperienceCategories experienceCategories=ExperienceCategories
+                                .builder()
+                                .cat(arrayListspinner3.get(i))
+                                .experience(newExperience).build();
+                        Amplify.API.mutate(
+                                ModelMutation.create(experienceCategories),
+                                response -> {
+                                    Log.i("MyAmplifyApp", "Added Todo with  categrey Experiance id: " + response.getData().getId());},
+                                error -> Log.e("MyAmplifyApp", "Create failed", error)
+                        );
+
+                        Toast.makeText(this, "categrey id:"+experienceCategories.getId(), Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
-            }
 
+                startActivity(new Intent(this , Experiance_activity.class));
 
-            startActivity(new Intent(this , Experiance_activity.class));
+                return true ;
+            });
+
+            getUserId();
 
         });
-
-        Amplify.Auth.fetchUserAttributes(
-                attributes ->{
-                    userId = attributes.get(0).getValue();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("data" , "Done");
-
-                    Message message = new Message();
-                    message.setData(bundle);
-                    handler1.sendMessage(message);
-                },
-                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-        );
-
 
 
     }
@@ -221,6 +219,9 @@ image_experiance.setOnClickListener(view ->{uploadImage();
                     result -> {
                         Log.i(TAG, "Successfully uploaded: " + result.getKey()) ;
                         imageKey = result.getKey();
+                        runOnUiThread(() -> {
+                            setImage(imageKey);
+                        });
                         Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
                     },
                     storageFailure -> Log.e(TAG, "Upload failed", storageFailure)
@@ -264,5 +265,42 @@ image_experiance.setOnClickListener(view ->{uploadImage();
                     error -> Log.e(TAG, "Download Failure", error)
             );
         }
+    }
+
+    public void getUserId(){
+        handler2 = new Handler(Looper.getMainLooper() , msg -> {
+            Amplify.API.query(
+                    ModelQuery.list(Mother.class, Mother.EMAIL_ADDRESS.contains(userEmail)),
+                    response -> {
+                        for (Mother mother : response.getData()) {
+                            userId =  mother.getId() ;
+                        }
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+
+            return true ;
+        });
+
+
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    Log.i("UserEmail" , attributes.toString());
+                    userEmail = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler2.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
+
     }
 }

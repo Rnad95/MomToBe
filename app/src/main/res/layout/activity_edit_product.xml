@@ -41,7 +41,7 @@
                 android:layout_height="20dp" />
 
             <RelativeLayout
-                android:id="@+id/editlyt_avatar"
+                android:id="@+id/edit_lyt_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -58,9 +58,10 @@
                 <ImageView
                     android:id="@+id/edit_avatar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     />
             </RelativeLayout>
+
 
             <EditText
                 android:id="@+id/edit_edit_product_name"
