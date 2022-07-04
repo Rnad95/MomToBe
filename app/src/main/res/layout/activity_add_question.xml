@@ -15,16 +15,18 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:paddingBottom="50dp">
+                android:paddingBottom="50dp"
+                android:layout_marginTop="15dp"
+                >
 
                 <TextView
                     android:id="@+id/page_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add Question"
+                    android:fontFamily="@font/poppins_bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:textColor="#000"
                     android:textSize="20sp" />
@@ -42,10 +44,9 @@
                     android:id="@+id/lyt_avatar"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/avatar_placeholder_click"
+                    android:background="@color/white"
                     android:clickable="true"
-                    android:padding="5dp"
-                    tools:ignore="SpeakableTextPresentCheck">
+                    >
 
                     <ImageView
                         android:id="@+id/Image_Question"
@@ -55,26 +56,30 @@
                         app:srcCompat="@drawable/ic_photo"
                         app:tint="#cccccc" />
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/avatar"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
+                        android:layout_height="match_parent"
+                        android:background="@drawable/avatar_placeholder_click"
+                        />
                 </RelativeLayout>
+
 
                 <EditText
                     android:id="@+id/edit_Question_name"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fab_margin"
                     android:background="@drawable/edit_text_round"
                     android:hint="Title"
+                    android:fontFamily="@font/poppins_regular"
                     android:inputType="text"
                     android:maxLength="15"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@android:color/black"
-                    android:textColorHint="#666666" />
+                    android:textColorHint="#666666"
+                    />
 
                 <EditText
                     android:id="@+id/edit_Question_desc"
@@ -83,12 +88,14 @@
                     android:layout_marginTop="18dp"
                     android:background="@drawable/edit_text_round"
                     android:hint="Description"
+                    android:fontFamily="@font/poppins_regular"
                     android:inputType="textEmailAddress"
                     android:maxLength="50"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@android:color/black"
-                    android:textColorHint="#666666" />
+                    android:textColorHint="#666666"
+                    />
 
                 <Spinner
                     android:id="@+id/spinner"
@@ -98,13 +105,17 @@
 
                 <Button
                     android:id="@+id/btn_register_Question"
-                    android:layout_width="wrap_content"
+                    style="@style/mom_Button"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="15dp"
+                    android:layout_margin="@dimen/mom_spacing_30"
                     android:background="@drawable/btn_dark"
                     android:text="Add Question"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="15dp"
+                    />
 
             </LinearLayout>
 

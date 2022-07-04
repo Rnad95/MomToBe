@@ -106,8 +106,8 @@ public class RecycleModels_Question extends RecyclerView.Adapter<RecycleModels_Q
     class taskviewsholoder extends RecyclerView.ViewHolder {
         TextView description;
         TextView title;
-        Button delete_btn;
-        Button update_btn;
+        TextView delete_btn;
+        TextView update_btn;
 
 
         ImageView Question_image;

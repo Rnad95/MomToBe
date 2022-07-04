@@ -3,7 +3,7 @@
     <style name="Circular">
         <item name="cornerSize">50%</item>
     </style>
-    <style name="momAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="momAppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/mom_colorPrimary</item>
         <item name="colorPrimaryDark">@color/mom_colorPrimaryDark</item>
