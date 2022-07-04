@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Question;
 
 import com.amplifyframework.datastore.generated.model.QuestionCategories;
@@ -46,7 +48,9 @@ public class Question_avtivity extends AppCompatActivity {
     FloatingActionButton addQuestion;
     public static final String Questionid = "questionId";
     private String userId  =  "" ;
+    private String userEmail  =  "" ;
     private Handler handler1;
+    private Handler handler2;
 
 
 
@@ -64,91 +68,91 @@ public class Question_avtivity extends AppCompatActivity {
         navToActivities();
 
 
-
-        DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
-        findViewById(R.id.imageMenu).setOnClickListener(view -> {
-            drawerLayout.openDrawer(GravityCompat.START);
-
-        });
-
-NavigationView navigationView=findViewById(R.id.NavigationView);
-        navigationView.setItemIconTintList(null);
+//
+//        DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
+//        findViewById(R.id.imageMenu).setOnClickListener(view -> {
+//            drawerLayout.openDrawer(GravityCompat.START);
+//
+//        });
+//
+//NavigationView navigationView=findViewById(R.id.NavigationView);
+//        navigationView.setItemIconTintList(null);
 
 
 setHandler();
 
 
 
-        CheckBox dualcamera1=findViewById(R.id.checkBox);
-        CheckBox dualcamera2=findViewById(R.id.checkBox2);
-        CheckBox dualcamera3=findViewById(R.id.checkBox3);
-        CheckBox dualcamera4=findViewById(R.id.checkBox4);
-        CheckBox dualcamera5=findViewById(R.id.checkBox5);
-        CheckBox dualcamera6=findViewById(R.id.checkBox6);
-
-
-        Button filter=findViewById(R.id.filter);
-         AtomicInteger m= new AtomicInteger();
-        filter.setOnClickListener(view -> {
-taskArrayList.removeAll(taskArrayList);
-            if(dualcamera1.isChecked())
-            {
-                m.getAndIncrement(); // you can save this as checked somewhere
-                Toast.makeText(this, "checkBox:"+m, Toast.LENGTH_SHORT).show();
-                Amplify.API.query(
-                        ModelQuery.get(Cat.class,"95a17e76-c15e-4e01-9ffc-0fdccd247a9c"),
-                        teamsName -> {
-                            for ( QuestionCategories question: teamsName.getData().getQuestions()) {
-                                taskArrayList.add(question.getQuestion());
-                            }
-                            Log.i(TAG, "onCreate filter by ayyaub 1: "+teamsName.getData().getQuestions());
-                            handler.sendEmptyMessage(1);
-                        },
-                        error -> Log.e(TAG, error.toString())
-                );
-
-            }
-            if(dualcamera2.isChecked())
-            {
-                m.getAndIncrement(); // you can save this as checked somewhere
-                Toast.makeText(this, "checkBox2:"+m, Toast.LENGTH_SHORT).show();
-
-                Amplify.API.query(
-                        ModelQuery.get(Cat.class,"c5a552ed-a35a-405b-84c3-4cf9b384a99d"),
-                        teamsName -> {
-                            for ( QuestionCategories question: teamsName.getData().getQuestions()) {
-                                taskArrayList.add(question.getQuestion());
-                            }
-                            Log.i(TAG, "onCreate filter by ayyaub 2: "+teamsName.getData().getQuestions());
-                            handler.sendEmptyMessage(1);
-                        },
-                        error -> Log.e(TAG, error.toString())
-                );
-
-            }
-            if(dualcamera3.isChecked())
-            {
-                m.getAndIncrement(); // you can save this as checked somewhere
-                Toast.makeText(this, "checkBox3:"+m, Toast.LENGTH_SHORT).show();
-            }
-            if(dualcamera4.isChecked())
-            {
-                m.getAndIncrement();
-                Toast.makeText(this, "checkBox3:"+m, Toast.LENGTH_SHORT).show();
-            }
-            if(dualcamera5.isChecked())
-            {
-                m.getAndIncrement();
-                Toast.makeText(this, "checkBox4:"+m, Toast.LENGTH_SHORT).show();
-            }
-            if(dualcamera6.isChecked())
-            {
-                m.getAndIncrement();
-                Toast.makeText(this, "checkBox5:"+m, Toast.LENGTH_SHORT).show();
-            }
-
-            setHandler();
-        });
+//        CheckBox dualcamera1=findViewById(R.id.checkBox);
+//        CheckBox dualcamera2=findViewById(R.id.checkBox2);
+//        CheckBox dualcamera3=findViewById(R.id.checkBox3);
+//        CheckBox dualcamera4=findViewById(R.id.checkBox4);
+//        CheckBox dualcamera5=findViewById(R.id.checkBox5);
+//        CheckBox dualcamera6=findViewById(R.id.checkBox6);
+//
+//
+//        Button filter=findViewById(R.id.filter);
+//         AtomicInteger m= new AtomicInteger();
+//        filter.setOnClickListener(view -> {
+//taskArrayList.removeAll(taskArrayList);
+//            if(dualcamera1.isChecked())
+//            {
+//                m.getAndIncrement(); // you can save this as checked somewhere
+//                Toast.makeText(this, "checkBox:"+m, Toast.LENGTH_SHORT).show();
+//                Amplify.API.query(
+//                        ModelQuery.get(Cat.class,"95a17e76-c15e-4e01-9ffc-0fdccd247a9c"),
+//                        teamsName -> {
+//                            for ( QuestionCategories question: teamsName.getData().getQuestions()) {
+//                                taskArrayList.add(question.getQuestion());
+//                            }
+//                            Log.i(TAG, "onCreate filter by ayyaub 1: "+teamsName.getData().getQuestions());
+//                            handler.sendEmptyMessage(1);
+//                        },
+//                        error -> Log.e(TAG, error.toString())
+//                );
+//
+//            }
+//            if(dualcamera2.isChecked())
+//            {
+//                m.getAndIncrement(); // you can save this as checked somewhere
+//                Toast.makeText(this, "checkBox2:"+m, Toast.LENGTH_SHORT).show();
+//
+//                Amplify.API.query(
+//                        ModelQuery.get(Cat.class,"c5a552ed-a35a-405b-84c3-4cf9b384a99d"),
+//                        teamsName -> {
+//                            for ( QuestionCategories question: teamsName.getData().getQuestions()) {
+//                                taskArrayList.add(question.getQuestion());
+//                            }
+//                            Log.i(TAG, "onCreate filter by ayyaub 2: "+teamsName.getData().getQuestions());
+//                            handler.sendEmptyMessage(1);
+//                        },
+//                        error -> Log.e(TAG, error.toString())
+//                );
+//
+//            }
+//            if(dualcamera3.isChecked())
+//            {
+//                m.getAndIncrement(); // you can save this as checked somewhere
+//                Toast.makeText(this, "checkBox3:"+m, Toast.LENGTH_SHORT).show();
+//            }
+//            if(dualcamera4.isChecked())
+//            {
+//                m.getAndIncrement();
+//                Toast.makeText(this, "checkBox3:"+m, Toast.LENGTH_SHORT).show();
+//            }
+//            if(dualcamera5.isChecked())
+//            {
+//                m.getAndIncrement();
+//                Toast.makeText(this, "checkBox4:"+m, Toast.LENGTH_SHORT).show();
+//            }
+//            if(dualcamera6.isChecked())
+//            {
+//                m.getAndIncrement();
+//                Toast.makeText(this, "checkBox5:"+m, Toast.LENGTH_SHORT).show();
+//            }
+//
+//            setHandler();
+//        });
 
 
         FloatingActionButton addQuestion = findViewById(R.id.Question_add_img);
@@ -222,19 +226,7 @@ taskArrayList.removeAll(taskArrayList);
         );
         handler1 = new Handler(Looper.getMainLooper() , msg -> {
 
-            Amplify.Auth.fetchUserAttributes(
-                    attributes ->{
-                        userId = attributes.get(0).getValue();
-
-                        Bundle bundle = new Bundle();
-                        bundle.putString("data" , "Done");
-                        Message message = new Message();
-                        message.setData(bundle);
-                        handler.sendMessage(message);
-                    },
-                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-            );
-
+            getUserId();
 
             return true ;
         });
@@ -255,6 +247,44 @@ taskArrayList.removeAll(taskArrayList);
                 error -> Log.e(TAG, error.toString())
         );
 
+
+    }
+
+    public void getUserId(){
+
+        handler2 = new Handler(Looper.getMainLooper() , msg -> {
+            Amplify.API.query(
+                    ModelQuery.list(Mother.class, Mother.EMAIL_ADDRESS.contains(userEmail)),
+                    response -> {
+                        for (Mother mother : response.getData()) {
+                            userId =  mother.getId() ;
+                        }
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+
+            return true ;
+        });
+
+
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    Log.i("UserEmail" , attributes.toString());
+                    userEmail = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler2.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
 
     }
 }

@@ -42,27 +42,26 @@
 
             <RelativeLayout
                 android:id="@+id/edit_lyt_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:clickable="true"
+                android:background="@drawable/edit_text_round"
                 >
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="90dp"
                     android:padding="25dp"
                     app:srcCompat="@drawable/ic_photo"
-                    app:tint="#cccccc"
-                    />
+                    app:tint="#cccccc" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/edit_avatar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/avatar_placeholder_click"
+                    android:layout_height="100dp"
                     />
             </RelativeLayout>
+
 
             <EditText
                 android:id="@+id/edit_edit_product_name"

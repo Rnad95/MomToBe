@@ -25,9 +25,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Experiance"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="20sp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                android:textColor="#000"
-                android:textSize="20sp" />
+                android:textColor="#000" />
 
             <View
                 android:layout_width="0dp"
@@ -40,35 +41,34 @@
 
             <RelativeLayout
                 android:id="@+id/lyt_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/avatar_placeholder_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:clickable="true"
-                android:padding="5dp"
-                tools:ignore="SpeakableTextPresentCheck">
+                android:background="@drawable/edit_text_round"
+                >
 
                 <ImageView
-                    android:id="@+id/Image_Experiance"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="20dp"
+                    android:layout_height="90dp"
+                    android:padding="25dp"
                     app:srcCompat="@drawable/ic_photo"
                     app:tint="#cccccc" />
 
                 <ImageView
-                    android:id="@+id/avatar"
+                    android:id="@+id/Image_Experiance"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
+                    android:layout_height="100dp"
+                    />
             </RelativeLayout>
 
             <EditText
                 android:id="@+id/edit_Experiance_name"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="18dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fab_margin"
                 android:background="@drawable/edit_text_round"
                 android:hint="Title"
+                android:fontFamily="@font/poppins_regular"
                 android:inputType="text"
                 android:maxLength="15"
                 android:maxLines="1"
@@ -83,6 +83,7 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edit_text_round"
                 android:hint="Description"
+                android:fontFamily="@font/poppins_regular"
                 android:inputType="textEmailAddress"
                 android:maxLength="50"
                 android:maxLines="1"
@@ -98,12 +99,15 @@
 
             <Button
                 android:id="@+id/btn_register_experiance"
-                android:layout_width="wrap_content"
+                style="@style/mom_Button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:layout_margin="@dimen/mom_spacing_30"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/btn_dark"
-                android:text="Add Exoeriance"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Add experiance"
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>
