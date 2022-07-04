@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText usernameEditText = findViewById(R.id.email);
         EditText passwordEditText = findViewById(R.id.password);
         Button loginButton = findViewById(R.id.login);
-        TextView signUpPrompt = findViewById(R.id.sign_in_prompt);
+        TextView signUpPrompt = findViewById(R.id.sign_up_prompt);
         String username =usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 

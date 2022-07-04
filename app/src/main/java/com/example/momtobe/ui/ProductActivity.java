@@ -205,17 +205,17 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     public void searchFunction(){
-                String text = search.getText().toString();
+        String text = search.getText().toString();
 
-                myList = myProducts.stream().filter(index -> index.getTitle().toLowerCase().contains(text)).collect(Collectors.toList()) ;
+        myList = myProducts.stream().filter(index -> index.getTitle().toLowerCase().contains(text)).collect(Collectors.toList()) ;
 
-                Log.i("My Product" , myList.toString()) ;
+        Log.i("My Product" , myList.toString()) ;
 
-                Bundle bundle = new Bundle();
-                bundle.putString("data" , "Done");
-                Message message = new Message();
-                message.setData(bundle);
-                handler1.sendMessage(message);
+        Bundle bundle = new Bundle();
+        bundle.putString("data" , "Done");
+        Message message = new Message();
+        message.setData(bundle);
+        handler1.sendMessage(message);
     }
 
     public void getUserId(){
@@ -242,16 +242,16 @@ public class ProductActivity extends AppCompatActivity {
 
 
         Amplify.Auth.fetchUserAttributes(
-                    attributes ->{
-                        Log.i("UserEmail" , attributes.toString());
-                        userEmail = attributes.get(3).getValue();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("data" , "Done");
-                        Message message = new Message();
-                        message.setData(bundle);
-                        handler2.sendMessage(message);
-                    },
-                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+                attributes ->{
+                    Log.i("UserEmail" , attributes.toString());
+                    userEmail = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler2.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
         );
 
     }

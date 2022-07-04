@@ -11,11 +11,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import android.widget.Switch;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
@@ -23,6 +24,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Question;
 
+import com.amplifyframework.datastore.generated.model.QuestionCategories;
 import com.example.momtobe.ui.ProductActivity;
 
 
@@ -34,6 +36,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Question_avtivity extends AppCompatActivity {
 
@@ -42,22 +45,22 @@ public class Question_avtivity extends AppCompatActivity {
     private Handler handler;
     FloatingActionButton addQuestion;
     public static final String Questionid = "questionId";
+    private String userId  =  "" ;
+    private Handler handler1;
 
-    Switch simpleSwitch1, simpleSwitch2,simpleSwitch3,simpleSwitch4,simpleSwitch5,simpleSwitch6;
 
 
     BottomNavigationView bottomNavigationView;
+    private ArrayList<Question> taskArrayList;
+    private RecyclerView recycleTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ArrayList<Question> taskArrayList=new ArrayList<>();
-
-
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question_avtivity);
+        setContentView(R.layout.question_avtivity);
+        taskArrayList = new ArrayList<>();
 
-        RecyclerView RecycleTask = findViewById(R.id.Recycle_Comment);
+        recycleTask = findViewById(R.id.Recycle_Question);
         navToActivities();
 
 
@@ -71,96 +74,84 @@ public class Question_avtivity extends AppCompatActivity {
         NavigationView navigationView=findViewById(R.id.NavigationView);
         navigationView.setItemIconTintList(null);
 
-        handler=new Handler(
-                Looper.getMainLooper(), msg -> {
-            HomeQuestionAdapter recycleModels = new HomeQuestionAdapter(getApplicationContext(),taskArrayList, position -> {
-                Toast.makeText(
-                        Question_avtivity.this,
-                        "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(getApplicationContext(),CommentActivity.class);
-                String QuestionId=taskArrayList.get(position).getId();
-                intent.putExtra(Questionid,QuestionId);
-                startActivity(intent);
 
-            });
-            RecycleTask.setAdapter(recycleModels);
-            RecycleTask.setHasFixedSize(true);
-            RecycleTask.setLayoutManager(new LinearLayoutManager(this));
-            return true;
-
-        }
-        );
+        setHandler();
 
 
 
-
-        Amplify.API.query(
-                ModelQuery.list(Question.class),
-                teamsName -> {
-                    for (Question question : teamsName.getData()) {
-                        taskArrayList.add(question);
-                    }
-
-                    handler.sendEmptyMessage(1);
-                },
-                error -> Log.e(TAG, error.toString())
-        );
+        CheckBox dualcamera1=findViewById(R.id.checkBox);
+        CheckBox dualcamera2=findViewById(R.id.checkBox2);
+        CheckBox dualcamera3=findViewById(R.id.checkBox3);
+        CheckBox dualcamera4=findViewById(R.id.checkBox4);
+        CheckBox dualcamera5=findViewById(R.id.checkBox5);
+        CheckBox dualcamera6=findViewById(R.id.checkBox6);
 
 
-
-        simpleSwitch1 =  findViewById(R.id.switch1);
-        simpleSwitch2 =  findViewById(R.id.switch2);
-        simpleSwitch3 =  findViewById(R.id.switch3);
-        simpleSwitch4 =  findViewById(R.id.switch4);
-        simpleSwitch5 =  findViewById(R.id.switch5);
-        simpleSwitch6 =  findViewById(R.id.switch6);
         Button filter=findViewById(R.id.filter);
+        AtomicInteger m= new AtomicInteger();
         filter.setOnClickListener(view -> {
-            String statusSwitch1, statusSwitch2,statusSwitch3,statusSwitch4,statusSwitch5,statusSwitch6;
-            if (simpleSwitch1.isChecked()){
-                statusSwitch1 = simpleSwitch1.getTextOn().toString();
-
+            taskArrayList.removeAll(taskArrayList);
+            if(dualcamera1.isChecked())
+            {
+                m.getAndIncrement(); // you can save this as checked somewhere
+                Toast.makeText(this, "checkBox:"+m, Toast.LENGTH_SHORT).show();
                 Amplify.API.query(
-                        ModelQuery.list(Cat.class,Cat.TITLE.eq("age")),
+                        ModelQuery.get(Cat.class,"95a17e76-c15e-4e01-9ffc-0fdccd247a9c"),
                         teamsName -> {
-                            for (Cat note : teamsName.getData()) {
-
+                            for ( QuestionCategories question: teamsName.getData().getQuestions()) {
+                                taskArrayList.add(question.getQuestion());
                             }
-
+                            Log.i(TAG, "onCreate filter by ayyaub 1: "+teamsName.getData().getQuestions());
                             handler.sendEmptyMessage(1);
                         },
                         error -> Log.e(TAG, error.toString())
                 );
+
             }
-            if (simpleSwitch2.isChecked()) {
-                statusSwitch2 = simpleSwitch2.getTextOn().toString();
-                Toast.makeText(getApplicationContext(), "Switch2 on"+statusSwitch2, Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "onCreate statusSwitch2: "+statusSwitch2);
+            if(dualcamera2.isChecked())
+            {
+                m.getAndIncrement(); // you can save this as checked somewhere
+                Toast.makeText(this, "checkBox2:"+m, Toast.LENGTH_SHORT).show();
+
+                Amplify.API.query(
+                        ModelQuery.get(Cat.class,"c5a552ed-a35a-405b-84c3-4cf9b384a99d"),
+                        teamsName -> {
+                            for ( QuestionCategories question: teamsName.getData().getQuestions()) {
+                                taskArrayList.add(question.getQuestion());
+                            }
+                            Log.i(TAG, "onCreate filter by ayyaub 2: "+teamsName.getData().getQuestions());
+                            handler.sendEmptyMessage(1);
+                        },
+                        error -> Log.e(TAG, error.toString())
+                );
+
             }
-            if (simpleSwitch3.isChecked()) {
-                statusSwitch3 = simpleSwitch3.getTextOn().toString();
-                Toast.makeText(getApplicationContext(), "Switch3 on"+statusSwitch3, Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "onCreate statusSwitch3: "+statusSwitch3);
+            if(dualcamera3.isChecked())
+            {
+                m.getAndIncrement(); // you can save this as checked somewhere
+                Toast.makeText(this, "checkBox3:"+m, Toast.LENGTH_SHORT).show();
             }
-            if (simpleSwitch4.isChecked()) {
-                statusSwitch4 = simpleSwitch4.getTextOn().toString();
-                Toast.makeText(getApplicationContext(), "Switch4 on"+statusSwitch4, Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "onCreate statusSwitch4: "+statusSwitch4);
+            if(dualcamera4.isChecked())
+            {
+                m.getAndIncrement();
+                Toast.makeText(this, "checkBox3:"+m, Toast.LENGTH_SHORT).show();
             }
-            if (simpleSwitch5.isChecked()){
-                statusSwitch5 = simpleSwitch5.getTextOn().toString();
-                Toast.makeText(getApplicationContext(), "Switch5 on"+statusSwitch5, Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "onCreate statusSwitch5: "+statusSwitch5);
+            if(dualcamera5.isChecked())
+            {
+                m.getAndIncrement();
+                Toast.makeText(this, "checkBox4:"+m, Toast.LENGTH_SHORT).show();
             }
-            if (simpleSwitch6.isChecked()){
-                statusSwitch6 = simpleSwitch6.getTextOn().toString();
-                Toast.makeText(getApplicationContext(), "Switch6 on"+statusSwitch6, Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "onCreate statusSwitch6: "+statusSwitch6);
+            if(dualcamera6.isChecked())
+            {
+                m.getAndIncrement();
+                Toast.makeText(this, "checkBox5:"+m, Toast.LENGTH_SHORT).show();
             }
+
+            setHandler();
         });
 
 
-        FloatingActionButton addQuestion = findViewById(R.id.product_add_img);
+        FloatingActionButton addQuestion = findViewById(R.id.Question_add_img);
 
         addQuestion.setOnClickListener(v ->{
 
@@ -170,55 +161,7 @@ public class Question_avtivity extends AppCompatActivity {
         } );
     }
 
-//    public ScanResult getAllMemos() {
-//
-//        Map<String, AttributeValue> expressionAttributeValues =
-//                new HashMap<String, AttributeValue>();
-//        expressionAttributeValues.put(":val", new AttributeValue().withS("thumbnail"));
-//
-//
-//        ScanRequest scanRequest = new ScanRequest()
-//                .withTableName(DB_NAME)
-//                .withFilterExpression("contains(imgName,:val)")
-//                .withExpressionAttributeValues(expressionAttributeValues);
-//        return util.getAmazonDynamoDBClient(getActivity()).scan(scanRequest);
-//    }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.navigation_menu_bar, menu);
-//
-//        final MenuItem searchItem = menu.findItem(R.id.app_bar_switch);
-//        final SearchView searchView = (SearchView) searchItem.getActionView();
-//        searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
-//
-//        return true;
-//    }
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.taskdetail, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                this.finish();
-//                return true;
-//        }
-//        switch (item.getItemId()) {
-//            case R.id.action_mainpage:
-//                navigateToMain();
-//                return true;
-//            case R.id.action_Settings:
-//                navigateToSettings();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 
     private void navToActivities(){
 
@@ -257,5 +200,61 @@ public class Question_avtivity extends AppCompatActivity {
             }
         });
     }
-}
+    public void setHandler(){
+        handler=new Handler(
+                Looper.getMainLooper(), msg -> {
+            RecycleModels_Question recycleModels = new RecycleModels_Question(getApplicationContext(),userId,taskArrayList, position -> {
+                Toast.makeText(
+                        Question_avtivity.this,
+                        "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getApplicationContext(), CommentActivity_Question.class);
+                String QuestionId=taskArrayList.get(position).getId();
+                intent.putExtra(Questionid,QuestionId);
+                startActivity(intent);
 
+            });
+            recycleTask.setAdapter(recycleModels);
+            recycleTask.setHasFixedSize(true);
+            recycleTask.setLayoutManager(new LinearLayoutManager(this));
+            return true;
+
+        }
+        );
+        handler1 = new Handler(Looper.getMainLooper() , msg -> {
+
+            Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        userId = attributes.get(0).getValue();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+            );
+
+
+            return true ;
+        });
+
+        Amplify.API.query(
+                ModelQuery.list(Question.class),
+                teamsName -> {
+                    for (Question question : teamsName.getData()) {
+                        taskArrayList.add(question);
+                    }
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler1.sendMessage(message);
+                },
+                error -> Log.e(TAG, error.toString())
+        );
+
+
+    }
+}

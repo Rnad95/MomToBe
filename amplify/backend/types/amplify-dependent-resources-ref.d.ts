@@ -31,4 +31,7 @@ export type AmplifyDependentResourcesAttributes = {
             "voice": "string"
         }
     }
+<<<<<<< HEAD
 }
+=======
+>>>>>>> 7cf661f231b44716ebff611c5f68a0f088d9279b

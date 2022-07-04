@@ -123,7 +123,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         });
 
-       getUserId();
+        getUserId();
 
         if (!commentArrayList.isEmpty()) commentArrayList.clear();
 

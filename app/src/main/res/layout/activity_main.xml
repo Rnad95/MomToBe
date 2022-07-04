@@ -23,57 +23,65 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <TextView
                     android:id="@+id/user_full_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="24dp"
                     android:gravity="center"
-                    android:text="Renad"
-                    android:textSize="@dimen/_12sdp"
+                    android:text=""
+                    android:textSize="@dimen/_11sdp"
                     android:textStyle="bold|italic"
-                    app:layout_constraintBottom_toBottomOf="@+id/image_profile"
-                    app:layout_constraintStart_toEndOf="@+id/textView4"
-                    app:layout_constraintTop_toTopOf="@+id/image_profile"
-                    app:layout_constraintVertical_bias="0.482" />
+                    app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image_profile"
                     android:layout_width="58dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="48dp"
+                    android:background="@color/white"
                     android:src="@drawable/man_avatar"
                     app:civ_border_color="@color/mom_colorPrimary"
                     app:civ_border_width="2dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
                 <TextView
                     android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="43dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Hello,"
-                    android:textSize="@dimen/_15sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/image_profile"
+                    android:layout_width="42dp"
+                    android:layout_height="19dp"
+                    android:text="Hello, "
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/user_full_name"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/image_profile"
-                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile"
                     tools:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/right_arrow"
+                    android:layout_width="51dp"
+                    android:layout_height="63dp"
+                    android:src="@drawable/ic_arrow"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+                    app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
-                    android:layout_width="377dp"
-                    android:layout_height="262dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="19dp"
+                    android:layout_width="311dp"
+                    android:layout_height="260dp"
                     android:background="@color/white"
+                    android:foregroundGravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView4">
 
@@ -87,28 +95,28 @@
                         tools:layout_editor_absoluteX="0dp">
 
 
-                        <LinearLayout
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/main2_recycler_view"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/pink_round_corner"
-                            android:orientation="vertical"
+                            >
 
-                            android:padding="@dimen/_10sdp">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/main2_recycler_view"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                            </androidx.recyclerview.widget.RecyclerView>
-
-
-                        </LinearLayout>
-
+                        </androidx.recyclerview.widget.RecyclerView>
 
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/left_arrow"
+                    android:layout_width="51dp"
+                    android:layout_height="63dp"
+                    android:src="@drawable/ic_left_arrow"
+                    app:layout_constraintBottom_toBottomOf="@+id/right_arrow"
+                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/right_arrow" />
+
 
                 <TextView
                     android:id="@+id/textView5"
@@ -119,22 +127,21 @@
                     android:text="Most Recent Question"
                     android:textSize="@dimen/_16sdp"
                     android:textStyle="bold"
+                    android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view_question"
-                    android:layout_width="359dp"
-                    android:layout_height="259dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_width="345dp"
+                    android:layout_height="288dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.477"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.04"
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
-                    app:layout_constraintVertical_bias="1.0">
+                    app:layout_constraintVertical_bias="0.0">
 
                 </androidx.recyclerview.widget.RecyclerView>
 
@@ -142,14 +149,16 @@
                     android:id="@+id/view_all_blogs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:text="View All"
                     android:textSize="15sp"
                     android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="@+id/textView5"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-                    app:layout_constraintHorizontal_bias="0.811"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView5"
                     app:layout_constraintTop_toTopOf="@+id/textView5"
+                    app:layout_constraintVertical_bias="0.0"
                     tools:ignore="RelativeOverlap" />
 
                 <!--                <Button-->
@@ -182,21 +191,25 @@
                 <!--                    app:layout_constraintEnd_toStartOf="@+id/image_profile"-->
                 <!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/mom_colorPrimary"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu" />
     </RelativeLayout>
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/mom_colorPrimary"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
-        app:menu="@menu/menu" />
 
 </RelativeLayout>

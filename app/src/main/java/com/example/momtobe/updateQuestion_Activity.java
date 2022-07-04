@@ -1,4 +1,4 @@
-package com.example.momtobe.ui;
+package com.example.momtobe;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -32,8 +32,6 @@ import com.amplifyframework.datastore.generated.model.ExperienceCategories;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.amplifyframework.datastore.generated.model.QuestionCategories;
 import com.bumptech.glide.Glide;
-import com.example.momtobe.Question_avtivity;
-import com.example.momtobe.R;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -42,44 +40,71 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
-public class AddQuestionActivity extends AppCompatActivity {
-    private static final String TAG = AddExperianceActivity.class.getName();
+public class updateQuestion_Activity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1234;
+    private final String TAG = updateQuestion_Activity.class.getName();
     private ArrayList<Cat> arrayListspinner3;
+    private Button update;
+    private ImageView image_question_update;
+    private EditText title_question_update;
+    private EditText description_question_update;
+    private Spinner spinner3_question_update;
     private Handler handler1;
-    private Spinner spinner3;
-    private String imageKey = "" ;
-    private String userId ;
-
-    private static final int REQUEST_CODE_SEND = 4567;
-
-
-    private Uri currentUri=null;
-    private String fileName;
-    private Uri fileData;
-    private ImageView image_Question;
-    private Button button;
-    private EditText title;
-    private EditText description;
+    private String editTitle;
+    private String editDesc;
+    private String editImageKey;
     private Question newQuestion;
+    private List<QuestionCategories> questionCat;
+    private String idQuestion;
+    private String userId;
+    private List<QuestionCategories> questionCategories1;
+    private String imageKey;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_question);
+        setContentView(R.layout.activity_update_question);
+        declare_find();
+        add_Spinner_API_Query();
+        setHandler1();
+        setDetails();
+
+
+    }
+
+    public void declare_find() {
+
         arrayListspinner3 = new ArrayList<>();
-        button = findViewById(R.id.btn_register_Question);
-        image_Question = findViewById(R.id.Image_Question);
-        title = findViewById(R.id.edit_Question_name);
-        description = findViewById(R.id.edit_Question_desc);
+        update = findViewById(R.id.btn_register_Question_update);
+        image_question_update = findViewById(R.id.Image_Question_update);
+        title_question_update = findViewById(R.id.edit_Question_name_update);
+        description_question_update = findViewById(R.id.edit_Question_desc_update);
+        spinner3_question_update = findViewById(R.id.spinner_Question_update);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void add_Spinner_API_Query() {
+        Amplify.API.query(
+                ModelQuery.list(Cat.class),
+                teamsName -> {
+                    for (Cat note : teamsName.getData()) {
+                        arrayListspinner3.add(note);
+                    }
+
+                    handler1.sendEmptyMessage(1);
+                },
+                error -> Log.e(TAG, error.toString())
+        );
 
 
-        spinner3=findViewById(R.id.spinner);
-
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void setHandler1(){
 
         handler1 = new Handler(
                 Looper.getMainLooper(), msg -> {
@@ -89,92 +114,116 @@ public class AddQuestionActivity extends AppCompatActivity {
 
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerlist);
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner3.setAdapter(arrayAdapter);
+            spinner3_question_update.setAdapter(arrayAdapter);
 
             return true;
 
         }
         );
-        add_Spinner_API_Query();
-        image_Question.setOnClickListener(view ->{
-            uploadImage();
-            setImage(imageKey);
-        } );
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void setDetails() {
 
-        button.setOnClickListener(view -> {
-            String title1 = title.getText().toString();
-            String description1 = description.getText().toString();
+        Intent intent=getIntent();
+        idQuestion = intent.getStringExtra("idQuestion");
+
+        Handler handler = new Handler(Looper.getMainLooper(), msg -> {
+            title_question_update.setText(editTitle);
+            description_question_update.setText(editDesc);
+            if (editImageKey != null) {
+                setImage(editImageKey);
+            }
+
+            questionCategories1 = questionCat.stream().filter(index->index.getQuestion().getId().equals(idQuestion)).collect(Collectors.toList());
+
+            // button that is take the update data and save it in aws
+            update.setOnClickListener(view -> updateProduct());
+            return true;
+
+        });
+
+        Amplify.API.query(
+                ModelQuery.get(Question.class, intent.getStringExtra("idQuestion")),
+                response -> {
+                    Log.i(TAG, (response.getData()).getTitle());
+                    editTitle = response.getData().getTitle();
+                    editDesc = response.getData().getDescription();
+                    editImageKey = response.getData().getImage();
+                    newQuestion = response.getData();
+                    questionCat = response.getData().getCategories();
+
+                    Bundle bundle = new Bundle();
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler.sendMessage(message);
 
 
+                },
+                error -> Log.e("MyAmplifyApp", error.toString(), error)
+        );
 
-            newQuestion = Question.builder()
+    }
+    public void updateProduct(){
+
+        Handler handler2 = new Handler(Looper.getMainLooper() , msg -> {
+         String   title1 = title_question_update.getText().toString();
+         String   description1 = description_question_update.getText().toString();
+
+
+           Question newQuestion1 = Question.builder()
                     .title(title1)
                     .description(description1)
                     .featured(false)
-                    .motherQuestionsId(userId)
-                            .image(imageKey)
-
+                    .id(idQuestion)
+                    .image(imageKey)
+                   .motherQuestionsId(userId)
                     .build();
 
+
+
             Amplify.API.mutate(
-                    ModelMutation.create(newQuestion),
+                    ModelMutation.update(newQuestion1),
                     response -> {
-                        Log.i("MyAmplifyApp", "Added Todo with id Question: "+response );
-                    },
+                        Log.i("MyAmplifyApp", "Added Todo with title: " + response.getData());},
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
 
-            for (int i = 0; i < arrayListspinner3.size(); i++) {
-
-                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
-
-                    QuestionCategories questionCategories=QuestionCategories
-                            .builder()
-                            .question(newQuestion)
-                            .cat(arrayListspinner3.get(i))
-                            .build();
-                    Amplify.API.mutate(
-                            ModelMutation.create(questionCategories),
-                            response -> {
-                                Log.i("MyAmplifyApp", "Added Todo with  categrey Question id: " + response.getData().getId());},
-                            error -> Log.e("MyAmplifyApp", "Create failed", error)
-                    );
-
-                    Toast.makeText(this, "categrey id:"+questionCategories.getId(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
             startActivity(new Intent(getApplicationContext() , Question_avtivity.class));
 
+            return true ;
         });
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
                     userId = attributes.get(0).getValue();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("data" , "Done");
-
-                    Message message = new Message();
-                    message.setData(bundle);
-                    handler1.sendMessage(message);
+                    handler2.sendEmptyMessage(1);
                 },
                 error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
         );
-    }
-    public void add_Spinner_API_Query() {
-        Amplify.API.query(
-                ModelQuery.list(Cat.class),
-                teamsName -> {
-                    Log.i(TAG, "add_Spinner_API_Query: "+teamsName);
 
-                    for (Cat category : teamsName.getData()) {
-                        arrayListspinner3.add(category);
-                    }
 
-                    handler1.sendEmptyMessage(1);
-                },
-                error -> Log.e(TAG, error.toString())
-        );
+        for (int i = 0; i < arrayListspinner3.size(); i++) {
+            if (arrayListspinner3.get(i).getTitle() == spinner3_question_update.getSelectedItem().toString()) {
+                String idCat=arrayListspinner3.get(i).getId();
+
+                QuestionCategories questionCategories=QuestionCategories
+                        .builder()
+                        .question(newQuestion)
+                        .cat(arrayListspinner3.get(i))
+                        .id(questionCategories1.get(0).getId())
+                        .build();
+                Amplify.API.mutate(
+                        ModelMutation.update(questionCategories),
+                        response -> {
+                            Log.i("MyAmplifyApp", "Added Todo with  categrey Experiance id: " + response.getData().getId());},
+                        error -> Log.e("MyAmplifyApp", "Create failed", error)
+                );
+
+                Toast.makeText(this, "categrey id:"+questionCategories.getId(), Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
     }
     public void uploadImage(){
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -207,7 +256,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     private Bitmap getBitmapFromUri(Uri uri) throws IOException {
 
         ParcelFileDescriptor parcelFileDescriptor =
-        getContentResolver().openFileDescriptor(uri, "r");
+                getContentResolver().openFileDescriptor(uri, "r");
         FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
         Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
         parcelFileDescriptor.close();
@@ -243,7 +292,6 @@ public class AddQuestionActivity extends AppCompatActivity {
         }
 
     }
-
     private void setImage(String image) {
         if(image != null) {
             Amplify.Storage.downloadFile(
@@ -252,11 +300,12 @@ public class AddQuestionActivity extends AppCompatActivity {
                     result -> {
                         Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
                         Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
-                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(image_Question));
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(image_question_update));
                     },
                     error -> Log.e(TAG, "Download Failure", error)
             );
         }
     }
+
 
 }

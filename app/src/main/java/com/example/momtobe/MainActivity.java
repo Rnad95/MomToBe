@@ -32,6 +32,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.adapter.HomeQuestionApdater;
 import com.example.momtobe.adapter.mainAdapter;
 import com.example.momtobe.registration.LoginActivity;
 
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Question> questionList = new ArrayList<>();
     private Handler handler1, handlerMom,handler2, handler;
     private Date dateParse;
-    private String userId, userName, email, imageKey, showEmail, url ="https://jsonkeeper.com/b/MKEL";
+    private String userId, userName, email, imageKey, showEmail, url ="https://jsonkeeper.com/b/FV5T";
     Mother mother ;
     CircleImageView profileImage;
     public static final String QuestionId = "questionId";
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         mViewAll = findViewById(R.id.view_all_blogs);
         mViewAll.setOnClickListener(view -> {
-            Intent intent = new Intent(this, Blog.class);
+            Intent intent = new Intent(this, Question_avtivity.class);
             startActivity(intent);
         });
 
@@ -228,9 +229,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewQuestion = findViewById(R.id.recycler_view_question);
         handler1 = new Handler(
                 Looper.getMainLooper(), msg -> {
-            HomeQuestionAdapter homeQuestionAdapter = new HomeQuestionAdapter(getApplicationContext(),questionList, position -> {
+            HomeQuestionApdater homeQuestionAdapter = new HomeQuestionApdater(getApplicationContext(),questionList, position -> {
 
-                Intent intent=new Intent(getApplicationContext(),CommentActivity.class);
+                Intent intent=new Intent(getApplicationContext(),CommentActivity_Question.class);
                 String QuestionId=questionList.get(position).getId();
                 intent.putExtra(QuestionId,QuestionId);
                 startActivity(intent);
