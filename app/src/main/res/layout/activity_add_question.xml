@@ -39,31 +39,28 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="20dp" />
-
                 <RelativeLayout
                     android:id="@+id/lyt_avatar"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:background="@drawable/edit_text_round"
                     >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:padding="25dp"
+                        app:srcCompat="@drawable/ic_photo"
+                        app:tint="#cccccc" />
 
                     <ImageView
                         android:id="@+id/Image_Question"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="20dp"
-                        app:srcCompat="@drawable/ic_photo"
-                        app:tint="#cccccc" />
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/avatar"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/avatar_placeholder_click"
+                        android:layout_height="100dp"
                         />
-                </RelativeLayout>
 
+                </RelativeLayout>
 
                 <EditText
                     android:id="@+id/edit_Question_name"
