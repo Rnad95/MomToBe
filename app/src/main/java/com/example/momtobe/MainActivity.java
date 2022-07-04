@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
             listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getApplicationContext(), CommentActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), CommentActivity_Question.class);
                     String QuestionId=taskArrayList.get(position)+"?";
                     intent.putExtra("QuestionId",QuestionId);
                     startActivity(intent);

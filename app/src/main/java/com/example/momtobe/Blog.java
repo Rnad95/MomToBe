@@ -43,7 +43,9 @@ public class Blog extends AppCompatActivity {
     private RequestQueue queue;
     private RequestQueue mQueue;
     BottomNavigationView bottomNavigationView;
+
     private String url ="https://jsonkeeper.com/b/MKEL";
+
     private TextView tv;
 
     @Override

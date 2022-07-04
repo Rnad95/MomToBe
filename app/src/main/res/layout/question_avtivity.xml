@@ -34,7 +34,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_baseline_menu_24"
+                    android:src="@drawable/ic_baseline_search_24"
                     app:tint="@color/white" />
 
                 <TextView
@@ -68,11 +68,11 @@
                 android:text="@string/what_is_your_question"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/Recycle_Comment"
+                app:layout_constraintBottom_toTopOf="@+id/Recycle_Question"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/Recycle_Comment"
+                android:id="@+id/Recycle_Question"
                 android:layout_width="403dp"
                 android:layout_height="533dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -80,13 +80,13 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/product_add_img"
+                android:id="@+id/Question_add_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="Add Product"
+                android:contentDescription="Add Question"
                 android:elevation="6dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="70dp"
@@ -122,64 +122,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="age of the baby"
+                        android:text="chose catagery"
 
                         />
 
-                    <Switch
-                        android:id="@+id/switch1"
+
+                    <CheckBox
+                        android:id="@+id/checkBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:checked="true"
-                        android:text="1-2 month"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                        android:text="categry1" />
 
-                    <Switch
-                        android:id="@+id/switch2"
+                    <CheckBox
+                        android:id="@+id/checkBox2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:checked="true"
-                        android:text="2-3 month"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                        android:text="categry2" />
 
-                    <Switch
-                        android:id="@+id/switch3"
+                    <CheckBox
+                        android:id="@+id/checkBox3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:checked="true"
-                        android:text="3-4 month"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                        android:text="categry3" />
 
-
-                    <Switch
-                        android:id="@+id/switch4"
+                    <CheckBox
+                        android:id="@+id/checkBox4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:checked="true"
-                        android:text="4-5 month"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                        android:text="categry4" />
 
-                    <Switch
-                        android:id="@+id/switch5"
+                    <CheckBox
+                        android:id="@+id/checkBox5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:checked="true"
-                        android:text="5-6 month"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                        android:text="categry5" />
 
-                    <Switch
-                        android:id="@+id/switch6"
+                    <CheckBox
+                        android:id="@+id/checkBox6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:checked="true"
-                        android:text="6-7 month"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                        android:text="categry6" />
 
                     <Button
                         android:id="@+id/filter"
@@ -192,7 +174,7 @@
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigator"
+        android:id="@+id/bottom_navigator_Question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

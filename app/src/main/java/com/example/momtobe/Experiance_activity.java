@@ -18,13 +18,9 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Experience;
 
-import com.amplifyframework.datastore.generated.model.Product;
-import com.amplifyframework.datastore.generated.model.Question;
-
 import com.example.momtobe.ui.ProductActivity;
 
 import com.example.momtobe.ui.AddExperianceActivity;
-import com.example.momtobe.ui.AddProductActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,23 +38,19 @@ public class Experiance_activity extends AppCompatActivity {
     private RecyclerView recycleExperince;
     public static final String experianceName = "ExperianceName";
     public static final String MotherExperiences = "motherExperiences";
-
+    private String userId  =  "" ;
+    private Handler handler1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-//        Intent intent = getIntent();
-
-//        ActionBar actionBar = getSupportActionBar();
-
-//        actionBar.setDisplayHomeAsUpEnabled(true);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiance);
+
+
+
         ArrayList<Experience> taskArrayList=new ArrayList<>();
 
-        addExperince = findViewById(R.id.Question_add_img);
+        addExperince = findViewById(R.id.Experiance_add_img);
 
         addExperince.setOnClickListener(v ->{
 
@@ -70,7 +62,7 @@ public class Experiance_activity extends AppCompatActivity {
         /**
          * bottom Navigation Bar
          */
-        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView = findViewById(R.id.bottom_navigator_experiance);
         bottomNavigationView.setSelectedItemId(R.id.exp_page);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -101,12 +93,12 @@ public class Experiance_activity extends AppCompatActivity {
                 return false;
             }
         });
-        recycleExperince = findViewById(R.id.Recycle_Comment);
+        recycleExperince = findViewById(R.id.Recycle_Experiance);
 
 
         handler=new Handler(
                 Looper.getMainLooper(), msg -> {
-            RecycleModels recycleModels = new RecycleModels(getApplicationContext(),taskArrayList, position -> {
+            RecycleModels_experiance recycleModels = new RecycleModels_experiance(getApplicationContext(),userId,taskArrayList, position -> {
                 Toast.makeText(
                         Experiance_activity.this,
                         "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
@@ -123,8 +115,25 @@ public class Experiance_activity extends AppCompatActivity {
             return true;
         }
         );
-       
-    
+
+        handler1 = new Handler(Looper.getMainLooper() , msg -> {
+
+            Amplify.Auth.fetchUserAttributes(
+                    attributes ->{
+                        userId = attributes.get(0).getValue();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+            );
+
+
+            return true ;
+        });
  
         Amplify.API.query(
                 ModelQuery.list(Experience.class),
@@ -133,7 +142,11 @@ public class Experiance_activity extends AppCompatActivity {
                         taskArrayList.add(experince);
                     }
 
-                    handler.sendEmptyMessage(1);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler1.sendMessage(message);
                 },
                 error -> Log.e(TAG, error.toString())
         );
@@ -156,4 +169,6 @@ public class Experiance_activity extends AppCompatActivity {
 //        );
 
     }
+
+
 }
