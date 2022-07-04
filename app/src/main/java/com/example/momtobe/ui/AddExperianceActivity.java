@@ -30,6 +30,7 @@ import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.ExperienceCategories;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.Experiance_activity;
 import com.example.momtobe.R;
 
 import java.io.BufferedOutputStream;
@@ -126,7 +127,7 @@ image_experiance.setOnClickListener(view ->{uploadImage();
             }
 
 
-            startActivity(new Intent(getApplicationContext() , Experience.class));
+            startActivity(new Intent(this , Experiance_activity.class));
 
         });
 

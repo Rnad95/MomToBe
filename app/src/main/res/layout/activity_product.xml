@@ -29,6 +29,7 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/poppins_light"
                     android:layout_marginStart="@dimen/mom_spacing_standard_1"
                     android:layout_marginTop="@dimen/mom_spacing_control"
                     android:layout_marginEnd="@dimen/mom_spacing_standard_1"
@@ -42,6 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Search"
+                    android:fontFamily="@font/poppins_regular"
                     android:layout_gravity="center"
                     android:textSize="@dimen/_9sdp" />
 

@@ -53,8 +53,8 @@ public class CommentActivity_Eperiance extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_eperiance);
         taskArrayList = new ArrayList<>();
-        comment = findViewById(R.id.editTextTextPersonName);
-        Button send=findViewById(R.id.button2);
+        comment = findViewById(R.id.editExperianceTextPersonName);
+        Button send=findViewById(R.id.button2_Experiance);
         recycleTask = findViewById(R.id.Recycle_CommentExperiance);
         imageViewComment = findViewById(R.id.imageViewCommentExperiance);
         titleComment = findViewById(R.id.titleCommentExperiance);
