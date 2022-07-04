@@ -12,85 +12,85 @@
     android:paddingBottom="16dp"
     tools:context=".registration.LoginActivity">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mom_colorWhitePure"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mom_spacing_standard_1"
+            android:layout_marginTop="@dimen/mom_signin_tvTitleMarginTop"
+            android:text="@string/mom_sign_in"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/mom_colorTextPrimary"
+            android:textSize="@dimen/mom_tv_SignInTitle"
+            />
+        <EditText
+            android:id="@+id/email"
+            android:fontFamily="@font/poppins_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/mom_colorWhitePure"
-            android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/mom_spacing_standard_1"
-                    android:layout_marginTop="@dimen/mom_signin_tvTitleMarginTop"
-                    android:text="@string/mom_sign_in"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_bold"
-                    android:textColor="@color/mom_colorTextPrimary"
-                    android:textSize="@dimen/mom_tv_SignInTitle"
-                    />
-                <EditText
-                    android:id="@+id/email"
-                    android:fontFamily="@font/poppins_regular"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/mom_spacing_22"
-                    android:paddingBottom="@dimen/_20sdp"
-                    android:layout_marginStart="@dimen/mom_spacing_standard_1"
-                    android:text="r.khawatreh13@gmail.com"
-                    android:layout_marginEnd="@dimen/mom_spacing_standard_1"
-                    android:backgroundTint="@color/mom_colorBottomEditTextLine"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    android:textAppearance="@style/TextInputLayoutStyle" />
+            android:layout_marginTop="@dimen/mom_spacing_22"
+            android:paddingBottom="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/mom_spacing_standard_1"
+            android:text="r.khawatreh13@gmail.com"
+            android:layout_marginEnd="@dimen/mom_spacing_standard_1"
+            android:backgroundTint="@color/mom_colorBottomEditTextLine"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textAppearance="@style/TextInputLayoutStyle" />
 
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/mom_spacing_22"
-                    android:paddingBottom="@dimen/_20sdp"
-                    android:layout_marginStart="@dimen/mom_spacing_standard_1"
-                    android:layout_marginEnd="@dimen/mom_spacing_standard_1"
-                    android:text="Renad132"
-                    android:backgroundTint="@color/mom_colorBottomEditTextLine"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:textAppearance="@style/TextInputLayoutStyle" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mom_spacing_22"
+            android:paddingBottom="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/mom_spacing_standard_1"
+            android:layout_marginEnd="@dimen/mom_spacing_standard_1"
+            android:text="Renad132"
+            android:backgroundTint="@color/mom_colorBottomEditTextLine"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textAppearance="@style/TextInputLayoutStyle" />
 
-                <Button
-                    android:id="@+id/login"
-                    style="@style/mom_Button"
-                    android:layout_marginTop="@dimen/mom_spacing_22"
-                    android:layout_marginStart="@dimen/mom_spacing_standard_1"
-                    android:layout_marginEnd="@dimen/mom_spacing_standard_1"
-                    android:shadowRadius="36"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Log In" />
+        <Button
+            android:id="@+id/login"
+            style="@style/mom_Button"
+            android:layout_marginTop="@dimen/mom_spacing_22"
+            android:layout_marginStart="@dimen/mom_spacing_standard_1"
+            android:layout_marginEnd="@dimen/mom_spacing_standard_1"
+            android:shadowRadius="36"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Log In" />
 
 
-                <TextView
-                    android:id="@+id/sign_up_prompt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/mom_spacing_standard_1"
-                    android:gravity="center"
-                    android:text="Don\'t have Account? SIGN UP"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/mom_colorGrey" />
+        <TextView
+            android:id="@+id/sign_up_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mom_spacing_standard_1"
+            android:gravity="center"
+            android:text="Don\'t have Account? SIGN UP"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/mom_colorGrey" />
 
-                <ProgressBar
-                    android:id="@+id/loading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="64dp"
-                    android:layout_marginBottom="64dp"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/password"
-                    app:layout_constraintStart_toStartOf="@+id/password"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.3" />
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="64dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/password"
+            app:layout_constraintStart_toStartOf="@+id/password"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
 
-        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

@@ -18,6 +18,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView recyclerViewQuestion;
     TextView mViewAll, mFullName;
-    private ImageView imageView, mImage;
+    private ImageView imageView, mImage, mAnimationView;
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();
     ArrayList<Question> questionList = new ArrayList<>();
     private Handler handler1, handlerMom,handler2, handler;
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     Mother mother ;
     CircleImageView profileImage;
     public static final String QuestionId = "questionId";
+    Animation animation;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -78,9 +81,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navToActivity();
+        animation = AnimationUtils.loadAnimation(this,R.anim.animation);
+        mAnimationView = findViewById(R.id.animation);
+        mAnimationView.setAnimation(animation);
+
         itemsSelector();
         ButtonOnListener();
-
         setUserInformation();
 
         mViewAll = findViewById(R.id.view_all_blogs);
@@ -141,11 +147,11 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "fetchUserInformation: 3 "+ attributes.get(3).getValue());
 
                     handlerMom =  new Handler(Looper.getMainLooper(), msg->{
-                            try {
-                                setImage(mother.getImage());
-                            }catch (Exception err){
+                        try {
+                            setImage(mother.getImage());
+                        }catch (Exception err){
 
-                            }
+                        }
                         return true ;
                     });
                 },
@@ -214,11 +220,11 @@ public class MainActivity extends AppCompatActivity {
 
         Amplify.Storage.getUrl(imageKey+".jpg",
                 success ->{
-                        String url = success.getUrl().toString();
-                        runOnUiThread(() -> {
+                    String url = success.getUrl().toString();
+                    runOnUiThread(() -> {
 
-                            Glide.with(this).load(url).into(mImage);
-                        });
+                        Glide.with(this).load(url).into(mImage);
+                    });
 
                 },
                 error -> Log.e(TAG,  "display Failed", error)
@@ -266,19 +272,19 @@ public class MainActivity extends AppCompatActivity {
             mainAdapter blogCustomAdapter = new mainAdapter(getApplicationContext(),
                     blogsListTest,
                     new mainAdapter.CustomClickListener() {
-                @Override
-                public void onTaskItemClicked(int position) {
+                        @Override
+                        public void onTaskItemClicked(int position) {
 
-                    Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
-                    intent.putExtra("title",blogsListTest.get(position).getTitle());
-                    intent.putExtra("content",blogsListTest.get(position).getContent());
-                    intent.putExtra("author",blogsListTest.get(position).getAuthor());
-                    intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
-                    intent.putExtra("category",blogsListTest.get(position).getCategory());
-                    Log.i(TAG, "onTaskItemClicked: "+blogsListTest.get(position).getTitle());
-                    startActivity(intent);
-                }
-            });
+                            Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
+                            intent.putExtra("title",blogsListTest.get(position).getTitle());
+                            intent.putExtra("content",blogsListTest.get(position).getContent());
+                            intent.putExtra("author",blogsListTest.get(position).getAuthor());
+                            intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
+                            intent.putExtra("category",blogsListTest.get(position).getCategory());
+                            Log.i(TAG, "onTaskItemClicked: "+blogsListTest.get(position).getTitle());
+                            startActivity(intent);
+                        }
+                    });
             recyclerView.setAdapter(blogCustomAdapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this,
@@ -301,35 +307,35 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     Gson gson = new Gson();
-                        String json = gson.toJson(jsonArray);
-                        List<JsonObject> arrayList = new ArrayList();
-                        arrayList = gson.fromJson(jsonArray.toString(),ArrayList.class);
+                    String json = gson.toJson(jsonArray);
+                    List<JsonObject> arrayList = new ArrayList();
+                    arrayList = gson.fromJson(jsonArray.toString(),ArrayList.class);
 
-                        for (int i = 0; i < arrayList.toArray().length; i++) {
-                            Object getrow = arrayList.get(i);
-                            LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
-                            String date = t.get("date").toString();
-                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-M-dd");
-                            String title = t.get("title").toString();
-                            String content = t.get("content").toString();
-                            String imageLink = t.get("imageLink").toString();
-                            try {
-                                dateParse = simpleDateFormat.parse(date);
-                                String afterDate = "2022-06-01";
-                                if(dateParse.after(simpleDateFormat.parse(afterDate))){
+                    for (int i = 0; i < arrayList.toArray().length; i++) {
+                        Object getrow = arrayList.get(i);
+                        LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
+                        String date = t.get("date").toString();
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-M-dd");
+                        String title = t.get("title").toString();
+                        String content = t.get("content").toString();
+                        String imageLink = t.get("imageLink").toString();
+                        try {
+                            dateParse = simpleDateFormat.parse(date);
+                            String afterDate = "2022-06-01";
+                            if(dateParse.after(simpleDateFormat.parse(afterDate))){
                                 com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,imageLink);
                                 blogsListTest.add(blog);
-                                    Log.i(TAG, "CallAPI: SUCCESS FROM DATA");
-                                }
-                            } catch (ParseException e) {
-                                e.printStackTrace();
+                                Log.i(TAG, "CallAPI: SUCCESS FROM DATA");
                             }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                         }
-                        Bundle bundle = new Bundle();
-                        bundle.putString("data" , "Done");
-                        Message message = new Message();
-                        message.setData(bundle);
-                        handler.sendMessage(message);
+                    }
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler.sendMessage(message);
 
 
                 },

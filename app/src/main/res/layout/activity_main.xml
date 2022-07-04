@@ -29,9 +29,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
+                    android:paddingTop="1dp"
                     android:gravity="center"
                     android:text=""
                     android:textSize="@dimen/_11sdp"
+                    android:fontFamily="@font/poppins_regular"
                     android:textStyle="bold|italic"
                     app:layout_constraintBottom_toBottomOf="@+id/textView4"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +60,7 @@
                     android:text="Hello, "
                     android:gravity="right"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
                     android:textSize="@dimen/_11sdp"
                     app:layout_constraintEnd_toStartOf="@+id/user_full_name"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -65,20 +68,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/image_profile"
                     tools:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/right_arrow"
-                    android:layout_width="51dp"
-                    android:layout_height="63dp"
-                    android:src="@drawable/ic_arrow"
-                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-                    app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
-                    android:layout_width="311dp"
-                    android:layout_height="260dp"
+                    android:layout_width="338dp"
+                    android:layout_height="280dp"
                     android:background="@color/white"
                     android:foregroundGravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -98,24 +91,14 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/main2_recycler_view"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            >
+                            android:layout_height="match_parent">
 
                         </androidx.recyclerview.widget.RecyclerView>
+
 
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <ImageView
-                    android:id="@+id/left_arrow"
-                    android:layout_width="51dp"
-                    android:layout_height="63dp"
-                    android:src="@drawable/ic_left_arrow"
-                    app:layout_constraintBottom_toBottomOf="@+id/right_arrow"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/right_arrow" />
 
 
                 <TextView
@@ -125,6 +108,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:text="Most Recent Question"
+                    android:fontFamily="@font/poppins_black"
                     android:textSize="@dimen/_16sdp"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -133,12 +117,11 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view_question"
-                    android:layout_width="345dp"
-                    android:layout_height="288dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="337dp"
+                    android:layout_height="273dp"
+                    android:layout_marginEnd="32dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.04"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
                     app:layout_constraintVertical_bias="0.0">
@@ -150,48 +133,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="View All"
                     android:textSize="15sp"
-                    android:textStyle="bold|italic"
+
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textView5"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/textView5"
                     app:layout_constraintTop_toTopOf="@+id/textView5"
-                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintVertical_bias="0.416"
                     tools:ignore="RelativeOverlap" />
 
-                <!--                <Button-->
-                <!--                    android:id="@+id/profile"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginTop="28dp"-->
-                <!--                    android:layout_marginEnd="108dp"-->
-                <!--                    android:text="Profile"-->
-                <!--                    app:layout_constraintEnd_toStartOf="@+id/image_profile"-->
-                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-                <!--                <Button-->
-                <!--                    android:id="@+id/log_out"-->
-                <!--                    android:layout_width="111dp"-->
-                <!--                    android:layout_height="40dp"-->
-                <!--                    android:layout_marginTop="76dp"-->
-                <!--                    android:layout_marginEnd="40dp"-->
-                <!--                    android:text="Logout"-->
-                <!--                    app:layout_constraintEnd_toStartOf="@+id/user_full_name"-->
-                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-                <!--                <Button-->
-                <!--                    android:id="@+id/main_favorite"-->
-                <!--                    android:layout_width="76dp"-->
-                <!--                    android:layout_height="38dp"-->
-                <!--                    android:layout_marginTop="36dp"-->
-                <!--                    android:layout_marginEnd="32dp"-->
-                <!--                    android:text="Saved"-->
-                <!--                    app:layout_constraintEnd_toStartOf="@+id/image_profile"-->
-                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-
+                <ImageView
+                    android:id="@+id/animation"
+                    android:layout_width="33dp"
+                    android:layout_height="29dp"
+                    android:src="@drawable/ic_arrow"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+                    app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -149,7 +149,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 .build();
                         Mother mother = Mother.builder()
                                 .name(fullName)
-                                .numOfChildren(1)
+                                .numOfChildren(numOfChildren)
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
                                 .image(imageKey)
@@ -179,7 +179,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 .build();
                         Mother mother = Mother.builder()
                                 .name(fullName)
-                                .numOfChildren(1)
+                                .numOfChildren(numOfChildren)
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
                                 .addressMothersId(address.getId())

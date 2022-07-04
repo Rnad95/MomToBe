@@ -23,7 +23,7 @@
 
 
         <ImageView
-            android:id="@+id/product_archive_img"
+            android:id="@+id/blog_favorite_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="0dp"
@@ -35,12 +35,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/product_archive_title"
+            android:id="@+id/blog_archive_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:layout_toEndOf="@id/product_archive_img"
+            android:layout_toEndOf="@id/blog_favorite_img"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/product_name"
             android:textColor="@color/black"
@@ -48,24 +48,24 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/product_archive_img"
+            app:layout_constraintStart_toEndOf="@+id/blog_favorite_img"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/product_archive_desc"
+            android:id="@+id/blog_archive_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/product_archive_title"
+            android:layout_below="@id/blog_archive_title"
             android:layout_marginTop="12dp"
-            android:layout_toEndOf="@id/product_archive_img"
+            android:layout_toEndOf="@id/blog_favorite_img"
             android:drawablePadding="2dp"
             android:text="@string/short_description"
             android:textSize="12sp"
             android:fontFamily="@font/poppins_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.313"
-            app:layout_constraintStart_toEndOf="@+id/product_archive_img"
-            app:layout_constraintTop_toBottomOf="@+id/product_archive_title"
+            app:layout_constraintStart_toEndOf="@+id/blog_favorite_img"
+            app:layout_constraintTop_toBottomOf="@+id/blog_archive_title"
             tools:ignore="SmallSp" />
 
         <TextView
@@ -81,8 +81,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/product_archive_status"
             app:layout_constraintHorizontal_bias="0.533"
-            app:layout_constraintStart_toEndOf="@+id/product_archive_img"
-            app:layout_constraintTop_toBottomOf="@+id/product_archive_desc"
+            app:layout_constraintStart_toEndOf="@+id/blog_favorite_img"
+            app:layout_constraintTop_toBottomOf="@+id/blog_archive_desc"
             app:layout_constraintVertical_bias="0.888" />
 
         <TextView
@@ -98,7 +98,7 @@
             android:fontFamily="@font/poppins_bold"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/product_archive_quantity"
-            app:layout_constraintTop_toBottomOf="@+id/product_archive_desc" />
+            app:layout_constraintTop_toBottomOf="@+id/blog_archive_desc" />
 
         <TextView
             android:id="@+id/product_archive_quantity"
@@ -112,7 +112,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_archive_desc"
+            app:layout_constraintTop_toBottomOf="@+id/blog_archive_desc"
             app:layout_constraintVertical_bias="0.944"
             android:fontFamily="@font/poppins_bold"
             />
@@ -138,7 +138,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/product_archive_quantity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.929"
-                app:layout_constraintStart_toEndOf="@+id/product_archive_title"
+                app:layout_constraintStart_toEndOf="@+id/blog_archive_title"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.1" />
 
@@ -156,7 +156,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/product_archive_quantity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
-                app:layout_constraintStart_toEndOf="@+id/product_archive_title"
+                app:layout_constraintStart_toEndOf="@+id/blog_archive_title"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.1" />
         </LinearLayout>

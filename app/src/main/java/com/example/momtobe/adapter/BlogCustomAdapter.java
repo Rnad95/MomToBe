@@ -47,6 +47,7 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
         holder.blogTitle.setText(blogList.get(position).getTitle());
         holder.blogDescription.setText(blogList.get(position).getContent());
         holder.blogAuthorName.setText(blogList.get(position).getAuthor());
+        holder.blogDate.setText(blogList.get(position).getDate());
         String url = blogList.get(position).getImageLink().toString();
         Glide.with(context).load(url).into(holder.blogImage);
 
@@ -61,6 +62,7 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
         TextView  blogDescription;
         ImageView blogImage ;
         TextView  blogAuthorName;
+        TextView blogDate;
 
         CustomClickListener listener ;
         public CustomHoleder(@NonNull View itemView , CustomClickListener listener) {
@@ -70,6 +72,8 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
             blogDescription = itemView.findViewById(R.id.blog_archive_desc);
             blogAuthorName = itemView.findViewById(R.id.blog_archive_autherName);
             blogImage = itemView.findViewById(R.id.blog_favorite_img);
+            blogDate = itemView.findViewById(R.id.blog_archive_date);
+
             itemView.setOnClickListener(v -> listener.onTaskItemClicked(getAdapterPosition()));
         }
     }

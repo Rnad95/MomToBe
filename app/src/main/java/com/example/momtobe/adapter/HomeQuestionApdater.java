@@ -1,6 +1,8 @@
 package com.example.momtobe.adapter;
 
 import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +49,7 @@ public class HomeQuestionApdater extends RecyclerView.Adapter<HomeQuestionApdate
     public void onBindViewHolder(@NonNull HomeQuestionApdater.CustomHoleder holder, int position) {
         holder.questionTitle.setText(questionList.get(position).getTitle());
         holder.questionContent.setText(questionList.get(position).getDescription());
-//        String url = questionList.get(position).getImage().toString();
-//        Glide.with(context).load(url).into(holder.questionImage);
+        holder.questionImage.setImageURI(Uri.parse(context.getFilesDir()+ "/" + questionList.get(position).getImage() + "download.jpg"));
 
     }
     @Override

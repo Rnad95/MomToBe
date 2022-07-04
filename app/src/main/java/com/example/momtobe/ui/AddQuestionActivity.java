@@ -145,7 +145,7 @@ public class AddQuestionActivity extends AppCompatActivity {
 
             }
 
-            startActivity(new Intent(getApplicationContext() , Question_avtivity.class));
+            startActivity(new Intent(this , Question_avtivity.class));
 
         });
         Amplify.Auth.fetchUserAttributes(
