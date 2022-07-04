@@ -151,7 +151,7 @@ public class Blog extends AppCompatActivity {
                             com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category);
                             blogsListTest.add(blog);
 
-                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
+//                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
                         }
                         Bundle bundle = new Bundle();
                         bundle.putString("data" , "Done");

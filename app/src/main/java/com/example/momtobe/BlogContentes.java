@@ -1,7 +1,9 @@
 package com.example.momtobe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +22,8 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Blog;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.ui.ProductActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,6 +37,7 @@ import java.util.List;
 public class BlogContentes extends AppCompatActivity {
 
     private static final String TAG = "blogContent";
+    BottomNavigationView bottomNavigationView;
     private final MediaPlayer mp = new MediaPlayer();
     private String email;
     private Handler handler;
@@ -162,8 +168,9 @@ public class BlogContentes extends AppCompatActivity {
             else
             {
                 blogIds.clear();
-                blogIds.add(blogId);
                 blogIds.addAll(mother.getFaveBlogs());
+                blogIds.add(blogId);
+
             }
 
 //            Log.i(TAG, "setSaveBtn: blogIdx -> "+blogIdx);
@@ -198,7 +205,6 @@ public class BlogContentes extends AppCompatActivity {
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
 
-            findMotherAPI(emailId);
             Log.i(TAG, "setSaveBtn: favBlogs ->"+mother.getFaveBlogs());
         });
 
@@ -241,6 +247,47 @@ public class BlogContentes extends AppCompatActivity {
         }
     }
 
+
+    private void navToActivity(){
+
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.home_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.home_page:
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        startActivity(new Intent(getApplicationContext(), com.example.momtobe.Blog.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+
+    }
 
 
 }

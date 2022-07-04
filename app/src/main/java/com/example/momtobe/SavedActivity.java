@@ -76,7 +76,7 @@ public class SavedActivity extends AppCompatActivity {
     Mother mother;
     private String emailId;
     BottomNavigationView bottomNavigationView;
-
+    List<com.example.momtobe.remote.Blog> favBlogsList ;
 
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     private RequestQueue queue;
@@ -90,14 +90,11 @@ public class SavedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_saved);
         mQueue = Volley.newRequestQueue(this);
 
-
         try {
             CallAPI();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
 
         handlerId =  new Handler(Looper.getMainLooper(),msg->{
 //            Log.i(TAG, "onCreate: handlerId ->" + emailId);
@@ -123,7 +120,8 @@ public class SavedActivity extends AppCompatActivity {
         });
 
         handlerMom = new Handler(Looper.getMainLooper(),msg->{
-            List<com.example.momtobe.remote.Blog> favBlogsList= new ArrayList<>();
+            favBlogsList= new ArrayList<>();
+            if(!mother.getFaveBlogs().isEmpty())
             for (String id : mother.getFaveBlogs())
             {
                 for(com.example.momtobe.remote.Blog blog : blogsListTest){
@@ -138,12 +136,12 @@ public class SavedActivity extends AppCompatActivity {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
-                    intent.putExtra("position", blogsListTest.get(position).getId());
-                    intent.putExtra("title",  blogsListTest.get(position).getTitle());
-                    intent.putExtra("content",blogsListTest.get(position).getContent());
-                    intent.putExtra("author", blogsListTest.get(position).getAuthor());
-                    intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
-                    intent.putExtra("category" ,blogsListTest.get(position).getCategory());
+                    intent.putExtra("position", favBlogsList.get(position).getId());
+                    intent.putExtra("title",  favBlogsList.get(position).getTitle());
+                    intent.putExtra("content",favBlogsList.get(position).getContent());
+                    intent.putExtra("author", favBlogsList.get(position).getAuthor());
+                    intent.putExtra("imageLink",favBlogsList.get(position).getImageLink());
+                    intent.putExtra("category" ,favBlogsList.get(position).getCategory());
                     startActivity(intent);
                 }
             });
@@ -152,6 +150,29 @@ public class SavedActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             return true ;
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView = findViewById(R.id.saved_recycler_view);
+        BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),favBlogsList, new BlogCustomAdapter.CustomClickListener() {
+            @Override
+            public void onTaskItemClicked(int position) {
+                Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
+                intent.putExtra("position", favBlogsList.get(position).getId());
+                intent.putExtra("title",  favBlogsList.get(position).getTitle());
+                intent.putExtra("content",favBlogsList.get(position).getContent());
+                intent.putExtra("author", favBlogsList.get(position).getAuthor());
+                intent.putExtra("imageLink",favBlogsList.get(position).getImageLink());
+                intent.putExtra("category" ,favBlogsList.get(position).getCategory());
+                startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(blogCustomAdapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -209,7 +230,7 @@ public class SavedActivity extends AppCompatActivity {
                             com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category);
                             blogsListTest.add(blog);
 
-                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
+//                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
                         }
                         Bundle bundle = new Bundle();
                         bundle.putString("data" , "Done");
