@@ -49,7 +49,7 @@ public class EditProductActivity extends AppCompatActivity {
 
     ArrayList<Comment> commentArrayList = new ArrayList<>() ;
 
-    private CircleImageView editImageView;
+    private ImageView editImageView;
 
     private EditText editProductTitle;
     private EditText editProductDesc;
@@ -129,7 +129,6 @@ public class EditProductActivity extends AppCompatActivity {
             if (editImageKey != null) {
                     setImage(editImageKey);
             }
-
 
             return true;
 

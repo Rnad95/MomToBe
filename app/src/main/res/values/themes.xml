@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/mom_colorPrimary</item>
         <item name="colorAccent">@color/mom_colorPrimary</item>
-        <item name="android:statusBarColor">@color/mom_colorWhitePure</item>
+        <item name="android:statusBarColor">@color/black</item>
     </style>
 
     <style name="Theme.MomToBe.NoActionBar">
