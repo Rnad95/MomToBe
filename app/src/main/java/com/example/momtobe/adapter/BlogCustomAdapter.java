@@ -31,9 +31,7 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
         this.blogList = blogList;
         this.listener = listener;
         this.context = context;
-
     }
-
 
     @NonNull
     @Override

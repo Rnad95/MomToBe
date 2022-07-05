@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.generated.model.Blog;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.android.volley.Cache;
 import com.android.volley.Network;
@@ -53,7 +52,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -67,18 +69,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SavedActivity extends AppCompatActivity {
 
     private final String TAG = SavedActivity.class.getSimpleName();
-    Handler handler;
-    Handler handlerMom;
-    Handler handlerId ;
-    BlogCustomAdapter adapter;
-    RecyclerView recyclerView;
-    List<Blog> blogs;
-    Mother mother;
+    private Handler handlerMom , handler;
+    private BlogCustomAdapter adapter;
+    private Date dateParse;
+    private RecyclerView recyclerView;
+    private Mother mother;
     private String emailId;
-    BottomNavigationView bottomNavigationView;
-    List<com.example.momtobe.remote.Blog> favBlogsList ;
-
-    List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
+    private BottomNavigationView bottomNavigationView;
+    private ArrayList<com.example.momtobe.remote.Blog> blogsListTest  = new ArrayList<>();
+    private ArrayList<com.example.momtobe.remote.Blog> favBlogsList = new ArrayList<>();
+    private List<String > blogsIdList= new ArrayList<>();;
     private RequestQueue queue;
     private RequestQueue mQueue;
     private String url ="https://jsonkeeper.com/b/FV5T";
@@ -89,51 +89,58 @@ public class SavedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved);
         mQueue = Volley.newRequestQueue(this);
-
+//        navToActivity();
+        
+        
         try {
             CallAPI();
         } catch (IOException e) {
             e.printStackTrace();
         }
+//
+//
+        Bundle bundle = getIntent().getExtras();
+        emailId = bundle.getString("EMAIL_ADDRESS");
+        blogsIdList = bundle.getStringArrayList("FAV_BLOGS");
 
-        handlerId =  new Handler(Looper.getMainLooper(),msg->{
-            Log.i(TAG, "onCreate: handlerId ->" + emailId);
+
+        handler =  new Handler(Looper.getMainLooper(), msg->{
+            Log.i(TAG, "onCreate: HERE");
             findMotherAPI();
             return true ;
         });
 
-         handler = new Handler(Looper.getMainLooper() , msg -> {
 
-             Amplify.Auth.fetchUserAttributes(
-                     attributes ->{
-                         emailId = attributes.get(3).getValue();
-                         Bundle bundle = new Bundle();
-                         bundle.putString("data" , "Done");
 
-                         Message message = new Message();
-                         message.setData(bundle);
-                         handlerId.sendMessage(message);
-                     },
-                     error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-             );
-            return true ;
-        });
+        handlerMom = new Handler(Looper.getMainLooper(),msg-> {
+            favBlogsList.clear();
+            Log.i(TAG, "onCreate: handlerMom-> saved" + blogsIdList.get(0));
+            Log.i(TAG, "onCreate: handlerMom-> " + blogsListTest.size());
+            for(String id : blogsIdList){
+                for(int i=0 ; i<blogsListTest.size();i++){
+                    Log.i(TAG, "onCreate: blog -> "+blogsListTest.get(i).getId());
 
-        handlerMom = new Handler(Looper.getMainLooper(),msg->{
-            favBlogsList= new ArrayList<>();
-            if(!mother.getFaveBlogs().isEmpty())
-            for (String id : mother.getFaveBlogs())
-            {
-                if(id!=null && !blogsListTest.isEmpty())
-                for(com.example.momtobe.remote.Blog blog : blogsListTest){
-                    if(blog.getId() != null)
-                    if(blog.getId().equals(id)){
-                        favBlogsList.add(blog);
+                    if(blogsListTest.get(i).getId().equals(id)){
+                        favBlogsList.add(blogsListTest.get(i));
+                        Log.i(TAG, "onCreate: blog -> chosen -> "+blogsListTest.get(i).getId());
                     }
                 }
             }
 
-            recyclerView = findViewById(R.id.saved_recycler_view);
+            setRecyclerView ();
+
+            return true ;
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        findMotherAPI();
+    }
+
+    void setRecyclerView (){
+        recyclerView = findViewById(R.id.saved_recycler_view);
             BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),favBlogsList, new BlogCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
@@ -150,62 +157,7 @@ public class SavedActivity extends AppCompatActivity {
             recyclerView.setAdapter(blogCustomAdapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            return true ;
-        });
-
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        recyclerView = findViewById(R.id.saved_recycler_view);
-        BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),favBlogsList, new BlogCustomAdapter.CustomClickListener() {
-            @Override
-            public void onTaskItemClicked(int position) {
-                Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
-                intent.putExtra("position", favBlogsList.get(position).getId());
-                intent.putExtra("title",  favBlogsList.get(position).getTitle());
-                intent.putExtra("content",favBlogsList.get(position).getContent());
-                intent.putExtra("author", favBlogsList.get(position).getAuthor());
-                intent.putExtra("imageLink",favBlogsList.get(position).getImageLink());
-                intent.putExtra("category" ,favBlogsList.get(position).getCategory());
-                startActivity(intent);
-            }
-        });
-        recyclerView.setAdapter(blogCustomAdapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-    }
-
-    void findMotherAPI (){
-        Amplify.API.query(
-                ModelQuery.list(Mother.class),
-                success->{
-                    if(success.hasData())
-                    {
-                        for (Mother curMother : success.getData())
-                        {
-                            if(curMother.getEmailAddress().equals(emailId)){
-
-                                mother  = curMother;
-
-                            }
-                            Bundle bundle = new Bundle();
-                            bundle.putString("data","Done");
-                            Message message = new Message();
-                            message.setData(bundle);
-                            handlerMom.sendMessage(message);
-                        }
-                    }
-                },
-                fail->{
-                    Log.i(TAG, "onCreate: failed to find mother in database");
-                }
-        );
-    }
-
-
 
     private void CallAPI() throws IOException {
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -213,14 +165,13 @@ public class SavedActivity extends AppCompatActivity {
                 response -> {
                     try {
                         JSONArray jsonArray = response.getJSONObject("_embedded").getJSONArray("blogs");
-
                         Gson gson = new Gson();
                         String json = gson.toJson(jsonArray);
                         List<JsonObject> arrayList = new ArrayList();
                         arrayList = gson.fromJson(jsonArray.toString(),ArrayList.class);
 
                         for (int i = 0; i < arrayList.toArray().length; i++) {
-//                            Log.i(TAG, "CallAPI: SIZE =>"+ arrayList.size());
+                            Log.i(TAG, "CallAPI: SIZE =>"+ arrayList.size());
                             Object getrow = arrayList.get(i);
                             LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
                             String title = t.get("title").toString();
@@ -228,8 +179,11 @@ public class SavedActivity extends AppCompatActivity {
                             String imageLink = t.get("imageLink").toString();
                             String author = t.get("author").toString();
                             String category = t.get("category").toString();
+                            String date = t.get("date").toString();
+
                             String blogId = t.get("blogId").toString();
-                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category);
+                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category,date);
+
                             blogsListTest.add(blog);
 
 //                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
@@ -250,6 +204,44 @@ public class SavedActivity extends AppCompatActivity {
         );
         queue.add(jsonObjectRequest);
     }
+
+
+    void findMotherAPI (){
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                success->{
+                    Log.i(TAG, "findMotherAPI: 217 -> "+emailId);
+                    if(success.hasData())
+                    {
+                        for (Mother curMother : success.getData())
+                        {
+                            if(curMother.getEmailAddress().equals(emailId)){
+
+                                mother  = curMother;
+
+                                Log.i(TAG, "onCreate: mother before the loop "+mother);
+
+                                Bundle bundle = new Bundle();
+                                bundle.putString("data","Done");
+                                Message message = new Message();
+                                message.setData(bundle);
+                                handlerMom.sendMessage(message);
+                                break ;
+
+                            }
+
+                        }
+
+                    }
+                },
+                fail->{
+                    Log.i(TAG, "onCreate: failed to find mother in database");
+                }
+        );
+    }
+
+
+    
 
     private void navToActivity(){
 

@@ -26,6 +26,7 @@ import com.example.momtobe.ui.ProductActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 public class Profile extends AppCompatActivity {
@@ -47,7 +48,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         navToActivity();
-//        fetchUserInfo();
+
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
                     emailId = attributes.get(3).getValue();
@@ -72,27 +73,6 @@ public class Profile extends AppCompatActivity {
     }
 
 
-    void fetchUserInfo (){
-        Amplify.Auth.fetchUserAttributes(
-                attributes ->{
-                    emailId = attributes.get(3).getValue();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("data" , "Done");
-
-                    Message message = new Message();
-                    message.setData(bundle);
-                    handlerId.sendMessage(message);
-                },
-                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-        );
-
-        handlerId =  new Handler(Looper.getMainLooper(),msg->{
-            Log.i(TAG, "onCreate: handlerId ->" + emailId);
-            findMotherAPI();
-            return true ;
-        });
-    }
-
     void findMotherAPI (){
         Log.i(TAG, "findMotherAPI: id ->"+emailId);
         Amplify.API.query(
@@ -103,14 +83,16 @@ public class Profile extends AppCompatActivity {
                         for (Mother curMother : success.getData())
                         {
                             if(curMother.getEmailAddress().equals(emailId)){
-                                Log.i(TAG, "findMotherAPI: mother->"+mother);
                                 mother  = curMother;
+                                Log.i(TAG, "findMotherAPI: mother->"+mother);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("data","Done");
+                                Message message = new Message();
+                                message.setData(bundle);
+                                handler.sendMessage(message);
+                                break ;
                             }
-                            Bundle bundle = new Bundle();
-                            bundle.putString("data","Done");
-                            Message message = new Message();
-                            message.setData(bundle);
-                            handler.sendMessage(message);
+
                         }
                     }
                 },
@@ -139,10 +121,9 @@ public class Profile extends AppCompatActivity {
         }
         Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
         try {
-
             setImage(mother.getImage());
         }catch (Exception error){
-
+            Log.e(TAG, "setMotherInfo: "+error.getMessage() );
         }
     }
 
@@ -167,7 +148,8 @@ public class Profile extends AppCompatActivity {
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);
         favBtn.setOnClickListener(view->{
             Intent intent = new Intent(Profile.this,SavedActivity.class);
-            intent.putExtra("EMAIL_ADDRESS",motherEmail);
+            intent.putExtra("EMAIL_ADDRESS",mother.getEmailAddress());
+            intent.putStringArrayListExtra("FAV_BLOGS", (ArrayList<String>)mother.getFaveBlogs());
             startActivity(intent);
         });
     }
