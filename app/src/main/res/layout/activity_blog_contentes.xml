@@ -130,8 +130,7 @@
         app:itemBackground="@color/mom_colorPrimary"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu" />
 
 </RelativeLayout>

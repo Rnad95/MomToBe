@@ -1,5 +1,6 @@
 package com.example.momtobe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,14 +11,19 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.registration.LoginActivity;
+import com.example.momtobe.ui.ProductActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 
@@ -31,6 +37,8 @@ public class Profile extends AppCompatActivity {
     private String motherEmail;
     private String emailId;
     private ImageView imageView;
+    BottomNavigationView bottomNavigationView;
+
 
 
     @Override
@@ -38,6 +46,8 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        navToActivity();
+//        fetchUserInfo();
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
                     emailId = attributes.get(3).getValue();
@@ -53,24 +63,37 @@ public class Profile extends AppCompatActivity {
 
         handlerId =  new Handler(Looper.getMainLooper(),msg->{
             Log.i(TAG, "onCreate: handlerId ->" + emailId);
-            findMotherAPI(emailId);
-            return true ;
-        });
-
-        handler =  new Handler(Looper.getMainLooper(), msg->{
-            setMotherInfo();
+            findMotherAPI();
             return true ;
         });
 
         setFavBtn();
         setSettingsBtn();
-
-
-
-
     }
 
-    void findMotherAPI (String emailId ){
+
+    void fetchUserInfo (){
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    emailId = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handlerId.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
+
+        handlerId =  new Handler(Looper.getMainLooper(),msg->{
+            Log.i(TAG, "onCreate: handlerId ->" + emailId);
+            findMotherAPI();
+            return true ;
+        });
+    }
+
+    void findMotherAPI (){
         Log.i(TAG, "findMotherAPI: id ->"+emailId);
         Amplify.API.query(
                 ModelQuery.list(Mother.class),
@@ -95,6 +118,10 @@ public class Profile extends AppCompatActivity {
                     Log.i(TAG, "onCreate: failed to find mother in database");
                 }
         );
+        handler =  new Handler(Looper.getMainLooper(), msg->{
+            setMotherInfo();
+            return true ;
+        });
     }
 
 
@@ -104,14 +131,18 @@ public class Profile extends AppCompatActivity {
         TextView mMotherName = findViewById(R.id.pro_mother_name);
         TextView mMotherPhone = findViewById(R.id.pro_mother_phone);
         TextView mMotherNumberOfChildren = findViewById(R.id.pro_mother_number_of_children);
-        if (mother != null) {
-        mMotherName.setText("Mother Name : "+mother.getName());
-        mMotherPhone.setText("Mother Phone Number : "+mother.getPhoneNumber().toString());
-        mMotherNumberOfChildren.setText("Mother Number Of Children : "+mother.getNumOfChildren().toString());
-
+        if (mother != null)
+        {
+            mMotherName.setText(mother.getName());
+            mMotherPhone.setText(mother.getPhoneNumber().toString());
+            mMotherNumberOfChildren.setText(mother.getNumOfChildren().toString());
+        }
         Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
+        try {
 
             setImage(mother.getImage());
+        }catch (Exception error){
+
         }
     }
 
@@ -132,7 +163,6 @@ public class Profile extends AppCompatActivity {
     }
 
 
-
     void setFavBtn(){
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);
         favBtn.setOnClickListener(view->{
@@ -151,6 +181,49 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+
+    private void navToActivity(){
+
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.home_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.home_page:
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        startActivity(new Intent(getApplicationContext(),Blog.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+
+    }
+
+
 
 
 }

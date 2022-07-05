@@ -217,7 +217,7 @@ public final class Blog implements Model {
         this.autherName = autherName;
         return this;
     }
-
+    
     @Override
      public BuildStep featured(Boolean featured) {
         Objects.requireNonNull(featured);
