@@ -33,6 +33,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.momtobe.adapter.BlogCustomAdapter;
 import com.example.momtobe.adapter.ProductCustomAdapter;
+import com.example.momtobe.adapter.SavedBlogAdapter;
 import com.example.momtobe.api.BlogAPIService;
 import com.example.momtobe.remote.Embedded;
 import com.example.momtobe.ui.ProductActivity;
@@ -97,8 +98,7 @@ public class SavedActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//
-//
+
         Bundle bundle = getIntent().getExtras();
         emailId = bundle.getString("EMAIL_ADDRESS");
         blogsIdList = bundle.getStringArrayList("FAV_BLOGS");
@@ -114,7 +114,7 @@ public class SavedActivity extends AppCompatActivity {
 
         handlerMom = new Handler(Looper.getMainLooper(),msg-> {
             favBlogsList.clear();
-            Log.i(TAG, "onCreate: handlerMom-> saved" + blogsIdList.get(0));
+//            Log.i(TAG, "onCreate: handlerMom-> saved" + blogsIdList.get(0));
             Log.i(TAG, "onCreate: handlerMom-> " + blogsListTest.size());
             for(String id : blogsIdList){
                 for(int i=0 ; i<blogsListTest.size();i++){
@@ -141,7 +141,8 @@ public class SavedActivity extends AppCompatActivity {
 
     void setRecyclerView (){
         recyclerView = findViewById(R.id.saved_recycler_view);
-            BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),favBlogsList, new BlogCustomAdapter.CustomClickListener() {
+        SavedBlogAdapter savedBlogAdapter = new SavedBlogAdapter(getApplicationContext(),mother
+                 , favBlogsList, new SavedBlogAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
@@ -154,7 +155,7 @@ public class SavedActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            recyclerView.setAdapter(blogCustomAdapter);
+            recyclerView.setAdapter(savedBlogAdapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
