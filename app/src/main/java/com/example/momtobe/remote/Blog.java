@@ -2,7 +2,7 @@ package com.example.momtobe.remote;
 
 public class Blog {
 
-    private Long id;
+    private String id ;
     private String title;
     private String content;
     private String author;
@@ -19,12 +19,14 @@ public class Blog {
         this.date = date;
     }
 
-    public Blog(String title, String content, String author, String imageLink, String category) {
+    public Blog(String id , String title, String content, String author, String imageLink, String category, String date) {
+        this.id=id ;
         this.title = title;
         this.content = content;
         this.author = author;
         this.imageLink = imageLink;
         this.category = category;
+        this.date = date ;
     }
 
     public Blog(String title, String content,String imageLink) {
@@ -73,7 +75,22 @@ public class Blog {
         return category;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
+                ", imageLink='" + imageLink + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }
