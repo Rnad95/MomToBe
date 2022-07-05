@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".registration.VerificationActivity">
 
+
     <EditText
         android:id="@+id/verification_code"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Enter verification code"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
