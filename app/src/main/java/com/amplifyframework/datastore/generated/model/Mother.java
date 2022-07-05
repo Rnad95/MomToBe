@@ -26,6 +26,7 @@ public final class Mother implements Model {
   public static final QueryField NUM_OF_CHILDREN = field("Mother", "numOfChildren");
   public static final QueryField PHONE_NUMBER = field("Mother", "phoneNumber");
   public static final QueryField EMAIL_ADDRESS = field("Mother", "emailAddress");
+  public static final QueryField FAVE_BLOGS = field("Mother", "faveBlogs");
   public static final QueryField ADDRESS_MOTHERS_ID = field("Mother", "addressMothersId");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String name;
@@ -33,6 +34,7 @@ public final class Mother implements Model {
   private final @ModelField(targetType="Int", isRequired = true) Integer numOfChildren;
   private final @ModelField(targetType="String") String phoneNumber;
   private final @ModelField(targetType="String", isRequired = true) String emailAddress;
+  private final @ModelField(targetType="String") List<String> faveBlogs;
   private final @ModelField(targetType="Comment") @HasMany(associatedWith = "motherCommentsId", type = Comment.class) List<Comment> comments = null;
   private final @ModelField(targetType="Product") @HasMany(associatedWith = "motherProductsId", type = Product.class) List<Product> products = null;
   private final @ModelField(targetType="Question") @HasMany(associatedWith = "motherQuestionsId", type = Question.class) List<Question> questions = null;
@@ -63,6 +65,10 @@ public final class Mother implements Model {
       return emailAddress;
   }
   
+  public List<String> getFaveBlogs() {
+      return faveBlogs;
+  }
+  
   public List<Comment> getComments() {
       return comments;
   }
@@ -87,13 +93,14 @@ public final class Mother implements Model {
       return addressMothersId;
   }
   
-  private Mother(String id, String name, String image, Integer numOfChildren, String phoneNumber, String emailAddress, String addressMothersId) {
+  private Mother(String id, String name, String image, Integer numOfChildren, String phoneNumber, String emailAddress, List<String> faveBlogs, String addressMothersId) {
     this.id = id;
     this.name = name;
     this.image = image;
     this.numOfChildren = numOfChildren;
     this.phoneNumber = phoneNumber;
     this.emailAddress = emailAddress;
+    this.faveBlogs = faveBlogs;
     this.addressMothersId = addressMothersId;
   }
   
@@ -111,6 +118,7 @@ public final class Mother implements Model {
               ObjectsCompat.equals(getNumOfChildren(), mother.getNumOfChildren()) &&
               ObjectsCompat.equals(getPhoneNumber(), mother.getPhoneNumber()) &&
               ObjectsCompat.equals(getEmailAddress(), mother.getEmailAddress()) &&
+              ObjectsCompat.equals(getFaveBlogs(), mother.getFaveBlogs()) &&
               ObjectsCompat.equals(getAddressMothersId(), mother.getAddressMothersId());
       }
   }
@@ -124,6 +132,7 @@ public final class Mother implements Model {
       .append(getNumOfChildren())
       .append(getPhoneNumber())
       .append(getEmailAddress())
+      .append(getFaveBlogs())
       .append(getAddressMothersId())
       .toString()
       .hashCode();
@@ -139,6 +148,7 @@ public final class Mother implements Model {
       .append("numOfChildren=" + String.valueOf(getNumOfChildren()) + ", ")
       .append("phoneNumber=" + String.valueOf(getPhoneNumber()) + ", ")
       .append("emailAddress=" + String.valueOf(getEmailAddress()) + ", ")
+      .append("faveBlogs=" + String.valueOf(getFaveBlogs()) + ", ")
       .append("addressMothersId=" + String.valueOf(getAddressMothersId()))
       .append("}")
       .toString();
@@ -164,6 +174,7 @@ public final class Mother implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -175,6 +186,7 @@ public final class Mother implements Model {
       numOfChildren,
       phoneNumber,
       emailAddress,
+      faveBlogs,
       addressMothersId);
   }
   public interface NameStep {
@@ -197,6 +209,7 @@ public final class Mother implements Model {
     BuildStep id(String id);
     BuildStep image(String image);
     BuildStep phoneNumber(String phoneNumber);
+    BuildStep faveBlogs(List<String> faveBlogs);
     BuildStep addressMothersId(String addressMothersId);
   }
   
@@ -208,6 +221,7 @@ public final class Mother implements Model {
     private String emailAddress;
     private String image;
     private String phoneNumber;
+    private List<String> faveBlogs;
     private String addressMothersId;
     @Override
      public Mother build() {
@@ -220,6 +234,7 @@ public final class Mother implements Model {
           numOfChildren,
           phoneNumber,
           emailAddress,
+          faveBlogs,
           addressMothersId);
     }
     
@@ -257,6 +272,12 @@ public final class Mother implements Model {
     }
     
     @Override
+     public BuildStep faveBlogs(List<String> faveBlogs) {
+        this.faveBlogs = faveBlogs;
+        return this;
+    }
+    
+    @Override
      public BuildStep addressMothersId(String addressMothersId) {
         this.addressMothersId = addressMothersId;
         return this;
@@ -274,13 +295,14 @@ public final class Mother implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name, String image, Integer numOfChildren, String phoneNumber, String emailAddress, String addressMothersId) {
+    private CopyOfBuilder(String id, String name, String image, Integer numOfChildren, String phoneNumber, String emailAddress, List<String> faveBlogs, String addressMothersId) {
       super.id(id);
       super.name(name)
         .numOfChildren(numOfChildren)
         .emailAddress(emailAddress)
         .image(image)
         .phoneNumber(phoneNumber)
+        .faveBlogs(faveBlogs)
         .addressMothersId(addressMothersId);
     }
     
@@ -307,6 +329,11 @@ public final class Mother implements Model {
     @Override
      public CopyOfBuilder phoneNumber(String phoneNumber) {
       return (CopyOfBuilder) super.phoneNumber(phoneNumber);
+    }
+    
+    @Override
+     public CopyOfBuilder faveBlogs(List<String> faveBlogs) {
+      return (CopyOfBuilder) super.faveBlogs(faveBlogs);
     }
     
     @Override

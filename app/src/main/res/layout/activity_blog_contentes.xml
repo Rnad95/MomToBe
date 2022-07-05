@@ -181,6 +181,7 @@ android:orientation="vertical">
         app:itemBackground="@color/mom_colorPrimary"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu" />
 </RelativeLayout>
 

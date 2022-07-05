@@ -7,109 +7,159 @@
     tools:context=".Settings">
 
 
-    <ImageView
-        android:id="@+id/set_profile_picture"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="132dp"
-        app:layout_constraintBottom_toTopOf="@+id/set_mother_name"
-        app:layout_constraintEnd_toEndOf="@+id/set_change_picture"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/set_profile_picture"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_marginTop="92dp"-->
+<!--        android:layout_marginEnd="4dp"-->
+<!--        android:layout_marginBottom="132dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/set_mother_name"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/set_change_picture"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
 
     <ImageButton
         android:id="@+id/set_change_picture"
-        android:layout_width="60dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="197dp"
-        android:layout_marginEnd="122dp"
-        android:layout_marginBottom="352dp"
-        app:layout_constraintBottom_toTopOf="@+id/set_save_btn"
+        android:layout_width="51dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/set_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-    <EditText
-        android:id="@+id/set_phone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:labelFor="@+id/set_mother_phone"
-        android:maxLength="9"
-        app:layout_constraintBottom_toTopOf="@+id/set_children_number"
-        app:layout_constraintEnd_toEndOf="@+id/set_children_number"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/set_mother_number_of_children"
-        app:layout_constraintTop_toBottomOf="@+id/set_mother_phone"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="@+id/set_profile_picture"
+        app:layout_constraintTop_toTopOf="@+id/set_profile_picture"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageView
+        android:id="@+id/set_profile_picture"
+        android:layout_width="105dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/upload_image" />
+
 
     <Button
         android:id="@+id/set_save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginEnd="58dp"
         android:text="Save"
+        app:layout_constraintBaseline_toBaselineOf="@+id/set_cancel_btn"
+        app:layout_constraintEnd_toStartOf="@+id/set_cancel_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/set_cancel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="80dp"
+        android:text="cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_change_picture" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/set_phone"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/edit_text_round"
+        android:labelFor="@+id/set_mother_phone"
+        android:maxLength="9"
+        app:layout_constraintBottom_toBottomOf="@+id/set_mother_number_of_children"
+        app:layout_constraintStart_toStartOf="@+id/set_mother_phone"
+        app:layout_constraintTop_toBottomOf="@+id/set_mother_name"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/set_mother_name"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/edit_text_round"
+        android:labelFor="@+id/set_name"
+        app:layout_constraintBottom_toBottomOf="@+id/set_mother_phone"
+        app:layout_constraintEnd_toStartOf="@+id/set_cancel_btn"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="@+id/set_name"
+        app:layout_constraintTop_toTopOf="@+id/set_name"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/set_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="323dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="256dp"
+        android:labelFor="@+id/set_mother_name"
         android:text="Mother Name "
-        app:layout_constraintBottom_toTopOf="@+id/set_mother_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/set_mother_name"
-        android:layout_width="187dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="185dp"
-        android:labelFor="@+id/set_name"
-        app:layout_constraintBottom_toTopOf="@+id/set_save_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_profile_picture"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
         android:id="@+id/set_children_number"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="158dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/set_mother_name"
-        app:layout_constraintStart_toStartOf="@+id/set_mother_number_of_children"
-        app:layout_constraintTop_toBottomOf="@+id/set_phone"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="99dp"
+        android:background="@drawable/edit_text_round"
+        app:layout_constraintBottom_toTopOf="@+id/set_save_btn"
+        app:layout_constraintEnd_toEndOf="@+id/set_phone"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/set_phone"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/set_mother_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="68dp"
+        android:labelFor="@+id/set_phone"
         android:text="Mother Phone Number "
-        app:layout_constraintBottom_toTopOf="@+id/set_phone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_mother_name" />
+        app:layout_constraintTop_toBottomOf="@+id/set_name" />
 
     <TextView
         android:id="@+id/set_mother_number_of_children"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="68dp"
+        android:labelFor="@+id/set_children_number"
         android:text="Mother Number of Children "
-        app:layout_constraintBottom_toBottomOf="@+id/set_phone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/set_mother_phone"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/set_logout"
+        android:layout_width="105dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="sign out"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
