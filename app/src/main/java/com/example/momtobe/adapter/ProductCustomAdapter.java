@@ -80,11 +80,11 @@ public class ProductCustomAdapter extends RecyclerView.Adapter<ProductCustomAdap
         public CustomHoleder(@NonNull View itemView , CustomClickListener listener) {
             super(itemView);
             this.listener = listener;
-            productTitle = itemView.findViewById(R.id.blog_archive_title);
+            productTitle = itemView.findViewById(R.id.product_archive_title);
             productPrice = itemView.findViewById(R.id.product_archive_price);
-            productDescription = itemView.findViewById(R.id.blog_archive_desc);
+            productDescription = itemView.findViewById(R.id.product_archive_desc);
             productQuantity = itemView.findViewById(R.id.product_archive_quantity);
-            productImage = itemView.findViewById(R.id.blog_favorite_img);
+            productImage = itemView.findViewById(R.id.product_archive_img);
             productUpdate = itemView.findViewById(R.id.product_archive_update_btn);
             productDelete = itemView.findViewById(R.id.product_archive_delete_btn);
 
