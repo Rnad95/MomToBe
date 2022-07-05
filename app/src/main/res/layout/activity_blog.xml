@@ -1,56 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="@color/mom_colorBackgroundFragment"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    tools:context=".Blog">-->
 
-
-<!--    <TextView-->
-<!--        android:id="@+id/blog"-->
-<!--        android:layout_width="105dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginStart="149dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:layout_marginEnd="155dp"-->
-<!--        android:fontFamily="@font/poppins_bold"-->
-<!--        android:gravity="center"-->
-<!--        android:text="Blogs"-->
-<!--        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"-->
-<!--        android:textColor="#000"-->
-<!--        android:textSize="22sp" />-->
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/blog_archive_recycler"-->
-<!--        android:layout_width="391dp"-->
-<!--        android:layout_height="594dp"-->
-<!--        android:layout_below="@+id/blog"-->
-<!--         android:layout_alignParentStart="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginStart="7dp"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:layout_marginEnd="13dp" />-->
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottom_navigator"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        app:itemBackground="@color/mom_colorPrimary"-->
-<!--        app:itemIconTint="@drawable/selector"-->
-<!--        app:itemTextColor="@drawable/selector"-->
-<!--        app:menu="@menu/menu" />-->
-
-
-<!--</RelativeLayout>-->
-
-
-<!--    <?xml version="1.0" encoding="utf-8"?>-->
 <RelativeLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -60,17 +9,69 @@ android:background="@color/mom_colorBackgroundFragment"
 android:layout_height="match_parent"
 tools:context=".Experiance_activity">
 
+    <FrameLayout
+        android:id="@+id/blog_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow_image"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginVertical="@dimen/_1sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layoutToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="5dp"
+                        android:contentDescription="Logo"
+                        android:src="@drawable/mother_logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MoM To Be"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="@dimen/_3sdp"
+                        android:textColor="#fc6498"
+                        android:layout_marginLeft="-3dp"
+                        android:fontFamily="@font/poppins_bold"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:overScrollMode="never"
-    android:scrollbars="none">
+    android:scrollbars="none"
+    android:layout_below="@+id/blog_bar">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <TextView
             android:id="@+id/blog"
@@ -98,7 +99,8 @@ tools:context=".Experiance_activity">
             android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="@dimen/_50sdp"/>
 
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
