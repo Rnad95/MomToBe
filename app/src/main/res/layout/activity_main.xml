@@ -53,6 +53,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="42dp"
@@ -60,7 +61,6 @@
                     android:text="Hello, "
                     android:gravity="right"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_regular"
                     android:textSize="@dimen/_11sdp"
                     app:layout_constraintEnd_toStartOf="@+id/user_full_name"
                     app:layout_constraintHorizontal_bias="1.0"

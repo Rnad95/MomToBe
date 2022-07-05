@@ -63,18 +63,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     BottomNavigationView bottomNavigationView;
-
-
     RecyclerView recyclerView;
-
     ListView listView;
-
     List<com.example.momtobe.remote.Blog> blogsListTest= new ArrayList<>();;
     ArrayList<String> taskArrayList=new ArrayList<>();
-
-    Mother mother ;
-
-
+    Mother mother;
     RecyclerView recyclerViewQuestion;
     TextView mViewAll, mFullName;
     private ImageView imageView, mImage, mAnimationView;
@@ -122,17 +115,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        popMenuView();
         setRecyclerViewForBlogs();
         getQuestions();
         setRecyclerViewForQuestion();
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.popup_menu, menu);
-        return true;
     }
 
 

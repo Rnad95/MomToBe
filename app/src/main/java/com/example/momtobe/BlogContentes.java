@@ -66,9 +66,7 @@ public class BlogContentes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_contentes);
 
-
-        Amplify.Auth.fetchUserAttributes(
-                attributes ->{
+        Amplify.Auth.fetchUserAttributes(attributes ->{
                     emailId = attributes.get(3).getValue();
                     Bundle bundle = new Bundle();
                     bundle.putString("data" , "Done");
@@ -76,33 +74,20 @@ public class BlogContentes extends AppCompatActivity {
                     Message message = new Message();
                     message.setData(bundle);
                     handlerId.sendMessage(message);
-                },
-                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-        );
-
-        handlerId =  new Handler(Looper.getMainLooper(), msg->{
-//            Log.i(TAG, "onCreate: handlerId ->" + emailId);
-            findMotherAPI();
-            return true ;
-        });
-
-        handler =  new Handler(Looper.getMainLooper(), msg->{
-            setSaveBtn();
-            return true ;
-        });
+                }, error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error));
+        handlerId =  new Handler(Looper.getMainLooper(), msg->{findMotherAPI();return true ;});
+        handler =  new Handler(Looper.getMainLooper(), msg->{setSaveBtn();return true ;});
         save_btn = findViewById(R.id.favorite_blog);
-
         setData();
-
+        navToActivity();
         readContent();
-    }
 
+    }
     @Override
     protected void onResume() {
         super.onResume();
         setSaveBtn();
     }
-
     void findMotherAPI (){
         Log.i(TAG, "findMotherAPI: id ->"+emailId);
         Amplify.API.query(
@@ -129,7 +114,6 @@ public class BlogContentes extends AppCompatActivity {
                 }
         );
     }
-
     void setData(){
         Bundle bundle = getIntent().getExtras();
         title = bundle.getString("title");
@@ -149,7 +133,6 @@ public class BlogContentes extends AppCompatActivity {
         Glide.with(this).load(image).into(imageView);
 
     }
-
     void setSaveBtn (){
 
         save_btn = findViewById(R.id.favorite_blog);
@@ -209,10 +192,6 @@ public class BlogContentes extends AppCompatActivity {
 
 
     }
-
-
-
-
     void readContent (){
         ImageButton sound = findViewById(R.id.sound_on_btn);
         sound.setOnClickListener(view -> {
@@ -245,8 +224,6 @@ public class BlogContentes extends AppCompatActivity {
             Log.e("MyAmplifyApp", "Error writing audio file", error);
         }
     }
-
-
     private void navToActivity(){
 
         /**

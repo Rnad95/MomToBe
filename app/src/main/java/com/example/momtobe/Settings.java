@@ -1,5 +1,6 @@
 package com.example.momtobe;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,10 +15,12 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
@@ -26,6 +29,8 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.bumptech.glide.Glide;
 import com.example.momtobe.registration.LoginActivity;
+import com.example.momtobe.ui.ProductActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -33,6 +38,8 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Settings extends AppCompatActivity {
 
@@ -47,7 +54,9 @@ public class Settings extends AppCompatActivity {
     Handler handlerId ;
     private String emailId;
     private ImageView imageView;
-    ImageButton updateImage ;
+    BottomNavigationView bottomNavigationView;
+    CircleImageView updateImage ;
+
 
 
     @Override
@@ -56,6 +65,7 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         setCancelButton();
         fetchUserData ();
+        navToActivities();
         logout();
     }
 
@@ -138,7 +148,6 @@ public class Settings extends AppCompatActivity {
         numberOfChildren.setText(mother.getNumOfChildren().toString());
         imageKey=mother.getImage();
     }
-
     private void setImage(String image) {
         if(image != null) {
             Amplify.Storage.downloadFile(
@@ -180,7 +189,6 @@ public class Settings extends AppCompatActivity {
                 return;
         }
     }
-
     private void imageS3upload(Uri currentUri){
         Bitmap bitmap = null;
         String currentUriStr = String.valueOf(currentUri.getLastPathSegment())  + ".jpg";
@@ -228,7 +236,6 @@ public class Settings extends AppCompatActivity {
 
         return image;
     }
-
     void setCancelButton (){
         cancel_btn = findViewById(R.id.set_cancel_btn);
         cancel_btn.setOnClickListener(view ->{
@@ -236,7 +243,6 @@ public class Settings extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
     void setSaveButton (){
 
         save_btn = findViewById(R.id.set_save_btn);
@@ -277,9 +283,8 @@ public class Settings extends AppCompatActivity {
 
         });
     }
-
     private void logout() {
-        Button logout = findViewById(R.id.set_logout);
+        TextView logout = findViewById(R.id.set_logout);
         logout.setOnClickListener(view->{
             Amplify.Auth.signOut(
                     () -> {
@@ -298,4 +303,47 @@ public class Settings extends AppCompatActivity {
                 result -> Log.i(TAG, "Auth Session" + result.toString()),
                 error -> Log.e(TAG, error.toString())
         );
-    }}
+    }
+    private void navToActivities(){
+
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.blogs_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.home_page:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+    }
+
+
+
+}

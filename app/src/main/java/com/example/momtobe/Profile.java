@@ -48,6 +48,8 @@ public class Profile extends AppCompatActivity {
 
         navToActivity();
 //        fetchUserInfo();
+        logout();
+
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
                     emailId = attributes.get(3).getValue();
@@ -70,8 +72,6 @@ public class Profile extends AppCompatActivity {
         setFavBtn();
         setSettingsBtn();
     }
-
-
     void fetchUserInfo (){
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
@@ -92,7 +92,6 @@ public class Profile extends AppCompatActivity {
             return true ;
         });
     }
-
     void findMotherAPI (){
         Log.i(TAG, "findMotherAPI: id ->"+emailId);
         Amplify.API.query(
@@ -123,19 +122,18 @@ public class Profile extends AppCompatActivity {
             return true ;
         });
     }
-
-
     void setMotherInfo(){
 
         Log.i(TAG, "setMotherInfo: 100 ->" + mother);
         TextView mMotherName = findViewById(R.id.pro_mother_name);
         TextView mMotherPhone = findViewById(R.id.pro_mother_phone);
         TextView mMotherNumberOfChildren = findViewById(R.id.pro_mother_number_of_children);
+
         if (mother != null)
         {
-            mMotherName.setText(mother.getName());
-            mMotherPhone.setText(mother.getPhoneNumber().toString());
-            mMotherNumberOfChildren.setText(mother.getNumOfChildren().toString());
+            mMotherName.setText("Full Name: "+mother.getName());
+            mMotherPhone.setText("Phone Number: "+mother.getPhoneNumber().toString());
+            mMotherNumberOfChildren.setText("Number of Children: "+mother.getNumOfChildren().toString());
         }
         Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
         try {
@@ -145,7 +143,6 @@ public class Profile extends AppCompatActivity {
 
         }
     }
-
     private void setImage(String image) {
         if(image != null) {
             Amplify.Storage.downloadFile(
@@ -161,8 +158,6 @@ public class Profile extends AppCompatActivity {
             );
         }
     }
-
-
     void setFavBtn(){
         Button favBtn = findViewById(R.id.pro_my_fav_blogs);
         favBtn.setOnClickListener(view->{
@@ -171,7 +166,6 @@ public class Profile extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
     void setSettingsBtn () {
         Button settingsBtn =  findViewById(R.id.pro_settings_btn);
         settingsBtn.setOnClickListener(view->{
@@ -181,7 +175,6 @@ public class Profile extends AppCompatActivity {
         });
 
     }
-
     private void navToActivity(){
 
         /**
@@ -195,6 +188,8 @@ public class Profile extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.home_page:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.exp_page:
                         startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
@@ -222,8 +217,26 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+    private void logout() {
+        TextView logout = findViewById(R.id.set_logout);
+        logout.setOnClickListener(view->{
+            Amplify.Auth.signOut(
+                    () -> {
+                        Log.i(TAG, "Signed out successfully");
+                        startActivity(new Intent(Profile.this, LoginActivity.class));
+                        authSession();
+                        finish();
+                    },
+                    error -> Log.e(TAG, error.toString())
+            );
+        });
 
-
-
+    }
+    private void authSession() {
+        Amplify.Auth.fetchAuthSession(
+                result -> Log.i(TAG, "Auth Session" + result.toString()),
+                error -> Log.e(TAG, error.toString())
+        );
+    }
 
 }
