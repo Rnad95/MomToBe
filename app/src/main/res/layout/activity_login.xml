@@ -17,11 +17,20 @@
         android:layout_height="wrap_content"
         android:background="@color/mom_colorWhitePure"
         android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="Logo"
+            android:src="@drawable/mother_logo" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/mom_spacing_standard_1"
-            android:layout_marginTop="@dimen/mom_signin_tvTitleMarginTop"
+            android:layout_marginTop="30dp"
             android:text="@string/mom_sign_in"
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_bold"
