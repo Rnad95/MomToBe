@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -86,10 +87,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         navToActivity();
-
         itemsSelector();
         ButtonOnListener();
-
         fetchUserInformation();
         Amplify.Storage.getUrl("1734345085.jpg",
                 success ->{
@@ -158,9 +157,8 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             setImage(mother.getImage());
                         }catch (Exception error){
-
+                            Log.e(TAG, "fetchUserInformation: "+error.getMessage() );
                         }
-
                         return true ;
                     });
                 },
@@ -196,14 +194,15 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setImage(String image) {
         if(image != null) {
-            Amplify.Storage.downloadFile(
+            Amplify.Storage.getUrl(
                     image,
-                    new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
+//                    new File(getApplicationContext().getFilesDir() + "/" + image ),
                     result -> {
                         imageView = findViewById(R.id.image_profile);
+                        String url = result.getUrl().toString();
                         Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
-                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
-                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView));
+//                        Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
+                        runOnUiThread(() -> Glide.with(getApplicationContext()).load(url).into(imageView));
                     },
                     error -> Log.e(TAG, "Download Failure", error)
             );
@@ -230,8 +229,12 @@ public class MainActivity extends AppCompatActivity {
         Amplify.Storage.getUrl(imageKey+".jpg",
                 success ->{
                     String url = success.getUrl().toString();
-                    runOnUiThread(() -> {
-
+                      try {
+                         CallAPI ();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                      runOnUiThread(() -> {
                         Glide.with(this).load(url).into(mImage);
                     });
 
@@ -314,35 +317,6 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONArray jsonArray = response.getJSONObject("_embedded").getJSONArray("blogs");
 
-//<<<<<<< HEAD
-//                        Gson gson = new Gson();
-//                        String json = gson.toJson(jsonArray);
-//                        List<JsonObject> arrayList = new ArrayList();
-//                        arrayList = gson.fromJson(jsonArray.toString(),ArrayList.class);
-//
-//                        for (int i = 0; i < arrayList.toArray().length; i++) {
-//                            Log.i(TAG, "CallAPI: SIZE =>"+ arrayList.size());
-//                            Object getrow = arrayList.get(i);
-//                            LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
-//                            String title = t.get("title").toString();
-//                            String content = t.get("content").toString();
-//                            String imageLink = t.get("imageLink").toString();
-//                            String author = t.get("author").toString();
-//                            String category = t.get("category").toString();
-//                            String blogId = t.get("blogId").toString();
-//                            String date = t.get("date").toString();
-//                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-M-dd");
-//                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category);
-//                            blogsListTest.add(blog);
-//
-////                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
-//                        }
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("data" , "Done");
-//                        Message message = new Message();
-//                        message.setData(bundle);
-//                        handler.sendMessage(message);
-//=======
                     Gson gson = new Gson();
                     String json = gson.toJson(jsonArray);
                     List<JsonObject> arrayList = new ArrayList();
@@ -357,13 +331,13 @@ public class MainActivity extends AppCompatActivity {
                         String content = t.get("content").toString();
                         String blogId = t.get("blogId").toString();
                         String author = t.get("author").toString();
-
+                        String category = t.get("category").toString();
                         String imageLink = t.get("imageLink").toString();
                         try {
                             dateParse = simpleDateFormat.parse(date);
                             String afterDate = "2022-06-01";
                             if(dateParse.after(simpleDateFormat.parse(afterDate))){
-                                com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,imageLink);
+                                com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog( blogId ,  title,  content,  author,  imageLink,  category,  date);
                                 blogsListTest.add(blog);
                                 Log.i(TAG, "CallAPI: SUCCESS FROM DATA");
                             }
@@ -377,7 +351,6 @@ public class MainActivity extends AppCompatActivity {
                     message.setData(bundle);
                     handler.sendMessage(message);
 
-//>>>>>>> 1ad3ab5db1c262a54073fd72d78215ca11e31bc9
 
                     } catch (JSONException e) {
                         Log.e(TAG, "CallAPI: FROM CATCH ");
