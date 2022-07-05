@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Question;
 
 import com.amplifyframework.datastore.generated.model.QuestionCategories;
@@ -47,7 +48,9 @@ public class Question_avtivity extends AppCompatActivity {
     FloatingActionButton addQuestion;
     public static final String Questionid = "questionId";
     private String userId  =  "" ;
+    private String userEmail  =  "" ;
     private Handler handler1;
+    private Handler handler2;
 
 
 
@@ -223,19 +226,7 @@ public class Question_avtivity extends AppCompatActivity {
         );
         handler1 = new Handler(Looper.getMainLooper() , msg -> {
 
-            Amplify.Auth.fetchUserAttributes(
-                    attributes ->{
-                        userId = attributes.get(0).getValue();
-
-                        Bundle bundle = new Bundle();
-                        bundle.putString("data" , "Done");
-                        Message message = new Message();
-                        message.setData(bundle);
-                        handler.sendMessage(message);
-                    },
-                    error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-            );
-
+            getUserId();
 
             return true ;
         });
@@ -256,6 +247,44 @@ public class Question_avtivity extends AppCompatActivity {
                 error -> Log.e(TAG, error.toString())
         );
 
+
+    }
+
+    public void getUserId(){
+
+        handler2 = new Handler(Looper.getMainLooper() , msg -> {
+            Amplify.API.query(
+                    ModelQuery.list(Mother.class, Mother.EMAIL_ADDRESS.contains(userEmail)),
+                    response -> {
+                        for (Mother mother : response.getData()) {
+                            userId =  mother.getId() ;
+                        }
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+
+            return true ;
+        });
+
+
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    Log.i("UserEmail" , attributes.toString());
+                    userEmail = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler2.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
 
     }
 }

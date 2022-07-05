@@ -33,6 +33,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Settings extends AppCompatActivity {
 
     private static final String TAG = "Settings";
@@ -48,7 +50,7 @@ public class Settings extends AppCompatActivity {
 
 
 
-    ImageButton updateImage ;
+    CircleImageView updateImage ;
 
 
     @Override

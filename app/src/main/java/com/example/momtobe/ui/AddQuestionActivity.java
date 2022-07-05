@@ -29,9 +29,11 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Cat;
 import com.amplifyframework.datastore.generated.model.Experience;
 import com.amplifyframework.datastore.generated.model.ExperienceCategories;
+import com.amplifyframework.datastore.generated.model.Mother;
 import com.amplifyframework.datastore.generated.model.Question;
 import com.amplifyframework.datastore.generated.model.QuestionCategories;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.Experiance_activity;
 import com.example.momtobe.Question_avtivity;
 import com.example.momtobe.R;
 
@@ -48,10 +50,10 @@ public class AddQuestionActivity extends AppCompatActivity {
     private static final String TAG = AddExperianceActivity.class.getName();
     private static final int REQUEST_CODE = 1234;
     private ArrayList<Cat> arrayListspinner3;
-    private Handler handler1;
+    private Handler handler  , handler1 , handler2;
     private Spinner spinner3;
     private String imageKey = "" ;
-    private String userId ;
+    private String userId , userEmail  ;
 
     private static final int REQUEST_CODE_SEND = 4567;
 
@@ -98,68 +100,63 @@ public class AddQuestionActivity extends AppCompatActivity {
         add_Spinner_API_Query();
         image_Question.setOnClickListener(view ->{
             uploadImage();
-            setImage(imageKey);
+
         } );
 
         button.setOnClickListener(view -> {
-            String title1 = title.getText().toString();
-            String description1 = description.getText().toString();
+            handler = new Handler(Looper.getMainLooper() , msg -> {
+
+                String title1 = title.getText().toString();
+                String description1 = description.getText().toString();
 
 
 
-            newQuestion = Question.builder()
-                    .title(title1)
-                    .description(description1)
-                    .featured(false)
-                    .motherQuestionsId(userId)
-                            .image(imageKey)
+                newQuestion = Question.builder()
+                        .title(title1)
+                        .description(description1)
+                        .featured(false)
+                        .motherQuestionsId(userId)
+                        .image(imageKey)
 
-                    .build();
+                        .build();
 
-            Amplify.API.mutate(
-                    ModelMutation.create(newQuestion),
-                    response -> {
-                        Log.i("MyAmplifyApp", "Added Todo with id Question: "+response );
-                    },
-                    error -> Log.e("MyAmplifyApp", "Create failed", error)
-            );
+                Amplify.API.mutate(
+                        ModelMutation.create(newQuestion),
+                        response -> {
+                            Log.i("MyAmplifyApp", "Added Todo with id Question: "+response );
+                        },
+                        error -> Log.e("MyAmplifyApp", "Create failed", error)
+                );
 
-            for (int i = 0; i < arrayListspinner3.size(); i++) {
+                for (int i = 0; i < arrayListspinner3.size(); i++) {
 
-                if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
+                    if (arrayListspinner3.get(i).getTitle() == spinner3.getSelectedItem().toString()) {
 
-                    QuestionCategories questionCategories=QuestionCategories
-                            .builder()
-                            .question(newQuestion)
-                            .cat(arrayListspinner3.get(i))
-                            .build();
-                    Amplify.API.mutate(
-                            ModelMutation.create(questionCategories),
-                            response -> {
-                                Log.i("MyAmplifyApp", "Added Todo with  categrey Question id: " + response.getData().getId());},
-                            error -> Log.e("MyAmplifyApp", "Create failed", error)
-                    );
+                        QuestionCategories questionCategories=QuestionCategories
+                                .builder()
+                                .question(newQuestion)
+                                .cat(arrayListspinner3.get(i))
+                                .build();
 
-                    Toast.makeText(this, "categrey id:"+questionCategories.getId(), Toast.LENGTH_SHORT).show();
+                        Amplify.API.mutate(
+                                ModelMutation.create(questionCategories),
+                                response -> Log.i("MyAmplifyApp", "Added Todo with  categrey Question id"),
+                                error -> Log.e("MyAmplifyApp", "Create failed", error)
+                        );
+
+                        Toast.makeText(this, "categrey id:"+questionCategories.getId(), Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
-            }
+                startActivity(new Intent(this , Question_avtivity.class));
 
-            startActivity(new Intent(this , Question_avtivity.class));
+                return true ;
+            });
 
+            getUserId();
         });
-        Amplify.Auth.fetchUserAttributes(
-                attributes ->{
-                    userId = attributes.get(0).getValue();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("data" , "Done");
 
-                    Message message = new Message();
-                    message.setData(bundle);
-                    handler1.sendMessage(message);
-                },
-                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-        );
     }
     public void add_Spinner_API_Query() {
         Amplify.API.query(
@@ -233,6 +230,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                     result -> {
                         Log.i(TAG, "Successfully uploaded: " + result.getKey()) ;
                         imageKey = result.getKey();
+                        runOnUiThread(() -> setImage(imageKey));
                         Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
                     },
                     storageFailure -> Log.e(TAG, "Upload failed", storageFailure)
@@ -257,6 +255,43 @@ public class AddQuestionActivity extends AppCompatActivity {
                     error -> Log.e(TAG, "Download Failure", error)
             );
         }
+    }
+
+    public void getUserId(){
+        handler2 = new Handler(Looper.getMainLooper() , msg -> {
+            Amplify.API.query(
+                    ModelQuery.list(Mother.class, Mother.EMAIL_ADDRESS.contains(userEmail)),
+                    response -> {
+                        for (Mother mother : response.getData()) {
+                            userId =  mother.getId() ;
+                        }
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("data" , "Done");
+                        Message message = new Message();
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    },
+                    error -> Log.e("MyAmplifyApp", "Query failure", error)
+            );
+
+            return true ;
+        });
+
+
+        Amplify.Auth.fetchUserAttributes(
+                attributes ->{
+                    Log.i("UserEmail" , attributes.toString());
+                    userEmail = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handler2.sendMessage(message);
+                },
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
+
     }
 
 }

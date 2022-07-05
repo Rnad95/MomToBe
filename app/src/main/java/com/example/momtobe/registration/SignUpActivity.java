@@ -98,9 +98,7 @@ public class SignUpActivity extends AppCompatActivity {
             Uri imageUri = (Uri) intent1.getParcelableExtra(Intent.EXTRA_STREAM);
             mImageView.setImageURI(imageUri);
         }
-        mImage.setOnClickListener(view -> {
-            uploadPhoto();
-        });
+        mImage.setOnClickListener(view ->  uploadPhoto() );
 
 
         mSignUp.setOnClickListener(new View.OnClickListener() {
@@ -243,7 +241,6 @@ public class SignUpActivity extends AppCompatActivity {
         intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, REQUEST_CODE);
-//          startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_CODE);
 
     }
 

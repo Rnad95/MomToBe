@@ -105,9 +105,9 @@ public class Profile extends AppCompatActivity {
         TextView mMotherPhone = findViewById(R.id.pro_mother_phone);
         TextView mMotherNumberOfChildren = findViewById(R.id.pro_mother_number_of_children);
         if (mother != null) {
-        mMotherName.setText("Mother Name : "+mother.getName());
-        mMotherPhone.setText("Mother Phone Number : "+mother.getPhoneNumber().toString());
-        mMotherNumberOfChildren.setText("Mother Number Of Children : "+mother.getNumOfChildren().toString());
+        mMotherName.setText("Full Name : "+mother.getName());
+        mMotherPhone.setText("Phone Number : "+mother.getPhoneNumber().toString());
+        mMotherNumberOfChildren.setText("Number Of Children : "+mother.getNumOfChildren().toString());
 
         Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
 
