@@ -49,7 +49,7 @@ public class Profile extends AppCompatActivity {
 
         navToActivity();
 
-//        logout();
+        logout();
 
 
         Amplify.Auth.fetchUserAttributes(
