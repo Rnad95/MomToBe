@@ -9,6 +9,7 @@
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="1dp"
     app:cardElevation="8dp"
+    android:background="@drawable/shadow_image"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
@@ -32,6 +33,7 @@
             android:src="@drawable/product"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
