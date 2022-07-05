@@ -1,126 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".BlogContentes">-->
+
+
+
+<!--   -->
+
+<!--    <ScrollView-->
+<!--        android:id="@+id/scroll_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="284dp"-->
+<!--        android:layout_below="@+id/blogImage"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginStart="18dp"-->
+<!--        android:layout_marginTop="23dp"-->
+<!--        android:layout_marginEnd="17dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/BlogContent"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_below="@+id/blogImage"-->
+<!--            android:layout_alignStart="@+id/blogImage"-->
+<!--            android:layout_alignEnd="@+id/blogImage"-->
+<!--            android:fontFamily="@font/poppins_regular"-->
+<!--            android:text="Blog Content"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+<!--    </ScrollView>-->
+
+<!--   -->
+
+
+
+<!--   -->
+
+<!--</RelativeLayout>-->
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#eeecf1"
+android:orientation="vertical">
+
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BlogContentes">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/blod_details"
-        android:layout_width="131dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="149dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="131dp"
-        android:fontFamily="@font/poppins_bold"
-        android:gravity="center"
-        android:text="Blog Details"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-        android:textColor="#000"
-        android:textSize="20sp" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-    <TextView
-        android:id="@+id/BlogTitle"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/blod_details"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="31dp"
-        android:fontFamily="@font/poppins_bold"
-        android:gravity="center"
-        android:text="Title Blog"
-
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/blogImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="wrap_content"
-        android:layout_height="284dp"
-        android:layout_below="@+id/blogImage"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="17dp">
-
-        <TextView
-            android:id="@+id/BlogContent"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/blogImage"
-            android:layout_alignStart="@+id/blogImage"
-            android:layout_alignEnd="@+id/blogImage"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Blog Content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </ScrollView>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/favorite_blog"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_alignStart="@+id/sound_on_btn"
-        android:layout_alignTop="@+id/blogImage"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="15dp"
-        android:src="@drawable/ic_unfavorite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/blogImage"
+                android:layout_width="match_parent"
+                android:layout_height="367dp"
+                android:scaleType="centerCrop"
+                />
 
-    <ImageView
-        android:id="@+id/blogImage"
-        android:layout_width="253dp"
-        android:layout_height="166dp"
-        android:layout_below="@+id/BlogTitle"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="82dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:background="@color/white"
+                >
 
-    <ImageButton
-        android:id="@+id/sound_on_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/BlogTitle"
-        android:layout_alignBottom="@+id/blogImage"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="37dp"
-        app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    >
+                    <TextView
+                        android:id="@+id/BlogTitle"
+                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/_220sdp"
+                        android:text="title"
+                        android:layout_weight = "1"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/author_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scroll_view"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="44dp"
-        android:text="AuthorName "
-        android:textSize="21dp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="@+id/blogImage"
-        app:layout_constraintStart_toStartOf="@+id/blogImage" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        >
+                        <ImageButton
+                            android:id="@+id/favorite_blog"
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:layout_alignStart="@+id/sound_on_btn"
+                            android:layout_alignTop="@+id/blogImage"
+                            android:layout_alignParentEnd="true"
+                            android:background="@color/white"
+                            android:src="@drawable/ic_baseline_favorite_border_24"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/sound_on_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/BlogTitle"
+                            android:layout_alignBottom="@+id/blogImage"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:background="@color/white"
+                            app:srcCompat="@drawable/ic_baseline_volume_up_24" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/BlogContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/blogImage"
+                    android:layout_alignStart="@+id/blogImage"
+                    android:layout_alignEnd="@+id/blogImage"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Blog Content"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:padding="15dp"
+                    android:background="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/author_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/scroll_view"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="44dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="AuthorName"
+                    android:textSize="14dp"
+                    android:textStyle="bold|italic"
+                    />
+
+            </LinearLayout>
+
+            </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigator"
@@ -130,8 +181,8 @@
         app:itemBackground="@color/mom_colorPrimary"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu" />
-
 </RelativeLayout>
+
+</LinearLayout>

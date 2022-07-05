@@ -1,13 +1,17 @@
 package com.example.momtobe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Button;
+import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,8 +21,9 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Blog;
 import com.amplifyframework.datastore.generated.model.Mother;
-import com.amplifyframework.datastore.generated.model.UserBlogs;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.ui.ProductActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,6 +37,7 @@ import java.util.List;
 public class BlogContentes extends AppCompatActivity {
 
     private static final String TAG = "blogContent";
+    BottomNavigationView bottomNavigationView;
     private final MediaPlayer mp = new MediaPlayer();
     private String email;
     private Handler handler;
@@ -43,9 +49,15 @@ public class BlogContentes extends AppCompatActivity {
     private String authorName;
     private String content;
     private String image;
+    private String category;
+    private String blogId;
     private Blog blog;
     private TextView authorNameView;
     private ImageButton save_btn;
+    private String emailId;
+    Handler handlerId ;
+    Mother mother ;
+    List <String> blogIds = new ArrayList<>();
     private String userId;
     private String author;
 
@@ -54,12 +66,53 @@ public class BlogContentes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_contentes);
 
-        setData();
+        Amplify.Auth.fetchUserAttributes(attributes ->{
+                    emailId = attributes.get(3).getValue();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("data" , "Done");
 
-//        setBlogImage();
-        setSaveBtn();
-//        removeSave();
+                    Message message = new Message();
+                    message.setData(bundle);
+                    handlerId.sendMessage(message);
+                }, error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error));
+        handlerId =  new Handler(Looper.getMainLooper(), msg->{findMotherAPI();return true ;});
+        handler =  new Handler(Looper.getMainLooper(), msg->{setSaveBtn();return true ;});
+        save_btn = findViewById(R.id.favorite_blog);
+        setData();
+        navToActivity();
         readContent();
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setSaveBtn();
+    }
+    void findMotherAPI (){
+        Log.i(TAG, "findMotherAPI: id ->"+emailId);
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                success->{
+                    if(success.hasData())
+                    {
+                        for (Mother curMother : success.getData())
+                        {
+                            if(curMother.getEmailAddress().equals(emailId)){
+//                                Log.i(TAG, "findMotherAPI: mother->"+mother);
+                                mother  = curMother;
+                            }
+                            Bundle bundle = new Bundle();
+                            bundle.putString("data","Done");
+                            Message message = new Message();
+                            message.setData(bundle);
+                            handler.sendMessage(message);
+                        }
+                    }
+                },
+                fail->{
+                    Log.i(TAG, "onCreate: failed to find mother in database");
+                }
+        );
     }
     void setData(){
         Bundle bundle = getIntent().getExtras();
@@ -79,101 +132,65 @@ public class BlogContentes extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.blogImage);
         Glide.with(this).load(image).into(imageView);
 
-
-
     }
     void setSaveBtn (){
+
         save_btn = findViewById(R.id.favorite_blog);
-        save_btn.setOnClickListener(view->{
-            Bundle bundle = new Bundle();
-            email =  bundle.getString("motherEmail") ;
-            index = bundle.getInt("blogId");
-            author = bundle.getString("author");
-            image = bundle.getString("imageLink");
-            Log.i(TAG, "setSaveBtn: AUTHOR: " + author);
-            blog = Blog.builder().title(title)
-                    .description(content)
-                    .autherName("author")
-                    .featured(true)
-                    .image(image)
+        save_btn.setOnClickListener(view-> {
+
+            Bundle bundle = getIntent().getExtras();
+            blogId = bundle.getString("position");
+
+            Log.i(TAG, "setSaveBtn: blogId ->" +blogId);
+            if(mother.getFaveBlogs().contains(blogId))
+            {
+                blogIds.clear();
+                blogIds.addAll(mother.getFaveBlogs());
+                blogIds.remove(blogId);
+            }
+            else
+            {
+                blogIds.clear();
+                blogIds.addAll(mother.getFaveBlogs());
+                blogIds.add(blogId);
+
+            }
+
+            Mother newMother = Mother.builder()
+                    .name(mother.getName())
+                    .numOfChildren(mother.getNumOfChildren())
+                    .emailAddress(mother.getEmailAddress())
+                    .phoneNumber(mother.getPhoneNumber())
+                    .image(mother.getImage())
+                    .faveBlogs(blogIds)
+                    .id(mother.getId())
                     .build();
-            Amplify.API.mutate(
-                    ModelMutation.create(blog),
-                    success ->{
-                        Log.i(TAG,"Saved blog: "+ success);
+
+//            Log.i(TAG, "setSaveButton: testing ->"+ newMother);
+            Amplify.API.mutate(ModelMutation.update(newMother),
+                    response -> {
+                        Log.i("MyAmplifyApp", "Todo with id: " + response);
+                        runOnUiThread(()->{
+                            if(response.getData().getFaveBlogs().contains(blogId))
+                            {
+                                int color = Color.parseColor("#000000");
+                                save_btn.setColorFilter(color);
+                            }
+                            else
+                            {
+                                int color = Color.parseColor("#FFFFFF");
+                                save_btn.setColorFilter(color);
+                            }
+                        });
+
                     },
-                    error ->{
-                        Log.i(TAG, "Could not save to Database");
-                    }
+                    error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
 
-
-
-            Amplify.API.query(ModelQuery.list(Mother.class),
-                    success->{
-                        if(success.hasData())
-                            for(Mother mother : success.getData()){
-                                {
-                                    if(mother.getEmailAddress().equals(email)){
-                                        UserBlogs userBlogs = UserBlogs.builder().mother(mother).blog(blog).build();
-                                        mother.getBlogs().add(userBlogs);
-                                        blog.getMothers().add(userBlogs);
-
-                                        Amplify.API.mutate(
-                                                ModelMutation.create(userBlogs),
-                                                successBlogUser ->{
-                                                    Log.i(TAG,"Saved blog: "+ successBlogUser);
-                                                },
-                                                error ->{
-                                                    Log.i(TAG, "Could not save to Database");
-                                                }
-                                        );
-
-                                    }
-                                }
-                            }
-                    },
-                    fail->{
-                    });
+            Log.i(TAG, "setSaveBtn: favBlogs ->"+mother.getFaveBlogs());
         });
-    }
-    void removeSave (){
-        Amplify.API.query(ModelQuery.list(Mother.class),
-                foundMother ->{
-                    for(Mother mother : foundMother.getData()){
-//                    if(mother.getEmailAddress().equals(email))
-                        {
-                            Amplify.API.query(ModelQuery.list(Blog.class),
-                                    foundBlog->{
-                                        for(Blog blog : foundBlog.getData())
-                                        {
-//                                        if(blog.getId().equals(blogId))
-                                            {
-                                                UserBlogs relation =  UserBlogs.builder().mother(mother).blog(blog).build();
-                                                Amplify.API.mutate(ModelMutation.delete(relation),
-                                                        response -> {
-                                                            Log.i("MyAmplifyApp", "Deleted ");
-                                                            finish();
-                                                        },
-                                                        error -> Log.e("MyAmplifyApp", "delete failed", error)
-                                                );
-                                            }
-                                        }
-
-                                    },
-                                    notFoundBlog->{
-                                        Log.e("MyAmplifyApp", "delete failed", notFoundBlog);
-                                    });
-                        }
-                    }
 
 
-                },
-                notFound ->{
-                    Log.e("MyAmplifyApp", "delete failed", notFound);
-
-                }
-        );
     }
     void readContent (){
         ImageButton sound = findViewById(R.id.sound_on_btn);
@@ -207,5 +224,47 @@ public class BlogContentes extends AppCompatActivity {
             Log.e("MyAmplifyApp", "Error writing audio file", error);
         }
     }
+    private void navToActivity(){
+
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.home_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.home_page:
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        startActivity(new Intent(getApplicationContext(), com.example.momtobe.Blog.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+
+    }
+
+
 
 }

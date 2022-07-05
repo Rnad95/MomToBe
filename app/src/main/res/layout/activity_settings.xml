@@ -15,21 +15,33 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="50dp"
-            android:layout_marginTop="15dp"
-            >
+            android:paddingBottom="50dp">
+
+            <TextView
+                android:id="@+id/set_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="25dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="@dimen/_13sdp"
+                android:text="log out"
+                android:textColor="@color/mom_colorPrimary" />
 
             <TextView
                 android:id="@+id/page_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit Profile"
                 android:fontFamily="@font/poppins_bold"
-                android:textSize="20sp"
+                android:text="Edit Profile"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                android:textColor="#000" />
+                android:textColor="#000"
+                android:textSize="20sp" />
+
 
             <View
                 android:layout_width="0dp"
@@ -45,8 +57,8 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@color/white"
-                android:clickable="true"
-                >
+                android:clickable="true">
+
 
                 <ImageView
                     android:id="@+id/set_profile_picture"
@@ -54,8 +66,7 @@
                     android:layout_height="match_parent"
                     android:padding="25dp"
                     app:srcCompat="@drawable/ic_photo"
-                    app:tint="#cccccc"
-                    />
+                    app:tint="#cccccc" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/set_change_picture"
@@ -70,15 +81,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fab_margin"
                 android:background="@drawable/edit_text_round"
-                android:hint="Name"
                 android:fontFamily="@font/poppins_regular"
+                android:hint="Name"
                 android:inputType="text"
                 android:maxLength="15"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@android:color/black"
-                android:textColorHint="#666666"
-                />
+                android:textColorHint="#666666" />
 
             <EditText
                 android:id="@+id/set_phone"
@@ -86,23 +96,22 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/edit_text_round"
-                android:hint="Phone Number"
                 android:fontFamily="@font/poppins_regular"
+                android:hint="Phone Number"
                 android:inputType="textEmailAddress"
                 android:maxLength="10"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@android:color/black"
-                android:textColorHint="#666666"
-                />
+                android:textColorHint="#666666" />
 
             <EditText
                 android:id="@+id/set_children_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:fontFamily="@font/poppins_regular"
                 android:background="@drawable/edit_text_round"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Number Of Children"
                 android:inputType="text"
                 android:maxLength="10"
@@ -115,18 +124,45 @@
             <Button
                 android:id="@+id/set_save_btn"
                 style="@style/mom_Button"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_margin="@dimen/mom_spacing_30"
+                android:layout_width="192dp"
+                android:layout_height="62dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/mom_spacing_30"
+                android:layout_marginTop="@dimen/mom_spacing_30"
+                android:layout_marginEnd="@dimen/mom_spacing_30"
                 android:background="@drawable/btn_dark"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Save"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/set_cancel_btn"
+                style="@style/mom_Button"
+                android:layout_width="192dp"
+                android:layout_height="62dp"
+
+                android:layout_marginStart="@dimen/mom_spacing_30"
+                android:layout_marginEnd="@dimen/mom_spacing_30"
+                android:layout_marginBottom="@dimen/mom_spacing_10"
+                android:background="@drawable/btn_dark"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Cancel"
                 android:textColor="#FFFFFF"
-                android:layout_marginTop="15dp"
-                />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </LinearLayout>
-
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/mom_colorPrimary"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

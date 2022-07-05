@@ -32,6 +32,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Blog extends AppCompatActivity {
@@ -44,8 +45,8 @@ public class Blog extends AppCompatActivity {
     private RequestQueue mQueue;
     BottomNavigationView bottomNavigationView;
     private String url ="https://jsonkeeper.com/b/FV5T";
-
     private TextView tv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,12 +105,13 @@ public class Blog extends AppCompatActivity {
             BlogCustomAdapter blogCustomAdapter = new BlogCustomAdapter(getApplicationContext(),blogsListTest, new BlogCustomAdapter.CustomClickListener() {
                 @Override
                 public void onTaskItemClicked(int position) {
+                    Log.i(TAG, "onTaskItemClicked: position ->" + position);
+
                     Intent intent = new Intent(getApplicationContext(), BlogContentes.class);
-                    intent.putExtra("blogId", position);
-                    intent.putExtra("title",    blogsListTest.get(position).getTitle());
-                    intent.putExtra("date",    blogsListTest.get(position).getDate());
-                    intent.putExtra("content",  blogsListTest.get(position).getContent());
-                    intent.putExtra("author",   blogsListTest.get(position).getAuthor());
+                    intent.putExtra("position", blogsListTest.get(position).getId());
+                    intent.putExtra("title",  blogsListTest.get(position).getTitle());
+                    intent.putExtra("content",blogsListTest.get(position).getContent());
+                    intent.putExtra("author", blogsListTest.get(position).getAuthor());
                     intent.putExtra("imageLink",blogsListTest.get(position).getImageLink());
                     intent.putExtra("category" ,blogsListTest.get(position).getCategory());
                     startActivity(intent);
@@ -142,9 +144,13 @@ public class Blog extends AppCompatActivity {
                             String author = t.get("author").toString();
                             String category = t.get("category").toString();
                             String date = t.get("date").toString();
-                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,author,imageLink,category,date);
+
+                            String blogId = t.get("blogId").toString();
+                            com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(blogId,title,content,author,imageLink,category,date);
+
                             blogsListTest.add(blog);
-                            Log.i(TAG, "CallAPI: Author: "+blog.getAuthor());
+
+//                            Log.i(TAG, "CallAPI: blog from API : "+blog.toString());
                         }
                         Bundle bundle = new Bundle();
                         bundle.putString("data" , "Done");

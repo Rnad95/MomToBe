@@ -36,6 +36,8 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -52,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
     private File file;
     private String imageKey, fullName,password,emailAddress, image, phoneNumber, key;
     private int numOfChildren;
+    List<String> blogIdx = new ArrayList<>();
 
 
     @Override
@@ -151,6 +154,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
                                 .image(imageKey)
+                                .faveBlogs(blogIdx)
                                 .addressMothersId(address.getId())
                                 .build();
 
@@ -170,16 +174,21 @@ public class SignUpActivity extends AppCompatActivity {
                 failure -> {
                     Log.e(TAG, "Uploaded failed.", failure);
                     runOnUiThread(() -> {
+
+
+
                         Address address = Address.builder()
                                 .country("Jordan")
                                 .city("Amman")
                                 .street("University of Jordan street")
                                 .build();
+
                         Mother mother = Mother.builder()
                                 .name(fullName)
                                 .numOfChildren(numOfChildren)
                                 .emailAddress(emailAddress)
                                 .phoneNumber(phoneNumber)
+                                .faveBlogs(blogIdx)
                                 .addressMothersId(address.getId())
                                 .build();
 

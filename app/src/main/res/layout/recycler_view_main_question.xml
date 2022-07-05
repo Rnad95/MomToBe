@@ -1,81 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_question_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="1dp"
-    app:cardElevation="5dp"
+    app:cardElevation="8dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
-    <RelativeLayout
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/mom_colorBackgroundFragment"
-        >
+        android:layout_height="wrap_content">
+
+        <!--ImageVIew to display our Course Image-->
+
+        <!--Text View to display Course Name-->
 
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <ImageView
             android:id="@+id/question_image"
-            android:layout_width="83dp"
-            android:layout_height="79dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="17dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/question" />
-
-        <TextView
-            android:id="@+id/question_content"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/question_title"
-            android:layout_alignStart="@+id/question_title"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="0dp"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="1dp"
-            android:drawablePadding="2dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="question need to answer"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.313"
-            tools:ignore="SmallSp" />
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/product"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/question_title"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/question_image"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="@dimen/_3sdp"
-            android:layout_toEndOf="@+id/question_image"
-            android:fontFamily="@font/poppins_medium"
-            android:text="title"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/question_image"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Quastion Name"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/question_image"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/nav_btn"
-            android:layout_width="40dp"
-            android:layout_height="32dp"
-            android:layout_alignTop="@+id/question_title"
-            android:layout_alignBottom="@+id/question_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="78dp"
-            android:layout_marginBottom="28dp"
-            android:layout_toEndOf="@+id/question_content"
-            android:src="@drawable/ic_arrow" />
+        <TextView
+            android:id="@+id/question_content"
+            android:layout_width="220dp"
+            android:layout_height="49dp"
+            android:layout_below="@id/question_title"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@id/question_image"
+            android:drawablePadding="2dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Short decription for the quastion"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.313"
+            app:layout_constraintStart_toEndOf="@+id/question_image"
+            app:layout_constraintTop_toBottomOf="@+id/question_title"
+            tools:ignore="SmallSp" />
 
-    </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginRight="@dimen/_2sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/delete_btn"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="3dp"
+                android:src="@drawable/ic_arrow"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintBottom_toTopOf="@+id/product_archive_quantity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@+id/product_archive_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.1" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

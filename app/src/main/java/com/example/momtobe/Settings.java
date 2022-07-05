@@ -1,5 +1,6 @@
 package com.example.momtobe;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,10 +15,12 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
@@ -25,6 +28,9 @@ import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Mother;
 import com.bumptech.glide.Glide;
+import com.example.momtobe.registration.LoginActivity;
+import com.example.momtobe.ui.ProductActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -43,20 +49,28 @@ public class Settings extends AppCompatActivity {
     private String imageKey = "" ;
     Mother mother ;
     Button save_btn;
+    Button cancel_btn;
     Handler handler;
     Handler handlerId ;
     private String emailId;
     private ImageView imageView;
-
-
-
+    BottomNavigationView bottomNavigationView;
     CircleImageView updateImage ;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        setCancelButton();
+        fetchUserData ();
+        navToActivities();
+        logout();
+    }
+
+
+    void fetchUserData () {
 
         Amplify.Auth.fetchUserAttributes(
                 attributes ->{
@@ -77,26 +91,63 @@ public class Settings extends AppCompatActivity {
             return true ;
         });
 
-        save_btn = findViewById(R.id.set_save_btn);
+    }
+    void findMotherAPI (String emailId ){
+        Amplify.API.query(
+                ModelQuery.list(Mother.class),
+                success->{
+                    if(success.hasData())
+                    {
+                        for (Mother curMother : success.getData())
+                        {
+                            if(curMother.getEmailAddress().equals(emailId)){
+
+                                mother  = curMother;
+
+                            }
+                            Bundle bundle = new Bundle();
+                            bundle.putString("data","Done");
+                            Message message = new Message();
+                            message.setData(bundle);
+                            handler.sendMessage(message);
+                        }
+                    }
+                },
+                fail->{
+                    Log.i(TAG, "onCreate: failed to find mother in database");
+                }
+        );
 
         handler =  new Handler(Looper.getMainLooper() , msg -> {
             Log.i(TAG, "onCreate: 80 mother -> "+mother);
 
             setMotherData();
-            setSaveButton(mother);
+            setSaveButton();
 
             Log.i(TAG, "setMotherInfo: imageKey ->" + mother.getImage());
-
+            try {
                 setImage(mother.getImage());
+            }catch (Exception error){
 
-
+            }
             updateImage = findViewById(R.id.set_change_picture);
             updateImage.setOnClickListener(view -> uploadImage());
 
-         return true ;
+            return true ;
         });
-    }
 
+    }
+    void setMotherData (){
+        EditText name = findViewById(R.id.set_mother_name);
+        EditText phone = findViewById(R.id.set_phone);
+        EditText numberOfChildren = findViewById(R.id.set_children_number);
+        imageView = findViewById(R.id.set_profile_picture);
+
+        name.setText(mother.getName());
+        phone.setText(mother.getPhoneNumber());
+        numberOfChildren.setText(mother.getNumOfChildren().toString());
+        imageKey=mother.getImage();
+    }
     private void setImage(String image) {
         if(image != null) {
             Amplify.Storage.downloadFile(
@@ -138,7 +189,6 @@ public class Settings extends AppCompatActivity {
                 return;
         }
     }
-
     private void imageS3upload(Uri currentUri){
         Bitmap bitmap = null;
         String currentUriStr = String.valueOf(currentUri.getLastPathSegment())  + ".jpg";
@@ -159,8 +209,10 @@ public class Settings extends AppCompatActivity {
                         Log.i(TAG, "Successfully uploaded: " + result.getKey()) ;
                         imageKey = result.getKey();
 
-                        if (result.getKey() != null) {
-                            setImage(result.getKey());
+                        try {
+                            setImage(imageKey);
+                        }catch (Exception error){
+
                         }
 
                         Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
@@ -184,56 +236,16 @@ public class Settings extends AppCompatActivity {
 
         return image;
     }
-
-
-
-    void setMotherData (){
-        EditText name = findViewById(R.id.set_mother_name);
-        EditText phone = findViewById(R.id.set_phone);
-        EditText numberOfChildren = findViewById(R.id.set_children_number);
-        imageView = findViewById(R.id.set_profile_picture);
-
-        Log.i(TAG, "setMotherData: mother ->"+mother);
-        if(mother != null) {
-            name.setText(mother.getName());
-            phone.setText(mother.getPhoneNumber());
-            numberOfChildren.setText(mother.getNumOfChildren().toString());
-
-            imageKey = mother.getImage();
-        }
-
-
+    void setCancelButton (){
+        cancel_btn = findViewById(R.id.set_cancel_btn);
+        cancel_btn.setOnClickListener(view ->{
+            Intent intent = new Intent(Settings.this,Profile.class);
+            startActivity(intent);
+        });
     }
+    void setSaveButton (){
 
-    void findMotherAPI (String emailId ){
-        Amplify.API.query(
-                ModelQuery.list(Mother.class),
-                success->{
-                    if(success.hasData())
-                    {
-                        for (Mother curMother : success.getData())
-                        {
-                            if(curMother.getEmailAddress().equals(emailId)){
-
-                                mother  = curMother;
-
-                            }
-                            Bundle bundle = new Bundle();
-                            bundle.putString("data","Done");
-                            Message message = new Message();
-                            message.setData(bundle);
-                            handler.sendMessage(message);
-                        }
-                    }
-                },
-                fail->{
-                    Log.i(TAG, "onCreate: failed to find mother in database");
-                }
-        );
-    }
-
-    void setSaveButton (Mother mother){
-
+        save_btn = findViewById(R.id.set_save_btn);
         save_btn.setOnClickListener(view->{
 
             EditText name = findViewById(R.id.set_mother_name);
@@ -251,6 +263,7 @@ public class Settings extends AppCompatActivity {
                     .emailAddress(emailId)
                     .phoneNumber(phoneString)
                     .image(imageKey)
+                    .faveBlogs(mother.getFaveBlogs())
                     .id(mother.getId())
                     .build();
 
@@ -264,11 +277,73 @@ public class Settings extends AppCompatActivity {
             );
 
 
-
             Intent intent = new Intent(Settings.this,Profile.class);
 //            intent.putExtra("EMAIL_ADDRESS",emailId);
             startActivity(intent);
 
         });
     }
+    private void logout() {
+        TextView logout = findViewById(R.id.set_logout);
+        logout.setOnClickListener(view->{
+            Amplify.Auth.signOut(
+                    () -> {
+                        Log.i(TAG, "Signed out successfully");
+                        startActivity(new Intent(Settings.this, LoginActivity.class));
+                        authSession();
+                        finish();
+                    },
+                    error -> Log.e(TAG, error.toString())
+            );
+        });
+
+    }
+    private void authSession() {
+        Amplify.Auth.fetchAuthSession(
+                result -> Log.i(TAG, "Auth Session" + result.toString()),
+                error -> Log.e(TAG, error.toString())
+        );
+    }
+    private void navToActivities(){
+
+        /**
+         * bottom Navigation Bar
+         */
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.blogs_page);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId())
+                {
+                    case R.id.home_page:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.exp_page:
+                        startActivity(new Intent(getApplicationContext(),Experiance_activity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.blogs_page:
+                        return true;
+
+                    case R.id.market_page:
+                        startActivity(new Intent(getApplicationContext(), ProductActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.question_page:
+                        startActivity(new Intent(getApplicationContext(), Question_avtivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+                return false;
+            }
+        });
+    }
+
+
+
 }
