@@ -1,28 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".registration.VerificationActivity">-->
+
+<!--   -->
+
+<!--   -->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registration.VerificationActivity">
+    android:background="@color/mom_colorWhitePure"
+    android:id="@+id/container"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".registration.LoginActivity">
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:background="@color/mom_colorWhitePure"
+android:orientation="vertical">
+
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:text="Verification"
+    android:layout_gravity="center"
+    android:fontFamily="@font/poppins_bold"
+    android:textColor="@color/mom_colorTextPrimary"
+    android:textSize="@dimen/mom_tv_SignInTitle"
+    />
+
 
     <EditText
-        android:id="@+id/verification_code"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/mom_spacing_standard_1"
+        android:layout_marginEnd="@dimen/mom_spacing_standard_1"
+        android:layout_marginTop="@dimen/mom_signin_tvTitleMarginTop"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/mom_colorTextPrimary"
+        android:id="@+id/verification_code"
         android:hint="Enter verification code"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
+
 
     <Button
         android:id="@+id/verify_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/verification_code"
-        android:text="Verify"/>
+        style="@style/mom_Button"
+        android:layout_marginTop="@dimen/mom_spacing_22"
+        android:layout_marginStart="@dimen/mom_spacing_standard_1"
+        android:layout_marginEnd="@dimen/mom_spacing_standard_1"
+        android:shadowRadius="36"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Verify" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</LinearLayout>
+    </RelativeLayout>
