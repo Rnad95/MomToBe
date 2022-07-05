@@ -97,7 +97,7 @@ public class SavedActivity extends AppCompatActivity {
         }
 
         handlerId =  new Handler(Looper.getMainLooper(),msg->{
-//            Log.i(TAG, "onCreate: handlerId ->" + emailId);
+            Log.i(TAG, "onCreate: handlerId ->" + emailId);
             findMotherAPI();
             return true ;
         });
@@ -124,7 +124,9 @@ public class SavedActivity extends AppCompatActivity {
             if(!mother.getFaveBlogs().isEmpty())
             for (String id : mother.getFaveBlogs())
             {
+                if(id!=null && !blogsListTest.isEmpty())
                 for(com.example.momtobe.remote.Blog blog : blogsListTest){
+                    if(blog.getId() != null)
                     if(blog.getId().equals(id)){
                         favBlogsList.add(blog);
                     }
@@ -218,7 +220,7 @@ public class SavedActivity extends AppCompatActivity {
                         arrayList = gson.fromJson(jsonArray.toString(),ArrayList.class);
 
                         for (int i = 0; i < arrayList.toArray().length; i++) {
-                            Log.i(TAG, "CallAPI: SIZE =>"+ arrayList.size());
+//                            Log.i(TAG, "CallAPI: SIZE =>"+ arrayList.size());
                             Object getrow = arrayList.get(i);
                             LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
                             String title = t.get("title").toString();

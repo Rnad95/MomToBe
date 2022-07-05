@@ -53,11 +53,13 @@ public class BlogContentes extends AppCompatActivity {
     private String blogId;
     private Blog blog;
     private TextView authorNameView;
+    private TextView titleView;
     private ImageButton save_btn;
+    private ImageView imageView ;
     private String emailId;
     Handler handlerId ;
     Mother mother ;
-    List <String> blogIds = new ArrayList<>();
+    List <String> blogIds;
     private String userId;
     private String author;
 
@@ -133,7 +135,7 @@ public class BlogContentes extends AppCompatActivity {
     void setData(){
         Bundle bundle = getIntent().getExtras();
         title = bundle.getString("title");
-        TextView titleView = findViewById(R.id.BlogTitle);
+        titleView = findViewById(R.id.BlogTitle);
         titleView.setText(title);
 
         content = bundle.getString("content");
@@ -145,7 +147,7 @@ public class BlogContentes extends AppCompatActivity {
         authorNameView.setText(authorName);
 
         image = bundle.getString("imageLink");
-        ImageView imageView = findViewById(R.id.blogImage);
+        imageView = findViewById(R.id.blogImage);
         Glide.with(this).load(image).into(imageView);
 
     }
@@ -159,7 +161,9 @@ public class BlogContentes extends AppCompatActivity {
             blogId = bundle.getString("position");
 
             Log.i(TAG, "setSaveBtn: blogId ->" +blogId);
-            if(mother.getFaveBlogs().contains(blogId))
+            blogIds = new ArrayList<>();
+
+            if(mother.getFaveBlogs().contains(blogId) && !mother.getFaveBlogs().isEmpty())
             {
                 blogIds.clear();
                 blogIds.addAll(mother.getFaveBlogs());
@@ -170,7 +174,6 @@ public class BlogContentes extends AppCompatActivity {
                 blogIds.clear();
                 blogIds.addAll(mother.getFaveBlogs());
                 blogIds.add(blogId);
-
             }
 
             Mother newMother = Mother.builder()

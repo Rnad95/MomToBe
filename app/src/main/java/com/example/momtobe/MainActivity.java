@@ -371,13 +371,13 @@ public class MainActivity extends AppCompatActivity {
                         String content = t.get("content").toString();
                         String blogId = t.get("blogId").toString();
                         String author = t.get("author").toString();
-
+                        String category = t.get("category").toString();
                         String imageLink = t.get("imageLink").toString();
                         try {
                             dateParse = simpleDateFormat.parse(date);
                             String afterDate = "2022-06-01";
                             if(dateParse.after(simpleDateFormat.parse(afterDate))){
-                                com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog(title,content,imageLink);
+                                com.example.momtobe.remote.Blog blog = new com.example.momtobe.remote.Blog( blogId ,  title,  content,  author,  imageLink,  category,  date);
                                 blogsListTest.add(blog);
                                 Log.i(TAG, "CallAPI: SUCCESS FROM DATA");
                             }
