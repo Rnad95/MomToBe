@@ -45,7 +45,7 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
     @Override
     public void onBindViewHolder(@NonNull CustomHoleder holder, int position) {
         holder.blogTitle.setText(blogList.get(position).getTitle());
-        holder.blogDescription.setText(blogList.get(position).getContent());
+        holder.blogDescription.setText(blogList.get(position).getContent().substring(0,300) + "...");
         holder.blogAuthorName.setText(blogList.get(position).getAuthor());
         holder.blogDate.setText(blogList.get(position).getDate());
         String url = blogList.get(position).getImageLink().toString();

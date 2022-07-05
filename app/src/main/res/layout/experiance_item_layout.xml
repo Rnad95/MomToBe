@@ -143,8 +143,8 @@
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="194dp"
+            android:scaleType="center"
             android:src="@drawable/product"
-            android:scaleType="centerCrop"
             />
 
         <LinearLayout
