@@ -49,11 +49,12 @@ public class SavedBlogAdapter extends RecyclerView.Adapter<SavedBlogAdapter.Cust
     @Override
     public SavedBlogAdapter.CustomHoleder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItemView = layoutInflater.inflate(R.layout.reciclerview_content ,parent , false);
+        View listItemView = layoutInflater.inflate(R.layout.activity_blog_items ,parent , false);
         return new SavedBlogAdapter.CustomHoleder(listItemView, listener);
     }
     @Override
     public void onBindViewHolder(@NonNull SavedBlogAdapter.CustomHoleder holder, int position) {
+        Log.d("TAG", "onBindViewHolder: " + blogList);
         holder.blogTitle.setText(blogList.get(position).getTitle());
         holder.blogDescription.setText(blogList.get(position).getContent().substring(0,300) + "...");
         holder.blogAuthorName.setText(blogList.get(position).getAuthor());
