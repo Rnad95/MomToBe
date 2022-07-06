@@ -128,7 +128,6 @@ public class AddExperianceActivity extends AppCompatActivity {
                                 error -> Log.e("MyAmplifyApp", "Create failed", error)
                         );
 
-                        Toast.makeText(this, "categrey id:"+experienceCategories.getId(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
