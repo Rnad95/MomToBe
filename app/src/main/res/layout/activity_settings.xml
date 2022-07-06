@@ -61,7 +61,8 @@
 
 
                 <ImageView
-                    android:id="@+id/set_profile_picture"
+
+                    android:id="@+id/set_change_picture"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="25dp"
@@ -69,7 +70,7 @@
                     app:tint="#cccccc" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/set_change_picture"
+                    android:id="@+id/set_profile_picture"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/avatar_placeholder_click" />

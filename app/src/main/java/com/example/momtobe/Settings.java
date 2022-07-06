@@ -53,9 +53,9 @@ public class Settings extends AppCompatActivity {
     Handler handler;
     Handler handlerId ;
     private String emailId;
-    private ImageView imageView;
+    private ImageView updateImage;
     BottomNavigationView bottomNavigationView;
-    CircleImageView updateImage ;
+    CircleImageView imageView ;
 
 
 
