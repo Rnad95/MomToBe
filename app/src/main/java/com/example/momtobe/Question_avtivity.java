@@ -68,21 +68,22 @@ public class Question_avtivity extends AppCompatActivity {
         navToActivities();
 
 
-//
-//        DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
-//        findViewById(R.id.imageMenu).setOnClickListener(view -> {
-//            drawerLayout.openDrawer(GravityCompat.START);
-//
-//        });
-//
-//NavigationView navigationView=findViewById(R.id.NavigationView);
-//        navigationView.setItemIconTintList(null);
+
+        DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
+        findViewById(R.id.imageMenu).setOnClickListener(view -> {
+            drawerLayout.openDrawer(GravityCompat.START);
+
+        });
+
+        NavigationView navigationView=findViewById(R.id.NavigationView);
+        navigationView.setItemIconTintList(null);
+
 
 
         setHandler();
 
 
-
+//
 //        CheckBox dualcamera1=findViewById(R.id.checkBox);
 //        CheckBox dualcamera2=findViewById(R.id.checkBox2);
 //        CheckBox dualcamera3=findViewById(R.id.checkBox3);
