@@ -53,11 +53,13 @@ public class BlogContentes extends AppCompatActivity {
     private String blogId;
     private Blog blog;
     private TextView authorNameView;
+    private TextView titleView;
     private ImageButton save_btn;
+    private ImageView imageView ;
     private String emailId;
     Handler handlerId ;
     Mother mother ;
-    List <String> blogIds = new ArrayList<>();
+    List <String> blogIds;
     private String userId;
     private String author;
 
@@ -66,9 +68,7 @@ public class BlogContentes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_contentes);
 
-
-        Amplify.Auth.fetchUserAttributes(
-                attributes ->{
+        Amplify.Auth.fetchUserAttributes(attributes ->{
                     emailId = attributes.get(3).getValue();
                     Bundle bundle = new Bundle();
                     bundle.putString("data" , "Done");
@@ -76,33 +76,20 @@ public class BlogContentes extends AppCompatActivity {
                     Message message = new Message();
                     message.setData(bundle);
                     handlerId.sendMessage(message);
-                },
-                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
-        );
-
-        handlerId =  new Handler(Looper.getMainLooper(), msg->{
-//            Log.i(TAG, "onCreate: handlerId ->" + emailId);
-            findMotherAPI();
-            return true ;
-        });
-
-        handler =  new Handler(Looper.getMainLooper(), msg->{
-            setSaveBtn();
-            return true ;
-        });
+                }, error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error));
+        handlerId =  new Handler(Looper.getMainLooper(), msg->{findMotherAPI();return true ;});
+        handler =  new Handler(Looper.getMainLooper(), msg->{setSaveBtn();return true ;});
         save_btn = findViewById(R.id.favorite_blog);
-
         setData();
-
+        navToActivity();
         readContent();
-    }
 
+    }
     @Override
     protected void onResume() {
         super.onResume();
         setSaveBtn();
     }
-
     void findMotherAPI (){
         Log.i(TAG, "findMotherAPI: id ->"+emailId);
         Amplify.API.query(
@@ -129,11 +116,10 @@ public class BlogContentes extends AppCompatActivity {
                 }
         );
     }
-
     void setData(){
         Bundle bundle = getIntent().getExtras();
         title = bundle.getString("title");
-        TextView titleView = findViewById(R.id.BlogTitle);
+        titleView = findViewById(R.id.BlogTitle);
         titleView.setText(title);
 
         content = bundle.getString("content");
@@ -145,11 +131,10 @@ public class BlogContentes extends AppCompatActivity {
         authorNameView.setText(authorName);
 
         image = bundle.getString("imageLink");
-        ImageView imageView = findViewById(R.id.blogImage);
+        imageView = findViewById(R.id.blogImage);
         Glide.with(this).load(image).into(imageView);
 
     }
-
     void setSaveBtn (){
 
         save_btn = findViewById(R.id.favorite_blog);
@@ -159,7 +144,9 @@ public class BlogContentes extends AppCompatActivity {
             blogId = bundle.getString("position");
 
             Log.i(TAG, "setSaveBtn: blogId ->" +blogId);
-            if(mother.getFaveBlogs().contains(blogId))
+            blogIds = new ArrayList<>();
+
+            if(mother.getFaveBlogs().contains(blogId) && !mother.getFaveBlogs().isEmpty())
             {
                 blogIds.clear();
                 blogIds.addAll(mother.getFaveBlogs());
@@ -170,7 +157,6 @@ public class BlogContentes extends AppCompatActivity {
                 blogIds.clear();
                 blogIds.addAll(mother.getFaveBlogs());
                 blogIds.add(blogId);
-
             }
 
             Mother newMother = Mother.builder()
@@ -209,10 +195,6 @@ public class BlogContentes extends AppCompatActivity {
 
 
     }
-
-
-
-
     void readContent (){
         ImageButton sound = findViewById(R.id.sound_on_btn);
         sound.setOnClickListener(view -> {
@@ -245,8 +227,6 @@ public class BlogContentes extends AppCompatActivity {
             Log.e("MyAmplifyApp", "Error writing audio file", error);
         }
     }
-
-
     private void navToActivity(){
 
         /**

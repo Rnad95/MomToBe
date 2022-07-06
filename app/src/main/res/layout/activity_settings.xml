@@ -4,162 +4,165 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings">
+    tools:context=".Profile">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+            <TextView
+                android:id="@+id/set_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="25dp"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="@dimen/_13sdp"
+                android:text="log out"
+                android:textColor="@color/mom_colorPrimary" />
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Edit Profile"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                android:textColor="#000"
+                android:textSize="20sp" />
 
 
-
-<!--    <ImageView-->
-<!--        android:id="@+id/set_profile_picture"-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="150dp"-->
-<!--        android:layout_marginTop="92dp"-->
-<!--        android:layout_marginEnd="4dp"-->
-<!--        android:layout_marginBottom="132dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/set_mother_name"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/set_change_picture"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:srcCompat="@tools:sample/avatars" />-->
-
-    <ImageButton
-        android:id="@+id/set_change_picture"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="73dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintBottom_toTopOf="@+id/set_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/set_profile_picture"
-        app:layout_constraintTop_toTopOf="@+id/set_profile_picture"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
-
-    <ImageView
-        android:id="@+id/set_profile_picture"
-        android:layout_width="105dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/upload_image" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
 
 
-    <Button
-        android:id="@+id/set_save_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginEnd="58dp"
-        android:text="Save"
-        app:layout_constraintBaseline_toBaselineOf="@+id/set_cancel_btn"
-        app:layout_constraintEnd_toStartOf="@+id/set_cancel_btn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="20dp" />
 
-    <Button
-        android:id="@+id/set_cancel_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="115dp"
-        android:layout_marginBottom="80dp"
-        android:text="cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/set_phone"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/edit_text_round"
-        android:labelFor="@+id/set_mother_phone"
-        android:maxLength="9"
-        app:layout_constraintBottom_toBottomOf="@+id/set_mother_number_of_children"
-        app:layout_constraintStart_toStartOf="@+id/set_mother_phone"
-        app:layout_constraintTop_toBottomOf="@+id/set_mother_name"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/set_mother_name"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginBottom="35dp"
-        android:background="@drawable/edit_text_round"
-        android:labelFor="@+id/set_name"
-        app:layout_constraintBottom_toBottomOf="@+id/set_mother_phone"
-        app:layout_constraintEnd_toStartOf="@+id/set_cancel_btn"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintStart_toStartOf="@+id/set_name"
-        app:layout_constraintTop_toTopOf="@+id/set_name"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/set_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="256dp"
-        android:labelFor="@+id/set_mother_name"
-        android:text="Mother Name "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/set_children_number"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="97dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="99dp"
-        android:background="@drawable/edit_text_round"
-        app:layout_constraintBottom_toTopOf="@+id/set_save_btn"
-        app:layout_constraintEnd_toEndOf="@+id/set_phone"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/set_phone"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/set_mother_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="68dp"
-        android:labelFor="@+id/set_phone"
-        android:text="Mother Phone Number "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_name" />
-
-    <TextView
-        android:id="@+id/set_mother_number_of_children"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="68dp"
-        android:labelFor="@+id/set_children_number"
-        android:text="Mother Number of Children "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_mother_phone"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/set_logout"
-        android:layout_width="105dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:text="sign out"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <RelativeLayout
+                android:id="@+id/pro_profile_picture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@color/white"
+                android:clickable="true">
 
 
+                <ImageView
+                    android:id="@+id/set_profile_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="25dp"
+                    app:srcCompat="@drawable/ic_photo"
+                    app:tint="#cccccc" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/set_change_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/avatar_placeholder_click" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/set_mother_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fab_margin"
+                android:background="@drawable/edit_text_round"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Name"
+                android:inputType="text"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666" />
+
+            <EditText
+                android:id="@+id/set_phone"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edit_text_round"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666" />
+
+            <EditText
+                android:id="@+id/set_children_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/edit_text_round"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Number Of Children"
+                android:inputType="number"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textColorHint="#666666" />
+
+
+            <Button
+                android:id="@+id/set_save_btn"
+                style="@style/mom_Button"
+                android:layout_width="192dp"
+                android:layout_height="62dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/mom_spacing_30"
+                android:layout_marginTop="@dimen/mom_spacing_30"
+                android:layout_marginEnd="@dimen/mom_spacing_30"
+                android:background="@drawable/btn_dark"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Save"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/set_cancel_btn"
+                style="@style/mom_Button"
+                android:layout_width="192dp"
+                android:layout_height="62dp"
+
+                android:layout_marginStart="@dimen/mom_spacing_30"
+                android:layout_marginEnd="@dimen/mom_spacing_30"
+                android:layout_marginBottom="@dimen/mom_spacing_10"
+                android:background="@drawable/btn_dark"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Cancel"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </LinearLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/mom_colorPrimary"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

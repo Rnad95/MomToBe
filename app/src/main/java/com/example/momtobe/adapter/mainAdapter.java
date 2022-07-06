@@ -2,6 +2,7 @@ package com.example.momtobe.adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,9 +48,14 @@ public class mainAdapter extends RecyclerView.Adapter<mainAdapter.CustomHoleder>
         }
         @Override
         public void onBindViewHolder(@NonNull mainAdapter.CustomHoleder holder, int position) {
-            holder.blogTitle.setText(blogList.get(position).getTitle());
+            String title = blogList.get(position).getTitle() ;
+            if (title.length() > 10){
+                title = title.substring(0 , 14) ;
+                Log.i("TAG", "onBindViewHolder: " + title);
+            }
+            holder.blogTitle.setText(title + "...");
             holder.blogAuthor.setText(blogList.get(position).getAuthor());
-            holder.blogContent.setText(blogList.get(position).getContent());
+            holder.blogContent.setText(blogList.get(position).getContent().substring(0,100) + " . . .");
             String url = blogList.get(position).getImageLink().toString();
             Glide.with(context).load(url).into(holder.blogImage);
 

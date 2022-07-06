@@ -143,6 +143,7 @@
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="194dp"
+            android:adjustViewBounds="true"
             android:scaleType="center"
             android:src="@drawable/product"
             />

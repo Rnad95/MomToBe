@@ -69,14 +69,7 @@ public class Question_avtivity extends AppCompatActivity {
 
 
 
-        DrawerLayout drawerLayout=findViewById(R.id.drawerlayout);
-        findViewById(R.id.imageMenu).setOnClickListener(view -> {
-            drawerLayout.openDrawer(GravityCompat.START);
 
-        });
-
-        NavigationView navigationView=findViewById(R.id.NavigationView);
-        navigationView.setItemIconTintList(null);
 
 
 
