@@ -103,13 +103,14 @@ public class Settings extends AppCompatActivity {
                             if(curMother.getEmailAddress().equals(emailId)){
 
                                 mother  = curMother;
+                                Bundle bundle = new Bundle();
+                                bundle.putString("data","Done");
+                                Message message = new Message();
+                                message.setData(bundle);
+                                handler.sendMessage(message);
 
                             }
-                            Bundle bundle = new Bundle();
-                            bundle.putString("data","Done");
-                            Message message = new Message();
-                            message.setData(bundle);
-                            handler.sendMessage(message);
+
                         }
                     }
                 },

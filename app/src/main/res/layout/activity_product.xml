@@ -7,11 +7,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.ProductActivity">
 
+    <FrameLayout
+        android:id="@+id/product_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow_image"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginVertical="@dimen/_1sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layoutToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="5dp"
+                        android:contentDescription="Logo"
+                        android:src="@drawable/mother_logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MoM To Be"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="@dimen/_3sdp"
+                        android:textColor="#fc6498"
+                        android:layout_marginLeft="-3dp"
+                        android:fontFamily="@font/poppins_bold"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:layout_below="@+id/product_bar">
 
         <RelativeLayout
             android:layout_width="match_parent"

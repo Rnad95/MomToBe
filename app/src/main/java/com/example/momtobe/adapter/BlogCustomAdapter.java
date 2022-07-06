@@ -19,7 +19,7 @@ import java.util.List;
 
 public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.CustomHoleder> {
 
-    List<Blog> blogList;
+    List<Blog> blogList ;
     CustomClickListener listener;
     Context context;
 
@@ -31,9 +31,7 @@ public class BlogCustomAdapter extends RecyclerView.Adapter<BlogCustomAdapter.Cu
         this.blogList = blogList;
         this.listener = listener;
         this.context = context;
-
     }
-
 
     @NonNull
     @Override

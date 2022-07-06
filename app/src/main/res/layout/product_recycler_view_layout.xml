@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shadow_image"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="1dp"
-    app:cardElevation="8dp"
     app:cardPreventCornerOverlap="true"
+    android:background="@color/white"
     app:cardUseCompatPadding="true">
 
 
@@ -32,6 +35,7 @@
             android:src="@drawable/product"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -163,3 +167,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
+    </FrameLayout>

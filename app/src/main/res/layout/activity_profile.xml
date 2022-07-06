@@ -11,6 +11,73 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <FrameLayout
+            android:id="@+id/profile_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow_image"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginVertical="@dimen/_1sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/layoutToolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="0dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="5dp"
+                            android:contentDescription="Logo"
+                            android:src="@drawable/mother_logo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MoM To Be"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="@dimen/_3sdp"
+                            android:textColor="#fc6498"
+                            android:layout_marginLeft="-3dp"
+                            android:fontFamily="@font/poppins_bold"
+                            />
+
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/set_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="25dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="log out"
+                        android:textColor="@color/mom_colorPrimary"
+                        android:textSize="@dimen/_13sdp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,21 +85,10 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="50dp">
+            android:paddingBottom="50dp"
+            android:layout_below="@+id/profile_bar">
 
-            <TextView
-                android:id="@+id/set_logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="right"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="25dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="log out"
-                android:textColor="@color/mom_colorPrimary"
-                android:textSize="@dimen/_13sdp" />
+
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/pro_profile_picture"
