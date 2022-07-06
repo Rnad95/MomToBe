@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent=new Intent(getApplicationContext(),CommentActivity_Question.class);
                 String QuestionId=questionList.get(position).getId();
-                intent.putExtra(QuestionId,QuestionId);
+                intent.putExtra("questionId",QuestionId);
                 startActivity(intent);
 
             });

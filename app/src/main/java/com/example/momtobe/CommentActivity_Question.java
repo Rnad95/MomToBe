@@ -140,6 +140,7 @@ public class CommentActivity_Question extends AppCompatActivity {
         Amplify.API.query(
                 ModelQuery.get(Question.class,questionid),
                 teamsName -> {
+                    if (!taskArrayList.isEmpty())
                     taskArrayList.removeAll(teamsName.getData().getComments());
                     for (Comment Comment : teamsName.getData().getComments()) {
                         taskArrayList.add(Comment);
