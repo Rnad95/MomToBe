@@ -102,9 +102,7 @@ public class Experiance_activity extends AppCompatActivity {
         handler=new Handler(
                 Looper.getMainLooper(), msg -> {
             RecycleModels_experiance recycleModels = new RecycleModels_experiance(getApplicationContext(),userId,taskArrayList, position -> {
-                Toast.makeText(
-                        Experiance_activity.this,
-                        "The item clicked => " + taskArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+
                 Intent intent=new Intent(getApplicationContext(),CommentActivity_Eperiance.class);
                 String experianceId=taskArrayList.get(position).getId();
                 String MotherExperiencesId=taskArrayList.get(position).getMotherExperiencesId();

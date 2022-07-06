@@ -119,7 +119,6 @@ public class CommentActivity_Question extends AppCompatActivity {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Log.i(TAG , "This is comment");
-                    Toast.makeText(CommentActivity_Question.this, "this item is clicked", Toast.LENGTH_SHORT).show();
                     setDetails();
                 }
             } , userId );

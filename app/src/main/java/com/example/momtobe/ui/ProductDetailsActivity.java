@@ -105,7 +105,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Log.i(TAG , "This is comment");
-                    Toast.makeText(ProductDetailsActivity.this, "this item is clicked", Toast.LENGTH_SHORT).show();
                     setDetails();
                 }
             } , userId );

@@ -135,7 +135,6 @@ public void setDetails(){
             @Override
             public void onTaskItemClicked(int position) {
                 Log.i(TAG , "This is comment");
-                Toast.makeText(CommentActivity_Eperiance.this, "this item is clicked", Toast.LENGTH_SHORT).show();
                 setDetails();
             }
         } , userId );
