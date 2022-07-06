@@ -218,7 +218,6 @@ public class updateQuestion_Activity extends AppCompatActivity {
                         error -> Log.e("MyAmplifyApp", "Create failed", error)
                 );
 
-                Toast.makeText(this, "categrey id:"+questionCategories.getId(), Toast.LENGTH_SHORT).show();
             }
 
         }

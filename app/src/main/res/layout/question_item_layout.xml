@@ -38,10 +38,10 @@
             android:id="@+id/title_Question"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
             android:layout_toEndOf="@id/imageView2"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/poppins_medium"
             android:text="Quastion Name"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -49,23 +49,23 @@
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <TextView
             android:id="@+id/description"
-            android:layout_width="220dp"
+            android:layout_width="210dp"
             android:layout_height="49dp"
+            android:padding="@dimen/_5sdp"
             android:layout_below="@id/title_Question"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
             android:layout_toEndOf="@id/imageView2"
             android:drawablePadding="2dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Short decription for the quastion"
+            android:text="How to teach my baby asking for help ?"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.313"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@+id/title_Question"
             tools:ignore="SmallSp" />
-
 
         <LinearLayout
             android:layout_width="80dp"

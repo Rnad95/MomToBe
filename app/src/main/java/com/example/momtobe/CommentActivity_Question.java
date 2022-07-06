@@ -119,7 +119,6 @@ public class CommentActivity_Question extends AppCompatActivity {
                 @Override
                 public void onTaskItemClicked(int position) {
                     Log.i(TAG , "This is comment");
-                    Toast.makeText(CommentActivity_Question.this, "this item is clicked", Toast.LENGTH_SHORT).show();
                     setDetails();
                 }
             } , userId );
@@ -140,6 +139,7 @@ public class CommentActivity_Question extends AppCompatActivity {
         Amplify.API.query(
                 ModelQuery.get(Question.class,questionid),
                 teamsName -> {
+                    if (!taskArrayList.isEmpty())
                     taskArrayList.removeAll(teamsName.getData().getComments());
                     for (Comment Comment : teamsName.getData().getComments()) {
                         taskArrayList.add(Comment);

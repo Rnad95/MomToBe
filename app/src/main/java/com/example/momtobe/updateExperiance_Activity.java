@@ -68,6 +68,7 @@ public class updateExperiance_Activity extends AppCompatActivity {
     private List<ExperienceCategories> expreianceCat;
     private String idExperiance;
     private List<ExperienceCategories> experienceCategories1;
+    private String editID;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -254,6 +255,7 @@ public class updateExperiance_Activity extends AppCompatActivity {
                 ModelQuery.get(Experience.class, intent.getStringExtra("id")),
                 response -> {
                     Log.i(TAG, (response.getData()).getTitle());
+                    editID = response.getData().getId();
                     editTitle = response.getData().getTitle();
                     editDesc = response.getData().getDescription();
                     editImageKey = response.getData().getImage();
@@ -296,8 +298,9 @@ public class updateExperiance_Activity extends AppCompatActivity {
                         Log.i("MyAmplifyApp", "Added Todo with title: " + response.getData());},
                     error -> Log.e("MyAmplifyApp", "Create failed", error)
             );
-
-            startActivity(new Intent(getApplicationContext() , Experiance_activity.class));
+//         Intent int2=new Intent(getApplicationContext() , ex.class);
+//         int2.putExtra("editID",editID);
+//         startActivity(int2);
 
             return true ;
         });
@@ -327,7 +330,6 @@ String idCat=arrayListspinner3.get(i).getId();
                         error -> Log.e("MyAmplifyApp", "Create failed", error)
                 );
 
-                Toast.makeText(this, "categrey id:"+experienceCategories.getId(), Toast.LENGTH_SHORT).show();
             }
 
         }
