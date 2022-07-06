@@ -200,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
                     image,
                     new File(getApplicationContext().getFilesDir() + "/" + image + "download.jpg"),
                     result -> {
-                        imageView = findViewById(R.id.image_profile);
                         Log.i(TAG, "The root path is: " + getApplicationContext().getFilesDir());
                         Log.i(TAG, "Successfully downloaded: " + result.getFile().getName());
                         runOnUiThread(() -> Glide.with(getApplicationContext()).load(result.getFile().getPath()).into(imageView));
@@ -396,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity( intent);
     }
     private void itemsSelector() {
-
+        imageView = findViewById(R.id.image_profile);
         mImage = findViewById(R.id.image_profile);
         mFullName = findViewById(R.id.user_full_name);
         profileImage = findViewById(R.id.image_profile);
