@@ -1,7 +1,0 @@
-{
-    "AppSyncApiName": "momtobe",
-    "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": false,
-    "S3DeploymentBucket": "amplify-momtobe-momtobe-150506-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/4a478a5c51fbf842408391f71e1380a86265f796"
-}
