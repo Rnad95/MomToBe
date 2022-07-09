@@ -1,0 +1,1486 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateMother(
+  $input: CreateMotherInput!
+  $condition: ModelMotherConditionInput
+) {
+  createMother(input: $input, condition: $condition) {
+    id
+    name
+    image
+    numOfChildren
+    phoneNumber
+    emailAddress
+    faveBlogs
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    products {
+      items {
+        id
+        title
+        price
+        description
+        quantity
+        image
+        featured
+        createdAt
+        updatedAt
+        motherProductsId
+      }
+      nextToken
+    }
+    questions {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherQuestionsId
+      }
+      nextToken
+    }
+    experiences {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherExperiencesId
+      }
+      nextToken
+    }
+    blogs {
+      items {
+        id
+        motherID
+        blogID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    addressMothersId
+  }
+}
+mutation UpdateMother(
+  $input: UpdateMotherInput!
+  $condition: ModelMotherConditionInput
+) {
+  updateMother(input: $input, condition: $condition) {
+    id
+    name
+    image
+    numOfChildren
+    phoneNumber
+    emailAddress
+    faveBlogs
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    products {
+      items {
+        id
+        title
+        price
+        description
+        quantity
+        image
+        featured
+        createdAt
+        updatedAt
+        motherProductsId
+      }
+      nextToken
+    }
+    questions {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherQuestionsId
+      }
+      nextToken
+    }
+    experiences {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherExperiencesId
+      }
+      nextToken
+    }
+    blogs {
+      items {
+        id
+        motherID
+        blogID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    addressMothersId
+  }
+}
+mutation DeleteMother(
+  $input: DeleteMotherInput!
+  $condition: ModelMotherConditionInput
+) {
+  deleteMother(input: $input, condition: $condition) {
+    id
+    name
+    image
+    numOfChildren
+    phoneNumber
+    emailAddress
+    faveBlogs
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    products {
+      items {
+        id
+        title
+        price
+        description
+        quantity
+        image
+        featured
+        createdAt
+        updatedAt
+        motherProductsId
+      }
+      nextToken
+    }
+    questions {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherQuestionsId
+      }
+      nextToken
+    }
+    experiences {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherExperiencesId
+      }
+      nextToken
+    }
+    blogs {
+      items {
+        id
+        motherID
+        blogID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    addressMothersId
+  }
+}
+mutation CreateComment(
+  $input: CreateCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  createComment(input: $input, condition: $condition) {
+    id
+    content
+    createdAt
+    updatedAt
+    motherCommentsId
+    questionCommentsId
+    experienceCommentsId
+    productCommentsId
+  }
+}
+mutation UpdateComment(
+  $input: UpdateCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  updateComment(input: $input, condition: $condition) {
+    id
+    content
+    createdAt
+    updatedAt
+    motherCommentsId
+    questionCommentsId
+    experienceCommentsId
+    productCommentsId
+  }
+}
+mutation DeleteComment(
+  $input: DeleteCommentInput!
+  $condition: ModelCommentConditionInput
+) {
+  deleteComment(input: $input, condition: $condition) {
+    id
+    content
+    createdAt
+    updatedAt
+    motherCommentsId
+    questionCommentsId
+    experienceCommentsId
+    productCommentsId
+  }
+}
+mutation CreateAddress(
+  $input: CreateAddressInput!
+  $condition: ModelAddressConditionInput
+) {
+  createAddress(input: $input, condition: $condition) {
+    id
+    country
+    city
+    street
+    postalCode
+    mothers {
+      items {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        emailAddress
+        faveBlogs
+        createdAt
+        updatedAt
+        addressMothersId
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateAddress(
+  $input: UpdateAddressInput!
+  $condition: ModelAddressConditionInput
+) {
+  updateAddress(input: $input, condition: $condition) {
+    id
+    country
+    city
+    street
+    postalCode
+    mothers {
+      items {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        emailAddress
+        faveBlogs
+        createdAt
+        updatedAt
+        addressMothersId
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteAddress(
+  $input: DeleteAddressInput!
+  $condition: ModelAddressConditionInput
+) {
+  deleteAddress(input: $input, condition: $condition) {
+    id
+    country
+    city
+    street
+    postalCode
+    mothers {
+      items {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        emailAddress
+        faveBlogs
+        createdAt
+        updatedAt
+        addressMothersId
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateBlog(
+  $input: CreateBlogInput!
+  $condition: ModelBlogConditionInput
+) {
+  createBlog(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    autherName
+    featured
+    categories {
+      items {
+        id
+        blogID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    mothers {
+      items {
+        id
+        motherID
+        blogID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateBlog(
+  $input: UpdateBlogInput!
+  $condition: ModelBlogConditionInput
+) {
+  updateBlog(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    autherName
+    featured
+    categories {
+      items {
+        id
+        blogID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    mothers {
+      items {
+        id
+        motherID
+        blogID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteBlog(
+  $input: DeleteBlogInput!
+  $condition: ModelBlogConditionInput
+) {
+  deleteBlog(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    autherName
+    featured
+    categories {
+      items {
+        id
+        blogID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    mothers {
+      items {
+        id
+        motherID
+        blogID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateQuestion(
+  $input: CreateQuestionInput!
+  $condition: ModelQuestionConditionInput
+) {
+  createQuestion(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        questionID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherQuestionsId
+  }
+}
+mutation UpdateQuestion(
+  $input: UpdateQuestionInput!
+  $condition: ModelQuestionConditionInput
+) {
+  updateQuestion(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        questionID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherQuestionsId
+  }
+}
+mutation DeleteQuestion(
+  $input: DeleteQuestionInput!
+  $condition: ModelQuestionConditionInput
+) {
+  deleteQuestion(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        questionID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherQuestionsId
+  }
+}
+mutation CreateExperience(
+  $input: CreateExperienceInput!
+  $condition: ModelExperienceConditionInput
+) {
+  createExperience(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        experienceID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherExperiencesId
+  }
+}
+mutation UpdateExperience(
+  $input: UpdateExperienceInput!
+  $condition: ModelExperienceConditionInput
+) {
+  updateExperience(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        experienceID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherExperiencesId
+  }
+}
+mutation DeleteExperience(
+  $input: DeleteExperienceInput!
+  $condition: ModelExperienceConditionInput
+) {
+  deleteExperience(input: $input, condition: $condition) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        experienceID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherExperiencesId
+  }
+}
+mutation CreateProduct(
+  $input: CreateProductInput!
+  $condition: ModelProductConditionInput
+) {
+  createProduct(input: $input, condition: $condition) {
+    id
+    title
+    price
+    description
+    quantity
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherProductsId
+  }
+}
+mutation UpdateProduct(
+  $input: UpdateProductInput!
+  $condition: ModelProductConditionInput
+) {
+  updateProduct(input: $input, condition: $condition) {
+    id
+    title
+    price
+    description
+    quantity
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherProductsId
+  }
+}
+mutation DeleteProduct(
+  $input: DeleteProductInput!
+  $condition: ModelProductConditionInput
+) {
+  deleteProduct(input: $input, condition: $condition) {
+    id
+    title
+    price
+    description
+    quantity
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherProductsId
+  }
+}
+mutation CreateCat(
+  $input: CreateCatInput!
+  $condition: ModelCatConditionInput
+) {
+  createCat(input: $input, condition: $condition) {
+    id
+    title
+    description
+    experiences {
+      items {
+        id
+        experienceID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    blogs {
+      items {
+        id
+        blogID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    questions {
+      items {
+        id
+        questionID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateCat(
+  $input: UpdateCatInput!
+  $condition: ModelCatConditionInput
+) {
+  updateCat(input: $input, condition: $condition) {
+    id
+    title
+    description
+    experiences {
+      items {
+        id
+        experienceID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    blogs {
+      items {
+        id
+        blogID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    questions {
+      items {
+        id
+        questionID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteCat(
+  $input: DeleteCatInput!
+  $condition: ModelCatConditionInput
+) {
+  deleteCat(input: $input, condition: $condition) {
+    id
+    title
+    description
+    experiences {
+      items {
+        id
+        experienceID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    blogs {
+      items {
+        id
+        blogID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    questions {
+      items {
+        id
+        questionID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateUserBlogs(
+  $input: CreateUserBlogsInput!
+  $condition: ModelUserBlogsConditionInput
+) {
+  createUserBlogs(input: $input, condition: $condition) {
+    id
+    motherID
+    blogID
+    mother {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      emailAddress
+      faveBlogs
+      comments {
+        nextToken
+      }
+      products {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      addressMothersId
+    }
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateUserBlogs(
+  $input: UpdateUserBlogsInput!
+  $condition: ModelUserBlogsConditionInput
+) {
+  updateUserBlogs(input: $input, condition: $condition) {
+    id
+    motherID
+    blogID
+    mother {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      emailAddress
+      faveBlogs
+      comments {
+        nextToken
+      }
+      products {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      addressMothersId
+    }
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteUserBlogs(
+  $input: DeleteUserBlogsInput!
+  $condition: ModelUserBlogsConditionInput
+) {
+  deleteUserBlogs(input: $input, condition: $condition) {
+    id
+    motherID
+    blogID
+    mother {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      emailAddress
+      faveBlogs
+      comments {
+        nextToken
+      }
+      products {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      addressMothersId
+    }
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateBlogCategories(
+  $input: CreateBlogCategoriesInput!
+  $condition: ModelBlogCategoriesConditionInput
+) {
+  createBlogCategories(input: $input, condition: $condition) {
+    id
+    blogID
+    catID
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateBlogCategories(
+  $input: UpdateBlogCategoriesInput!
+  $condition: ModelBlogCategoriesConditionInput
+) {
+  updateBlogCategories(input: $input, condition: $condition) {
+    id
+    blogID
+    catID
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteBlogCategories(
+  $input: DeleteBlogCategoriesInput!
+  $condition: ModelBlogCategoriesConditionInput
+) {
+  deleteBlogCategories(input: $input, condition: $condition) {
+    id
+    blogID
+    catID
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateQuestionCategories(
+  $input: CreateQuestionCategoriesInput!
+  $condition: ModelQuestionCategoriesConditionInput
+) {
+  createQuestionCategories(input: $input, condition: $condition) {
+    id
+    questionID
+    catID
+    question {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherQuestionsId
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateQuestionCategories(
+  $input: UpdateQuestionCategoriesInput!
+  $condition: ModelQuestionCategoriesConditionInput
+) {
+  updateQuestionCategories(input: $input, condition: $condition) {
+    id
+    questionID
+    catID
+    question {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherQuestionsId
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteQuestionCategories(
+  $input: DeleteQuestionCategoriesInput!
+  $condition: ModelQuestionCategoriesConditionInput
+) {
+  deleteQuestionCategories(input: $input, condition: $condition) {
+    id
+    questionID
+    catID
+    question {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherQuestionsId
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateExperienceCategories(
+  $input: CreateExperienceCategoriesInput!
+  $condition: ModelExperienceCategoriesConditionInput
+) {
+  createExperienceCategories(input: $input, condition: $condition) {
+    id
+    experienceID
+    catID
+    experience {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherExperiencesId
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateExperienceCategories(
+  $input: UpdateExperienceCategoriesInput!
+  $condition: ModelExperienceCategoriesConditionInput
+) {
+  updateExperienceCategories(input: $input, condition: $condition) {
+    id
+    experienceID
+    catID
+    experience {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherExperiencesId
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteExperienceCategories(
+  $input: DeleteExperienceCategoriesInput!
+  $condition: ModelExperienceCategoriesConditionInput
+) {
+  deleteExperienceCategories(input: $input, condition: $condition) {
+    id
+    experienceID
+    catID
+    experience {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherExperiencesId
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}

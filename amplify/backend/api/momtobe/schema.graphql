@@ -1,0 +1,99 @@
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } }
+
+type Mother @model {
+  id: ID!
+  name : String!
+  image : String  #edit the name image_key of image_path
+  numOfChildren : Int!
+  phoneNumber : String
+  emailAddress:String!
+  faveBlogs: [String]
+
+
+  comments: [Comment] @hasMany
+  products: [Product] @hasMany
+  questions: [Question] @hasMany
+  experiences: [Experience] @hasMany
+
+
+  blogs : [Blog] @manyToMany(relationName: "userBlogs")
+}
+
+type Comment @model {
+  id: ID!
+  content: String!
+}
+
+type Address @model {
+  id: ID!
+  country: String!
+  city: String!
+  street: String!
+  postalCode: Int
+
+  mothers: [Mother] @hasMany
+}
+
+type Blog @model {
+  id: ID!
+  title: String!
+  description: String!
+  image : String  #edit the name image_key of image_path
+  autherName : String!
+  featured: Boolean!
+
+  categories : [Cat] @manyToMany(relationName: "blogCategories")
+  mothers : [Mother] @manyToMany(relationName: "userBlogs")
+
+
+}
+
+type Question @model {
+  id: ID!
+  title: String!
+  description: String!
+  image : String  #edit the name image_key of image_path
+  featured: Boolean!
+
+  comments: [Comment] @hasMany
+
+  categories : [Cat] @manyToMany(relationName: "questionCategories")
+}
+
+
+type Experience @model {
+  id: ID!
+  title: String!
+  description: String!
+  image : String  #edit the name image_key of image_path
+  featured: Boolean!
+
+  comments: [Comment] @hasMany
+
+  categories : [Cat] @manyToMany(relationName: "experienceCategories")
+}
+
+type Product @ model {
+  id: ID!
+  title: String!
+  price: Float!
+  description: String!
+  quantity: Int
+
+  image : String  #edit the name image_key of image_path
+  featured: Boolean!
+  comments: [Comment] @hasMany
+
+}
+
+type Cat @model {
+  id: ID!
+  title: String!
+  description: String!
+  experiences: [Experience]@manyToMany(relationName: "experienceCategories")
+  blogs : [Blog] @manyToMany(relationName: "blogCategories")
+  questions : [Question]@manyToMany(relationName: "questionCategories")
+
+}
+
+

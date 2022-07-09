@@ -1,0 +1,20 @@
+{
+  "momtobe": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-momtobe-momtobe-150506-authRole",
+      "UnauthRoleArn": "arn:aws:iam::366419673945:role/amplify-momtobe-momtobe-150506-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::366419673945:role/amplify-momtobe-momtobe-150506-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-momtobe-momtobe-150506-deployment",
+      "UnauthRoleName": "amplify-momtobe-momtobe-150506-unauthRole",
+      "StackName": "amplify-momtobe-momtobe-150506",
+      "StackId": "arn:aws:cloudformation:us-east-1:366419673945:stack/amplify-momtobe-momtobe-150506/674ddef0-f15a-11ec-a70b-121241547b33",
+      "AmplifyAppId": "d1pw4bat5m1om6"
+    },
+    "categories": {
+      "auth": {
+        "momtobe40d2e53d": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="mom_viewpager_height">@dimen/_430sdp</dimen>
+    <dimen name="mom_imageview_height">270dp</dimen>
+    <dimen name="mom_getstaretdbtn_radious">@dimen/_5sdp</dimen>
+    <dimen name="mom_vptitle_textsize">@dimen/mom_font_size_normal</dimen>
+    <dimen name="mom_viewpager_itrmmarginleft">@dimen/_32sdp</dimen>
+    <dimen name="mom_viewpaget_itemmarginright">@dimen/_32sdp</dimen>
+    <dimen name="mom_view_height">@dimen/_220sdp</dimen>
+    <dimen name="mom_cardview_height">@dimen/_210sdp</dimen>
+    <dimen name="mom_linear_marginTop">@dimen/_135sdp</dimen>
+    <dimen name="mom_line_margin_top">@dimen/_150sdp</dimen>
+
+    <dimen name="mom_tv_SignInTitle">35sp</dimen>
+    <dimen name="mom_signin_edtPhoneMarginTop">@dimen/_22sdp</dimen>
+    <dimen name="mom_signin_tvTitleMarginTop">100dp</dimen>
+
+    <dimen name="mom_font_size_nano">10sp</dimen>
+    <dimen name="mom_font_size_micro">12sp</dimen>
+    <dimen name="mom_font_size_small">14sp</dimen>
+    <dimen name="mom_font_size_medium">16sp</dimen>
+    <dimen name="mom_font_size_normal">18sp</dimen>
+    <dimen name="mom_font_size_large">20sp</dimen>
+    <dimen name="mom_font_size_xlarge">22sp</dimen>
+    <dimen name="mom_font_size_xxxlarge">30sp</dimen>
+    <dimen name="mom_font_size_xxxlarge2">34sp</dimen>
+
+    <dimen name="mom_spacing_control_nano">@dimen/_1sdp</dimen>
+    <dimen name="mom_spacing_control_half">@dimen/_2sdp</dimen>
+    <dimen name="mom_spacing_control">@dimen/_4sdp</dimen>
+    <dimen name="mom_spacing_6">@dimen/_6sdp</dimen>
+    <dimen name="mom_spacing_standard">@dimen/_8sdp</dimen>
+    <dimen name="mom_spacing_10">@dimen/_10sdp</dimen>
+    <dimen name="mom_spacing_standard_1">@dimen/_12sdp</dimen>
+    <dimen name="mom_spacing_14">@dimen/_14sdp</dimen>
+    <dimen name="mom_spacing_standard_new">@dimen/_16sdp</dimen>
+    <dimen name="mom_spacing_standard_new1">@dimen/_18sdp</dimen>
+    <dimen name="mom_spacing_standard_2">@dimen/_20sdp</dimen>
+    <dimen name="mom_spacing_22">@dimen/_22sdp</dimen>
+    <dimen name="mom_spacing_large">@dimen/_24sdp</dimen>
+    <dimen name="mom_spacing_25">@dimen/_25sdp</dimen>
+    <dimen name="mom_spacing_28">@dimen/_28sdp</dimen>
+    <dimen name="mom_spacing_30">@dimen/_30sdp</dimen>
+    <dimen name="mom_spacing_xlarge">@dimen/_32sdp</dimen>
+    <dimen name="mom_spacing_xxlarge">@dimen/_36sdp</dimen>
+    <dimen name="mom_spacing_xxxlarge">@dimen/_40sdp</dimen>
+    <dimen name="mom_spacing_45">@dimen/_45sdp</dimen>
+    <dimen name="mom_spacing_50">@dimen/_50sdp</dimen>
+    <dimen name="mom_spacing_60">@dimen/_60sdp</dimen>
+    <dimen name="mom_spacing_62">@dimen/_62sdp</dimen>
+    <dimen name="mom_spacing_65">@dimen/_65sdp</dimen>
+    <dimen name="mom_spacing_70">@dimen/_70sdp</dimen>
+    <dimen name="mom_spacing_80">@dimen/_80sdp</dimen>
+    <dimen name="mom_spacing_48">@dimen/_48sdp</dimen>
+    <dimen name="mom_spacing_85">@dimen/_85sdp</dimen>
+    <dimen name="mom_spacing_90">@dimen/_90sdp</dimen>
+    <dimen name="mom_spacing_110">@dimen/_110sdp</dimen>
+    <dimen name="mom_spacing_125">@dimen/_125sdp</dimen>
+    <dimen name="mom_spacing_140">@dimen/_140sdp</dimen>
+    <dimen name="mom_spacing_160">@dimen/_160sdp</dimen>
+    <dimen name="mom_spacing_180">@dimen/_180sdp</dimen>
+    <dimen name="mom_card_height_size">@dimen/_170sdp</dimen>
+    <dimen name="mom_spacing_200">@dimen/_200sdp</dimen>
+    <dimen name="mom_gradientWidth">@dimen/_250sdp</dimen>
+    <dimen name="mom_gradientHeight">@dimen/_250sdp</dimen>
+    <dimen name="mom_spacing_295">@dimen/_295sdp</dimen>
+    <dimen name="mom_spacing_300">@dimen/_300sdp</dimen>
+    <dimen name="mom_spacing_100">@dimen/_100sdp</dimen>
+    <dimen name="mom_spacing_410">@dimen/_410sdp</dimen>
+
+</resources>

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "momtobe",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\acer\\ASAC\\MomToBe\\amplify\\backend\\api\\momtobe\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 100,
+      "apiKeyExpirationDate": "2022-10-05T09:28:43.195Z",
+      "keyDescription": "jgjgj"
+    },
+    "conflictResolution": {}
+  }
+}

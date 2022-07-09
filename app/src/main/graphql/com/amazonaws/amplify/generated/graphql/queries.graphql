@@ -1,0 +1,801 @@
+# this is an auto generated file. This will be overwritten
+query GetMother($id: ID!) {
+  getMother(id: $id) {
+    id
+    name
+    image
+    numOfChildren
+    phoneNumber
+    emailAddress
+    faveBlogs
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    products {
+      items {
+        id
+        title
+        price
+        description
+        quantity
+        image
+        featured
+        createdAt
+        updatedAt
+        motherProductsId
+      }
+      nextToken
+    }
+    questions {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherQuestionsId
+      }
+      nextToken
+    }
+    experiences {
+      items {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherExperiencesId
+      }
+      nextToken
+    }
+    blogs {
+      items {
+        id
+        motherID
+        blogID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    addressMothersId
+  }
+}
+query ListMothers(
+  $filter: ModelMotherFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listMothers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      emailAddress
+      faveBlogs
+      comments {
+        nextToken
+      }
+      products {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      addressMothersId
+    }
+    nextToken
+  }
+}
+query GetComment($id: ID!) {
+  getComment(id: $id) {
+    id
+    content
+    createdAt
+    updatedAt
+    motherCommentsId
+    questionCommentsId
+    experienceCommentsId
+    productCommentsId
+  }
+}
+query ListComments(
+  $filter: ModelCommentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      content
+      createdAt
+      updatedAt
+      motherCommentsId
+      questionCommentsId
+      experienceCommentsId
+      productCommentsId
+    }
+    nextToken
+  }
+}
+query GetAddress($id: ID!) {
+  getAddress(id: $id) {
+    id
+    country
+    city
+    street
+    postalCode
+    mothers {
+      items {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        emailAddress
+        faveBlogs
+        createdAt
+        updatedAt
+        addressMothersId
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListAddresses(
+  $filter: ModelAddressFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAddresses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      country
+      city
+      street
+      postalCode
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetBlog($id: ID!) {
+  getBlog(id: $id) {
+    id
+    title
+    description
+    image
+    autherName
+    featured
+    categories {
+      items {
+        id
+        blogID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    mothers {
+      items {
+        id
+        motherID
+        blogID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListBlogs(
+  $filter: ModelBlogFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuestion($id: ID!) {
+  getQuestion(id: $id) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        questionID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherQuestionsId
+  }
+}
+query ListQuestions(
+  $filter: ModelQuestionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuestions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherQuestionsId
+    }
+    nextToken
+  }
+}
+query GetExperience($id: ID!) {
+  getExperience(id: $id) {
+    id
+    title
+    description
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    categories {
+      items {
+        id
+        experienceID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherExperiencesId
+  }
+}
+query ListExperiences(
+  $filter: ModelExperienceFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listExperiences(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherExperiencesId
+    }
+    nextToken
+  }
+}
+query GetProduct($id: ID!) {
+  getProduct(id: $id) {
+    id
+    title
+    price
+    description
+    quantity
+    image
+    featured
+    comments {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        motherCommentsId
+        questionCommentsId
+        experienceCommentsId
+        productCommentsId
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+    motherProductsId
+  }
+}
+query ListProducts(
+  $filter: ModelProductFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      price
+      description
+      quantity
+      image
+      featured
+      comments {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherProductsId
+    }
+    nextToken
+  }
+}
+query GetCat($id: ID!) {
+  getCat(id: $id) {
+    id
+    title
+    description
+    experiences {
+      items {
+        id
+        experienceID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    blogs {
+      items {
+        id
+        blogID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    questions {
+      items {
+        id
+        questionID
+        catID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListCats($filter: ModelCatFilterInput, $limit: Int, $nextToken: String) {
+  listCats(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetUserBlogs($id: ID!) {
+  getUserBlogs(id: $id) {
+    id
+    motherID
+    blogID
+    mother {
+      id
+      name
+      image
+      numOfChildren
+      phoneNumber
+      emailAddress
+      faveBlogs
+      comments {
+        nextToken
+      }
+      products {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      addressMothersId
+    }
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListUserBlogs(
+  $filter: ModelUserBlogsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUserBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      motherID
+      blogID
+      mother {
+        id
+        name
+        image
+        numOfChildren
+        phoneNumber
+        emailAddress
+        faveBlogs
+        createdAt
+        updatedAt
+        addressMothersId
+      }
+      blog {
+        id
+        title
+        description
+        image
+        autherName
+        featured
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetBlogCategories($id: ID!) {
+  getBlogCategories(id: $id) {
+    id
+    blogID
+    catID
+    blog {
+      id
+      title
+      description
+      image
+      autherName
+      featured
+      categories {
+        nextToken
+      }
+      mothers {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListBlogCategories(
+  $filter: ModelBlogCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBlogCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      blogID
+      catID
+      blog {
+        id
+        title
+        description
+        image
+        autherName
+        featured
+        createdAt
+        updatedAt
+      }
+      cat {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetQuestionCategories($id: ID!) {
+  getQuestionCategories(id: $id) {
+    id
+    questionID
+    catID
+    question {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherQuestionsId
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListQuestionCategories(
+  $filter: ModelQuestionCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listQuestionCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      questionID
+      catID
+      question {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherQuestionsId
+      }
+      cat {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetExperienceCategories($id: ID!) {
+  getExperienceCategories(id: $id) {
+    id
+    experienceID
+    catID
+    experience {
+      id
+      title
+      description
+      image
+      featured
+      comments {
+        nextToken
+      }
+      categories {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      motherExperiencesId
+    }
+    cat {
+      id
+      title
+      description
+      experiences {
+        nextToken
+      }
+      blogs {
+        nextToken
+      }
+      questions {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListExperienceCategories(
+  $filter: ModelExperienceCategoriesFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listExperienceCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      experienceID
+      catID
+      experience {
+        id
+        title
+        description
+        image
+        featured
+        createdAt
+        updatedAt
+        motherExperiencesId
+      }
+      cat {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}

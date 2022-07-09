@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_page"
+        android:title="Home"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/blogs_page"
+        android:title="Blogs"
+        android:icon="@drawable/ic_blog"/>
+    <item
+        android:id="@+id/market_page"
+        android:title="Market"
+        android:icon="@drawable/ic_shopping"/>
+    <item
+        android:id="@+id/question_page"
+        android:title="Question"
+        android:icon="@drawable/ic_question_answer"/>
+    <item
+        android:id="@+id/exp_page"
+        android:title="Experience"
+        android:icon="@drawable/experience"/>
+
+</menu>
