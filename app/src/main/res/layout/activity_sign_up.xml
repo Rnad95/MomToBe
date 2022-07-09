@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".registration.SignUpActivity"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/mom_spacing_standard_1"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:text="Sign Up"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/mom_colorTextPrimary"
+        android:textSize="@dimen/mom_tv_SignInTitle" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        >
+        <!--        Full Name                 -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mom_spacing_22"
+                android:paddingBottom="@dimen/_20sdp"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--        Number of Children        -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_children_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Number Of Children"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mom_spacing_22"
+                android:paddingBottom="@dimen/_20sdp"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--        Email                     -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mom_spacing_22"
+                android:paddingBottom="@dimen/_20sdp"
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--        Password                  -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mom_spacing_22"
+                android:paddingBottom="@dimen/_20sdp"
+
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <!--          Upload Image            -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="20dp"
+            >
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/upload_image"
+                android:layout_marginStart="50dp"
+                />
+
+            <Button
+                android:id="@+id/register_upload_image"
+                android:layout_width="170dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:text="Upload Image" />
+        </LinearLayout>
+        <!--        Phone Number              -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_phone_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <com.hbb20.CountryCodePicker
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="0dp"
+                    app:ccp_defaultPhoneCode="962"
+                    app:ccp_showFlag="true"
+                    app:ccp_showNameCode="false"
+                    app:ccp_showPhoneCode="false" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/register_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btn_register"
+            style="@style/mom_Button"
+            android:layout_marginStart="@dimen/mom_spacing_standard_1"
+            android:layout_marginTop="@dimen/mom_spacing_22"
+            android:layout_marginEnd="@dimen/mom_spacing_standard_1"
+            android:shadowRadius="36"
+            android:text="Sign Up" />
+        <TextView
+            android:id="@+id/sign_in_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Have An Account? LOGIN"
+            android:textColor="@color/mom_colorGrey"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+</LinearLayout>
+
